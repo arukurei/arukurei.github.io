@@ -1,0 +1,2942 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    Поиск - alkrei
+</title>
+
+    <link rel="preload" as="image" href="/static/background.png">
+    <link rel="preload" as="image" href="/static/banner_bg.png">
+    <link rel="preload" as="image" href="/static/logo.png" fetchpriority="high">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- Подключение вынесенных статических файлов с кэшированием браузера -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script defer src="/static/js/main.js"></script>
+
+    <script>
+        if (window.location.hash && !window.location.hash.startsWith('#year-')) {
+            document.documentElement.style.visibility = 'hidden';
+            setTimeout(() => { document.documentElement.style.visibility = ''; }, 350);
+        }
+    </script>
+
+    <!-- Динамические Jinja-переменные темы и фона страниц -->
+    <style>
+        :root {
+            --c-border: #3a3b3f;
+            --c-surface: #24262a;
+            --c-dark: #202225;
+            --c-darkest: #17191c;
+
+            --page-bg-color: var(--c-darkest);
+            --header-bg: var(--c-dark);
+            --nav-bg: var(--c-darkest);
+            --qz-bg: var(--c-surface);
+            --qz-surface: var(--c-darkest);
+            --qz-surface-hover: var(--c-dark);
+            --qz-surface-alpha: rgba(32, 34, 37, 0.7);
+            --qz-border: var(--c-border);
+            --qz-text: #fbfbfb;
+            --qz-text-muted: #9a9ca6;
+            --qz-accent: #8a5cf5;
+            --qz-accent-hover: #b05cd6;
+            --qz-accent-soft: rgba(138, 92, 245, 0.18);
+            --comic-shadow: ;
+            --code-inline: #c7b0fd;
+            --lang-icon: #00aaff;
+            --lang-en: #ff3333;
+            --lang-ru: #0088ff;
+            --tag-text: #d2c1fc;
+            --link-broken: #ff6b6b;
+            --link-broken-alpha: rgba(255, 107, 107, 0.12);
+
+            --callout-nested-blue: #2c3b51;
+            --callout-nested-cyan: #2b3d49;
+            --callout-nested-green: #2c3f43;
+            --callout-nested-orange: #3e3b3b;
+            --callout-nested-red: #3e3245;
+            --callout-nested-purple: #36354f;
+            --callout-nested-gray: #343c49;
+
+            --h1-color: #FF306C;
+            --h2-color: #ff9502;
+            --h3-color: #FFD500;
+            --h4-color: #4BBF5E;
+            --h5-color: #4d95f7;
+            --h6-color: #b051de;
+
+            --retro-bg: #d6ebe9;
+            --retro-bg-alt: #f3f1e9;
+            --retro-bg-hover: #c6dfdd;
+            --retro-border: #17191c;
+            --retro-shadow: #17191c;
+            --retro-text: #17191c;
+            --retro-text-muted: #555243;
+            --retro-avatar-bg: #d5cba9;
+            --retro-btn: #e5dec9;
+            --retro-tag-type: #17191c;
+            --retro-tag-topic: #8e44ad;
+            --retro-tag-cat: #2ecc71;
+            --retro-tag-date: #d35400;
+            --retro-error: #c0392b;
+            --retro-error-alpha: rgba(192, 57, 43, 0.12);
+            --retro-border-alpha: rgba(23, 25, 28, 0.2);
+            --retro-text-muted-alpha: rgba(85, 82, 67, 0.7);
+
+            --page-bg: url('/static/background.png');
+            --page-banner: url('/static/banner_bg.png');
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-6">
+
+    
+    
+    
+    
+
+    <div class="w-full max-w-[760px] mx-auto px-4 mt-6">
+        <header class="retro-header">
+            <div class="retro-banner">
+                <img src="/static/logo.png" alt="Logo"
+                     loading="eager" decoding="async" fetchpriority="high"
+                     class="max-h-28 md:max-h-36 w-auto h-auto object-contain drop-shadow-[4px_4px_0_rgba(0,0,0,1)] select-none pointer-events-none"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <h1 class="hidden text-4xl md:text-5xl font-black text-[var(--retro-text)] tracking-widest uppercase text-center px-4">
+                    ALKREI.COM
+                </h1>
+            </div>
+
+            <nav class="bg-[var(--c-dark)] border-t border-[color:var(--c-dark)] flex w-full relative rounded-b-[0.33rem]">
+                <div class="flex-grow flex flex-col rounded-bl-[0.33rem] overflow-hidden">
+                    <div class="flex w-full">
+                        
+                            <a href="/ru/"
+                               style="--btn-color: #ff3333;"
+                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider ">
+                                Главная
+                            </a>
+                        
+                            <a href="/ru/wiki/"
+                               style="--btn-color: #0088ff;"
+                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider ">
+                                Вики
+                            </a>
+                        
+                            <a href="/ru/search/"
+                               style="--btn-color: #d35400;"
+                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider active">
+                                Поиск
+                            </a>
+                        
+                            <a href="/ru/arukurei/"
+                               style="--btn-color: #00aa33;"
+                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider ">
+                                Обо мне
+                            </a>
+                        
+                    </div>
+                    <div class="flex w-full h-[3px] leading-none">
+                        
+                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #ff3333;"></div>
+                        
+                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #0088ff;"></div>
+                        
+                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #d35400;"></div>
+                        
+                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #00aa33;"></div>
+                        
+                    </div>
+                </div>
+
+                <div class="lang-container relative border-l border-[color:var(--c-dark)] bg-[var(--c-dark)] px-4 flex items-center cursor-pointer select-none hover:bg-[var(--c-darkest)] transition-all duration-150 self-stretch rounded-br-[0.33rem]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-[var(--lang-icon)] transition-colors duration-150 pointer-events-none" viewBox="0 0 24 24">
+                        <path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/>
+                    </svg>
+                    <div class="lang-dropdown hidden absolute left-[calc(100%+8px)] top-[-1px] bg-[var(--nav-bg)] border-2 border-[color:var(--c-border)] rounded-[0.33rem] shadow-[0_8px_20px_rgba(0,0,0,0.45)] z-50 py-0 w-28 text-center">
+                        
+                            
+                            
+                            
+
+                            
+                            
+                            
+
+                            
+                            
+                            
+
+                            
+                                <a href="../../en/search/index.html" class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-en)] hover:text-white transition-all rounded-t-[0.33rem]">English</a>
+                            
+
+                            
+                                <a href="index.html" class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-ru)] hover:text-white transition-all rounded-b-[0.33rem]">Русский</a>
+                            
+                        
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <main class="w-full max-w-[760px] mx-auto px-4 flex-grow flex flex-col space-y-6">
+        
+<div class="animate-retro-pop relative w-full mb-2 pb-8">
+
+    <!-- ПРАВЫЙ САЙДБАР НА DESKTOP / ВЕРХНЯЯ ПАНЕЛЬ НА MOBILE -->
+    <div class="xl:absolute xl:left-[100%] xl:top-0 xl:bottom-0 xl:ml-4 xl:w-72 select-none mb-5 xl:mb-0">
+        <div class="xl:sticky xl:top-6 w-full">
+            <div id="qz-calendar-widget" class="qz-card p-4 rounded-2xl border-2 border-[var(--qz-border)] shadow-[0_4px_14px_rgba(0,0,0,0.18)]">
+                <!-- Header: Mode Switcher -->
+                <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-[var(--qz-border)] mb-3">
+                    <div class="flex items-center gap-1 bg-[var(--qz-surface)] p-1 rounded-xl border border-[var(--qz-border)]" id="cal-mode-tabs">
+                        <button type="button" class="cal-tab-btn active" data-mode="days">Days</button>
+                        <button type="button" class="cal-tab-btn" data-mode="weeks">Weeks</button>
+                        <button type="button" class="cal-tab-btn" data-mode="months">Months</button>
+                        <button type="button" class="cal-tab-btn" data-mode="years">Years</button>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="flex items-center gap-1.5 ml-auto">
+                        <button type="button" id="cal-nav-prev" class="cal-nav-btn" title="Previous">❮</button>
+                        <button type="button" id="cal-nav-next" class="cal-nav-btn" title="Next">❯</button>
+                        <button type="button" id="cal-reset-btn" class="text-xs font-bold text-[var(--qz-accent)] hover:underline ml-1.5 hidden">Reset</button>
+                    </div>
+                </div>
+
+                <div class="text-xs font-black uppercase tracking-wider text-[var(--qz-text-muted)] text-center mb-2.5" id="cal-nav-label">
+                    September 2026
+                </div>
+
+                <!-- Calendar Dynamic Body -->
+                <div id="cal-body-container" class="w-full"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ПОЛЕ ВВОДА ПОИСКА -->
+    <div class="w-full mb-5">
+        <input type="text" id="retro-search-input"
+               class="w-full bg-[var(--qz-bg)] border-2 border-[var(--qz-border)] rounded-2xl px-6 py-4 text-base md:text-lg font-bold font-mono text-[var(--qz-text)] placeholder:text-[var(--qz-text-muted)] placeholder:opacity-50 outline-none focus:border-[var(--qz-accent)] transition-colors shadow-[0_4px_14px_rgba(0,0,0,0.18)]"
+               placeholder="🐪 поиск"
+               autocomplete="off" spellcheck="false">
+    </div>
+
+    <!-- РАЗДЕЛИТЕЛЬ RESULTS -->
+    <div class="flex justify-center my-3">
+        <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[12px] font-bold px-3.5 pt-[6px] pb-[5px] rounded-full select-none tracking-wider">
+            RESULTS
+        </span>
+    </div>
+
+    
+        <div class="space-y-4" id="search-cards-wrapper">
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Aerith%20Sketches/index.html"
+                     data-title="aerith sketches"
+                     data-date="2026-09-06 15:18:00"
+                     data-tags="art,aeritheya"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Aerith Sketches
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #art
+                                    </a>
+                                
+                                    <a href="index.html?tag=aeritheya"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #aeritheya
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            15:18 | 06.09.2026
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Aeritheya%20Inventory/index.html"
+                     data-title="aeritheya inventory"
+                     data-date="2026-08-19 17:30:00"
+                     data-tags="old_post,gamedev,aeritheya"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Aeritheya Inventory
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=gamedev"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #gamedev
+                                    </a>
+                                
+                                    <a href="index.html?tag=aeritheya"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #aeritheya
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            17:30 | 19.08.2026
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Animations%20for%20Aerith/index.html"
+                     data-title="animations for aerith"
+                     data-date="2025-09-05 19:19:00"
+                     data-tags="medusa,old_post,pixel_art,aeritheya"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Animations for Aerith
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=medusa"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #medusa
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=aeritheya"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #aeritheya
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            19:19 | 05.09.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Aspis%20Design/index.html"
+                     data-title="aspis design"
+                     data-date="2025-01-31 19:20:00"
+                     data-tags="old_post,pixel_art,medusa,aeritheya"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Aspis Design
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=medusa"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #medusa
+                                    </a>
+                                
+                                    <a href="index.html?tag=aeritheya"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #aeritheya
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            19:20 | 31.01.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Battle%20with%20an%20Elf/index.html"
+                     data-title="battle with an elf"
+                     data-date="2025-07-10 11:06:00"
+                     data-tags="pixel_art,old_post"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Battle with an Elf
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            11:06 | 10.07.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Card%20Event%20Aspis/index.html"
+                     data-title="card event aspis"
+                     data-date="2025-03-11 21:14:00"
+                     data-tags="old_post,pixel_art,medusa,aeritheya"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Card Event Aspis
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=medusa"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #medusa
+                                    </a>
+                                
+                                    <a href="index.html?tag=aeritheya"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #aeritheya
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            21:14 | 11.03.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Channel%20Birthday%202025/index.html"
+                     data-title="channel birthday 2025"
+                     data-date="2025-12-01 23:59:00"
+                     data-tags="aeritheya,pixel_art,old_post"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Channel Birthday 2025
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=aeritheya"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #aeritheya
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            23:59 | 01.12.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Code%20Map/index.html"
+                     data-title="code map"
+                     data-date="2026-08-22 20:23:00"
+                     data-tags="pixel_art"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Code Map
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            20:23 | 22.08.2026
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Collab%20Drawing%20with%20Clyde/index.html"
+                     data-title="collab drawing with clyde"
+                     data-date="2024-12-07 10:22:00"
+                     data-tags="old_post,pixel_art"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Collab Drawing with Clyde
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            10:22 | 07.12.2024
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Collab%20Lospec%20Family%20Yearbook%202024/index.html"
+                     data-title="collab lospec family yearbook 2024"
+                     data-date="2024-12-06 19:02:00"
+                     data-tags="old_post,pixel_art"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Collab Lospec Family Yearbook 2024
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            19:02 | 06.12.2024
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Continuing%20to%20Make%20Daicon/index.html"
+                     data-title="continuing to make daicon"
+                     data-date="2024-12-28 14:55:00"
+                     data-tags="daicon,gamedev,old_post"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Continuing to Make Daicon
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=daicon"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #daicon
+                                    </a>
+                                
+                                    <a href="index.html?tag=gamedev"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #gamedev
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            14:55 | 28.12.2024
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Continuing%20to%20Make%20Kuroshio%202/index.html"
+                     data-title="continuing to make kuroshio 2"
+                     data-date="2025-06-29 14:35:00"
+                     data-tags="kuroshio,old_post,pixel_art"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Continuing to Make Kuroshio 2
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=kuroshio"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #kuroshio
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            14:35 | 29.06.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Continuing%20to%20Make%20Kuroshio/index.html"
+                     data-title="continuing to make kuroshio"
+                     data-date="2025-06-03 18:25:00"
+                     data-tags="old_post,pixel_art,kuroshio"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Continuing to Make Kuroshio
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=kuroshio"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #kuroshio
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            18:25 | 03.06.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Daicon%201.5%20Release/index.html"
+                     data-title="daicon 1.5 release"
+                     data-date="2025-08-22 21:00:00"
+                     data-tags="daicon,gamedev,old_post"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Daicon 1.5 Release
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=daicon"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #daicon
+                                    </a>
+                                
+                                    <a href="index.html?tag=gamedev"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #gamedev
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            21:00 | 22.08.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Daicon%20Beginnings/index.html"
+                     data-title="daicon beginnings"
+                     data-date="2024-12-12 23:45:00"
+                     data-tags="daicon,old_post,gamedev"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Daicon Beginnings
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=daicon"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #daicon
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=gamedev"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #gamedev
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            23:45 | 12.12.2024
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Daicon%20Beta/index.html"
+                     data-title="daicon beta"
+                     data-date="2025-01-12 13:46:00"
+                     data-tags="daicon,pixel_art,old_post,gamedev"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Daicon Beta
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=daicon"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #daicon
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=gamedev"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #gamedev
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            13:46 | 12.01.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Daicon%20Docs/index.html"
+                     data-title="daicon docs"
+                     data-date="2025-02-14 21:45:00"
+                     data-tags="daicon,gamedev"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Daicon Docs
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=daicon"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #daicon
+                                    </a>
+                                
+                                    <a href="index.html?tag=gamedev"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #gamedev
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            21:45 | 14.02.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Daicon%20Release%200.5/index.html"
+                     data-title="daicon release 0.5"
+                     data-date="2025-03-05 00:05:00"
+                     data-tags="gamedev,daicon,old_post"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Daicon Release 0.5
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=gamedev"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #gamedev
+                                    </a>
+                                
+                                    <a href="index.html?tag=daicon"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #daicon
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            00:05 | 05.03.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Daicon%20Release%201.0/index.html"
+                     data-title="daicon release 1.0"
+                     data-date="2025-03-07 16:40:00"
+                     data-tags="gamedev,daicon,old_post"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Daicon Release 1.0
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=gamedev"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #gamedev
+                                    </a>
+                                
+                                    <a href="index.html?tag=daicon"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #daicon
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            16:40 | 07.03.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Daicon%20Rigid%20Demo/index.html"
+                     data-title="daicon rigid demo"
+                     data-date="2025-04-20 17:13:00"
+                     data-tags="daicon,gamedev"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Daicon Rigid Demo
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=daicon"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #daicon
+                                    </a>
+                                
+                                    <a href="index.html?tag=gamedev"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #gamedev
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            17:13 | 20.04.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Dorok&#39;s%20Soldier/index.html"
+                     data-title="dorok&#39;s soldier"
+                     data-date="2024-12-05 00:17:00"
+                     data-tags="old_post,pixel_art"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Dorok&#39;s Soldier
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            00:17 | 05.12.2024
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Earth%20Tiles%20WIP/index.html"
+                     data-title="earth tiles wip"
+                     data-date="2026-09-02 15:16:00"
+                     data-tags="pixel_art"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Earth Tiles WIP
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            15:16 | 02.09.2026
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/First%20Gorgon%20Art/index.html"
+                     data-title="first gorgon art"
+                     data-date="2024-12-18 18:40:00"
+                     data-tags="aeritheya,pixel_art,old_post"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            First Gorgon Art
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=aeritheya"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #aeritheya
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            18:40 | 18.12.2024
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/First%20Lore%20of%20Aeritheya/index.html"
+                     data-title="first lore of aeritheya"
+                     data-date="2025-07-25 19:56:00"
+                     data-tags="pixel_art,old_post,aeritheya"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            First Lore of Aeritheya
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=aeritheya"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #aeritheya
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            19:56 | 25.07.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Hangar%20Zero/index.html"
+                     data-title="hangar zero"
+                     data-date="2025-02-28 20:38:00"
+                     data-tags="old_post,pixel_art"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Hangar Zero
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            20:38 | 28.02.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Horse/index.html"
+                     data-title="horse"
+                     data-date="2025-04-14 09:00:00"
+                     data-tags="old_post,pixel_art"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Horse
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            09:00 | 14.04.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Kuroshio%20A%20Animations/index.html"
+                     data-title="kuroshio a animations"
+                     data-date="2025-04-05 17:40:00"
+                     data-tags="pixel_art,old_post,kuroshio"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Kuroshio A Animations
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=kuroshio"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #kuroshio
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            17:40 | 05.04.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Kuroshio%20Template%20Publication/index.html"
+                     data-title="kuroshio template publication"
+                     data-date="2025-01-28 19:12:00"
+                     data-tags="kuroshio,old_post,pixel_art"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Kuroshio Template Publication
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=kuroshio"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #kuroshio
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            19:12 | 28.01.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Kuroshio%20Templates%20Release/index.html"
+                     data-title="kuroshio templates release"
+                     data-date="2025-06-15 19:55:00"
+                     data-tags="pixel_art,old_post,kuroshio"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Kuroshio Templates Release
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=kuroshio"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #kuroshio
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            19:55 | 15.06.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Map%20of%20the%20World%20of%20Aeritheya/index.html"
+                     data-title="map of the world of aeritheya"
+                     data-date="2025-06-26 15:26:00"
+                     data-tags="pixel_art,aeritheya,old_post"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Map of the World of Aeritheya
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=aeritheya"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #aeritheya
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            15:26 | 26.06.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Medusa%20Plugin%20Release/index.html"
+                     data-title="medusa plugin release"
+                     data-date="2026-03-14 21:34:00"
+                     data-tags="old_post,gamedev"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Medusa Plugin Release
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=gamedev"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #gamedev
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            21:34 | 14.03.2026
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Mitsubishi%20Zero/index.html"
+                     data-title="mitsubishi zero"
+                     data-date="2025-02-09 11:07:00"
+                     data-tags="pixel_art,old_post"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Mitsubishi Zero
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            11:07 | 09.02.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/My%20Birthday%202025/index.html"
+                     data-title="my birthday 2025"
+                     data-date="2025-06-01 06:57:00"
+                     data-tags="pixel_art,old_post"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            My Birthday 2025
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            06:57 | 01.06.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/NeoRome%20Poster/index.html"
+                     data-title="neorome poster"
+                     data-date="2025-09-14 14:56:00"
+                     data-tags="old_post,pixel_art,aeritheya"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            NeoRome Poster
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=aeritheya"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #aeritheya
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            14:56 | 14.09.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/New%20Medusa%20Design/index.html"
+                     data-title="new medusa design"
+                     data-date="2025-05-31 08:05:00"
+                     data-tags="medusa,aeritheya,pixel_art,old_post"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            New Medusa Design
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=medusa"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #medusa
+                                    </a>
+                                
+                                    <a href="index.html?tag=aeritheya"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #aeritheya
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            08:05 | 31.05.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/New%20Soldier%20Design%20and%20Shooting%20Animation/index.html"
+                     data-title="new soldier design and shooting animation"
+                     data-date="2026-08-21 09:33:00"
+                     data-tags="pixel_art"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            New Soldier Design and Shooting Animation
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            09:33 | 21.08.2026
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/New%20Year%202024/index.html"
+                     data-title="new year 2024"
+                     data-date="2024-12-31 11:50:00"
+                     data-tags="old_post,art"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            New Year 2024
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #art
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            11:50 | 31.12.2024
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Octobit%20Nausicaa&#39;s%20Backpack/index.html"
+                     data-title="octobit nausicaa&#39;s backpack"
+                     data-date="2024-12-02 22:05:00"
+                     data-tags="pixel_art,old_post"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Octobit Nausicaa&#39;s Backpack
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            22:05 | 02.12.2024
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Peter%20Quill/index.html"
+                     data-title="peter quill"
+                     data-date="2025-08-04 08:52:00"
+                     data-tags="pixel_art,old_post"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Peter Quill
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            08:52 | 04.08.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Portraits%20of%20the%20Little%20Troublemakers/index.html"
+                     data-title="portraits of the little troublemakers"
+                     data-date="2025-12-25 18:20:00"
+                     data-tags="pixel_art,aeritheya,old_post"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Portraits of the Little Troublemakers
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=aeritheya"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #aeritheya
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            18:20 | 25.12.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Robot%20March%202025/index.html"
+                     data-title="robot march 2025"
+                     data-date="2025-03-23 14:44:00"
+                     data-tags="old_post,pixel_art"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Robot March 2025
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            14:44 | 23.03.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Roman%20Interceptors%20(concept)/index.html"
+                     data-title="roman interceptors (concept)"
+                     data-date="2026-03-21 14:41:00"
+                     data-tags="art,aeritheya,old_post"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Roman Interceptors (concept)
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #art
+                                    </a>
+                                
+                                    <a href="index.html?tag=aeritheya"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #aeritheya
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            14:41 | 21.03.2026
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Slowly%20Making%20Daicon%201.5/index.html"
+                     data-title="slowly making daicon 1.5"
+                     data-date="2025-08-05 13:46:00"
+                     data-tags="daicon,gamedev,old_post"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Slowly Making Daicon 1.5
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=daicon"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #daicon
+                                    </a>
+                                
+                                    <a href="index.html?tag=gamedev"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #gamedev
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            13:46 | 05.08.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Sunset%20Shimmer/index.html"
+                     data-title="sunset shimmer"
+                     data-date="2026-08-17 14:59:00"
+                     data-tags="pixel_art,old_post"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Sunset Shimmer
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            14:59 | 17.08.2026
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Swordtember%202024/index.html"
+                     data-title="swordtember 2024"
+                     data-date="2024-12-02 21:27:00"
+                     data-tags="old_post,pixel_art"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Swordtember 2024
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            21:27 | 02.12.2024
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Tiles%20WIP/index.html"
+                     data-title="tiles wip"
+                     data-date="2025-04-17 20:55:00"
+                     data-tags="old_post,pixel_art"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Tiles WIP
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            20:55 | 17.04.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/Yes,%20my%20lord/index.html"
+                     data-title="yes, my lord"
+                     data-date="2025-05-07 18:11:00"
+                     data-tags="old_post,pixel_art"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Yes, my lord
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            18:11 | 07.05.2025
+                        </div>
+                    
+                </div>
+            
+                <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
+                     data-url="../blog/%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82,%20%D0%BC%D0%B8%D1%80!%20%D0%98%D0%BB%D0%B8%20%D0%BA%D0%B0%D0%BA%20%D0%B2%D1%81%D1%91%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D0%BB%D0%BE%D1%81%D1%8C%20%F0%9F%9A%80/index.html"
+                     data-title="привет, мир! или как всё начиналось 🚀"
+                     data-date="2024-12-01 22:26:00"
+                     data-tags="old_post,pixel_art"
+                     onclick="window.location.href=this.getAttribute('data-url');">
+
+                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                        <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
+                            Привет, мир! Или как всё начиналось 🚀
+                        </h3>
+
+                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                            
+                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                    post
+                                </span>
+                            
+                            
+                                
+                                    <a href="index.html?tag=old_post"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #old_post
+                                    </a>
+                                
+                                    <a href="index.html?tag=pixel_art"
+                                       onclick="event.stopPropagation();"
+                                       class="qz-tag select-none">
+                                        #pixel_art
+                                    </a>
+                                
+                            
+                        </div>
+                    </div>
+
+                    
+
+                    
+                        <div class="text-xs font-semibold text-[var(--qz-text-muted)] opacity-60 mt-3 tracking-wider">
+                            22:26 | 01.12.2024
+                        </div>
+                    
+                </div>
+            
+        </div>
+
+        <div id="no-results-msg" class="hidden qz-card p-8 text-center rounded-2xl text-[var(--qz-text-muted)] text-sm font-bold">
+            Заметок не найдено.
+        </div>
+
+    
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('retro-search-input');
+    const cards = Array.from(document.querySelectorAll('.search-card'));
+    const noResults = document.getElementById('no-results-msg');
+
+    // UI элементов календаря
+    const bodyContainer = document.getElementById('cal-body-container');
+    const navLabel = document.getElementById('cal-nav-label');
+    const btnPrev = document.getElementById('cal-nav-prev');
+    const btnNext = document.getElementById('cal-nav-next');
+    const btnReset = document.getElementById('cal-reset-btn');
+    const modeTabs = document.querySelectorAll('.cal-tab-btn');
+
+    const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const MONTH_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const DAY_NAMES = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
+
+    // 1. Извлекаем и парсим даты всех заметок со страницы
+    const notesData = [];
+    cards.forEach(card => {
+        const rawDate = card.getAttribute('data-date');
+        if (!rawDate) return;
+
+        let y, m, d;
+        const match = rawDate.match(/^(\d{4})-(\d{2})-(\d{2})/);
+        if (match) {
+            y = parseInt(match[1], 10);
+            m = parseInt(match[2], 10);
+            d = parseInt(match[3], 10);
+        } else {
+            const matchDot = rawDate.match(/^(\d{4})\.(\d{2})\.(\d{2})/);
+            if (matchDot) {
+                y = parseInt(matchDot[1], 10);
+                m = parseInt(matchDot[2], 10);
+                d = parseInt(matchDot[3], 10);
+            }
+        }
+
+        if (y && m && d) {
+            const dateObj = new Date(y, m - 1, d);
+            notesData.push({ card, y, m, d, dateObj });
+        }
+    });
+
+    // 2. Инициализируем стартовый месяц и год по САМОЙ СВЕЖЕЙ заметке (одинаково для всех языков)
+    const sortedByDate = [...notesData].sort((a, b) => b.dateObj - a.dateObj);
+    const defaultYear = sortedByDate.length > 0 ? sortedByDate[0].y : new Date().getFullYear();
+    const defaultMonth = sortedByDate.length > 0 ? sortedByDate[0].m : (new Date().getMonth() + 1);
+
+    let activeMode = 'days';
+    let viewYear = defaultYear;
+    let viewMonth = defaultMonth;
+    let activeFilter = null;
+
+    // Рендеринг ДНЕЙ (Days)
+    function renderDays() {
+        navLabel.innerText = `${MONTH_NAMES[viewMonth - 1]} ${viewYear}`;
+
+        let html = '<div class="cal-days-grid">';
+        DAY_NAMES.forEach(d => { html += `<div class="cal-day-header">${d}</div>`; });
+
+        const firstDayIndex = (new Date(viewYear, viewMonth - 1, 1).getDay() + 6) % 7;
+        const daysInMonth = new Date(viewYear, viewMonth, 0).getDate();
+        const daysInPrevMonth = new Date(viewYear, viewMonth - 1, 0).getDate();
+
+        for (let i = firstDayIndex - 1; i >= 0; i--) {
+            html += `<div class="cal-day-cell other-month">${daysInPrevMonth - i}</div>`;
+        }
+
+        for (let d = 1; d <= daysInMonth; d++) {
+            const hasNotes = notesData.some(n => n.y === viewYear && n.m === viewMonth && n.d === d);
+            const isSelected = activeFilter && activeFilter.type === 'day' && activeFilter.y === viewYear && activeFilter.m === viewMonth && activeFilter.d === d;
+
+            const classes = ['cal-day-cell'];
+            if (hasNotes) classes.push('has-notes');
+            if (isSelected) classes.push('active');
+
+            html += `<div class="${classes.join(' ')}" data-day="${d}">${d}</div>`;
+        }
+
+        html += '</div>';
+        bodyContainer.innerHTML = html;
+
+        bodyContainer.querySelectorAll('.cal-day-cell:not(.other-month)').forEach(cell => {
+            cell.addEventListener('click', () => {
+                const day = parseInt(cell.getAttribute('data-day'), 10);
+                if (activeFilter && activeFilter.type === 'day' && activeFilter.y === viewYear && activeFilter.m === viewMonth && activeFilter.d === day) {
+                    activeFilter = null;
+                } else {
+                    activeFilter = { type: 'day', y: viewYear, m: viewMonth, d: day };
+                }
+                updateAll();
+            });
+        });
+    }
+
+    // Рендеринг МЕСЯЦЕВ (Months)
+    function renderMonths() {
+        navLabel.innerText = `${viewYear}`;
+        let html = '<div class="cal-grid-pills" style="grid-template-columns: repeat(3, 1fr);">';
+
+        for (let m = 1; m <= 12; m++) {
+            const count = notesData.filter(n => n.y === viewYear && n.m === m).length;
+            const isSelected = activeFilter && activeFilter.type === 'month' && activeFilter.y === viewYear && activeFilter.m === m;
+
+            const classes = ['cal-pill-btn'];
+            if (isSelected) classes.push('active');
+
+            html += `
+                <div class="${classes.join(' ')}" data-month="${m}">
+                    <span>${MONTH_SHORT[m - 1]}</span>
+                    <span class="cal-pill-badge">${count}</span>
+                </div>
+            `;
+        }
+
+        html += '</div>';
+        bodyContainer.innerHTML = html;
+
+        bodyContainer.querySelectorAll('.cal-pill-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const month = parseInt(btn.getAttribute('data-month'), 10);
+                if (activeFilter && activeFilter.type === 'month' && activeFilter.y === viewYear && activeFilter.m === month) {
+                    activeFilter = null;
+                } else {
+                    activeFilter = { type: 'month', y: viewYear, m: month };
+                }
+                updateAll();
+            });
+        });
+    }
+
+    // Рендеринг ГОДОВ (Years)
+    function renderYears() {
+        navLabel.innerText = 'All Years';
+
+        const yearsSet = new Set(notesData.map(n => n.y));
+        yearsSet.add(2026);
+        const sortedYears = Array.from(yearsSet).sort((a, b) => b - a);
+
+        let html = '<div class="cal-grid-pills" style="grid-template-columns: repeat(2, 1fr);">';
+        sortedYears.forEach(y => {
+            const count = notesData.filter(n => n.y === y).length;
+            const isSelected = activeFilter && activeFilter.type === 'year' && activeFilter.y === y;
+
+            const classes = ['cal-pill-btn'];
+            if (isSelected) classes.push('active');
+
+            html += `
+                <div class="${classes.join(' ')}" data-year="${y}">
+                    <span>${y}</span>
+                    <span class="cal-pill-badge">${count} notes</span>
+                </div>
+            `;
+        });
+
+        html += '</div>';
+        bodyContainer.innerHTML = html;
+
+        bodyContainer.querySelectorAll('.cal-pill-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const y = parseInt(btn.getAttribute('data-year'), 10);
+                if (activeFilter && activeFilter.type === 'year' && activeFilter.y === y) {
+                    activeFilter = null;
+                } else {
+                    activeFilter = { type: 'year', y };
+                }
+                updateAll();
+            });
+        });
+    }
+
+    // Рендеринг НЕДЕЛЬ (Weeks)
+    function renderWeeks() {
+        navLabel.innerText = `${MONTH_SHORT[viewMonth - 1]} ${viewYear}`;
+
+        let html = '<div class="cal-weeks-grid" style="grid-template-columns: 1fr;">';
+        const daysInMonth = new Date(viewYear, viewMonth, 0).getDate();
+        const weeks = [];
+
+        let startD = 1;
+        while (startD <= daysInMonth) {
+            let endD = Math.min(daysInMonth, startD + 6);
+            weeks.push({ startD, endD });
+            startD += 7;
+        }
+
+        weeks.forEach((w, idx) => {
+            const startDate = new Date(viewYear, viewMonth - 1, w.startD, 0, 0, 0);
+            const endDate = new Date(viewYear, viewMonth - 1, w.endD, 23, 59, 59);
+
+            const count = notesData.filter(n => n.dateObj >= startDate && n.dateObj <= endDate).length;
+            const isSelected = activeFilter && activeFilter.type === 'week' && activeFilter.y === viewYear && activeFilter.m === viewMonth && activeFilter.idx === idx;
+
+            const classes = ['cal-pill-btn'];
+            if (isSelected) classes.push('active');
+
+            html += `
+                <div class="${classes.join(' ')}" data-idx="${idx}" data-start="${w.startD}" data-end="${w.endD}">
+                    <span>Week ${idx + 1} (${MONTH_SHORT[viewMonth - 1]} ${w.startD}–${w.endD})</span>
+                    <span class="cal-pill-badge">${count} notes</span>
+                </div>
+            `;
+        });
+
+        html += '</div>';
+        bodyContainer.innerHTML = html;
+
+        bodyContainer.querySelectorAll('.cal-pill-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const idx = parseInt(btn.getAttribute('data-idx'), 10);
+                const startD = parseInt(btn.getAttribute('data-start'), 10);
+                const endD = parseInt(btn.getAttribute('data-end'), 10);
+
+                if (activeFilter && activeFilter.type === 'week' && activeFilter.y === viewYear && activeFilter.m === viewMonth && activeFilter.idx === idx) {
+                    activeFilter = null;
+                } else {
+                    activeFilter = {
+                        type: 'week',
+                        y: viewYear,
+                        m: viewMonth,
+                        idx,
+                        start: new Date(viewYear, viewMonth - 1, startD, 0, 0, 0),
+                        end: new Date(viewYear, viewMonth - 1, endD, 23, 59, 59)
+                    };
+                }
+                updateAll();
+            });
+        });
+    }
+
+    function renderCalendar() {
+        if (activeMode === 'days') renderDays();
+        else if (activeMode === 'months') renderMonths();
+        else if (activeMode === 'years') renderYears();
+        else if (activeMode === 'weeks') renderWeeks();
+
+        btnReset.style.display = activeFilter ? 'inline-block' : 'none';
+    }
+
+    // Единая фильтрация
+    function filterCards() {
+        const query = searchInput.value.toLowerCase().trim();
+        let foundAny = false;
+
+        const isTagSearch = query.startsWith('#');
+        const tagQuery = isTagSearch ? query.substring(1).trim() : '';
+
+        cards.forEach(card => {
+            const title = card.getAttribute('data-title') || '';
+            const tagsRaw = card.getAttribute('data-tags') || '';
+            const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()) : [];
+
+            let matchesText = false;
+            if (query === '' || query === '#') {
+                matchesText = true;
+            } else if (isTagSearch) {
+                matchesText = tags.some(t => t.includes(tagQuery));
+            } else {
+                matchesText = title.includes(query);
+            }
+
+            let matchesDate = true;
+            if (activeFilter) {
+                const note = notesData.find(n => n.card === card);
+                if (!note) {
+                    matchesDate = false;
+                } else if (activeFilter.type === 'day') {
+                    matchesDate = (note.y === activeFilter.y && note.m === activeFilter.m && note.d === activeFilter.d);
+                } else if (activeFilter.type === 'month') {
+                    matchesDate = (note.y === activeFilter.y && note.m === activeFilter.m);
+                } else if (activeFilter.type === 'year') {
+                    matchesDate = (note.y === activeFilter.y);
+                } else if (activeFilter.type === 'week') {
+                    matchesDate = (note.dateObj >= activeFilter.start && note.dateObj <= activeFilter.end);
+                }
+            }
+
+            if (matchesText && matchesDate) {
+                card.style.display = 'block';
+                foundAny = true;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        if (noResults) {
+            noResults.style.display = foundAny ? 'none' : 'block';
+        }
+    }
+
+    function updateAll() {
+        renderCalendar();
+        filterCards();
+    }
+
+    btnPrev.addEventListener('click', () => {
+        if (activeMode === 'days' || activeMode === 'weeks') {
+            viewMonth--;
+            if (viewMonth < 1) { viewMonth = 12; viewYear--; }
+        } else if (activeMode === 'months') {
+            viewYear--;
+        }
+        renderCalendar();
+    });
+
+    btnNext.addEventListener('click', () => {
+        if (activeMode === 'days' || activeMode === 'weeks') {
+            viewMonth++;
+            if (viewMonth > 12) { viewMonth = 1; viewYear++; }
+        } else if (activeMode === 'months') {
+            viewYear++;
+        }
+        renderCalendar();
+    });
+
+    btnReset.addEventListener('click', () => {
+        activeFilter = null;
+        updateAll();
+    });
+
+    modeTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            modeTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            activeMode = tab.getAttribute('data-mode');
+
+            btnPrev.style.display = (activeMode === 'years') ? 'none' : 'inline-flex';
+            btnNext.style.display = (activeMode === 'years') ? 'none' : 'inline-flex';
+
+            renderCalendar();
+        });
+    });
+
+    searchInput.addEventListener('input', filterCards);
+
+    const params = new URLSearchParams(window.location.search);
+    const urlTag = params.get('tag');
+    if (urlTag) {
+        searchInput.value = '#' + urlTag.trim();
+    }
+
+    updateAll();
+});
+</script>
+
+    </main>
+
+    <div class="w-full max-w-[760px] mx-auto px-4 mt-2 mb-0">
+        <footer class="retro-footer">
+            
+            <p class="text-[13px] font-semibold text-[var(--qz-text-muted)] tracking-wider">
+                © 2026 ALKREI
+            </p>
+        </footer>
+    </div>
+
+    <!-- Модальное окно просмотра изображений (Lightbox) -->
+    <div id="qz-lightbox" class="fixed inset-0 z-50 bg-black/90 hidden flex items-center justify-center p-4 cursor-zoom-out select-none transition-opacity duration-200 opacity-0">
+        <img id="qz-lightbox-img" src="" alt="Preview" class="max-w-full max-h-full object-contain rounded shadow-2xl transition-transform duration-200 scale-95 pointer-events-none">
+    </div>
+
+</body>
+</html>

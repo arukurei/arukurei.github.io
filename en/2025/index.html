@@ -1,0 +1,2186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - alkrei</title>
+
+    <link rel="preload" as="image" href="/static/background.png">
+    <link rel="preload" as="image" href="/static/banner_bg.png">
+    <link rel="preload" as="image" href="/static/logo.png" fetchpriority="high">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- Подключение вынесенных статических файлов с кэшированием браузера -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script defer src="/static/js/main.js"></script>
+
+    <script>
+        if (window.location.hash && !window.location.hash.startsWith('#year-')) {
+            document.documentElement.style.visibility = 'hidden';
+            setTimeout(() => { document.documentElement.style.visibility = ''; }, 350);
+        }
+    </script>
+
+    <!-- Динамические Jinja-переменные темы и фона страниц -->
+    <style>
+        :root {
+            --c-border: #3a3b3f;
+            --c-surface: #24262a;
+            --c-dark: #202225;
+            --c-darkest: #17191c;
+
+            --page-bg-color: var(--c-darkest);
+            --header-bg: var(--c-dark);
+            --nav-bg: var(--c-darkest);
+            --qz-bg: var(--c-surface);
+            --qz-surface: var(--c-darkest);
+            --qz-surface-hover: var(--c-dark);
+            --qz-surface-alpha: rgba(32, 34, 37, 0.7);
+            --qz-border: var(--c-border);
+            --qz-text: #fbfbfb;
+            --qz-text-muted: #9a9ca6;
+            --qz-accent: #8a5cf5;
+            --qz-accent-hover: #b05cd6;
+            --qz-accent-soft: rgba(138, 92, 245, 0.18);
+            --comic-shadow: ;
+            --code-inline: #c7b0fd;
+            --lang-icon: #00aaff;
+            --lang-en: #ff3333;
+            --lang-ru: #0088ff;
+            --tag-text: #d2c1fc;
+            --link-broken: #ff6b6b;
+            --link-broken-alpha: rgba(255, 107, 107, 0.12);
+
+            --callout-nested-blue: #2c3b51;
+            --callout-nested-cyan: #2b3d49;
+            --callout-nested-green: #2c3f43;
+            --callout-nested-orange: #3e3b3b;
+            --callout-nested-red: #3e3245;
+            --callout-nested-purple: #36354f;
+            --callout-nested-gray: #343c49;
+
+            --h1-color: #FF306C;
+            --h2-color: #ff9502;
+            --h3-color: #FFD500;
+            --h4-color: #4BBF5E;
+            --h5-color: #4d95f7;
+            --h6-color: #b051de;
+
+            --retro-bg: #d6ebe9;
+            --retro-bg-alt: #f3f1e9;
+            --retro-bg-hover: #c6dfdd;
+            --retro-border: #17191c;
+            --retro-shadow: #17191c;
+            --retro-text: #17191c;
+            --retro-text-muted: #555243;
+            --retro-avatar-bg: #d5cba9;
+            --retro-btn: #e5dec9;
+            --retro-tag-type: #17191c;
+            --retro-tag-topic: #8e44ad;
+            --retro-tag-cat: #2ecc71;
+            --retro-tag-date: #d35400;
+            --retro-error: #c0392b;
+            --retro-error-alpha: rgba(192, 57, 43, 0.12);
+            --retro-border-alpha: rgba(23, 25, 28, 0.2);
+            --retro-text-muted-alpha: rgba(85, 82, 67, 0.7);
+
+            --page-bg: url('/static/background.png');
+            --page-banner: url('/static/banner_bg.png');
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-6">
+
+    
+    
+    
+    
+
+    <div class="w-full max-w-[760px] mx-auto px-4 mt-6">
+        <header class="retro-header">
+            <div class="retro-banner">
+                <img src="/static/logo.png" alt="Logo"
+                     loading="eager" decoding="async" fetchpriority="high"
+                     class="max-h-28 md:max-h-36 w-auto h-auto object-contain drop-shadow-[4px_4px_0_rgba(0,0,0,1)] select-none pointer-events-none"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <h1 class="hidden text-4xl md:text-5xl font-black text-[var(--retro-text)] tracking-widest uppercase text-center px-4">
+                    ALKREI.COM
+                </h1>
+            </div>
+
+            <nav class="bg-[var(--c-dark)] border-t border-[color:var(--c-dark)] flex w-full relative rounded-b-[0.33rem]">
+                <div class="flex-grow flex flex-col rounded-bl-[0.33rem] overflow-hidden">
+                    <div class="flex w-full">
+                        
+                            <a href="/en/"
+                               style="--btn-color: #ff3333;"
+                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider active">
+                                Home
+                            </a>
+                        
+                            <a href="/en/wiki/"
+                               style="--btn-color: #0088ff;"
+                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider ">
+                                Wiki
+                            </a>
+                        
+                            <a href="/en/search/"
+                               style="--btn-color: #d35400;"
+                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider ">
+                                Search
+                            </a>
+                        
+                            <a href="/en/arukurei/"
+                               style="--btn-color: #00aa33;"
+                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider ">
+                                About
+                            </a>
+                        
+                    </div>
+                    <div class="flex w-full h-[3px] leading-none">
+                        
+                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #ff3333;"></div>
+                        
+                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #0088ff;"></div>
+                        
+                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #d35400;"></div>
+                        
+                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #00aa33;"></div>
+                        
+                    </div>
+                </div>
+
+                <div class="lang-container relative border-l border-[color:var(--c-dark)] bg-[var(--c-dark)] px-4 flex items-center cursor-pointer select-none hover:bg-[var(--c-darkest)] transition-all duration-150 self-stretch rounded-br-[0.33rem]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-[var(--lang-icon)] transition-colors duration-150 pointer-events-none" viewBox="0 0 24 24">
+                        <path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/>
+                    </svg>
+                    <div class="lang-dropdown hidden absolute left-[calc(100%+8px)] top-[-1px] bg-[var(--nav-bg)] border-2 border-[color:var(--c-border)] rounded-[0.33rem] shadow-[0_8px_20px_rgba(0,0,0,0.45)] z-50 py-0 w-28 text-center">
+                        
+                            
+                            
+                            
+
+                            
+                            
+                            
+
+                            
+                            
+                            
+
+                            
+                                <a href="index.html" class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-en)] hover:text-white transition-all rounded-t-[0.33rem]">English</a>
+                            
+
+                            
+                                <a href="../../ru/2025/index.html" class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-ru)] hover:text-white transition-all rounded-b-[0.33rem]">Русский</a>
+                            
+                        
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <main class="w-full max-w-[760px] mx-auto px-4 flex-grow flex flex-col space-y-6">
+        
+<div class="animate-retro-pop relative w-full mb-2">
+
+    <!-- ЛЕВАЯ КОЛОНКА (Если есть виджеты с position: left) -->
+    
+    <aside class="hidden xl:block absolute right-[100%] top-0 bottom-0 mr-4 w-60">
+        <div class="sticky top-6 flex flex-col gap-6 w-full max-h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar">
+            
+                
+                    <!-- Раздельные карточки закрепов без общей рамки и заголовка -->
+                    <div class="space-y-4 w-full">
+                        
+                        <a href="/en/blog/Hello,%20World!%20Or%20How%20It%20All%20Began%20%F0%9F%9A%80/" class="block w-full overflow-hidden bg-[var(--qz-bg)] border-2 border-[color:var(--c-border)] rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.2)] hover:border-[var(--qz-accent)] transition-all group">
+                            
+                                <img src="/media/%D0%94%D0%BE%D1%80%D0%BE%D0%BA%D0%B8.png" alt="Hello, World! Or How It All Began 🚀" class="w-full h-28 object-cover">
+                            
+                            <div class="p-3 text-[0.8rem] font-bold text-[var(--qz-text)] group-hover:text-[var(--qz-accent)] transition-colors line-clamp-2 leading-snug">
+                                Hello, World! Or How It All Began 🚀
+                            </div>
+                        </a>
+                        
+                    </div>
+                
+            
+        </div>
+    </aside>
+    
+
+    <!-- ПРАВАЯ КОЛОНКА (Если есть виджеты с position: right) -->
+    
+
+    <!-- ВЕРХНИЕ ИНКЛЮДЫ (ДО ВЫЗОВА BODY) -->
+    
+
+    <!-- ЦЕНТРАЛЬНАЯ КАРТОЧКА -->
+    
+    
+        <!-- СТАНДАРТНАЯ СТАТЬЯ / ВИКИ -->
+        <div class="qz-card qz-card-main w-full mb-6">
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <!-- На мобильных: TOC перед текстом (если TOC включен) -->
+            
+
+            <article class="wiki-article ">
+                <div class="qz-dialog-box" style="--char-color: #ff306c;">
+  <div class="qz-dialog-avatar">
+    <img src="/media/avatar.png" alt="Аlkrei" class="qz-dialog-avatar-img" />
+  </div>
+  <div class="qz-dialog-content">
+    <div class="qz-dialog-name"><a href="/en/arukurei/">Аlkrei</a></div>
+    <div class="qz-dialog-text">
+<p>Welcome to my abode, traveler.<br />
+This site is a dragon's hoard, my digital base: here you'll find projects, my artwork, and various valuable and curious finds.</p>
+</div>
+  </div>
+</div>
+            </article>
+
+            <!-- На мобильных: Backlinks внизу (если backlinks активны) -->
+            
+
+            <!-- Блок комментариев для стандартной статьи -->
+            
+
+        </div> <!-- закрываем qz-card-main для стандартной статьи -->
+     <!-- конец ветвления type == 'post' -->
+     <!-- конец ветвления show_body -->
+
+    <!-- ЛЕНТА БЛОГА (АКТИВНА ТОЛЬКО ПРИ type: blog) -->
+    
+        <div id="blog-feed" class="mt-6 w-full">
+
+    
+        <!-- Хранилище для группировки дат -->
+        
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        25.12.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Portraits.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a> <a href="/en/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
+Portraits of the little troublemakers</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>18:20</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Portraits%20of%20the%20Little%20Troublemakers/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        01.12.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Attack.gif" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><span class="qz-embed-image-wrap"><img src="/static/NeoSoldier.gif" alt="NeoSoldier.gif" class="qz-embed-image"></span><br />
+<a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a> <a href="/en/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
+Hey everyone! Today's the channel's birthday.</p>
+<p>To mark it, I decided to publish some new animations.<br />
+The last three months of my absence were rough. Studying applied mathematics is honestly no walk in the park, but it's interesting. Sadly, I couldn't even manage to draw for fun.<br />
+Despite all that, I'll try to bring at least a little activity back here...</p>
+<p>Overall, the channel is alive and will slowly be coming out of cryosleep. Happy December 1st, everyone! (well, technically the second by now)</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>23:59</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Channel%20Birthday%202025/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        14.09.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Neo%20Rome.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a> <a href="/en/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
+Neo Rome</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>14:56</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/NeoRome%20Poster/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        05.09.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Showcase.gif" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=medusa" class="qz-tag">#medusa</a> <a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a> <a href="/en/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
+Animated her for an interactive event.<br />
+Results aren't in yet, but I'll drop a link on <a href="https://a-foxli.itch.io/ps-event">itch</a> as soon as they are.</p>
+<blockquote>
+<p>Aeris<br />
+A Gorgon girl standing against the empire of Neo Rome.</p>
+</blockquote>
+<p>So, it's been a long time since I made anything for the channel — I was busy with commissions and getting settled into my studies.</p>
+<p>Won't lie, it's been rough, but I seem to be managing. I'll try to draw a bit more so it's not so quiet here. To everyone who hasn't unsubscribed and keeps following this channel — THANK YOU SO MUCH <code>^D</code></p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>19:19</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Animations%20for%20Aerith/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        22.08.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <div class="qz-video-embed">
+  <iframe src="https://www.youtube-nocookie.com/embed/hgjeo-eHpeQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+</div>
+<p><a href="/en/search?tag=daicon" class="qz-tag">#daicon</a> <a href="/en/search?tag=gamedev" class="qz-tag">#gamedev</a><br />
+Daicon 1.5 Release!!!</p>
+<p>Daicon just got a major update. At this point everything essential for full-scale development is implemented. I've basically done everything I wanted for the first version — even the trailer is checked off the list.</p>
+<p>1.5 is like 1.0, but BETTER.</p>
+<p>Of course there's always something to add or tweak, but I'll let it sit on the shelf for a while now. Right now I'm moving on to other things — studying, obviously, and drawing a bit <code>(－ω－) zzZ</code></p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>21:00</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Daicon%201.5%20Release/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        05.08.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/1-5%20versions.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=daicon" class="qz-tag">#daicon</a> <a href="/en/search?tag=gamedev" class="qz-tag">#gamedev</a><br />
+Slowly working on Daicon 1.5 🛠</p>
+<p>The second-version sorting system is already done and it's miles ahead of the old one. I've improved and optimized a lot of things on the technical side. Also added new nodes — RigidDaicon and DaiconShadow (not a dynamic one, more of a drop shape). I'm currently polishing the latter.</p>
+<p>Overall what's left is fairly simple: add more base meshes, a new shader, standard scripts for a few nodes, and update the documentation for all the new additions <code>:3</code></p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>13:46</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Slowly%20Making%20Daicon%201.5/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        04.08.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Red.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a></p>
+<div class="qz-dialog-box" style="--char-color: #ff306c;">
+  <div class="qz-dialog-avatar">
+    <img src="/media/avatar.png" alt="Аlkrei" class="qz-dialog-avatar-img" />
+  </div>
+  <div class="qz-dialog-content">
+    <div class="qz-dialog-name"><a href="/en/arukurei/">Аlkrei</a></div>
+    <div class="qz-dialog-text">
+<p>My favorite superhero is Peter Quill (Star-Lord)</p>
+</div>
+  </div>
+</div>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>08:52</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Peter%20Quill/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        25.07.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Italy%20200x200.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a>  <a href="/en/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
+A bit of lore:</p>
+<blockquote>
+<p>It is currently the year 1315 of the Second Era of Titans. The human world is gripped by a resource-and-energy crisis, triggered by the Phoenician monopoly on terralite — the core raw material behind all current technology and modern industry.</p>
+<p>In light of recent events, Neo Rome — a powerful technocratic empire holding the lands of Italy — has pushed its forces east, occupying the western coast of Greece. In recent months more and more mining equipment has been arriving on its shores, which has fed rumors about the emperor's true intentions and his search for a mythical artifact.</p>
+</blockquote>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>19:56</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/First%20Lore%20of%20Aeritheya/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        10.07.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/dnd.gif" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+Battle with an Elf</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>11:06</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Battle%20with%20an%20Elf/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        29.06.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Animations%20part%203.gif" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=kuroshio" class="qz-tag">#kuroshio</a> <a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+Added new animations to the template</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>14:35</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Continuing%20to%20Make%20Kuroshio%202/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        26.06.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Greece%20200x200.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a> <a href="/en/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
+The best way to build a world's lore is to start with light sketches and a map</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>15:26</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Map%20of%20the%20World%20of%20Aeritheya/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        15.06.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Basic%20Pack%20Title.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+Today I'm releasing <strong>Kuroshio Template J!</strong></p>
+<p>Here's the thing I've been working on lately — my character template is now free to use.</p>
+<p>Going forward I want to gradually expand it and add new animations, so for anyone interested in following its development, I'm adding a new tag to the channel: <a href="/en/search?tag=kuroshio" class="qz-tag">#kuroshio</a></p>
+<blockquote>
+<p>The template is free to use anywhere, however you like :D</p>
+<p>You can download it on my itch: <a href="https://alkrei.itch.io/kuroshio-template-j">ItchIO</a></p>
+</blockquote>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>19:55</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Kuroshio%20Templates%20Release/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        03.06.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Animations%20part%202.gif" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=kuroshio" class="qz-tag">#kuroshio</a> <a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+Still working on the template</p>
+<p>Walk and jump-in-place animations are done.</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>18:25</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Continuing%20to%20Make%20Kuroshio/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        01.06.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <div class="qz-video-embed">
+  <iframe src="https://www.youtube-nocookie.com/embed/VPk-pM2hScs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+</div>
+<p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a></p>
+<p>It's my birthday today! 🎉</p>
+<p>To celebrate, I threw myself a parade :D<br />
+Enjoy the video, everyone.</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>06:57</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/My%20Birthday%202025/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        31.05.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Medusa.jpeg" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=aeritheya" class="qz-tag">#aeritheya</a> <a href="/en/search?tag=medusa" class="qz-tag">#medusa</a> <a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a></p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>08:05</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/New%20Medusa%20Design/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        07.05.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/yes%20my%20lord.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+Yes, my lord!</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>18:11</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Yes,%20my%20lord/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        20.04.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <div class="qz-video-embed">
+  <iframe src="https://www.youtube-nocookie.com/embed/jeq0Q8wPwu8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+</div>
+<p><a href="/en/search?tag=daicon" class="qz-tag">#daicon</a> <a href="/en/search?tag=gamedev" class="qz-tag">#gamedev</a><br />
+A demo of rigid bodies and the "Daicon Projections" module</p>
+<p>The next version of Daicon will be 1.5, which will tweak the previous version a bit and add the things I originally planned for the first version.</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>17:13</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Daicon%20Rigid%20Demo/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        17.04.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Pasted%20image%2020260923113811.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+Haven't posted anything in a while, so here — I'm working on tiles. Nothing finished yet, so this counts as a WIP.</p>
+<p>I'm studying hard for my June exams and barely have any time for art.<br />
+Meanwhile I keep watching the date of my last post drift further and further away, and I still can't bring myself to post even one throwaway shitpost... that's rough.</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>20:55</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Tiles%20WIP/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        14.04.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/horse.gif" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+Horse</p>
+<p>I really love making animations)</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>09:00</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Horse/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        05.04.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/aspis.gif" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=kuroshio" class="qz-tag">#kuroshio</a> <a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+Animations built on simple shapes</p>
+<p>Such a handy technique!</p>
+<p><span class="qz-embed-image-wrap"><img src="/static/soldier.gif" alt="soldier.gif" class="qz-embed-image"></span></p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>17:40</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Kuroshio%20A%20Animations/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        23.03.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Myth%20Robots.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+Robot March — Mythological Edition</p>
+<p>At first I thought the palette would be tricky, but I tamed it)<br />
+Left to right: Medusa, Minotaur, Cyclops, Gnome, and Prometheus</p>
+<p>Prometheus isn't really a robot by design though — more of a cyborg<br />
+<span class="qz-embed-image-wrap"><img src="/static/Pasted image 20260923113157.png" alt="Pasted image 20260923113157.png" class="qz-embed-image"></span></p>
+<blockquote>
+<p>Yeah, she can't even turn you to stone...</p>
+</blockquote>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>14:44</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Robot%20March%202025/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        11.03.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/AspisCard.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=medusa" class="qz-tag">#medusa</a> <a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a> <a href="/en/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
+Took part in a card event.</p>
+<p>The goal was to draw a character card and give it matching stats. The result is a deck of cards made by different artists.</p>
+<p>Of course, I drew Aspis :D</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>21:14</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Card%20Event%20Aspis/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        07.03.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/title%2001.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=daicon" class="qz-tag">#daicon</a> <a href="/en/search?tag=gamedev" class="qz-tag">#gamedev</a><br />
+Release! Daicon Version 1.0</p>
+<p>Daicon is a Godot plugin for building 2.5D games.</p>
+<p>It works by using 3D space to move two-dimensional objects, simulating three-dimensional environmental depth within a 2D dimension.</p>
+<p>The addon gives developers a set of new nodes and extra tools that combine 3D and 2D capabilities at once.</p>
+<ul>
+<li><a href="https://daicon-docs.readthedocs.io/en/latest/">Documentation</a></li>
+<li><a href="https://github.com/arukurei/Daicon">Project on GitHub</a></li>
+<li><a href="https://alkrei.itch.io/daicon">ItchIO</a></li>
+</ul>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>16:40</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Daicon%20Release%201.0/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        05.03.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <div class="qz-video-embed">
+  <iframe src="https://www.youtube-nocookie.com/embed/5qY08M5QMl0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+</div>
+<p><a href="/en/search?tag=daicon" class="qz-tag">#daicon</a> <a href="/en/search?tag=gamedev" class="qz-tag">#gamedev</a><br />
+It was way too reckless of me to think I'd make a trailer over the weekend X|</p>
+<p>I think the final demo will be enough.</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>00:05</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Daicon%20Release%200.5/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        28.02.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/hangar.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+So, February 28th</p>
+<p>At this point the trailer environment is fully done, and the documentation is almost finished. All that's left is the trailer itself, which I'm hoping to make this weekend <em><strong>(</strong>:3 」∠<strong>)</strong></em></p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>20:38</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Hangar%20Zero/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        14.02.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/docs.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=daicon" class="qz-tag">#daicon</a> <a href="/en/search?tag=gamedev" class="qz-tag">#gamedev</a><br />
+The technical side is completely done, which makes me incredibly happy!</p>
+<p>I'll be starting on the documentation soon, and alongside that I'm drawing the environment for the trailer.</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>21:45</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Daicon%20Docs/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        09.02.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Zero.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+Mitsubishi Zero</p>
+<p>Watched "The Wind Rises" again yesterday. Great anime.</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>11:07</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Mitsubishi%20Zero/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        31.01.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Aspis.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=medusa" class="qz-tag">#medusa</a> <a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a> <a href="/en/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
+Thinking of naming her Aspis.</p>
+<p>On top of that, I could come up with a name and a unique personality for each of the snake girls...</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>19:20</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Aspis%20Design/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        28.01.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Animations%20part%201.gif" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=kuroshio" class="qz-tag">#kuroshio</a>  <a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+The year just started and I've already managed to catch a cold.</p>
+<p>After a long absence, I'm publishing the character template for JRPGs that I've wanted to make for a while now.</p>
+<p>The addon is technically almost done. Right now I'm working on the trailer. Looks like it'll take a bit more time, so I'm hoping to wrap it up by the end of February.</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>19:12</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Kuroshio%20Template%20Publication/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        12.01.2025
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/fio.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/en/search?tag=daicon" class="qz-tag">#daicon</a>  <a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a> <a href="/en/search?tag=gamedev" class="qz-tag">#gamedev</a><br />
+First post of the year.</p>
+<p>I optimized the addon and improved its technical side. Added a set of basic shaders. The video below shows a demo of one of them.</p>
+<div class="qz-video-embed">
+  <iframe src="https://www.youtube-nocookie.com/embed/RWx2KHcrwF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+</div>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 min read</span>
+                            <span>13:46</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/en/blog/Daicon%20Beta/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Comments</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+    
+
+</div>
+    
+
+    <!-- НИЖНИЕ ИНКЛЮДЫ (ПОСЛЕ BODY И БЛОГА, КАК ФУТЕР) -->
+    
+
+</div>
+
+<style>
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--qz-border); border-radius: 4px; }
+    .custom-scrollbar:hover::-webkit-scrollbar-thumb { background: var(--qz-text-muted); }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tocLinks = document.querySelectorAll('.toc-container a');
+    if (tocLinks.length === 0) return;
+
+    const headers = Array.from(document.querySelectorAll('.wiki-article h1, .wiki-article h2, .wiki-article h3, .wiki-article h4, .wiki-article h5, .wiki-article h6'))
+                         .filter(h => h.id);
+
+    if (headers.length === 0) return;
+
+    let isClickScrolling = false;
+    let scrollTimeout = null;
+
+    const updateActiveToc = () => {
+        if (isClickScrolling) return;
+
+        let activeHeader = headers[0];
+
+        for (let i = 0; i < headers.length; i++) {
+            const rect = headers[i].getBoundingClientRect();
+            if (rect.top <= 120) {
+                activeHeader = headers[i];
+            } else {
+                break;
+            }
+        }
+
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+            activeHeader = headers[headers.length - 1];
+        }
+
+        tocLinks.forEach(link => link.classList.remove('active-toc'));
+
+        const activeLinks = document.querySelectorAll(`.toc-container a[href="#${activeHeader.id}"]`);
+        activeLinks.forEach(link => {
+            link.classList.add('active-toc');
+
+            const container = link.closest('.custom-scrollbar');
+            if (container) {
+                const linkTop = link.offsetTop;
+                const containerScroll = container.scrollTop;
+                const containerHeight = container.clientHeight;
+
+                if (linkTop < containerScroll || linkTop > containerScroll + containerHeight - 30) {
+                    container.scrollTo({ top: linkTop - containerHeight / 2, behavior: 'smooth' });
+                }
+            }
+        });
+    };
+
+    window.addEventListener('scroll', () => {
+        window.requestAnimationFrame(updateActiveToc);
+    }, { passive: true });
+
+    tocLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                const targetId = href.substring(1);
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    e.preventDefault();
+                    isClickScrolling = true;
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.pushState(null, null, href);
+                }
+            }
+
+            tocLinks.forEach(l => l.classList.remove('active-toc'));
+            document.querySelectorAll(`.toc-container a[href="${link.getAttribute('href')}"]`).forEach(l => {
+                l.classList.add('active-toc');
+            });
+
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                isClickScrolling = false;
+            }, 800);
+        });
+    });
+
+    updateActiveToc();
+
+    // Мгновенный переход к якорям без задержки и без плавности
+    if (window.location.hash) {
+        const rawHash = window.location.hash.substring(1);
+        let hashId = decodeURIComponent(rawHash);
+
+        if (hashId.startsWith('^')) {
+            hashId = hashId.substring(1);
+            const targetElement = document.getElementById(hashId) || document.querySelector(`[id="${CSS.escape(hashId)}"]`);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'auto', block: 'start' });
+            }
+        }
+    }
+});
+</script>
+
+    </main>
+
+    <div class="w-full max-w-[760px] mx-auto px-4 mt-2 mb-0">
+        <footer class="retro-footer">
+            
+            <div class="flex justify-center items-center gap-2 flex-wrap mb-0.5">
+                
+                    
+                        <a href="../index.html"
+                           class="px-3.5 py-1 font-bold text-xs rounded-[0.25rem] transition-all border-2 bg-[var(--nav-bg)] text-[var(--qz-text-muted)] border-[color:var(--qz-border)] hover:text-[var(--qz-text)] hover:bg-[var(--header-bg)]">
+                            2026
+                        </a>
+                    
+                
+                    
+                        <span class="px-3.5 py-1 font-bold text-xs rounded-[0.25rem] border-2 bg-[var(--h1-color)] text-white border-[var(--h1-color)] select-none cursor-default">
+                            2025
+                        </span>
+                    
+                
+                    
+                        <a href="../2024/index.html"
+                           class="px-3.5 py-1 font-bold text-xs rounded-[0.25rem] transition-all border-2 bg-[var(--nav-bg)] text-[var(--qz-text-muted)] border-[color:var(--qz-border)] hover:text-[var(--qz-text)] hover:bg-[var(--header-bg)]">
+                            2024
+                        </a>
+                    
+                
+            </div>
+            
+            <p class="text-[13px] font-semibold text-[var(--qz-text-muted)] tracking-wider">
+                © 2026 ALKREI
+            </p>
+        </footer>
+    </div>
+
+    <!-- Модальное окно просмотра изображений (Lightbox) -->
+    <div id="qz-lightbox" class="fixed inset-0 z-50 bg-black/90 hidden flex items-center justify-center p-4 cursor-zoom-out select-none transition-opacity duration-200 opacity-0">
+        <img id="qz-lightbox-img" src="" alt="Preview" class="max-w-full max-h-full object-contain rounded shadow-2xl transition-transform duration-200 scale-95 pointer-events-none">
+    </div>
+
+</body>
+</html>

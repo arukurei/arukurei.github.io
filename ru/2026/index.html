@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - alkrei</title>
+
+    <link rel="preload" as="image" href="/static/background.png">
+    <link rel="preload" as="image" href="/static/banner_bg.png">
+    <link rel="preload" as="image" href="/static/logo.png" fetchpriority="high">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- Подключение вынесенных статических файлов с кэшированием браузера -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script defer src="/static/js/main.js"></script>
+
+    <script>
+        if (window.location.hash && !window.location.hash.startsWith('#year-')) {
+            document.documentElement.style.visibility = 'hidden';
+            setTimeout(() => { document.documentElement.style.visibility = ''; }, 350);
+        }
+    </script>
+
+    <!-- Динамические Jinja-переменные темы и фона страниц -->
+    <style>
+        :root {
+            --c-border: #3a3b3f;
+            --c-surface: #24262a;
+            --c-dark: #202225;
+            --c-darkest: #17191c;
+
+            --page-bg-color: var(--c-darkest);
+            --header-bg: var(--c-dark);
+            --nav-bg: var(--c-darkest);
+            --qz-bg: var(--c-surface);
+            --qz-surface: var(--c-darkest);
+            --qz-surface-hover: var(--c-dark);
+            --qz-surface-alpha: rgba(32, 34, 37, 0.7);
+            --qz-border: var(--c-border);
+            --qz-text: #fbfbfb;
+            --qz-text-muted: #9a9ca6;
+            --qz-accent: #8a5cf5;
+            --qz-accent-hover: #b05cd6;
+            --qz-accent-soft: rgba(138, 92, 245, 0.18);
+            --comic-shadow: ;
+            --code-inline: #c7b0fd;
+            --lang-icon: #00aaff;
+            --lang-en: #ff3333;
+            --lang-ru: #0088ff;
+            --tag-text: #d2c1fc;
+            --link-broken: #ff6b6b;
+            --link-broken-alpha: rgba(255, 107, 107, 0.12);
+
+            --callout-nested-blue: #2c3b51;
+            --callout-nested-cyan: #2b3d49;
+            --callout-nested-green: #2c3f43;
+            --callout-nested-orange: #3e3b3b;
+            --callout-nested-red: #3e3245;
+            --callout-nested-purple: #36354f;
+            --callout-nested-gray: #343c49;
+
+            --h1-color: #FF306C;
+            --h2-color: #ff9502;
+            --h3-color: #FFD500;
+            --h4-color: #4BBF5E;
+            --h5-color: #4d95f7;
+            --h6-color: #b051de;
+
+            --retro-bg: #d6ebe9;
+            --retro-bg-alt: #f3f1e9;
+            --retro-bg-hover: #c6dfdd;
+            --retro-border: #17191c;
+            --retro-shadow: #17191c;
+            --retro-text: #17191c;
+            --retro-text-muted: #555243;
+            --retro-avatar-bg: #d5cba9;
+            --retro-btn: #e5dec9;
+            --retro-tag-type: #17191c;
+            --retro-tag-topic: #8e44ad;
+            --retro-tag-cat: #2ecc71;
+            --retro-tag-date: #d35400;
+            --retro-error: #c0392b;
+            --retro-error-alpha: rgba(192, 57, 43, 0.12);
+            --retro-border-alpha: rgba(23, 25, 28, 0.2);
+            --retro-text-muted-alpha: rgba(85, 82, 67, 0.7);
+
+            --page-bg: url('/static/background.png');
+            --page-banner: url('/static/banner_bg.png');
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-6">
+
+    
+    
+    
+    
+
+    <div class="w-full max-w-[760px] mx-auto px-4 mt-6">
+        <header class="retro-header">
+            <div class="retro-banner">
+                <img src="/static/logo.png" alt="Logo"
+                     loading="eager" decoding="async" fetchpriority="high"
+                     class="max-h-28 md:max-h-36 w-auto h-auto object-contain drop-shadow-[4px_4px_0_rgba(0,0,0,1)] select-none pointer-events-none"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <h1 class="hidden text-4xl md:text-5xl font-black text-[var(--retro-text)] tracking-widest uppercase text-center px-4">
+                    ALKREI.COM
+                </h1>
+            </div>
+
+            <nav class="bg-[var(--c-dark)] border-t border-[color:var(--c-dark)] flex w-full relative rounded-b-[0.33rem]">
+                <div class="flex-grow flex flex-col rounded-bl-[0.33rem] overflow-hidden">
+                    <div class="flex w-full">
+                        
+                            <a href="/ru/"
+                               style="--btn-color: #ff3333;"
+                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider active">
+                                Главная
+                            </a>
+                        
+                            <a href="/ru/wiki/"
+                               style="--btn-color: #0088ff;"
+                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider ">
+                                Вики
+                            </a>
+                        
+                            <a href="/ru/search/"
+                               style="--btn-color: #d35400;"
+                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider ">
+                                Поиск
+                            </a>
+                        
+                            <a href="/ru/arukurei/"
+                               style="--btn-color: #00aa33;"
+                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider ">
+                                Обо мне
+                            </a>
+                        
+                    </div>
+                    <div class="flex w-full h-[3px] leading-none">
+                        
+                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #ff3333;"></div>
+                        
+                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #0088ff;"></div>
+                        
+                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #d35400;"></div>
+                        
+                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #00aa33;"></div>
+                        
+                    </div>
+                </div>
+
+                <div class="lang-container relative border-l border-[color:var(--c-dark)] bg-[var(--c-dark)] px-4 flex items-center cursor-pointer select-none hover:bg-[var(--c-darkest)] transition-all duration-150 self-stretch rounded-br-[0.33rem]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-[var(--lang-icon)] transition-colors duration-150 pointer-events-none" viewBox="0 0 24 24">
+                        <path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/>
+                    </svg>
+                    <div class="lang-dropdown hidden absolute left-[calc(100%+8px)] top-[-1px] bg-[var(--nav-bg)] border-2 border-[color:var(--c-border)] rounded-[0.33rem] shadow-[0_8px_20px_rgba(0,0,0,0.45)] z-50 py-0 w-28 text-center">
+                        
+                            
+                            
+                            
+
+                            
+                            
+                            
+
+                            
+                            
+                            
+
+                            
+                                <a href="../../en/2026/index.html" class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-en)] hover:text-white transition-all rounded-t-[0.33rem]">English</a>
+                            
+
+                            
+                                <a href="index.html" class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-ru)] hover:text-white transition-all rounded-b-[0.33rem]">Русский</a>
+                            
+                        
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <main class="w-full max-w-[760px] mx-auto px-4 flex-grow flex flex-col space-y-6">
+        
+<div class="animate-retro-pop relative w-full mb-2">
+
+    <!-- ЛЕВАЯ КОЛОНКА (Если есть виджеты с position: left) -->
+    
+    <aside class="hidden xl:block absolute right-[100%] top-0 bottom-0 mr-4 w-60">
+        <div class="sticky top-6 flex flex-col gap-6 w-full max-h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar">
+            
+                
+                    <!-- Раздельные карточки закрепов без общей рамки и заголовка -->
+                    <div class="space-y-4 w-full">
+                        
+                        <a href="/ru/blog/%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82,%20%D0%BC%D0%B8%D1%80!%20%D0%98%D0%BB%D0%B8%20%D0%BA%D0%B0%D0%BA%20%D0%B2%D1%81%D1%91%20%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D0%BB%D0%BE%D1%81%D1%8C%20%F0%9F%9A%80/" class="block w-full overflow-hidden bg-[var(--qz-bg)] border-2 border-[color:var(--c-border)] rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.2)] hover:border-[var(--qz-accent)] transition-all group">
+                            
+                                <img src="/media/%D0%94%D0%BE%D1%80%D0%BE%D0%BA%D0%B8.png" alt="Привет, мир! Или как всё начиналось 🚀" class="w-full h-28 object-cover">
+                            
+                            <div class="p-3 text-[0.8rem] font-bold text-[var(--qz-text)] group-hover:text-[var(--qz-accent)] transition-colors line-clamp-2 leading-snug">
+                                Привет, мир! Или как всё начиналось 🚀
+                            </div>
+                        </a>
+                        
+                    </div>
+                
+            
+        </div>
+    </aside>
+    
+
+    <!-- ПРАВАЯ КОЛОНКА (Если есть виджеты с position: right) -->
+    
+
+    <!-- ВЕРХНИЕ ИНКЛЮДЫ (ДО ВЫЗОВА BODY) -->
+    
+
+    <!-- ЦЕНТРАЛЬНАЯ КАРТОЧКА -->
+    
+    
+        <!-- СТАНДАРТНАЯ СТАТЬЯ / ВИКИ -->
+        <div class="qz-card qz-card-main w-full mb-6">
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <!-- На мобильных: TOC перед текстом (если TOC включен) -->
+            
+
+            <article class="wiki-article ">
+                <div class="qz-dialog-box" style="--char-color: #ff306c;">
+  <div class="qz-dialog-avatar">
+    <img src="/media/avatar.png" alt="Аlkrei" class="qz-dialog-avatar-img" />
+  </div>
+  <div class="qz-dialog-content">
+    <div class="qz-dialog-name"><a href="/ru/arukurei/">Аlkrei</a></div>
+    <div class="qz-dialog-text">
+<p>Приветствую в моей обители, странник.<br />
+Этот сайт — драконья сокровищница, моя цифровая база: здесь собраны проекты, мои художественные работы, ценные и занимательные находки</p>
+</div>
+  </div>
+</div>
+            </article>
+
+            <!-- На мобильных: Backlinks внизу (если backlinks активны) -->
+            
+
+            <!-- Блок комментариев для стандартной статьи -->
+            
+
+        </div> <!-- закрываем qz-card-main для стандартной статьи -->
+     <!-- конец ветвления type == 'post' -->
+     <!-- конец ветвления show_body -->
+
+    <!-- ЛЕНТА БЛОГА (АКТИВНА ТОЛЬКО ПРИ type: blog) -->
+    
+        <div id="blog-feed" class="mt-6 w-full">
+
+    
+        <!-- Хранилище для группировки дат -->
+        
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        06.09.2026
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Pasted%20image%2020260923130006.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/ru/search?tag=art" class="qz-tag">#art</a> <a href="/ru/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
+Скетчи Аэрит (Концепты вроде неплохо получились)  </p>
+<p>Постоянно чувствую самокопание, что я плохо рисую, потому не часто показываю подобное...<br />
+Энивей, еще летом решил подтянуть лор и сюжет игры, чтобы не отставал от кода и визуала, так что начал писать что-то вроде мини-вики по мифологии. Учитывая что получается довольно обьемно, думаю не лучшая идея публиковать такое в тг - сейчас у меня есть мысль, развернуть отдельный сайт для этого (вроде фандома, наверное)</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 мин. чтения</span>
+                            <span>15:18</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/ru/blog/Aerith%20Sketches/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Комментарии</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        02.09.2026
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Pasted%20image%2020260923125657.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/ru/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+Тайлы Земли  </p>
+<p>Самое сложное для меня - рисовать тайлсеты.<br />
+Очень люблю красивое окружение, но какое же мучение его создавать. Постоянно пытаюсь сделать универсальный, потрясно выглядящий конструктор (чтоб прям картина маслом), а по итогу трачу колоссальное количество времени.  </p>
+<p>Наверное, это финальный вариант. Думаю, лучше вовремя остановиться и двигаться дальше.<br />
+Как вам?</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 мин. чтения</span>
+                            <span>15:16</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/ru/blog/Earth%20Tiles%20WIP/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Комментарии</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        22.08.2026
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Pasted%20image%2020260923125557.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/ru/search?tag=gamedev" class="qz-tag">#gamedev</a><br />
+Просто хочу поделиться масштабом работы!  </p>
+<p>Зацените, это схема работы пошагового боевого менеджера:  </p>
+<blockquote>
+<p>Каждая часть в определенной степени автономная, что позволяет легко интегрировать новые компоненты и менять старые, подключать/отключать их и никак не нарушить остальную систему - она буквально будет работать в штатном режиме. Тут задействованы и машины состояние, и автоматы, и много всякой всячины которую я по сто раз переписывал с целью получить наилучшую архитектуру.<br />
+Конечно, идеального варианта я думаю не добился, но в рамках тех дизайнерских решений, которые я выбрал, этот аппарат способен на многое, очень многое... (возможно в будущем его ждут всё новые правки, но я доволен результатом в любом случае)</p>
+</blockquote>
+<p>Когда я только приступал, не думал что пошаговые игры так сложно писать: были моменты когда я явно запутывался во всех этих сигналах и вообще не понимал что там под капотом творится-то, особенно утомляла борьба с корутиной</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 мин. чтения</span>
+                            <span>20:23</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/ru/blog/Code%20Map/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Комментарии</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        21.08.2026
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Rifle%20Attack.gif" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/ru/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+У солдат теперь немного новый дизайн и я закончил анимацию выстрела</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 мин. чтения</span>
+                            <span>09:33</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/ru/blog/New%20Soldier%20Design%20and%20Shooting%20Animation/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Комментарии</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        19.08.2026
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <div class="qz-video-embed">
+  <iframe src="https://www.youtube-nocookie.com/embed/mgDhBCoILxM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+</div>
+<p><a href="/ru/search?tag=gamedev" class="qz-tag">#gamedev</a> <a href="/ru/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
+Инвентарь  </p>
+<p>Остается только наполнение контентом. Сделал очень хорошую систему квестов, универсальный менеджер кнопок, систему перевода. Последнюю хоть и на csv, но, внедрив туда поддержку .md, взаимодействовать с этим стало намного проще: их и парсить легко, и писать можно в обсидиан, и свои кодировки можно внедрять - одним словом великолепный формат (так например написал поддержку html ссылок - это просто прикольно)  </p>
+<p>Немного помучался с graph_view: пробовал разные идеи, но в итоге лучшей оказалось масштабирование и перемещение в самой сцене. Возможно потом добавлю это как отдельную ноду в Медузу, в любом случае физику и инпут я изначально делал с учётом всяких трансформаций графа и это работает отлично.</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 мин. чтения</span>
+                            <span>17:30</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/ru/blog/Aeritheya%20Inventory/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Комментарии</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        17.08.2026
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Sunset%20Shimmer.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/ru/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+Сансет Шиммер  </p>
+<blockquote>
+<p>Нарисовал арт для ивента https://t.me/Pixelshiz<br />
+Задача нарисовать любимого пони. Долго не раздумывал и за 2 дня сделал эту работу</p>
+</blockquote>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 мин. чтения</span>
+                            <span>14:59</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/ru/blog/Sunset%20Shimmer/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Комментарии</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        21.03.2026
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Pasted%20image%2020260923125051.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/ru/search?tag=art" class="qz-tag">#art</a> <a href="/ru/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
+Римские перехватчики (концепт)  </p>
+<p>Пишу сценарий, рисую окружение, и, кажется, нашел именно тот стиль, что мне по душе. На текущий момент история делится на пролог и три акта. Работы еще предстоит много но со временем наработки должны сложиться в единую историю.  </p>
+<blockquote>
+<p>Вкратце, это античность 20 века + мифология поскольку миром правят боги и титаны - сверхраса. В результате древней войны мир утратил эфир и это ведет его к гибели, боги же потеряли свои силы но сохранив бессмертие стали во главе человеческих цивилизаций.  </p>
+<p>Бывший пантеон - злодеи, так как его состав является тайным мировым правительством и столетиями ведет поиски древнего артефакта, который вернет их могущество.  </p>
+<p>Сюжет начинается под конец поисков, Земноморье стоит на пороге мировой войны и главные герои должны противостоять безумцам...</p>
+</blockquote>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 мин. чтения</span>
+                            <span>14:41</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/ru/blog/Roman%20Interceptors%20(concept)/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Комментарии</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+
+            <!-- ТЕЛЕГРАМ-РАЗДЕЛИТЕЛЬ ДАТЫ -->
+            
+                <div class="flex justify-center mt-3 mb-4">
+                    <span class="inline-flex items-center justify-center leading-none bg-[var(--qz-surface-alpha)] backdrop-blur-sm border border-white/10 text-[var(--qz-text-muted)] text-[13px] font-semibold px-4 pt-[6px] pb-[5px] rounded-full select-none tracking-wide">
+                        14.03.2026
+                    </span>
+                </div>
+                
+            
+
+            
+                <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
+                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+
+                    
+                    <div class="px-5 pt-3 pb-1.5">
+                        <span class="text-[1rem] font-bold text-[var(--h4-color)] tracking-wide">Quasar</span>
+                    </div>
+                    
+
+                    
+                    <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
+                        <img src="/media/Title.png" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
+                    </div>
+                    
+
+                    
+
+                    <div class="px-6 py-4 wiki-article ">
+                        <p><a href="/ru/search?tag=gamedev" class="qz-tag">#gamedev</a><br />
+Я релизнул новый плагин!  </p>
+<blockquote>
+<p>Medusa — это высокопроизводительный фреймворк Godot для создания динамических UI-графов, деревьев навыков и узловых сетей.</p>
+</blockquote>
+<p>Долго его делал изначально для своего проекта, но позже пришла идея сделать общедоступный инструмент.  </p>
+<p>По итогу очень мощный плагин получился: тут и физика поддерживающая 200+ атомов на экране, и полная свобода кастомизации, и что особо важно в таких струткурах - мощнейшая сериализация информации разного рода (по тегам, по указателям), синглтон базы данных и базы локального прогресса.  </p>
+<p><strong>Ссылки:</strong>  </p>
+<ul>
+<li><a href="https://github.com/arukurei/Medusa">Github</a>  </li>
+<li><a href="https://godot-medusa-docs.readthedocs.io/en/latest/">Documentation</a>  </li>
+<li><a href="https://alkrei.itch.io/medusa">ItchIO</a>  </li>
+<li><a href="https://youtu.be/UXqZ6TzPYGg?si=2EwO5Lv_4vy9Y8a2">YouTube Trailer</a>  </li>
+</ul>
+<p>P.S.: Я, конечно, не мастер монтажа но ролик вроде получился ничего :)</p>
+                    </div>
+
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3">
+                            <span>1 мин. чтения</span>
+                            <span>21:34</span>
+                        </div>
+                    </div>
+
+                    
+                    <a href="/ru/blog/Medusa%20Plugin%20Release/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                        <span>Комментарии</span>
+                        <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
+                    </a>
+                    
+                </article>
+
+            
+
+        
+    
+
+</div>
+    
+
+    <!-- НИЖНИЕ ИНКЛЮДЫ (ПОСЛЕ BODY И БЛОГА, КАК ФУТЕР) -->
+    
+
+</div>
+
+<style>
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--qz-border); border-radius: 4px; }
+    .custom-scrollbar:hover::-webkit-scrollbar-thumb { background: var(--qz-text-muted); }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tocLinks = document.querySelectorAll('.toc-container a');
+    if (tocLinks.length === 0) return;
+
+    const headers = Array.from(document.querySelectorAll('.wiki-article h1, .wiki-article h2, .wiki-article h3, .wiki-article h4, .wiki-article h5, .wiki-article h6'))
+                         .filter(h => h.id);
+
+    if (headers.length === 0) return;
+
+    let isClickScrolling = false;
+    let scrollTimeout = null;
+
+    const updateActiveToc = () => {
+        if (isClickScrolling) return;
+
+        let activeHeader = headers[0];
+
+        for (let i = 0; i < headers.length; i++) {
+            const rect = headers[i].getBoundingClientRect();
+            if (rect.top <= 120) {
+                activeHeader = headers[i];
+            } else {
+                break;
+            }
+        }
+
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+            activeHeader = headers[headers.length - 1];
+        }
+
+        tocLinks.forEach(link => link.classList.remove('active-toc'));
+
+        const activeLinks = document.querySelectorAll(`.toc-container a[href="#${activeHeader.id}"]`);
+        activeLinks.forEach(link => {
+            link.classList.add('active-toc');
+
+            const container = link.closest('.custom-scrollbar');
+            if (container) {
+                const linkTop = link.offsetTop;
+                const containerScroll = container.scrollTop;
+                const containerHeight = container.clientHeight;
+
+                if (linkTop < containerScroll || linkTop > containerScroll + containerHeight - 30) {
+                    container.scrollTo({ top: linkTop - containerHeight / 2, behavior: 'smooth' });
+                }
+            }
+        });
+    };
+
+    window.addEventListener('scroll', () => {
+        window.requestAnimationFrame(updateActiveToc);
+    }, { passive: true });
+
+    tocLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                const targetId = href.substring(1);
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    e.preventDefault();
+                    isClickScrolling = true;
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.pushState(null, null, href);
+                }
+            }
+
+            tocLinks.forEach(l => l.classList.remove('active-toc'));
+            document.querySelectorAll(`.toc-container a[href="${link.getAttribute('href')}"]`).forEach(l => {
+                l.classList.add('active-toc');
+            });
+
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                isClickScrolling = false;
+            }, 800);
+        });
+    });
+
+    updateActiveToc();
+
+    // Мгновенный переход к якорям без задержки и без плавности
+    if (window.location.hash) {
+        const rawHash = window.location.hash.substring(1);
+        let hashId = decodeURIComponent(rawHash);
+
+        if (hashId.startsWith('^')) {
+            hashId = hashId.substring(1);
+            const targetElement = document.getElementById(hashId) || document.querySelector(`[id="${CSS.escape(hashId)}"]`);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'auto', block: 'start' });
+            }
+        }
+    }
+});
+</script>
+
+    </main>
+
+    <div class="w-full max-w-[760px] mx-auto px-4 mt-2 mb-0">
+        <footer class="retro-footer">
+            
+            <div class="flex justify-center items-center gap-2 flex-wrap mb-0.5">
+                
+                    
+                        <span class="px-3.5 py-1 font-bold text-xs rounded-[0.25rem] border-2 bg-[var(--h1-color)] text-white border-[var(--h1-color)] select-none cursor-default">
+                            2026
+                        </span>
+                    
+                
+                    
+                        <a href="../2025/index.html"
+                           class="px-3.5 py-1 font-bold text-xs rounded-[0.25rem] transition-all border-2 bg-[var(--nav-bg)] text-[var(--qz-text-muted)] border-[color:var(--qz-border)] hover:text-[var(--qz-text)] hover:bg-[var(--header-bg)]">
+                            2025
+                        </a>
+                    
+                
+                    
+                        <a href="../2024/index.html"
+                           class="px-3.5 py-1 font-bold text-xs rounded-[0.25rem] transition-all border-2 bg-[var(--nav-bg)] text-[var(--qz-text-muted)] border-[color:var(--qz-border)] hover:text-[var(--qz-text)] hover:bg-[var(--header-bg)]">
+                            2024
+                        </a>
+                    
+                
+            </div>
+            
+            <p class="text-[13px] font-semibold text-[var(--qz-text-muted)] tracking-wider">
+                © 2026 ALKREI
+            </p>
+        </footer>
+    </div>
+
+    <!-- Модальное окно просмотра изображений (Lightbox) -->
+    <div id="qz-lightbox" class="fixed inset-0 z-50 bg-black/90 hidden flex items-center justify-center p-4 cursor-zoom-out select-none transition-opacity duration-200 opacity-0">
+        <img id="qz-lightbox-img" src="" alt="Preview" class="max-w-full max-h-full object-contain rounded shadow-2xl transition-transform duration-200 scale-95 pointer-events-none">
+    </div>
+
+</body>
+</html>
