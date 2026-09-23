@@ -229,7 +229,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const heartIcon = btn.querySelector('.qz-heart-icon');
         const countLabel = btn.querySelector('.qz-reaction-count');
 
-        let isLiked = localStorage.getItem(storageLikedKey) === 'true';
+        // Проверяем сохраненный кэш лайков из GitHub
+        const cachedData = JSON.parse(localStorage.getItem(`qz_cache_reaction_${postId}`) || '{}');
+        let isLiked = cachedData.liked !== undefined ? cachedData.liked : (localStorage.getItem(storageLikedKey) === 'true');
+        let initialCount = cachedData.count !== undefined ? cachedData.count : (countLabel ? countLabel.innerText : '0');
 
         const updateUI = () => {
             if (isLiked) {
@@ -239,6 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.classList.remove('liked');
                 if (heartIcon) heartIcon.innerText = '🤍';
             }
+            if (countLabel) countLabel.innerText = initialCount;
         };
 
         updateUI();
@@ -247,21 +251,9 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             e.stopPropagation();
 
-            let currentCount = parseInt(countLabel ? countLabel.innerText : '0', 10);
-            if (isLiked) {
-                isLiked = false;
-                currentCount = Math.max(0, currentCount - 1);
-            } else {
-                isLiked = true;
-                currentCount += 1;
-            }
-
-            localStorage.setItem(storageLikedKey, isLiked ? 'true' : 'false');
-            if (countLabel) countLabel.innerText = currentCount;
-            updateUI();
-
+            // При клике на сердечко просто плавно скроллим к блоку реакций
             const commentsSection = document.getElementById('comments-section') || document.getElementById('comments');
-            if (commentsSection && window.location.pathname.includes('/blog/')) {
+            if (commentsSection) {
                 commentsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
@@ -273,11 +265,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!(typeof event.data === 'object' && event.data.giscus)) return;
 
         const giscusData = event.data.giscus;
+        if (giscusData.discussion) {
+            // Записываем живое число комментариев в скобки заголовка
+            const countEl = document.getElementById('giscus-comments-count');
+            if (countEl && giscusData.discussion.totalCommentCount !== undefined) {
+                countEl.innerText = `(${giscusData.discussion.totalCommentCount})`;
+            }
+        }
+
         if (giscusData.discussion && giscusData.discussion.reactions) {
             const heartReaction = giscusData.discussion.reactions.HEART;
             if (heartReaction) {
                 const totalHearts = heartReaction.count || 0;
                 const viewerHasReacted = heartReaction.viewerHasReacted || false;
+
+                // Получаем ID текущего поста из URL (например, post_name)
+                const currentPostPath = window.location.pathname.replace(/\/$/, '').split('/').pop();
 
                 document.querySelectorAll('.qz-reaction-btn').forEach(btn => {
                     const heartIcon = btn.querySelector('.qz-heart-icon');
@@ -291,6 +294,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (heartIcon) heartIcon.innerText = '🤍';
                     }
                     if (countLabel) countLabel.innerText = totalHearts;
+
+                    // Сохраняем в память браузера, чтобы в общей ленте пост ТОЖЕ был красным с этой цифрой!
+                    if (currentPostPath) {
+                        localStorage.setItem(`qz_cache_reaction_${currentPostPath}`, JSON.stringify({
+                            count: totalHearts,
+                            liked: viewerHasReacted
+                        }));
+                    }
                 });
             }
         }
