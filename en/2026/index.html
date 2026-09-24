@@ -28,16 +28,17 @@
     <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
 
     <link rel="stylesheet" href="/static/css/style.css">
+    <script defer src="/static/js/router.js"></script>
     <script defer src="/static/js/main.js"></script>
 
-    <script>
-        if (window.location.hash && !window.location.hash.startsWith('#year-')) {
-            document.documentElement.style.visibility = 'hidden';
-            setTimeout(() => { document.documentElement.style.visibility = ''; }, 350);
-        }
-    </script>
-
     <!-- Динамические Jinja-переменные темы и фона страниц -->
+    <style id="site-page-bg">
+        :root {
+            --page-bg: url('/static/background.png');
+            --page-banner: url('/static/banner_bg.png');
+        }
+    </style>
+
     <style>
         :root {
             --c-border: #3a3b3f;
@@ -124,7 +125,7 @@
                 </h1>
             </div>
 
-            <nav class="bg-[var(--c-dark)] border-t border-[color:var(--c-dark)] flex w-full relative rounded-b-[0.33rem]">
+            <nav id="site-nav" class="bg-[var(--c-dark)] border-t border-[color:var(--c-dark)] flex w-full relative rounded-b-[0.33rem]">
                 <div class="flex-grow flex flex-col rounded-bl-[0.33rem] overflow-hidden">
                     <div class="flex w-full">
                         
@@ -198,7 +199,7 @@
         </header>
     </div>
 
-    <main class="w-full max-w-[760px] mx-auto px-4 flex-grow flex flex-col space-y-6">
+    <main id="site-main" class="w-full max-w-[760px] mx-auto px-4 flex-grow flex flex-col space-y-6">
         
 <div class="animate-retro-pop relative w-full mb-2">
 
@@ -211,7 +212,7 @@
                     <!-- Раздельные карточки закрепов без общей рамки и заголовка -->
                     <div class="space-y-4 w-full">
                         
-                        <a href="/en/blog/Hello,%20World!%20Or%20How%20It%20All%20Began%20%F0%9F%9A%80/" class="block w-full overflow-hidden bg-[var(--qz-bg)] border-2 border-[color:var(--c-border)] rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.2)] hover:border-[var(--qz-accent)] transition-all group">
+                        <a href="/en/blog/Hello,_World!_Or_How_It_All_Began_%F0%9F%9A%80/" class="block w-full overflow-hidden bg-[var(--qz-bg)] border-2 border-[color:var(--c-border)] rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.2)] hover:border-[var(--qz-accent)] transition-all group">
                             
                                 <img src="/media/%D0%94%D0%BE%D1%80%D0%BE%D0%BA%D0%B8.png" alt="Hello, World! Or How It All Began 🚀" class="w-full h-28 object-cover">
                             
@@ -298,7 +299,7 @@ This site is a dragon's hoard, my digital base: here you'll find projects, my ar
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Aerith Sketches">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Aerith_Sketches">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -325,7 +326,7 @@ Aerith sketches (the concepts turned out decent, I think)</p>
 
                     
                     <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Aerith Sketches">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Aerith_Sketches">
                             <span class="qz-heart-icon text-sm">🤍</span>
                             <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
                         </button>
@@ -336,7 +337,7 @@ Aerith sketches (the concepts turned out decent, I think)</p>
                     </div>
                     
 
-                    <a href="/en/blog/Aerith%20Sketches/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                    <a href="/en/blog/Aerith_Sketches/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
                         <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
@@ -358,7 +359,7 @@ Aerith sketches (the concepts turned out decent, I think)</p>
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Earth Tiles WIP">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Earth_Tiles_WIP">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -386,7 +387,7 @@ What do you think?</p>
 
                     
                     <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Earth Tiles WIP">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Earth_Tiles_WIP">
                             <span class="qz-heart-icon text-sm">🤍</span>
                             <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
                         </button>
@@ -397,7 +398,7 @@ What do you think?</p>
                     </div>
                     
 
-                    <a href="/en/blog/Earth%20Tiles%20WIP/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                    <a href="/en/blog/Earth_Tiles_WIP/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
                         <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
@@ -419,7 +420,7 @@ What do you think?</p>
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Code Map">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Code_Map">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -450,7 +451,7 @@ Just want to share the scale of this work!</p>
 
                     
                     <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Code Map">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Code_Map">
                             <span class="qz-heart-icon text-sm">🤍</span>
                             <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
                         </button>
@@ -461,7 +462,7 @@ Just want to share the scale of this work!</p>
                     </div>
                     
 
-                    <a href="/en/blog/Code%20Map/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                    <a href="/en/blog/Code_Map/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
                         <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
@@ -483,7 +484,7 @@ Just want to share the scale of this work!</p>
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/New Soldier Design and Shooting Animation">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/New_Soldier_Design_and_Shooting_Animation">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -508,7 +509,7 @@ The soldiers now have a slightly new design, and I finished the shooting animati
 
                     
                     <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/New Soldier Design and Shooting Animation">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/New_Soldier_Design_and_Shooting_Animation">
                             <span class="qz-heart-icon text-sm">🤍</span>
                             <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
                         </button>
@@ -519,7 +520,7 @@ The soldiers now have a slightly new design, and I finished the shooting animati
                     </div>
                     
 
-                    <a href="/en/blog/New%20Soldier%20Design%20and%20Shooting%20Animation/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                    <a href="/en/blog/New_Soldier_Design_and_Shooting_Animation/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
                         <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
@@ -541,7 +542,7 @@ The soldiers now have a slightly new design, and I finished the shooting animati
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Aeritheya Inventory">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Aeritheya_Inventory">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -567,7 +568,7 @@ Inventory</p>
 
                     
                     <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Aeritheya Inventory">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Aeritheya_Inventory">
                             <span class="qz-heart-icon text-sm">🤍</span>
                             <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
                         </button>
@@ -578,7 +579,7 @@ Inventory</p>
                     </div>
                     
 
-                    <a href="/en/blog/Aeritheya%20Inventory/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                    <a href="/en/blog/Aeritheya_Inventory/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
                         <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
@@ -600,7 +601,7 @@ Inventory</p>
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Sunset Shimmer">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Sunset_Shimmer">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -629,7 +630,7 @@ The task was to draw your favorite pony. I didn't think too long and finished th
 
                     
                     <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Sunset Shimmer">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Sunset_Shimmer">
                             <span class="qz-heart-icon text-sm">🤍</span>
                             <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
                         </button>
@@ -640,7 +641,7 @@ The task was to draw your favorite pony. I didn't think too long and finished th
                     </div>
                     
 
-                    <a href="/en/blog/Sunset%20Shimmer/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                    <a href="/en/blog/Sunset_Shimmer/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
                         <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
@@ -662,7 +663,7 @@ The task was to draw your favorite pony. I didn't think too long and finished th
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Roman Interceptors (concept)">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Roman_Interceptors_(concept)">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -693,7 +694,7 @@ Roman Interceptors (concept)</p>
 
                     
                     <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Roman Interceptors (concept)">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Roman_Interceptors_(concept)">
                             <span class="qz-heart-icon text-sm">🤍</span>
                             <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
                         </button>
@@ -704,7 +705,7 @@ Roman Interceptors (concept)</p>
                     </div>
                     
 
-                    <a href="/en/blog/Roman%20Interceptors%20(concept)/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                    <a href="/en/blog/Roman_Interceptors_(concept)/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
                         <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
@@ -726,7 +727,7 @@ Roman Interceptors (concept)</p>
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Medusa Plugin Release">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Medusa_Plugin_Release">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -764,7 +765,7 @@ I released a new plugin!</p>
 
                     
                     <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Medusa Plugin Release">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Medusa_Plugin_Release">
                             <span class="qz-heart-icon text-sm">🤍</span>
                             <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
                         </button>
@@ -775,7 +776,7 @@ I released a new plugin!</p>
                     </div>
                     
 
-                    <a href="/en/blog/Medusa%20Plugin%20Release/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
+                    <a href="/en/blog/Medusa_Plugin_Release/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
                         <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
@@ -901,7 +902,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     </main>
 
-    <div class="w-full max-w-[760px] mx-auto px-4 mt-2 mb-0">
+    <div id="site-footer-container" class="w-full max-w-[760px] mx-auto px-4 mt-2 mb-0">
         <footer class="retro-footer">
             
             <div class="flex justify-center items-center gap-2 flex-wrap mb-0.5">

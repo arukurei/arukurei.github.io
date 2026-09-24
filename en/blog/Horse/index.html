@@ -28,16 +28,17 @@
     <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
 
     <link rel="stylesheet" href="/static/css/style.css">
+    <script defer src="/static/js/router.js"></script>
     <script defer src="/static/js/main.js"></script>
 
-    <script>
-        if (window.location.hash && !window.location.hash.startsWith('#year-')) {
-            document.documentElement.style.visibility = 'hidden';
-            setTimeout(() => { document.documentElement.style.visibility = ''; }, 350);
-        }
-    </script>
-
     <!-- Динамические Jinja-переменные темы и фона страниц -->
+    <style id="site-page-bg">
+        :root {
+            --page-bg: url('/static/background.png');
+            --page-banner: url('/static/banner_bg.png');
+        }
+    </style>
+
     <style>
         :root {
             --c-border: #3a3b3f;
@@ -124,7 +125,7 @@
                 </h1>
             </div>
 
-            <nav class="bg-[var(--c-dark)] border-t border-[color:var(--c-dark)] flex w-full relative rounded-b-[0.33rem]">
+            <nav id="site-nav" class="bg-[var(--c-dark)] border-t border-[color:var(--c-dark)] flex w-full relative rounded-b-[0.33rem]">
                 <div class="flex-grow flex flex-col rounded-bl-[0.33rem] overflow-hidden">
                     <div class="flex w-full">
                         
@@ -210,7 +211,7 @@
         </header>
     </div>
 
-    <main class="w-full max-w-[760px] mx-auto px-4 flex-grow flex flex-col space-y-6">
+    <main id="site-main" class="w-full max-w-[760px] mx-auto px-4 flex-grow flex flex-col space-y-6">
         
 <div class="animate-retro-pop relative w-full mb-2">
 
@@ -385,7 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     </main>
 
-    <div class="w-full max-w-[760px] mx-auto px-4 mt-2 mb-0">
+    <div id="site-footer-container" class="w-full max-w-[760px] mx-auto px-4 mt-2 mb-0">
         <footer class="retro-footer">
             
             <p class="text-[13px] font-semibold text-[var(--qz-text-muted)] tracking-wider">

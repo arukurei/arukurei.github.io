@@ -1,12 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Восстанавливаем видимость страницы после скрытия при переходе к якорям
-    if (window.location.hash && !window.location.hash.startsWith('#year-')) {
-        requestAnimationFrame(() => {
-            document.documentElement.style.visibility = '';
-        });
-    }
+// Обработчики глобальных событий окна регистрируются один раз
+let _lightboxInitialized = false;
 
-    // Подсветка блоков кода через highlight.js
+window.onPageLoad(() => {
+    // Подсветка блоков кода через highlight.js на новой странице
     if (typeof hljs !== 'undefined') {
         hljs.highlightAll();
     }
@@ -29,52 +25,64 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Полноэкранный просмотр изображений (Lightbox)
-    const lightbox = document.getElementById('qz-lightbox');
-    const lightboxImg = document.getElementById('qz-lightbox-img');
+    // Полноэкранный просмотр изображений (Lightbox с делегированием событий)
+    if (!_lightboxInitialized) {
+        _lightboxInitialized = true;
 
-    const openLightbox = (src, alt) => {
-        if (!src || !lightbox || !lightboxImg) return;
-        lightboxImg.src = src;
-        lightboxImg.alt = alt || '';
-        lightbox.classList.remove('hidden');
-        requestAnimationFrame(() => {
-            lightbox.classList.remove('opacity-0');
-            lightboxImg.classList.remove('scale-95');
-            lightboxImg.classList.add('scale-100');
+        const openLightbox = (src, alt) => {
+            const lightbox = document.getElementById('qz-lightbox');
+            const lightboxImg = document.getElementById('qz-lightbox-img');
+            if (!src || !lightbox || !lightboxImg) return;
+            lightboxImg.src = src;
+            lightboxImg.alt = alt || '';
+            lightbox.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                lightbox.classList.remove('opacity-0');
+                lightboxImg.classList.remove('scale-95');
+                lightboxImg.classList.add('scale-100');
+            });
+        };
+
+        const closeLightbox = () => {
+            const lightbox = document.getElementById('qz-lightbox');
+            const lightboxImg = document.getElementById('qz-lightbox-img');
+            if (!lightbox || !lightboxImg) return;
+            lightbox.classList.add('opacity-0');
+            lightboxImg.classList.remove('scale-100');
+            lightboxImg.classList.add('scale-95');
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightboxImg.src = '';
+            }, 200);
+        };
+
+        document.addEventListener('wheel', (e) => {
+            const lightbox = document.getElementById('qz-lightbox');
+            if (lightbox && !lightbox.classList.contains('hidden')) e.preventDefault();
+        }, { passive: false });
+
+        document.addEventListener('touchmove', (e) => {
+            const lightbox = document.getElementById('qz-lightbox');
+            if (lightbox && !lightbox.classList.contains('hidden')) e.preventDefault();
+        }, { passive: false });
+
+        document.addEventListener('click', (e) => {
+            const img = e.target.closest('.wiki-article img, .qz-hero-image img, .post-cover-img, .qz-dialog-avatar-img');
+            const lightbox = document.getElementById('qz-lightbox');
+            if (img) {
+                openLightbox(img.src, img.alt);
+            } else if (lightbox && !lightbox.classList.contains('hidden')) {
+                closeLightbox();
+            }
         });
-    };
 
-    const closeLightbox = () => {
-        if (!lightbox || !lightboxImg) return;
-        lightbox.classList.add('opacity-0');
-        lightboxImg.classList.remove('scale-100');
-        lightboxImg.classList.add('scale-95');
-        setTimeout(() => {
-            lightbox.classList.add('hidden');
-            lightboxImg.src = '';
-        }, 200);
-    };
-
-    if (lightbox) {
-        lightbox.addEventListener('wheel', (e) => e.preventDefault(), { passive: false });
-        lightbox.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+        document.addEventListener('keydown', (e) => {
+            const lightbox = document.getElementById('qz-lightbox');
+            if (e.key === 'Escape' && lightbox && !lightbox.classList.contains('hidden')) {
+                closeLightbox();
+            }
+        });
     }
-
-    document.addEventListener('click', (e) => {
-        const img = e.target.closest('.wiki-article img, .qz-hero-image img, .post-cover-img, .qz-dialog-avatar-img');
-        if (img) {
-            openLightbox(img.src, img.alt);
-        } else if (lightbox && !lightbox.classList.contains('hidden')) {
-            closeLightbox();
-        }
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lightbox && !lightbox.classList.contains('hidden')) {
-            closeLightbox();
-        }
-    });
 
     // Кнопка копирования содержимого блоков кода
     document.querySelectorAll('.wiki-article pre').forEach((pre) => {
