@@ -220,79 +220,115 @@ document.addEventListener('DOMContentLoaded', () => {
         startAutoPlay();
     });
 
-    // Реакции на посты (Сердечко + localStorage)
-    document.querySelectorAll('.qz-reaction-btn').forEach(btn => {
-        const postId = btn.getAttribute('data-post-id');
-        if (!postId) return;
-
-        const storageLikedKey = `qz_liked_${postId}`;
-        const heartIcon = btn.querySelector('.qz-heart-icon');
-        const countLabel = btn.querySelector('.qz-reaction-count');
-
-        let isLiked = localStorage.getItem(storageLikedKey) === 'true';
-
-        const updateUI = () => {
-            if (isLiked) {
-                btn.classList.add('liked');
-                if (heartIcon) heartIcon.innerText = '❤️';
-            } else {
-                btn.classList.remove('liked');
-                if (heartIcon) heartIcon.innerText = '🤍';
-            }
-        };
-
-        updateUI();
-
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-
-            let currentCount = parseInt(countLabel ? countLabel.innerText : '0', 10);
-            if (isLiked) {
-                isLiked = false;
-                currentCount = Math.max(0, currentCount - 1);
-            } else {
-                isLiked = true;
-                currentCount += 1;
-            }
-
-            localStorage.setItem(storageLikedKey, isLiked ? 'true' : 'false');
-            if (countLabel) countLabel.innerText = currentCount;
-            updateUI();
-
-            const commentsSection = document.getElementById('comments-section') || document.getElementById('comments');
-            if (commentsSection && window.location.pathname.includes('/blog/')) {
-                commentsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
-
-    // Синхронизация сердечек из GitHub Discussions (Giscus)
-    window.addEventListener('message', (event) => {
-        if (event.origin !== 'https://giscus.app') return;
-        if (!(typeof event.data === 'object' && event.data.giscus)) return;
-
-        const giscusData = event.data.giscus;
-        if (giscusData.discussion && giscusData.discussion.reactions) {
-            const heartReaction = giscusData.discussion.reactions.HEART;
-            if (heartReaction) {
-                const totalHearts = heartReaction.count || 0;
-                const viewerHasReacted = heartReaction.viewerHasReacted || false;
-
-                document.querySelectorAll('.qz-reaction-btn').forEach(btn => {
-                    const heartIcon = btn.querySelector('.qz-heart-icon');
-                    const countLabel = btn.querySelector('.qz-reaction-count');
-
-                    if (viewerHasReacted) {
-                        btn.classList.add('liked');
-                        if (heartIcon) heartIcon.innerText = '❤️';
-                    } else {
-                        btn.classList.remove('liked');
-                        if (heartIcon) heartIcon.innerText = '🤍';
-                    }
-                    if (countLabel) countLabel.innerText = totalHearts;
-                });
-            }
+    // Детектор переполнения для fade-out длинных постов в ленте
+    document.querySelectorAll('.qz-feed-clamp').forEach((el) => {
+        if (el.scrollHeight > el.clientHeight + 8) {
+            el.classList.add('has-overflow');
         }
     });
+
+    // === База данных лайков: Оптимистичный UI с кэшем чисел в localStorage ===
+    const LIKES_API_URL = 'https://script.google.com/macros/s/AKfycbwVnLnaCYgsKggrYUeTsysWY0aIsBh0zPGCoJekGKIXk6OjDmu8gC83hFLvUxTVmfxv/exec';
+    const MAX_LIKES_LIMIT = 99999;
+    const STORAGE_COUNTS_KEY = 'qz_likes_counts_cache';
+    const reactionButtons = Array.from(document.querySelectorAll('.qz-reaction-btn'));
+
+    if (reactionButtons.length > 0) {
+        let cachedCounts = {};
+        try {
+            cachedCounts = JSON.parse(localStorage.getItem(STORAGE_COUNTS_KEY) || '{}');
+        } catch (_) {}
+
+        const saveCountsCache = () => {
+            try {
+                localStorage.setItem(STORAGE_COUNTS_KEY, JSON.stringify(cachedCounts));
+            } catch (_) {}
+        };
+
+        const slugsToFetch = [];
+
+        reactionButtons.forEach((btn) => {
+            const slug = btn.getAttribute('data-post-id');
+            if (!slug) return;
+
+            slugsToFetch.push(slug);
+            const safeKey = slug.replace(/[^a-zA-Z0-9_-]/g, '_');
+            const storageLikedKey = `qz_liked_${safeKey}`;
+            const heartIcon = btn.querySelector('.qz-heart-icon');
+            const countLabel = btn.querySelector('.qz-reaction-count');
+
+            let isLiked = localStorage.getItem(storageLikedKey) === 'true';
+
+            // МГНОВЕННО (0 мс) подставляем число из кэша памяти, не дожидаясь ответа сервера
+            if (countLabel && typeof cachedCounts[slug] === 'number') {
+                countLabel.innerText = Math.min(MAX_LIKES_LIMIT, Math.max(0, cachedCounts[slug]));
+            }
+
+            const updateUI = () => {
+                if (isLiked) {
+                    btn.classList.add('liked');
+                    if (heartIcon) heartIcon.textContent = '❤️';
+                } else {
+                    btn.classList.remove('liked');
+                    if (heartIcon) heartIcon.textContent = '🤍';
+                }
+            };
+
+            updateUI();
+
+            btn.onclick = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                let currentCount = parseInt(countLabel ? countLabel.innerText : '0', 10);
+                if (isNaN(currentCount)) currentCount = 0;
+
+                const action = isLiked ? 'like_down' : 'like_up';
+                isLiked = !isLiked;
+
+                if (isLiked) {
+                    currentCount = Math.min(MAX_LIKES_LIMIT, currentCount + 1);
+                } else {
+                    currentCount = Math.max(0, currentCount - 1);
+                }
+
+                cachedCounts[slug] = currentCount;
+                saveCountsCache();
+                localStorage.setItem(storageLikedKey, isLiked ? 'true' : 'false');
+                if (countLabel) countLabel.innerText = currentCount;
+                updateUI();
+
+                fetch(`${LIKES_API_URL}?slug=${encodeURIComponent(slug)}&action=${action}`, { redirect: 'follow' })
+                    .then((r) => r.json())
+                    .then((data) => {
+                        if (countLabel && typeof data.likes === 'number') {
+                            const verifiedLikes = Math.min(MAX_LIKES_LIMIT, Math.max(0, data.likes));
+                            cachedCounts[slug] = verifiedLikes;
+                            saveCountsCache();
+                            countLabel.innerText = verifiedLikes;
+                        }
+                    })
+                    .catch((err) => console.log('Likes sync error:', err));
+            };
+        });
+
+        // Фоновый пакетный запрос: обновляет кэш, если кто-то другой поставил лайк
+        if (slugsToFetch.length > 0) {
+            fetch(`${LIKES_API_URL}?action=get&slugs=${encodeURIComponent(slugsToFetch.join('|'))}`, { redirect: 'follow' })
+                .then((r) => r.json())
+                .then((batchData) => {
+                    reactionButtons.forEach((btn) => {
+                        const slug = btn.getAttribute('data-post-id');
+                        if (slug && typeof batchData[slug] === 'number') {
+                            const verified = Math.min(MAX_LIKES_LIMIT, Math.max(0, batchData[slug]));
+                            cachedCounts[slug] = verified;
+                            const countLabel = btn.querySelector('.qz-reaction-count');
+                            if (countLabel) countLabel.innerText = verified;
+                        }
+                    });
+                    saveCountsCache();
+                })
+                .catch((err) => console.log('Batch fetch error:', err));
+        }
+    }
 });

@@ -9,7 +9,7 @@
     <link rel="preload" as="image" href="/static/banner_bg.png">
     <link rel="preload" as="image" href="/static/logo.png" fetchpriority="high">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/css/tailwind.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -23,6 +23,10 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 
     <!-- Подключение вынесенных статических файлов с кэшированием браузера -->
+    <!-- Предварительное установление TLS/DNS соединения с бэкендом реакций -->
+    <link rel="preconnect" href="https://script.google.com" crossorigin>
+    <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
+
     <link rel="stylesheet" href="/static/css/style.css">
     <script defer src="/static/js/main.js"></script>
 
@@ -259,11 +263,6 @@
             
 
             
-                <div class="qz-metaline">
-                    
-                    1 мин. чтения
-                </div>
-            
 
             
                 <div class="qz-hero-image">
@@ -339,10 +338,16 @@
 <p><em>Ваша поддержка даёт мне возможность больше времени уделять разработке и созданию нового. Спасибо!</em></p>
             </article>
 
-            <!-- На мобильных: Backlinks внизу (если backlinks активны) -->
+            
+            <div class="mt-12 pt-4 border-t border-[var(--qz-border)] flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="arukurei">
+                    <span class="qz-heart-icon text-sm">🤍</span>
+                    <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                </button>
+            </div>
             
 
-            <!-- Блок комментариев для стандартной статьи -->
+            <!-- На мобильных: Backlinks внизу (если backlinks активны) -->
             
 
         </div> <!-- закрываем qz-card-main для стандартной статьи -->

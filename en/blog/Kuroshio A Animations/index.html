@@ -9,7 +9,7 @@
     <link rel="preload" as="image" href="/static/banner_bg.png">
     <link rel="preload" as="image" href="/static/logo.png" fetchpriority="high">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/css/tailwind.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -23,6 +23,10 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 
     <!-- Подключение вынесенных статических файлов с кэшированием браузера -->
+    <!-- Предварительное установление TLS/DNS соединения с бэкендом реакций -->
+    <link rel="preconnect" href="https://script.google.com" crossorigin>
+    <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
+
     <link rel="stylesheet" href="/static/css/style.css">
     <script defer src="/static/js/main.js"></script>
 
@@ -215,6 +219,14 @@
 
     <!-- ПРАВАЯ КОЛОНКА (Если есть виджеты с position: right) -->
     
+    <aside class="hidden xl:block absolute left-[100%] top-0 bottom-0 ml-4 w-60">
+        <div class="sticky top-6 flex flex-col gap-6 w-full max-h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar">
+            
+                
+            
+        </div>
+    </aside>
+    
 
     <!-- ВЕРХНИЕ ИНКЛЮДЫ (ДО ВЫЗОВА BODY) -->
     
@@ -223,7 +235,7 @@
     
     
         <!-- ТЕЛЕГРАМ-ПОСТ (Для отдельной страницы поста) -->
-        <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6">
+        <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6">
 
             
             <div class="px-5 pt-3 pb-1.5">
@@ -232,58 +244,30 @@
             
 
             
-            <div class="w-full overflow-hidden bg-[var(--page-bg-color)]">
-                <img src="/media/aspis.gif" alt="Cover" class="w-full aspect-video max-h-[380px] object-cover post-cover-img">
-            </div>
-            
 
             
 
             <div class="px-6 py-4 wiki-article ">
-                <p><a href="/en/search?tag=kuroshio" class="qz-tag">#kuroshio</a> <a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+                <p><span class="qz-embed-image-wrap"><img src="/media/aspis.gif" alt="aspis.gif" class="qz-embed-image"></span><br />
+<a href="/en/search?tag=kuroshio" class="qz-tag">#kuroshio</a> <a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
 Animations built on simple shapes</p>
 <p>Such a handy technique!</p>
-<p><span class="qz-embed-image-wrap"><img src="/static/soldier.gif" alt="soldier.gif" class="qz-embed-image"></span></p>
+<p><span class="qz-embed-image-wrap"><img src="/media/soldier.gif" alt="soldier.gif" class="qz-embed-image"></span></p>
             </div>
 
+            
             <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="Kuroshio A Animations">
+                <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Kuroshio A Animations">
                     <span class="qz-heart-icon text-sm">🤍</span>
                     <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
                 </button>
-                <div class="flex gap-3">
+                <div class="flex gap-3 items-center">
                     <span>1 min read</span>
                     <span>17:40</span>
                 </div>
             </div>
+            
         </article>
-
-        
-        <div id="comments-section" class="qz-card qz-card-main w-full mb-6 rounded-2xl scroll-mt-24">
-            <div class="widget-title mb-4">
-                Comments
-            </div>
-            <div id="giscus-container" class="w-full">
-                
-                <script src="https://giscus.app/client.js"
-                        data-repo="arukurei/arukurei.github.io"
-                        data-repo-id="R_kgDOUngpTQ"
-                        data-category="General"
-                        data-category-id="DIC_kwDOUngpTc4DGPSX"
-                        data-mapping="pathname"
-                        data-strict="0"
-                        data-reactions-enabled="0"
-                        data-emit-metadata="1"
-                        data-input-position="top"
-                        data-theme="dark_dimmed"
-                        data-lang="en"
-                        crossorigin="anonymous"
-                        async>
-                </script>
-                
-            </div>
-        </div>
-        
 
      <!-- конец ветвления type == 'post' -->
      <!-- конец ветвления show_body -->

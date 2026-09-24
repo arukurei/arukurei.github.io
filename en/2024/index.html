@@ -9,7 +9,7 @@
     <link rel="preload" as="image" href="/static/banner_bg.png">
     <link rel="preload" as="image" href="/static/logo.png" fetchpriority="high">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/css/tailwind.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -23,6 +23,10 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 
     <!-- Подключение вынесенных статических файлов с кэшированием браузера -->
+    <!-- Предварительное установление TLS/DNS соединения с бэкендом реакций -->
+    <link rel="preconnect" href="https://script.google.com" crossorigin>
+    <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
+
     <link rel="stylesheet" href="/static/css/style.css">
     <script defer src="/static/js/main.js"></script>
 
@@ -263,10 +267,9 @@ This site is a dragon's hoard, my digital base: here you'll find projects, my ar
 </div>
             </article>
 
-            <!-- На мобильных: Backlinks внизу (если backlinks активны) -->
             
 
-            <!-- Блок комментариев для стандартной статьи -->
+            <!-- На мобильных: Backlinks внизу (если backlinks активны) -->
             
 
         </div> <!-- закрываем qz-card-main для стандартной статьи -->
@@ -295,7 +298,7 @@ This site is a dragon's hoard, my digital base: here you'll find projects, my ar
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/New Year 2024">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -311,29 +314,31 @@ This site is a dragon's hoard, my digital base: here you'll find projects, my ar
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/en/search?tag=art" class="qz-tag">#art</a><br />
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/en/search?tag=art" class="qz-tag">#art</a><br />
 Happy almost New Year, everyone! I made a gift for my family — a drawing of Totoro. Watercolor, A4.</p>
 <p>Didn't think I'd ever post traditional art here, but it turned out well enough that I decided to share it :D</p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 min read</span>
-                            <span>11:50</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/New Year 2024">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 min read</span>
+                            <span>11:50</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/en/blog/New%20Year%202024/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Comments</span>
+                        <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -352,7 +357,7 @@ Happy almost New Year, everyone! I made a gift for my family — a drawing of To
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Continuing to Make Daicon">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -364,33 +369,35 @@ Happy almost New Year, everyone! I made a gift for my family — a drawing of To
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <div class="qz-video-embed">
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <div class="qz-video-embed">
   <iframe src="https://www.youtube-nocookie.com/embed/XVLhlCrdjvI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
 </div>
 <p><a href="/en/search?tag=daicon" class="qz-tag">#daicon</a> <a href="/en/search?tag=gamedev" class="qz-tag">#gamedev</a></p>
 <p>Hello everyone! Still working on the addon.</p>
 <p>Here's a demo of sloped surfaces. I also made a character, though there's no tileset yet))<br />
 On the organizational side, I added tags for easier navigation between topics.</p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 min read</span>
-                            <span>14:55</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Continuing to Make Daicon">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 min read</span>
+                            <span>14:55</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/en/blog/Continuing%20to%20Make%20Daicon/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Comments</span>
+                        <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -409,7 +416,7 @@ On the organizational side, I added tags for easier navigation between topics.</
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/First Gorgon Art">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -425,32 +432,34 @@ On the organizational side, I added tags for easier navigation between topics.</
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/en/search?tag=aeritheya" class="qz-tag">#aeritheya</a> <a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a> <a href="/en/search?tag=medusa" class="qz-tag">#medusa</a></p>
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/en/search?tag=aeritheya" class="qz-tag">#aeritheya</a> <a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a> <a href="/en/search?tag=medusa" class="qz-tag">#medusa</a></p>
 <p>Gorgon</p>
 <p>A character for a game I want to develop. Still mostly at the concept stage overall, but I'm already working out some technical questions and doing sprite work.</p>
 <blockquote>
 <p>I remember I ended up entering her into a Halloween event held by a pixel art community, sort of by accident.</p>
 </blockquote>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 min read</span>
-                            <span>18:40</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/First Gorgon Art">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 min read</span>
+                            <span>18:40</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/en/blog/First%20Gorgon%20Art/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Comments</span>
+                        <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -469,7 +478,7 @@ On the organizational side, I added tags for easier navigation between topics.</
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Daicon Beginnings">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -481,32 +490,34 @@ On the organizational side, I added tags for easier navigation between topics.</
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <div class="qz-video-embed">
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <div class="qz-video-embed">
   <iframe src="https://www.youtube-nocookie.com/embed/B7KmeTmmdlM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
 </div>
 <p><a href="/en/search?tag=daicon" class="qz-tag">#daicon</a>  <a href="/en/search?tag=gamedev" class="qz-tag">#gamedev</a></p>
 <p>Developing a 2.5D addon called "Daicon" for Godot <code>(・∀・)ノ</code></p>
 <p>The idea is to make life easier for developers and add three-dimensional depth to top-down 2D games. Now all of this can be done with mouse clicks right in the editor, almost without ever touching code. The demo shows a simulation with cubes, but any 3D object can be used just as easily.</p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 min read</span>
-                            <span>23:45</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Daicon Beginnings">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 min read</span>
+                            <span>23:45</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/en/blog/Daicon%20Beginnings/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Comments</span>
+                        <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -525,7 +536,7 @@ On the organizational side, I added tags for easier navigation between topics.</
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Collab Drawing with Clyde">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -541,8 +552,9 @@ On the organizational side, I added tags for easier navigation between topics.</
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a></p>
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a></p>
 <p>Collab drawing with Clyde</p>
 <p>His channel: <a href="https://t.me/clydesstuff_old">Telegram</a> (<em>@Clyde1234</em>)</p>
 <div class="qz-dialog-box" style="--char-color: #ff306c;">
@@ -556,25 +568,26 @@ On the organizational side, I added tags for easier navigation between topics.</
 </div>
   </div>
 </div>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 min read</span>
-                            <span>10:22</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Collab Drawing with Clyde">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 min read</span>
+                            <span>10:22</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/en/blog/Collab%20Drawing%20with%20Clyde/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Comments</span>
+                        <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -593,7 +606,7 @@ On the organizational side, I added tags for easier navigation between topics.</
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Collab Lospec Family Yearbook 2024">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -609,28 +622,30 @@ On the organizational side, I added tags for easier navigation between topics.</
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a></p>
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a></p>
 <p>For the "Lospec Family Yearbook 2024" collab</p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 min read</span>
-                            <span>19:02</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Collab Lospec Family Yearbook 2024">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 min read</span>
+                            <span>19:02</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/en/blog/Collab%20Lospec%20Family%20Yearbook%202024/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Comments</span>
+                        <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -649,7 +664,7 @@ On the organizational side, I added tags for easier navigation between topics.</
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Dorok&#39;s Soldier">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -665,28 +680,30 @@ On the organizational side, I added tags for easier navigation between topics.</
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a></p>
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a></p>
 <p>Dorok's Soldier</p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 min read</span>
-                            <span>00:17</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Dorok&#39;s Soldier">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 min read</span>
+                            <span>00:17</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/en/blog/Dorok&#39;s%20Soldier/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Comments</span>
+                        <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -705,7 +722,7 @@ On the organizational side, I added tags for easier navigation between topics.</
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Octobit Nausicaa&#39;s Backpack">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -721,29 +738,31 @@ On the organizational side, I added tags for easier navigation between topics.</
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a></p>
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a></p>
 <p>Octobit "Nausicaä's Backpack"</p>
 <p>First time I used dithering on this large a scale. Almost a whole month of hard work <code>-(;・ω・;)-</code></p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 min read</span>
-                            <span>22:05</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Octobit Nausicaa&#39;s Backpack">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 min read</span>
+                            <span>22:05</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/en/blog/Octobit%20Nausicaa&#39;s%20Backpack/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Comments</span>
+                        <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -755,7 +774,7 @@ On the organizational side, I added tags for easier navigation between topics.</
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Swordtember 2024">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -771,28 +790,30 @@ On the organizational side, I added tags for easier navigation between topics.</
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a></p>
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a></p>
 <p>A collection of pixel swords drawn for the "Swordtember" (Мечабрь) challenge.</p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 min read</span>
-                            <span>21:27</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Swordtember 2024">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 min read</span>
+                            <span>21:27</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/en/blog/Swordtember%202024/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Comments</span>
+                        <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -811,7 +832,7 @@ On the organizational side, I added tags for easier navigation between topics.</
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Hello, World! Or How It All Began 🚀">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -831,8 +852,9 @@ On the organizational side, I added tags for easier navigation between topics.</
                     </div>
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p>This post is the archival starting point. My Telegram channel <strong>Quasar</strong> was born on <strong>December 1st, 2024</strong>, and I consider that day the official start of my public blog.</p>
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p>This post is the archival starting point. My Telegram channel <strong>Quasar</strong> was born on <strong>December 1st, 2024</strong>, and I consider that day the official start of my public blog.</p>
 <p>All the material is now mirrored and carefully kept here, on my personal site ^^</p>
 <hr />
 <h2 id="what-is-this-blog-about">What is this blog about?</h2>
@@ -864,25 +886,26 @@ On the organizational side, I added tags for easier navigation between topics.</
 <h2 id="get-in-touch">Get in touch</h2>
 <p>All my contacts, links to <strong>GitHub</strong>, <strong>Itch.io</strong>, <strong>Steam</strong>, and all my projects and socials are on a separate page: <a href="/en/arukurei/" class="wiki-link">about me</a>.</p>
 <p>I'd love to hear your comments under the posts, along with any suggestions and constructive feedback ✨</p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 min read</span>
-                            <span>22:26</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Hello, World! Or How It All Began 🚀">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 min read</span>
+                            <span>22:26</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/en/blog/Hello,%20World!%20Or%20How%20It%20All%20Began%20%F0%9F%9A%80/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Comments</span>
+                        <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             

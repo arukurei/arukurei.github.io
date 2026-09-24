@@ -9,7 +9,7 @@
     <link rel="preload" as="image" href="/static/banner_bg.png">
     <link rel="preload" as="image" href="/static/logo.png" fetchpriority="high">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/css/tailwind.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -23,6 +23,10 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 
     <!-- Подключение вынесенных статических файлов с кэшированием браузера -->
+    <!-- Предварительное установление TLS/DNS соединения с бэкендом реакций -->
+    <link rel="preconnect" href="https://script.google.com" crossorigin>
+    <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
+
     <link rel="stylesheet" href="/static/css/style.css">
     <script defer src="/static/js/main.js"></script>
 
@@ -263,10 +267,9 @@
 </div>
             </article>
 
-            <!-- На мобильных: Backlinks внизу (если backlinks активны) -->
             
 
-            <!-- Блок комментариев для стандартной статьи -->
+            <!-- На мобильных: Backlinks внизу (если backlinks активны) -->
             
 
         </div> <!-- закрываем qz-card-main для стандартной статьи -->
@@ -295,7 +298,7 @@
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Aerith Sketches">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -311,30 +314,32 @@
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/ru/search?tag=art" class="qz-tag">#art</a> <a href="/ru/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/ru/search?tag=art" class="qz-tag">#art</a> <a href="/ru/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
 Скетчи Аэрит (Концепты вроде неплохо получились)  </p>
 <p>Постоянно чувствую самокопание, что я плохо рисую, потому не часто показываю подобное...<br />
 Энивей, еще летом решил подтянуть лор и сюжет игры, чтобы не отставал от кода и визуала, так что начал писать что-то вроде мини-вики по мифологии. Учитывая что получается довольно обьемно, думаю не лучшая идея публиковать такое в тг - сейчас у меня есть мысль, развернуть отдельный сайт для этого (вроде фандома, наверное)</p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 мин. чтения</span>
-                            <span>15:18</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Aerith Sketches">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 мин. чтения</span>
+                            <span>15:18</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/ru/blog/Aerith%20Sketches/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Комментарии</span>
+                        <span>Подробнее</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -353,7 +358,7 @@
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Earth Tiles WIP">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -369,32 +374,34 @@
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/ru/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/ru/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
 Тайлы Земли  </p>
 <p>Самое сложное для меня - рисовать тайлсеты.<br />
 Очень люблю красивое окружение, но какое же мучение его создавать. Постоянно пытаюсь сделать универсальный, потрясно выглядящий конструктор (чтоб прям картина маслом), а по итогу трачу колоссальное количество времени.  </p>
 <p>Наверное, это финальный вариант. Думаю, лучше вовремя остановиться и двигаться дальше.<br />
 Как вам?</p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 мин. чтения</span>
-                            <span>15:16</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Earth Tiles WIP">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 мин. чтения</span>
+                            <span>15:16</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/ru/blog/Earth%20Tiles%20WIP/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Комментарии</span>
+                        <span>Подробнее</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -413,7 +420,7 @@
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Code Map">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -429,8 +436,9 @@
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/ru/search?tag=gamedev" class="qz-tag">#gamedev</a><br />
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/ru/search?tag=gamedev" class="qz-tag">#gamedev</a><br />
 Просто хочу поделиться масштабом работы!  </p>
 <p>Зацените, это схема работы пошагового боевого менеджера:  </p>
 <blockquote>
@@ -438,25 +446,26 @@
 Конечно, идеального варианта я думаю не добился, но в рамках тех дизайнерских решений, которые я выбрал, этот аппарат способен на многое, очень многое... (возможно в будущем его ждут всё новые правки, но я доволен результатом в любом случае)</p>
 </blockquote>
 <p>Когда я только приступал, не думал что пошаговые игры так сложно писать: были моменты когда я явно запутывался во всех этих сигналах и вообще не понимал что там под капотом творится-то, особенно утомляла борьба с корутиной</p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 мин. чтения</span>
-                            <span>20:23</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Code Map">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 мин. чтения</span>
+                            <span>20:23</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/ru/blog/Code%20Map/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Комментарии</span>
+                        <span>Подробнее</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -475,7 +484,7 @@
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/New Soldier Design and Shooting Animation">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -491,28 +500,30 @@
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/ru/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/ru/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
 У солдат теперь немного новый дизайн и я закончил анимацию выстрела</p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 мин. чтения</span>
-                            <span>09:33</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/New Soldier Design and Shooting Animation">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 мин. чтения</span>
+                            <span>09:33</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/ru/blog/New%20Soldier%20Design%20and%20Shooting%20Animation/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Комментарии</span>
+                        <span>Подробнее</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -531,7 +542,7 @@
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Aeritheya Inventory">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -543,33 +554,35 @@
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <div class="qz-video-embed">
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <div class="qz-video-embed">
   <iframe src="https://www.youtube-nocookie.com/embed/mgDhBCoILxM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
 </div>
 <p><a href="/ru/search?tag=gamedev" class="qz-tag">#gamedev</a> <a href="/ru/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
 Инвентарь  </p>
 <p>Остается только наполнение контентом. Сделал очень хорошую систему квестов, универсальный менеджер кнопок, систему перевода. Последнюю хоть и на csv, но, внедрив туда поддержку .md, взаимодействовать с этим стало намного проще: их и парсить легко, и писать можно в обсидиан, и свои кодировки можно внедрять - одним словом великолепный формат (так например написал поддержку html ссылок - это просто прикольно)  </p>
 <p>Немного помучался с graph_view: пробовал разные идеи, но в итоге лучшей оказалось масштабирование и перемещение в самой сцене. Возможно потом добавлю это как отдельную ноду в Медузу, в любом случае физику и инпут я изначально делал с учётом всяких трансформаций графа и это работает отлично.</p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 мин. чтения</span>
-                            <span>17:30</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Aeritheya Inventory">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 мин. чтения</span>
+                            <span>17:30</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/ru/blog/Aeritheya%20Inventory/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Комментарии</span>
+                        <span>Подробнее</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -588,7 +601,7 @@
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Sunset Shimmer">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -604,32 +617,34 @@
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/ru/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/ru/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
 Сансет Шиммер  </p>
 <blockquote>
 <p>Нарисовал арт для ивента https://t.me/Pixelshiz<br />
 Задача нарисовать любимого пони. Долго не раздумывал и за 2 дня сделал эту работу</p>
 </blockquote>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 мин. чтения</span>
-                            <span>14:59</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Sunset Shimmer">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 мин. чтения</span>
+                            <span>14:59</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/ru/blog/Sunset%20Shimmer/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Комментарии</span>
+                        <span>Подробнее</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -648,7 +663,7 @@
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Roman Interceptors (concept)">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -664,8 +679,9 @@
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/ru/search?tag=art" class="qz-tag">#art</a> <a href="/ru/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/ru/search?tag=art" class="qz-tag">#art</a> <a href="/ru/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
 Римские перехватчики (концепт)  </p>
 <p>Пишу сценарий, рисую окружение, и, кажется, нашел именно тот стиль, что мне по душе. На текущий момент история делится на пролог и три акта. Работы еще предстоит много но со временем наработки должны сложиться в единую историю.  </p>
 <blockquote>
@@ -673,25 +689,26 @@
 <p>Бывший пантеон - злодеи, так как его состав является тайным мировым правительством и столетиями ведет поиски древнего артефакта, который вернет их могущество.  </p>
 <p>Сюжет начинается под конец поисков, Земноморье стоит на пороге мировой войны и главные герои должны противостоять безумцам...</p>
 </blockquote>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 мин. чтения</span>
-                            <span>14:41</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Roman Interceptors (concept)">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 мин. чтения</span>
+                            <span>14:41</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/ru/blog/Roman%20Interceptors%20(concept)/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Комментарии</span>
+                        <span>Подробнее</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -710,7 +727,7 @@
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Medusa Plugin Release">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -726,8 +743,9 @@
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/ru/search?tag=gamedev" class="qz-tag">#gamedev</a><br />
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/ru/search?tag=gamedev" class="qz-tag">#gamedev</a><br />
 Я релизнул новый плагин!  </p>
 <blockquote>
 <p>Medusa — это высокопроизводительный фреймворк Godot для создания динамических UI-графов, деревьев навыков и узловых сетей.</p>
@@ -742,25 +760,26 @@
 <li><a href="https://youtu.be/UXqZ6TzPYGg?si=2EwO5Lv_4vy9Y8a2">YouTube Trailer</a>  </li>
 </ul>
 <p>P.S.: Я, конечно, не мастер монтажа но ролик вроде получился ничего :)</p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 мин. чтения</span>
-                            <span>21:34</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Medusa Plugin Release">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 мин. чтения</span>
+                            <span>21:34</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/ru/blog/Medusa%20Plugin%20Release/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Комментарии</span>
+                        <span>Подробнее</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             

@@ -9,7 +9,7 @@
     <link rel="preload" as="image" href="/static/banner_bg.png">
     <link rel="preload" as="image" href="/static/logo.png" fetchpriority="high">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/css/tailwind.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -23,6 +23,10 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 
     <!-- Подключение вынесенных статических файлов с кэшированием браузера -->
+    <!-- Предварительное установление TLS/DNS соединения с бэкендом реакций -->
+    <link rel="preconnect" href="https://script.google.com" crossorigin>
+    <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
+
     <link rel="stylesheet" href="/static/css/style.css">
     <script defer src="/static/js/main.js"></script>
 
@@ -263,10 +267,9 @@ This site is a dragon's hoard, my digital base: here you'll find projects, my ar
 </div>
             </article>
 
-            <!-- На мобильных: Backlinks внизу (если backlinks активны) -->
             
 
-            <!-- Блок комментариев для стандартной статьи -->
+            <!-- На мобильных: Backlinks внизу (если backlinks активны) -->
             
 
         </div> <!-- закрываем qz-card-main для стандартной статьи -->
@@ -295,7 +298,7 @@ This site is a dragon's hoard, my digital base: here you'll find projects, my ar
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Aerith Sketches">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -311,30 +314,32 @@ This site is a dragon's hoard, my digital base: here you'll find projects, my ar
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/en/search?tag=art" class="qz-tag">#art</a> <a href="/en/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/en/search?tag=art" class="qz-tag">#art</a> <a href="/en/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
 Aerith sketches (the concepts turned out decent, I think)</p>
 <p>I constantly second-guess myself, feeling like I draw badly, so I don't often show stuff like this...</p>
 <p>Anyway, back in summer I decided to catch the lore and story up so they wouldn't lag behind the code and the visuals, so I started writing something like a mini-wiki on the mythology. Since it's turning out pretty extensive, I don't think posting it to Telegram is the best idea - right now I'm considering setting up a separate site for it (kind of like a fandom wiki, I guess)</p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 min read</span>
-                            <span>15:18</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Aerith Sketches">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 min read</span>
+                            <span>15:18</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/en/blog/Aerith%20Sketches/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Comments</span>
+                        <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -353,7 +358,7 @@ Aerith sketches (the concepts turned out decent, I think)</p>
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Earth Tiles WIP">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -369,31 +374,33 @@ Aerith sketches (the concepts turned out decent, I think)</p>
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
 Earth Tiles</p>
 <p>The hardest part for me is drawing tilesets. I love a beautiful environment, but making one is such a pain. I keep trying to build a universal, gorgeous-looking kit (like an actual painting), and every time I end up burning an insane amount of time on it.</p>
 <p>This is probably the final version. I think it's better to stop in time and move on.<br />
 What do you think?</p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 min read</span>
-                            <span>15:16</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Earth Tiles WIP">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 min read</span>
+                            <span>15:16</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/en/blog/Earth%20Tiles%20WIP/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Comments</span>
+                        <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -412,7 +419,7 @@ What do you think?</p>
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Code Map">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -428,8 +435,9 @@ What do you think?</p>
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/en/search?tag=gamedev" class="qz-tag">#gamedev</a><br />
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/en/search?tag=gamedev" class="qz-tag">#gamedev</a><br />
 Just want to share the scale of this work!</p>
 <p>Check it out, this is the schematic for my turn-based battle manager:</p>
 <blockquote>
@@ -437,25 +445,26 @@ Just want to share the scale of this work!</p>
 <p>I don't think I reached the perfect solution, but within the design choices I made, this thing is capable of a lot — a whole lot... (there might be more revisions ahead in the future, but I'm happy with the result either way)</p>
 </blockquote>
 <p>When I first started, I had no idea turn-based games were this hard to write: there were moments where I completely got lost in all the signals and had no clue what was going on under the hood — the fight with coroutines was especially exhausting.</p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 min read</span>
-                            <span>20:23</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Code Map">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 min read</span>
+                            <span>20:23</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/en/blog/Code%20Map/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Comments</span>
+                        <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -474,7 +483,7 @@ Just want to share the scale of this work!</p>
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/New Soldier Design and Shooting Animation">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -490,28 +499,30 @@ Just want to share the scale of this work!</p>
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
 The soldiers now have a slightly new design, and I finished the shooting animation</p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 min read</span>
-                            <span>09:33</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/New Soldier Design and Shooting Animation">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 min read</span>
+                            <span>09:33</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/en/blog/New%20Soldier%20Design%20and%20Shooting%20Animation/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Comments</span>
+                        <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -530,7 +541,7 @@ The soldiers now have a slightly new design, and I finished the shooting animati
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Aeritheya Inventory">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -542,33 +553,35 @@ The soldiers now have a slightly new design, and I finished the shooting animati
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <div class="qz-video-embed">
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <div class="qz-video-embed">
   <iframe src="https://www.youtube-nocookie.com/embed/mgDhBCoILxM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
 </div>
 <p><a href="/en/search?tag=gamedev" class="qz-tag">#gamedev</a> <a href="/en/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
 Inventory</p>
 <p>All that's left now is filling it with content. I built a really solid quest system, a universal button manager, and a translation system. The last one is CSV-based, but after adding .md support to it, working with it became much easier: it's easy to parse, you can write it in Obsidian, and you can plug in your own encodings - in short, a great format (for example, I added support for HTML links this way, which is just plain fun).</p>
 <p>Struggled a bit with graph_view: tried a bunch of different ideas, but in the end scaling and moving within the scene itself turned out to be the best approach. I might add it as a separate node in Medusa later - either way, I originally built the physics and input with graph transformations in mind, so it works great.</p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 min read</span>
-                            <span>17:30</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Aeritheya Inventory">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 min read</span>
+                            <span>17:30</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/en/blog/Aeritheya%20Inventory/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Comments</span>
+                        <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -587,7 +600,7 @@ Inventory</p>
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Sunset Shimmer">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -603,32 +616,34 @@ Inventory</p>
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/en/search?tag=pixel_art" class="qz-tag">#pixel_art</a><br />
 Sunset Shimmer</p>
 <blockquote>
 <p>Drew this for an event at https://t.me/Pixelshiz<br />
 The task was to draw your favorite pony. I didn't think too long and finished this piece in 2 days.</p>
 </blockquote>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 min read</span>
-                            <span>14:59</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Sunset Shimmer">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 min read</span>
+                            <span>14:59</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/en/blog/Sunset%20Shimmer/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Comments</span>
+                        <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -647,7 +662,7 @@ The task was to draw your favorite pony. I didn't think too long and finished th
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Roman Interceptors (concept)">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -663,8 +678,9 @@ The task was to draw your favorite pony. I didn't think too long and finished th
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/en/search?tag=art" class="qz-tag">#art</a> <a href="/en/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/en/search?tag=art" class="qz-tag">#art</a> <a href="/en/search?tag=aeritheya" class="qz-tag">#aeritheya</a><br />
 Roman Interceptors (concept)</p>
 <p>Writing the script, drawing the environment, and I think I've finally found the style that really speaks to me. Right now the story is split into a prologue and three acts. There's still a lot of work ahead, but over time the pieces should come together into one story.</p>
 <blockquote>
@@ -672,25 +688,26 @@ Roman Interceptors (concept)</p>
 <p>The former pantheon are the villains here, since together they make up a secret world government that has spent centuries searching for an ancient artifact that would restore their power.</p>
 <p>The story picks up near the end of that search: the Mediterranean world is on the brink of a world war, and the main characters have to stand against the madmen...</p>
 </blockquote>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 min read</span>
-                            <span>14:41</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Roman Interceptors (concept)">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 min read</span>
+                            <span>14:41</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/en/blog/Roman%20Interceptors%20(concept)/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Comments</span>
+                        <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             
@@ -709,7 +726,7 @@ Roman Interceptors (concept)</p>
 
             
                 <!-- ТЕЛЕГРАМ-ПОСТ В ЛЕНТЕ -->
-                <article class="qz-card w-full overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="">
+                <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6" id="blog/Medusa Plugin Release">
 
                     
                     <div class="px-5 pt-3 pb-1.5">
@@ -725,8 +742,9 @@ Roman Interceptors (concept)</p>
 
                     
 
-                    <div class="px-6 py-4 wiki-article ">
-                        <p><a href="/en/search?tag=gamedev" class="qz-tag">#gamedev</a><br />
+                    <div class="qz-feed-clamp">
+                        <div class="px-6 py-4 wiki-article ">
+                            <p><a href="/en/search?tag=gamedev" class="qz-tag">#gamedev</a><br />
 I released a new plugin!</p>
 <blockquote>
 <p>Medusa is a high-performance Godot framework for building dynamic UI graphs, skill trees, and node networks.</p>
@@ -741,25 +759,26 @@ I released a new plugin!</p>
 <li><a href="https://youtu.be/UXqZ6TzPYGg?si=2EwO5Lv_4vy9Y8a2">YouTube Trailer</a></li>
 </ul>
 <p>P.S.: I'm definitely no editing wizard, but I think the video turned out alright :)</p>
-                    </div>
-
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3">
-                            <span>1 min read</span>
-                            <span>21:34</span>
                         </div>
                     </div>
 
                     
+                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Medusa Plugin Release">
+                            <span class="qz-heart-icon text-sm">🤍</span>
+                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                        </button>
+                        <div class="flex gap-3 items-center">
+                            <span>1 min read</span>
+                            <span>21:34</span>
+                        </div>
+                    </div>
+                    
+
                     <a href="/en/blog/Medusa%20Plugin%20Release/" class="border-t border-[var(--qz-border)] bg-[var(--qz-surface)] hover:bg-[#2c3038] px-5 py-3 transition-colors flex justify-between items-center text-sm font-bold text-[var(--qz-text)]">
-                        <span>Comments</span>
+                        <span>Read more</span>
                         <span class="text-[#9a9ca6] text-2xl mr-2 leading-none ">›</span>
                     </a>
-                    
                 </article>
 
             

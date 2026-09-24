@@ -690,6 +690,23 @@ details.qz-callout[open] summary.qz-callout-title::after {
     100% { transform: scale(1); }
 }
 
+.qz-feed-clamp {
+    max-height: 420px;
+    overflow: hidden;
+    position: relative;
+}
+
+.qz-feed-clamp.has-overflow::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, rgba(36, 38, 42, 0) 0%, var(--qz-bg) 95%);
+    pointer-events: none;
+}
+
 .cal-tab-btn {
     padding: 4px 12px;
     font-size: 0.75rem;
