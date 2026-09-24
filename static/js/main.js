@@ -1,7 +1,18 @@
-// Обработчики глобальных событий окна регистрируются один раз
-let _lightboxInitialized = false;
+document.addEventListener('DOMContentLoaded', () => {
+    // Предзагрузка страниц по наведению курсора (мгновенный клик штатным браузерным кэшем)
+    document.addEventListener('mouseover', (e) => {
+        const a = e.target.closest('a');
+        if (a && a.origin === window.location.origin && !a.hash) {
+            const href = a.getAttribute('href');
+            if (href && !href.startsWith('/media/') && !href.startsWith('/static/')) {
+                const link = document.createElement('link');
+                link.rel = 'prefetch';
+                link.href = a.href;
+                document.head.appendChild(link);
+            }
+        }
+    }, { passive: true });
 
-window.onPageLoad(() => {
     // Подсветка блоков кода через highlight.js на новой странице
     if (typeof hljs !== 'undefined') {
         hljs.highlightAll();
@@ -26,10 +37,7 @@ window.onPageLoad(() => {
     });
 
     // Полноэкранный просмотр изображений (Lightbox с делегированием событий)
-    if (!_lightboxInitialized) {
-        _lightboxInitialized = true;
-
-        const openLightbox = (src, alt) => {
+    const openLightbox = (src, alt) => {
             const lightbox = document.getElementById('qz-lightbox');
             const lightboxImg = document.getElementById('qz-lightbox-img');
             if (!src || !lightbox || !lightboxImg) return;
@@ -82,7 +90,6 @@ window.onPageLoad(() => {
                 closeLightbox();
             }
         });
-    }
 
     // Кнопка копирования содержимого блоков кода
     document.querySelectorAll('.wiki-article pre').forEach((pre) => {

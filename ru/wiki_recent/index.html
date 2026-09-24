@@ -28,8 +28,17 @@
     <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
 
     <link rel="stylesheet" href="/static/css/style.css">
-    <script defer src="/static/js/router.js"></script>
     <script defer src="/static/js/main.js"></script>
+
+    <!-- Темная подложка html без белых вспышек + прозрачный body, чтобы не перекрывать body::before -->
+    <style>
+        html {
+            background-color: #17191c;
+        }
+        body {
+            background-color: transparent !important;
+        }
+    </style>
 
     <!-- Динамические Jinja-переменные темы и фона страниц -->
     <style id="site-page-bg">
@@ -312,7 +321,7 @@
 </style>
 
 <script>
-window.onPageLoad(() => {
+document.addEventListener('DOMContentLoaded', () => {
     const tocLinks = document.querySelectorAll('.toc-container a');
     if (tocLinks.length === 0) return;
 
@@ -375,7 +384,7 @@ window.onPageLoad(() => {
                     e.preventDefault();
                     isClickScrolling = true;
                     targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    history.pushState(null, null, href);
+                    history.replaceState(null, null, href);
                 }
             }
 

@@ -30,8 +30,17 @@
     <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
 
     <link rel="stylesheet" href="/static/css/style.css">
-    <script defer src="/static/js/router.js"></script>
     <script defer src="/static/js/main.js"></script>
+
+    <!-- Темная подложка html без белых вспышек + прозрачный body, чтобы не перекрывать body::before -->
+    <style>
+        html {
+            background-color: #17191c;
+        }
+        body {
+            background-color: transparent !important;
+        }
+    </style>
 
     <!-- Динамические Jinja-переменные темы и фона страниц -->
     <style id="site-page-bg">
@@ -2947,7 +2956,7 @@
 </div>
 
 <script>
-window.onPageLoad(() => {
+document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('retro-search-input');
     const activeTagsBar = document.getElementById('active-tags-bar');
     if (!searchInput) return;
