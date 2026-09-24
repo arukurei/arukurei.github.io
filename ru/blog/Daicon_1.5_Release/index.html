@@ -235,7 +235,7 @@
     <!-- ЦЕНТРАЛЬНАЯ КАРТОЧКА -->
     
     
-        <!-- ТЕЛЕГРАМ-ПОСТ (Для отдельной страницы поста) -->
+        <!-- ТЕЛЕГРАМ-ПОСТ -->
         <article class="qz-card w-full max-w-2xl mx-auto overflow-hidden flex flex-col rounded-[1.33rem] shadow-[0_4px_12px_rgba(0,0,0,0.15)] mb-6">
 
             
@@ -273,13 +273,13 @@ Daicon 1.5 Release!!!  </p>
             
         </article>
 
-     <!-- конец ветвления type == 'post' -->
-     <!-- конец ветвления show_body -->
-
-    <!-- ЛЕНТА БЛОГА (АКТИВНА ТОЛЬКО ПРИ type: blog) -->
+    
     
 
-    <!-- НИЖНИЕ ИНКЛЮДЫ (ПОСЛЕ BODY И БЛОГА, КАК ФУТЕР) -->
+    <!-- ЛЕНТА БЛОГА -->
+    
+
+    <!-- НИЖНИЕ ИНКЛЮДЫ -->
     
 
 </div>
@@ -287,12 +287,12 @@ Daicon 1.5 Release!!!  </p>
 <style>
     .custom-scrollbar::-webkit-scrollbar { width: 4px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--qz-border); border-radius: 4px; }
-    .custom-scrollbar:hover::-webkit-scrollbar-thumb { background: var(--qz-text-muted); }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--qz-border, #3a3b3f); border-radius: 4px; }
+    .custom-scrollbar:hover::-webkit-scrollbar-thumb { background: var(--qz-text-muted, #9a9ca6); }
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+window.onPageLoad(() => {
     const tocLinks = document.querySelectorAll('.toc-container a');
     if (tocLinks.length === 0) return;
 
@@ -373,7 +373,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateActiveToc();
 
-    // Мгновенный переход к якорям без задержки и без плавности
     if (window.location.hash) {
         const rawHash = window.location.hash.substring(1);
         let hashId = decodeURIComponent(rawHash);

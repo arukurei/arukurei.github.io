@@ -237,11 +237,15 @@
     </div>
 
     <!-- ПОЛЕ ВВОДА ПОИСКА -->
-    <div class="w-full mb-5">
+    <div class="w-full mb-3">
         <input type="text" id="retro-search-input"
-               class="w-full bg-[var(--qz-bg)] border-2 border-[var(--qz-border)] rounded-2xl px-6 py-4 text-base md:text-lg font-bold font-mono text-[var(--qz-text)] placeholder:text-[var(--qz-text-muted)] placeholder:opacity-50 outline-none focus:border-[var(--qz-accent)] transition-colors shadow-[0_4px_14px_rgba(0,0,0,0.18)]"
-               placeholder="🐪 поиск"
+               style="background-color: var(--qz-bg); color: var(--qz-text);"
+               class="w-full border-2 border-[var(--qz-border)] rounded-2xl px-6 py-4 text-base md:text-lg font-bold font-mono placeholder:text-[var(--qz-text-muted)] placeholder:opacity-50 outline-none focus:border-[var(--qz-accent)] transition-colors shadow-[0_4px_14px_rgba(0,0,0,0.18)]"
+               placeholder="🐪 поиск (например: #post #обзор заметка)"
                autocomplete="off" spellcheck="false">
+
+        <!-- Контейнер распознанных активных тегов -->
+        <div id="active-tags-bar" class="flex flex-wrap gap-1.5 mt-2 px-2 min-h-[24px]"></div>
     </div>
 
     <!-- РАЗДЕЛИТЕЛЬ RESULTS -->
@@ -257,7 +261,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Aerith_Sketches/"
                      data-title="aerith sketches"
+                     data-description=""
                      data-date="2026-09-06 15:18:00"
+                     data-type="post"
                      data-tags="art,aeritheya"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -268,23 +274,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=aeritheya"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.stopPropagation(); window.addSearchTag('aeritheya');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #aeritheya
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -302,7 +313,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Aeritheya_Inventory/"
                      data-title="aeritheya inventory"
+                     data-description=""
                      data-date="2026-08-19 17:30:00"
+                     data-type="post"
                      data-tags="old_post,gamedev,aeritheya"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -313,29 +326,35 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=gamedev"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="gamedev"
+                                            onclick="event.stopPropagation(); window.addSearchTag('gamedev');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #gamedev
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=aeritheya"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.stopPropagation(); window.addSearchTag('aeritheya');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #aeritheya
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -353,7 +372,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Animations_for_Aerith/"
                      data-title="animations for aerith"
+                     data-description=""
                      data-date="2025-09-05 19:19:00"
+                     data-type="post"
                      data-tags="medusa,old_post,pixel_art,aeritheya"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -364,35 +385,42 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=medusa"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="medusa"
+                                            onclick="event.stopPropagation(); window.addSearchTag('medusa');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #medusa
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=aeritheya"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.stopPropagation(); window.addSearchTag('aeritheya');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #aeritheya
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -410,7 +438,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Aspis_Design/"
                      data-title="aspis design"
+                     data-description=""
                      data-date="2025-01-31 19:20:00"
+                     data-type="post"
                      data-tags="old_post,pixel_art,medusa,aeritheya"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -421,35 +451,42 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=medusa"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="medusa"
+                                            onclick="event.stopPropagation(); window.addSearchTag('medusa');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #medusa
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=aeritheya"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.stopPropagation(); window.addSearchTag('aeritheya');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #aeritheya
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -467,7 +504,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Battle_with_an_Elf/"
                      data-title="battle with an elf"
+                     data-description=""
                      data-date="2025-07-10 11:06:00"
+                     data-type="post"
                      data-tags="pixel_art,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -478,23 +517,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -512,7 +556,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Card_Event_Aspis/"
                      data-title="card event aspis"
+                     data-description=""
                      data-date="2025-03-11 21:14:00"
+                     data-type="post"
                      data-tags="old_post,pixel_art,medusa,aeritheya"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -523,35 +569,42 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=medusa"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="medusa"
+                                            onclick="event.stopPropagation(); window.addSearchTag('medusa');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #medusa
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=aeritheya"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.stopPropagation(); window.addSearchTag('aeritheya');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #aeritheya
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -569,7 +622,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Channel_Birthday_2025/"
                      data-title="channel birthday 2025"
+                     data-description=""
                      data-date="2025-12-01 23:59:00"
+                     data-type="post"
                      data-tags="aeritheya,pixel_art,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -580,29 +635,35 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=aeritheya"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.stopPropagation(); window.addSearchTag('aeritheya');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #aeritheya
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -620,7 +681,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Code_Map/"
                      data-title="code map"
+                     data-description=""
                      data-date="2026-08-22 20:23:00"
+                     data-type="post"
                      data-tags="pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -631,17 +694,21 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -659,7 +726,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Collab_Drawing_with_Clyde/"
                      data-title="collab drawing with clyde"
+                     data-description=""
                      data-date="2024-12-07 10:22:00"
+                     data-type="post"
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -670,23 +739,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -704,7 +778,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Collab_Lospec_Family_Yearbook_2024/"
                      data-title="collab lospec family yearbook 2024"
+                     data-description=""
                      data-date="2024-12-06 19:02:00"
+                     data-type="post"
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -715,23 +791,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -749,7 +830,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Continuing_to_Make_Daicon/"
                      data-title="continuing to make daicon"
+                     data-description=""
                      data-date="2024-12-28 14:55:00"
+                     data-type="post"
                      data-tags="daicon,gamedev,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -760,29 +843,35 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=daicon"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="daicon"
+                                            onclick="event.stopPropagation(); window.addSearchTag('daicon');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #daicon
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=gamedev"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="gamedev"
+                                            onclick="event.stopPropagation(); window.addSearchTag('gamedev');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #gamedev
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -800,7 +889,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Continuing_to_Make_Kuroshio_2/"
                      data-title="continuing to make kuroshio 2"
+                     data-description=""
                      data-date="2025-06-29 14:35:00"
+                     data-type="post"
                      data-tags="kuroshio,old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -811,29 +902,35 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=kuroshio"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="kuroshio"
+                                            onclick="event.stopPropagation(); window.addSearchTag('kuroshio');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #kuroshio
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -851,7 +948,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Continuing_to_Make_Kuroshio/"
                      data-title="continuing to make kuroshio"
+                     data-description=""
                      data-date="2025-06-03 18:25:00"
+                     data-type="post"
                      data-tags="old_post,pixel_art,kuroshio"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -862,29 +961,35 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=kuroshio"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="kuroshio"
+                                            onclick="event.stopPropagation(); window.addSearchTag('kuroshio');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #kuroshio
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -902,7 +1007,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Daicon_1.5_Release/"
                      data-title="daicon 1.5 release"
+                     data-description=""
                      data-date="2025-08-22 21:00:00"
+                     data-type="post"
                      data-tags="daicon,gamedev,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -913,29 +1020,35 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=daicon"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="daicon"
+                                            onclick="event.stopPropagation(); window.addSearchTag('daicon');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #daicon
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=gamedev"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="gamedev"
+                                            onclick="event.stopPropagation(); window.addSearchTag('gamedev');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #gamedev
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -953,7 +1066,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Daicon_Beginnings/"
                      data-title="daicon beginnings"
+                     data-description=""
                      data-date="2024-12-12 23:45:00"
+                     data-type="post"
                      data-tags="daicon,old_post,gamedev"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -964,29 +1079,35 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=daicon"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="daicon"
+                                            onclick="event.stopPropagation(); window.addSearchTag('daicon');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #daicon
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=gamedev"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="gamedev"
+                                            onclick="event.stopPropagation(); window.addSearchTag('gamedev');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #gamedev
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1004,7 +1125,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Daicon_Beta/"
                      data-title="daicon beta"
+                     data-description=""
                      data-date="2025-01-12 13:46:00"
+                     data-type="post"
                      data-tags="daicon,pixel_art,old_post,gamedev"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1015,35 +1138,42 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=daicon"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="daicon"
+                                            onclick="event.stopPropagation(); window.addSearchTag('daicon');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #daicon
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=gamedev"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="gamedev"
+                                            onclick="event.stopPropagation(); window.addSearchTag('gamedev');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #gamedev
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1061,7 +1191,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Daicon_Docs/"
                      data-title="daicon docs"
+                     data-description=""
                      data-date="2025-02-14 21:45:00"
+                     data-type="post"
                      data-tags="daicon,gamedev"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1072,23 +1204,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=daicon"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="daicon"
+                                            onclick="event.stopPropagation(); window.addSearchTag('daicon');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #daicon
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=gamedev"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="gamedev"
+                                            onclick="event.stopPropagation(); window.addSearchTag('gamedev');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #gamedev
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1106,7 +1243,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Daicon_Release_0.5/"
                      data-title="daicon release 0.5"
+                     data-description=""
                      data-date="2025-03-05 00:05:00"
+                     data-type="post"
                      data-tags="gamedev,daicon,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1117,29 +1256,35 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=gamedev"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="gamedev"
+                                            onclick="event.stopPropagation(); window.addSearchTag('gamedev');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #gamedev
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=daicon"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="daicon"
+                                            onclick="event.stopPropagation(); window.addSearchTag('daicon');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #daicon
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1157,7 +1302,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Daicon_Release_1.0/"
                      data-title="daicon release 1.0"
+                     data-description=""
                      data-date="2025-03-07 16:40:00"
+                     data-type="post"
                      data-tags="gamedev,daicon,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1168,29 +1315,35 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=gamedev"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="gamedev"
+                                            onclick="event.stopPropagation(); window.addSearchTag('gamedev');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #gamedev
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=daicon"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="daicon"
+                                            onclick="event.stopPropagation(); window.addSearchTag('daicon');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #daicon
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1208,7 +1361,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Daicon_Rigid_Demo/"
                      data-title="daicon rigid demo"
+                     data-description=""
                      data-date="2025-04-20 17:13:00"
+                     data-type="post"
                      data-tags="daicon,gamedev"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1219,23 +1374,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=daicon"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="daicon"
+                                            onclick="event.stopPropagation(); window.addSearchTag('daicon');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #daicon
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=gamedev"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="gamedev"
+                                            onclick="event.stopPropagation(); window.addSearchTag('gamedev');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #gamedev
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1253,7 +1413,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Dorok&#39;s_Soldier/"
                      data-title="dorok&#39;s soldier"
+                     data-description=""
                      data-date="2024-12-05 00:17:00"
+                     data-type="post"
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1264,23 +1426,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1298,7 +1465,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Earth_Tiles_WIP/"
                      data-title="earth tiles wip"
+                     data-description=""
                      data-date="2026-09-02 15:16:00"
+                     data-type="post"
                      data-tags="pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1309,17 +1478,21 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1337,7 +1510,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/First_Gorgon_Art/"
                      data-title="first gorgon art"
+                     data-description=""
                      data-date="2024-12-18 18:40:00"
+                     data-type="post"
                      data-tags="aeritheya,pixel_art,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1348,29 +1523,35 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=aeritheya"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.stopPropagation(); window.addSearchTag('aeritheya');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #aeritheya
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1388,7 +1569,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/First_Lore_of_Aeritheya/"
                      data-title="first lore of aeritheya"
+                     data-description=""
                      data-date="2025-07-25 19:56:00"
+                     data-type="post"
                      data-tags="pixel_art,old_post,aeritheya"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1399,29 +1582,35 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=aeritheya"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.stopPropagation(); window.addSearchTag('aeritheya');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #aeritheya
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1439,7 +1628,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Hangar_Zero/"
                      data-title="hangar zero"
+                     data-description=""
                      data-date="2025-02-28 20:38:00"
+                     data-type="post"
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1450,23 +1641,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1484,7 +1680,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Horse/"
                      data-title="horse"
+                     data-description=""
                      data-date="2025-04-14 09:00:00"
+                     data-type="post"
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1495,23 +1693,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1529,7 +1732,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Kuroshio_A_Animations/"
                      data-title="kuroshio a animations"
+                     data-description=""
                      data-date="2025-04-05 17:40:00"
+                     data-type="post"
                      data-tags="pixel_art,old_post,kuroshio"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1540,29 +1745,35 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=kuroshio"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="kuroshio"
+                                            onclick="event.stopPropagation(); window.addSearchTag('kuroshio');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #kuroshio
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1580,7 +1791,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Kuroshio_Template_Publication/"
                      data-title="kuroshio template publication"
+                     data-description=""
                      data-date="2025-01-28 19:12:00"
+                     data-type="post"
                      data-tags="kuroshio,old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1591,29 +1804,35 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=kuroshio"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="kuroshio"
+                                            onclick="event.stopPropagation(); window.addSearchTag('kuroshio');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #kuroshio
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1631,7 +1850,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Kuroshio_Templates_Release/"
                      data-title="kuroshio templates release"
+                     data-description=""
                      data-date="2025-06-15 19:55:00"
+                     data-type="post"
                      data-tags="pixel_art,old_post,kuroshio"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1642,29 +1863,35 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=kuroshio"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="kuroshio"
+                                            onclick="event.stopPropagation(); window.addSearchTag('kuroshio');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #kuroshio
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1682,7 +1909,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Map_of_the_World_of_Aeritheya/"
                      data-title="map of the world of aeritheya"
+                     data-description=""
                      data-date="2025-06-26 15:26:00"
+                     data-type="post"
                      data-tags="pixel_art,aeritheya,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1693,29 +1922,35 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=aeritheya"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.stopPropagation(); window.addSearchTag('aeritheya');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #aeritheya
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1733,7 +1968,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Medusa_Plugin_Release/"
                      data-title="medusa plugin release"
+                     data-description=""
                      data-date="2026-03-14 21:34:00"
+                     data-type="post"
                      data-tags="old_post,gamedev"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1744,23 +1981,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=gamedev"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="gamedev"
+                                            onclick="event.stopPropagation(); window.addSearchTag('gamedev');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #gamedev
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1778,7 +2020,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Mitsubishi_Zero/"
                      data-title="mitsubishi zero"
+                     data-description=""
                      data-date="2025-02-09 11:07:00"
+                     data-type="post"
                      data-tags="pixel_art,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1789,23 +2033,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1823,7 +2072,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/My_Birthday_2025/"
                      data-title="my birthday 2025"
+                     data-description=""
                      data-date="2025-06-01 06:57:00"
+                     data-type="post"
                      data-tags="pixel_art,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1834,23 +2085,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1868,7 +2124,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/NeoRome_Poster/"
                      data-title="neorome poster"
+                     data-description=""
                      data-date="2025-09-14 14:56:00"
+                     data-type="post"
                      data-tags="old_post,pixel_art,aeritheya"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1879,29 +2137,35 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=aeritheya"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.stopPropagation(); window.addSearchTag('aeritheya');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #aeritheya
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1919,7 +2183,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/New_Medusa_Design/"
                      data-title="new medusa design"
+                     data-description=""
                      data-date="2025-05-31 08:05:00"
+                     data-type="post"
                      data-tags="medusa,aeritheya,pixel_art,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1930,35 +2196,42 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=medusa"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="medusa"
+                                            onclick="event.stopPropagation(); window.addSearchTag('medusa');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #medusa
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=aeritheya"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.stopPropagation(); window.addSearchTag('aeritheya');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #aeritheya
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -1976,7 +2249,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/New_Soldier_Design_and_Shooting_Animation/"
                      data-title="new soldier design and shooting animation"
+                     data-description=""
                      data-date="2026-08-21 09:33:00"
+                     data-type="post"
                      data-tags="pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -1987,17 +2262,21 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -2015,7 +2294,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/New_Year_2024/"
                      data-title="new year 2024"
+                     data-description=""
                      data-date="2024-12-31 11:50:00"
+                     data-type="post"
                      data-tags="old_post,art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -2026,23 +2307,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #art
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -2060,7 +2346,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Octobit_Nausicaa&#39;s_Backpack/"
                      data-title="octobit nausicaa&#39;s backpack"
+                     data-description=""
                      data-date="2024-12-02 22:05:00"
+                     data-type="post"
                      data-tags="pixel_art,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -2071,23 +2359,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -2105,7 +2398,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Peter_Quill/"
                      data-title="peter quill"
+                     data-description=""
                      data-date="2025-08-04 08:52:00"
+                     data-type="post"
                      data-tags="pixel_art,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -2116,23 +2411,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -2150,7 +2450,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Portraits_of_the_Little_Troublemakers/"
                      data-title="portraits of the little troublemakers"
+                     data-description=""
                      data-date="2025-12-25 18:20:00"
+                     data-type="post"
                      data-tags="pixel_art,aeritheya,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -2161,29 +2463,35 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=aeritheya"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.stopPropagation(); window.addSearchTag('aeritheya');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #aeritheya
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -2201,7 +2509,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Robot_March_2025/"
                      data-title="robot march 2025"
+                     data-description=""
                      data-date="2025-03-23 14:44:00"
+                     data-type="post"
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -2212,23 +2522,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -2246,7 +2561,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Roman_Interceptors_(concept)/"
                      data-title="roman interceptors (concept)"
+                     data-description=""
                      data-date="2026-03-21 14:41:00"
+                     data-type="post"
                      data-tags="art,aeritheya,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -2257,29 +2574,35 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=aeritheya"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.stopPropagation(); window.addSearchTag('aeritheya');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #aeritheya
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -2297,7 +2620,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Slowly_Making_Daicon_1.5/"
                      data-title="slowly making daicon 1.5"
+                     data-description=""
                      data-date="2025-08-05 13:46:00"
+                     data-type="post"
                      data-tags="daicon,gamedev,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -2308,29 +2633,35 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=daicon"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="daicon"
+                                            onclick="event.stopPropagation(); window.addSearchTag('daicon');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #daicon
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=gamedev"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="gamedev"
+                                            onclick="event.stopPropagation(); window.addSearchTag('gamedev');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #gamedev
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -2348,7 +2679,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Sunset_Shimmer/"
                      data-title="sunset shimmer"
+                     data-description=""
                      data-date="2026-08-17 14:59:00"
+                     data-type="post"
                      data-tags="pixel_art,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -2359,23 +2692,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -2393,7 +2731,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Swordtember_2024/"
                      data-title="swordtember 2024"
+                     data-description=""
                      data-date="2024-12-02 21:27:00"
+                     data-type="post"
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -2404,23 +2744,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -2438,7 +2783,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Tiles_WIP/"
                      data-title="tiles wip"
+                     data-description=""
                      data-date="2025-04-17 20:55:00"
+                     data-type="post"
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -2449,23 +2796,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -2483,7 +2835,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/Yes,_my_lord/"
                      data-title="yes, my lord"
+                     data-description=""
                      data-date="2025-05-07 18:11:00"
+                     data-type="post"
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -2494,23 +2848,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -2528,7 +2887,9 @@
                 <div class="search-card qz-card p-6 rounded-2xl border-2 border-[var(--qz-border)] hover:border-[var(--qz-accent)] transition-colors duration-150 cursor-pointer group select-none transform-none"
                      data-url="/ru/blog/%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82,_%D0%BC%D0%B8%D1%80!_%D0%98%D0%BB%D0%B8_%D0%BA%D0%B0%D0%BA_%D0%B2%D1%81%D1%91_%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D0%BB%D0%BE%D1%81%D1%8C_%F0%9F%9A%80/"
                      data-title="привет, мир! или как всё начиналось 🚀"
+                     data-description=""
                      data-date="2024-12-01 22:26:00"
+                     data-type="post"
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
@@ -2539,23 +2900,28 @@
 
                         <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
                             
-                                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] border border-[var(--qz-border)] select-none">
+                                <button type="button"
+                                        data-tag-btn="post"
+                                        onclick="event.stopPropagation(); window.addSearchTag('post');"
+                                        class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
                                     post
-                                </span>
+                                </button>
                             
                             
                                 
-                                    <a href="/ru/search/?tag=old_post"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.stopPropagation(); window.addSearchTag('old_post');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </a>
+                                    </button>
                                 
-                                    <a href="/ru/search/?tag=pixel_art"
-                                       onclick="event.stopPropagation();"
-                                       class="qz-tag select-none">
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.stopPropagation(); window.addSearchTag('pixel_art');"
+                                            class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </a>
+                                    </button>
                                 
                             
                         </div>
@@ -2581,12 +2947,14 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+window.onPageLoad(() => {
     const searchInput = document.getElementById('retro-search-input');
+    const activeTagsBar = document.getElementById('active-tags-bar');
+    if (!searchInput) return;
+
     const cards = Array.from(document.querySelectorAll('.search-card'));
     const noResults = document.getElementById('no-results-msg');
 
-    // UI элементов календаря
     const bodyContainer = document.getElementById('cal-body-container');
     const navLabel = document.getElementById('cal-nav-label');
     const btnPrev = document.getElementById('cal-nav-prev');
@@ -2598,7 +2966,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const MONTH_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const DAY_NAMES = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
 
-    // 1. Извлекаем и парсим даты всех заметок со страницы
+    // Извлечение дат заметок
     const notesData = [];
     cards.forEach(card => {
         const rawDate = card.getAttribute('data-date');
@@ -2625,7 +2993,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 2. Инициализируем стартовый месяц и год по САМОЙ СВЕЖЕЙ заметке (одинаково для всех языков)
     const sortedByDate = [...notesData].sort((a, b) => b.dateObj - a.dateObj);
     const defaultYear = sortedByDate.length > 0 ? sortedByDate[0].y : new Date().getFullYear();
     const defaultMonth = sortedByDate.length > 0 ? sortedByDate[0].m : (new Date().getMonth() + 1);
@@ -2635,10 +3002,31 @@ document.addEventListener('DOMContentLoaded', () => {
     let viewMonth = defaultMonth;
     let activeFilter = null;
 
-    // Рендеринг ДНЕЙ (Days)
+    // Добавление тега по клику на карточке
+    window.addSearchTag = (tagName) => {
+        const cleanTag = '#' + tagName.trim().toLowerCase();
+        const currentVal = searchInput.value.trim();
+        const currentTokens = currentVal.split(/\s+/).filter(Boolean);
+
+        if (!currentTokens.includes(cleanTag)) {
+            searchInput.value = currentVal ? `${currentVal} ${cleanTag}` : cleanTag;
+        }
+        searchInput.focus();
+        updateAll();
+    };
+
+    // Удаление отдельного тега по клику на бейдж
+    window.removeSearchTag = (tagToRemove) => {
+        const currentVal = searchInput.value;
+        const tokens = currentVal.split(/\s+/).filter(Boolean);
+        const filtered = tokens.filter(t => t.toLowerCase() !== tagToRemove.toLowerCase());
+        searchInput.value = filtered.join(' ');
+        searchInput.focus();
+        updateAll();
+    };
+
     function renderDays() {
         navLabel.innerText = `${MONTH_NAMES[viewMonth - 1]} ${viewYear}`;
-
         let html = '<div class="cal-days-grid">';
         DAY_NAMES.forEach(d => { html += `<div class="cal-day-header">${d}</div>`; });
 
@@ -2677,7 +3065,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Рендеринг МЕСЯЦЕВ (Months)
     function renderMonths() {
         navLabel.innerText = `${viewYear}`;
         let html = '<div class="cal-grid-pills" style="grid-template-columns: repeat(3, 1fr);">';
@@ -2713,10 +3100,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Рендеринг ГОДОВ (Years)
     function renderYears() {
         navLabel.innerText = 'All Years';
-
         const yearsSet = new Set(notesData.map(n => n.y));
         yearsSet.add(2026);
         const sortedYears = Array.from(yearsSet).sort((a, b) => b - a);
@@ -2753,10 +3138,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Рендеринг НЕДЕЛЬ (Weeks)
     function renderWeeks() {
         navLabel.innerText = `${MONTH_SHORT[viewMonth - 1]} ${viewYear}`;
-
         let html = '<div class="cal-weeks-grid" style="grid-template-columns: 1fr;">';
         const daysInMonth = new Date(viewYear, viewMonth, 0).getDate();
         const weeks = [];
@@ -2818,30 +3201,54 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (activeMode === 'years') renderYears();
         else if (activeMode === 'weeks') renderWeeks();
 
-        btnReset.style.display = activeFilter ? 'inline-block' : 'none';
+        if (btnReset) btnReset.style.display = activeFilter ? 'inline-block' : 'none';
     }
 
-    // Единая фильтрация
+    // Мульти-фильтрация
     function filterCards() {
-        const query = searchInput.value.toLowerCase().trim();
+        const rawInput = searchInput.value.toLowerCase().trim();
         let foundAny = false;
 
-        const isTagSearch = query.startsWith('#');
-        const tagQuery = isTagSearch ? query.substring(1).trim() : '';
+        const tokens = rawInput.split(/\s+/).filter(Boolean);
+        const searchTags = [];
+        const searchWords = [];
+
+        tokens.forEach(tok => {
+            if (tok.startsWith('#') && tok.length > 1) {
+                searchTags.push(tok.substring(1));
+            } else if (!tok.startsWith('#')) {
+                searchWords.push(tok);
+            }
+        });
+
+        // Отрисовка бейджей активных тегов
+        if (activeTagsBar) {
+            if (searchTags.length > 0) {
+                activeTagsBar.innerHTML = searchTags.map(tag => `
+                    <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-xs font-bold bg-[var(--qz-accent)] text-white select-none">
+                        <span>#${tag}</span>
+                        <button type="button" class="hover:opacity-75 cursor-pointer leading-none text-sm" onclick="window.removeSearchTag('#${tag}')">&times;</button>
+                    </span>
+                `).join('');
+            } else {
+                activeTagsBar.innerHTML = '';
+            }
+        }
 
         cards.forEach(card => {
             const title = card.getAttribute('data-title') || '';
+            const description = card.getAttribute('data-description') || '';
+            const cardType = card.getAttribute('data-type') || '';
             const tagsRaw = card.getAttribute('data-tags') || '';
-            const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()) : [];
+            const cardTags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()) : [];
 
-            let matchesText = false;
-            if (query === '' || query === '#') {
-                matchesText = true;
-            } else if (isTagSearch) {
-                matchesText = tags.some(t => t.includes(tagQuery));
-            } else {
-                matchesText = title.includes(query);
-            }
+            if (cardType) cardTags.push(cardType);
+
+            // Карточка должна содержать ВСЕ введенные теги (AND)
+            const matchesAllTags = searchTags.every(reqTag => cardTags.some(ct => ct.includes(reqTag)));
+
+            // Карточка должна содержать ВСЕ текстовые слова (в заголовке или описании)
+            const matchesAllWords = searchWords.every(word => title.includes(word) || description.includes(word));
 
             let matchesDate = true;
             if (activeFilter) {
@@ -2859,7 +3266,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            if (matchesText && matchesDate) {
+            if (matchesAllTags && matchesAllWords && matchesDate) {
                 card.style.display = 'block';
                 foundAny = true;
             } else {
@@ -2877,45 +3284,51 @@ document.addEventListener('DOMContentLoaded', () => {
         filterCards();
     }
 
-    btnPrev.addEventListener('click', () => {
-        if (activeMode === 'days' || activeMode === 'weeks') {
-            viewMonth--;
-            if (viewMonth < 1) { viewMonth = 12; viewYear--; }
-        } else if (activeMode === 'months') {
-            viewYear--;
-        }
-        renderCalendar();
-    });
+    if (btnPrev) {
+        btnPrev.onclick = () => {
+            if (activeMode === 'days' || activeMode === 'weeks') {
+                viewMonth--;
+                if (viewMonth < 1) { viewMonth = 12; viewYear--; }
+            } else if (activeMode === 'months') {
+                viewYear--;
+            }
+            renderCalendar();
+        };
+    }
 
-    btnNext.addEventListener('click', () => {
-        if (activeMode === 'days' || activeMode === 'weeks') {
-            viewMonth++;
-            if (viewMonth > 12) { viewMonth = 1; viewYear++; }
-        } else if (activeMode === 'months') {
-            viewYear++;
-        }
-        renderCalendar();
-    });
+    if (btnNext) {
+        btnNext.onclick = () => {
+            if (activeMode === 'days' || activeMode === 'weeks') {
+                viewMonth++;
+                if (viewMonth > 12) { viewMonth = 1; viewYear++; }
+            } else if (activeMode === 'months') {
+                viewYear++;
+            }
+            renderCalendar();
+        };
+    }
 
-    btnReset.addEventListener('click', () => {
-        activeFilter = null;
-        updateAll();
-    });
+    if (btnReset) {
+        btnReset.onclick = () => {
+            activeFilter = null;
+            updateAll();
+        };
+    }
 
     modeTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
+        tab.onclick = () => {
             modeTabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
             activeMode = tab.getAttribute('data-mode');
 
-            btnPrev.style.display = (activeMode === 'years') ? 'none' : 'inline-flex';
-            btnNext.style.display = (activeMode === 'years') ? 'none' : 'inline-flex';
+            if (btnPrev) btnPrev.style.display = (activeMode === 'years') ? 'none' : 'inline-flex';
+            if (btnNext) btnNext.style.display = (activeMode === 'years') ? 'none' : 'inline-flex';
 
             renderCalendar();
-        });
+        };
     });
 
-    searchInput.addEventListener('input', filterCards);
+    searchInput.oninput = filterCards;
 
     const params = new URLSearchParams(window.location.search);
     const urlTag = params.get('tag');

@@ -209,7 +209,6 @@
         <div class="sticky top-6 flex flex-col gap-6 w-full max-h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar">
             
                 
-                    <!-- Раздельные карточки закрепов без общей рамки и заголовка -->
                     <div class="space-y-4 w-full">
                         
                         <a href="/ru/blog/%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82,_%D0%BC%D0%B8%D1%80!_%D0%98%D0%BB%D0%B8_%D0%BA%D0%B0%D0%BA_%D0%B2%D1%81%D1%91_%D0%BD%D0%B0%D1%87%D0%B8%D0%BD%D0%B0%D0%BB%D0%BE%D1%81%D1%8C_%F0%9F%9A%80/" class="block w-full overflow-hidden bg-[var(--qz-bg)] border-2 border-[color:var(--c-border)] rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.2)] hover:border-[var(--qz-accent)] transition-all group">
@@ -250,7 +249,6 @@
 
             
 
-            <!-- На мобильных: TOC перед текстом (если TOC включен) -->
             
 
             <article class="wiki-article ">
@@ -270,14 +268,13 @@
 
             
 
-            <!-- На мобильных: Backlinks внизу (если backlinks активны) -->
             
 
-        </div> <!-- закрываем qz-card-main для стандартной статьи -->
-     <!-- конец ветвления type == 'post' -->
-     <!-- конец ветвления show_body -->
+        </div>
+    
+    
 
-    <!-- ЛЕНТА БЛОГА (АКТИВНА ТОЛЬКО ПРИ type: blog) -->
+    <!-- ЛЕНТА БЛОГА -->
     
         <div id="blog-feed" class="mt-6 w-full">
 
@@ -917,7 +914,7 @@
 </div>
     
 
-    <!-- НИЖНИЕ ИНКЛЮДЫ (ПОСЛЕ BODY И БЛОГА, КАК ФУТЕР) -->
+    <!-- НИЖНИЕ ИНКЛЮДЫ -->
     
 
 </div>
@@ -925,12 +922,12 @@
 <style>
     .custom-scrollbar::-webkit-scrollbar { width: 4px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--qz-border); border-radius: 4px; }
-    .custom-scrollbar:hover::-webkit-scrollbar-thumb { background: var(--qz-text-muted); }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--qz-border, #3a3b3f); border-radius: 4px; }
+    .custom-scrollbar:hover::-webkit-scrollbar-thumb { background: var(--qz-text-muted, #9a9ca6); }
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+window.onPageLoad(() => {
     const tocLinks = document.querySelectorAll('.toc-container a');
     if (tocLinks.length === 0) return;
 
@@ -1011,7 +1008,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateActiveToc();
 
-    // Мгновенный переход к якорям без задержки и без плавности
     if (window.location.hash) {
         const rawHash = window.location.hash.substring(1);
         let hashId = decodeURIComponent(rawHash);
