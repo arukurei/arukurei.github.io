@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
     Search - alkrei
@@ -39,14 +39,6 @@
         }
         body {
             background-color: transparent !important;
-        }
-    </style>
-
-    <!-- Динамические Jinja-переменные темы и фона страниц -->
-    <style id="site-page-bg">
-        :root {
-            --page-bg: url('/static/background.png');
-            --page-banner: url('/static/banner_bg.png');
         }
     </style>
 
@@ -127,55 +119,39 @@
     <div class="w-full max-w-[760px] mx-auto px-4 mt-6">
         <header class="retro-header">
             <div class="retro-banner">
-                <img src="/static/logo.png" alt="Logo"
+                <img src="/static/logo.png" alt=""
                      loading="eager" decoding="async" fetchpriority="high"
-                     class="max-h-28 md:max-h-36 w-auto h-auto object-contain drop-shadow-[4px_4px_0_rgba(0,0,0,1)] select-none pointer-events-none"
-                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <h1 class="hidden text-4xl md:text-5xl font-black text-[var(--retro-text)] tracking-widest uppercase text-center px-4">
-                    ALKREI.COM
-                </h1>
+                     onerror="this.style.display='none'"
+                     class="max-h-28 md:max-h-36 w-auto h-auto object-contain drop-shadow-[4px_4px_0_rgba(0,0,0,1)] select-none pointer-events-none">
             </div>
 
             <nav id="site-nav" class="bg-[var(--c-dark)] border-t border-[color:var(--c-dark)] flex w-full relative rounded-b-[0.33rem]">
-                <div class="flex-grow flex flex-col rounded-bl-[0.33rem] overflow-hidden">
-                    <div class="flex w-full">
-                        
-                            <a href="/en/"
-                               style="--btn-color: #ff3333;"
-                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider ">
-                                Home
-                            </a>
-                        
-                            <a href="/en/wiki/"
-                               style="--btn-color: #0088ff;"
-                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider ">
-                                Wiki
-                            </a>
-                        
-                            <a href="/en/search/"
-                               style="--btn-color: #d35400;"
-                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider active">
-                                Search
-                            </a>
-                        
-                            <a href="/en/arukurei/"
-                               style="--btn-color: #00aa33;"
-                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider ">
-                                About
-                            </a>
-                        
-                    </div>
-                    <div class="flex w-full h-[3px] leading-none">
-                        
-                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #ff3333;"></div>
-                        
-                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #0088ff;"></div>
-                        
-                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #d35400;"></div>
-                        
-                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #00aa33;"></div>
-                        
-                    </div>
+                <div class="flex-grow flex rounded-bl-[0.33rem] overflow-hidden">
+                    
+                        <a href="/en/"
+                           style="--btn-color: #ff3333; border-bottom-color: #ff3333;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Home
+                        </a>
+                    
+                        <a href="/en/wiki/"
+                           style="--btn-color: #0088ff; border-bottom-color: #0088ff;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Wiki
+                        </a>
+                    
+                        <a href="/en/search/"
+                           style="--btn-color: #d35400; border-bottom-color: #d35400;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] active">
+                            Search
+                        </a>
+                    
+                        <a href="/en/arukurei/"
+                           style="--btn-color: #00aa33; border-bottom-color: #00aa33;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            About
+                        </a>
+                    
                 </div>
 
                 <div class="lang-container relative border-l border-[color:var(--c-dark)] bg-[var(--c-dark)] px-4 flex items-center cursor-pointer select-none hover:bg-[var(--c-darkest)] transition-all duration-150 self-stretch rounded-br-[0.33rem]">
@@ -186,22 +162,20 @@
                         
                             
                             
+                                <a href="/en/search/"
+                                   style="--lang-hover: var(--lang-en);"
+                                   class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-hover)] hover:text-white transition-all rounded-t-[0.33rem]">
+                                    English
+                                </a>
                             
-
+                        
                             
                             
-                            
-
-                            
-                            
-                            
-
-                            
-                                <a href="/en/search/" class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-en)] hover:text-white transition-all rounded-t-[0.33rem]">English</a>
-                            
-
-                            
-                                <a href="/ru/search/" class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-ru)] hover:text-white transition-all rounded-b-[0.33rem]">Русский</a>
+                                <a href="/ru/search/"
+                                   style="--lang-hover: var(--lang-ru);"
+                                   class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-hover)] hover:text-white transition-all rounded-b-[0.33rem]">
+                                    Русский
+                                </a>
                             
                         
                     </div>
@@ -276,12 +250,12 @@
                      data-tags="art,aeritheya"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Aerith Sketches
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -328,12 +302,12 @@
                      data-tags="old_post,gamedev,aeritheya"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Aeritheya Inventory
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -387,12 +361,12 @@
                      data-tags="medusa,old_post,pixel_art,aeritheya"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Animations for Aerith
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -453,12 +427,12 @@
                      data-tags="old_post,pixel_art,medusa,aeritheya"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Aspis Design
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -519,12 +493,12 @@
                      data-tags="pixel_art,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Battle with an Elf
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -571,12 +545,12 @@
                      data-tags="old_post,pixel_art,medusa,aeritheya"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Card Event Aspis
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -637,12 +611,12 @@
                      data-tags="aeritheya,pixel_art,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Channel Birthday 2025
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -696,12 +670,12 @@
                      data-tags="pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Code Map
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -741,12 +715,12 @@
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Collab Drawing with Clyde
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -793,12 +767,12 @@
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Collab Lospec Family Yearbook 2024
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -845,12 +819,12 @@
                      data-tags="daicon,gamedev,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Continuing to Make Daicon
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -904,12 +878,12 @@
                      data-tags="kuroshio,old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Continuing to Make Kuroshio 2
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -963,12 +937,12 @@
                      data-tags="old_post,pixel_art,kuroshio"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Continuing to Make Kuroshio
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -1022,12 +996,12 @@
                      data-tags="daicon,gamedev,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Daicon 1.5 Release
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -1081,12 +1055,12 @@
                      data-tags="daicon,old_post,gamedev"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Daicon Beginnings
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -1140,12 +1114,12 @@
                      data-tags="daicon,pixel_art,old_post,gamedev"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Daicon Beta
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -1206,12 +1180,12 @@
                      data-tags="daicon,gamedev"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Daicon Docs
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -1258,12 +1232,12 @@
                      data-tags="gamedev,daicon,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Daicon Release 0.5
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -1317,12 +1291,12 @@
                      data-tags="gamedev,daicon,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Daicon Release 1.0
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -1376,12 +1350,12 @@
                      data-tags="daicon,gamedev"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Daicon Rigid Demo
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -1428,12 +1402,12 @@
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Dorok&#39;s Soldier
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -1480,12 +1454,12 @@
                      data-tags="pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Earth Tiles WIP
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -1525,12 +1499,12 @@
                      data-tags="aeritheya,pixel_art,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             First Gorgon Art
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -1584,12 +1558,12 @@
                      data-tags="pixel_art,old_post,aeritheya"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             First Lore of Aeritheya
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -1643,12 +1617,12 @@
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Hangar Zero
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -1695,12 +1669,12 @@
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Hello, World! Or How It All Began 🚀
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -1747,12 +1721,12 @@
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Horse
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -1799,12 +1773,12 @@
                      data-tags="pixel_art,old_post,kuroshio"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Kuroshio A Animations
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -1858,12 +1832,12 @@
                      data-tags="kuroshio,old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Kuroshio Template Publication
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -1917,12 +1891,12 @@
                      data-tags="pixel_art,old_post,kuroshio"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Kuroshio Templates Release
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -1976,12 +1950,12 @@
                      data-tags="pixel_art,aeritheya,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Map of the World of Aeritheya
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -2035,12 +2009,12 @@
                      data-tags="old_post,gamedev"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Medusa Plugin Release
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -2087,12 +2061,12 @@
                      data-tags="pixel_art,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Mitsubishi Zero
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -2139,12 +2113,12 @@
                      data-tags="pixel_art,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             My Birthday 2025
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -2191,12 +2165,12 @@
                      data-tags="old_post,pixel_art,aeritheya"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             NeoRome Poster
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -2250,12 +2224,12 @@
                      data-tags="medusa,aeritheya,pixel_art,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             New Medusa Design
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -2316,12 +2290,12 @@
                      data-tags="pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             New Soldier Design and Shooting Animation
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -2361,12 +2335,12 @@
                      data-tags="old_post,art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             New Year 2024
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -2413,12 +2387,12 @@
                      data-tags="pixel_art,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Octobit Nausicaa&#39;s Backpack
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -2465,12 +2439,12 @@
                      data-tags="pixel_art,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Peter Quill
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -2517,12 +2491,12 @@
                      data-tags="pixel_art,aeritheya,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Portraits of the Little Troublemakers
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -2576,12 +2550,12 @@
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Robot March 2025
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -2628,12 +2602,12 @@
                      data-tags="art,aeritheya,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Roman Interceptors (concept)
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -2687,12 +2661,12 @@
                      data-tags="daicon,gamedev,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Slowly Making Daicon 1.5
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -2746,12 +2720,12 @@
                      data-tags="pixel_art,old_post"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Sunset Shimmer
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -2798,12 +2772,12 @@
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Swordtember 2024
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -2850,12 +2824,12 @@
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Tiles WIP
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -2902,12 +2876,12 @@
                      data-tags="old_post,pixel_art"
                      onclick="window.location.href=this.getAttribute('data-url');">
 
-                    <div class="flex justify-between items-start mb-2.5 gap-4">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
                             Yes, my lord
                         </h3>
 
-                        <div class="flex gap-1.5 flex-wrap items-center justify-end flex-shrink-0">
+                        <div class="flex gap-1.5 flex-wrap items-center justify-start sm:justify-end">
                             
                                 <button type="button"
                                         data-tag-btn="post"
@@ -3112,7 +3086,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderYears() {
         navLabel.innerText = 'All Years';
         const yearsSet = new Set(notesData.map(n => n.y));
-        yearsSet.add(2026);
+        yearsSet.add(new Date().getFullYear());
         const sortedYears = Array.from(yearsSet).sort((a, b) => b - a);
 
         let html = '<div class="cal-grid-pills" style="grid-template-columns: repeat(2, 1fr);">';

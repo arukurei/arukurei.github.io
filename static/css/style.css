@@ -1141,6 +1141,26 @@ details.qz-callout[open] summary.qz-callout-title::after {
     justify-content: center;
     position: relative;
 }
+
+@media (max-width: 640px) {
+    .qz-dialog-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .qz-dialog-avatar {
+        width: 120px;
+        height: 120px;
+    }
+    .qz-dialog-avatar-img {
+        width: 120px;
+        height: 120px;
+    }
+    .qz-dialog-content {
+        width: 100%;
+        min-height: auto;
+    }
+}
 .qz-dialog-name {
     font-size: 0.85rem;
     font-weight: 900;

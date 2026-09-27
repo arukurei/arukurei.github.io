@@ -314,7 +314,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateUI();
 
                 fetch(`${LIKES_API_URL}?slug=${encodeURIComponent(slug)}&action=${action}`, { redirect: 'follow' })
-                    .then((r) => r.json())
+                    .then((r) => {
+                        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+                        return r.json();
+                    })
                     .then((data) => {
                         if (countLabel && typeof data.likes === 'number') {
                             const verifiedLikes = Math.min(MAX_LIKES_LIMIT, Math.max(0, data.likes));
@@ -323,14 +326,19 @@ document.addEventListener('DOMContentLoaded', () => {
                             countLabel.innerText = verifiedLikes;
                         }
                     })
-                    .catch((err) => console.log('Likes sync error:', err));
+                    .catch((err) => {
+                        console.warn('[Likes] Синхронизация не удалась (сеть, лимиты Google или блокировщик рекламы):', err);
+                    });
             };
         });
 
         // Фоновый пакетный запрос: обновляет кэш, если кто-то другой поставил лайк
         if (slugsToFetch.length > 0) {
             fetch(`${LIKES_API_URL}?action=get&slugs=${encodeURIComponent(slugsToFetch.join('|'))}`, { redirect: 'follow' })
-                .then((r) => r.json())
+                .then((r) => {
+                    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+                    return r.json();
+                })
                 .then((batchData) => {
                     reactionButtons.forEach((btn) => {
                         const slug = btn.getAttribute('data-post-id');
@@ -343,7 +351,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                     saveCountsCache();
                 })
-                .catch((err) => console.log('Batch fetch error:', err));
+                .catch((err) => {
+                    console.warn('[Likes] Пакетная загрузка не удалась (сеть или блокировщик рекламы):', err);
+                });
         }
     }
 });

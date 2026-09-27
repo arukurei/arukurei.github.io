@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daicon 1.5 Release - alkrei</title>
 
@@ -37,14 +37,6 @@
         }
         body {
             background-color: transparent !important;
-        }
-    </style>
-
-    <!-- Динамические Jinja-переменные темы и фона страниц -->
-    <style id="site-page-bg">
-        :root {
-            --page-bg: url('/static/background.png');
-            --page-banner: url('/static/banner_bg.png');
         }
     </style>
 
@@ -125,55 +117,39 @@
     <div class="w-full max-w-[760px] mx-auto px-4 mt-6">
         <header class="retro-header">
             <div class="retro-banner">
-                <img src="/static/logo.png" alt="Logo"
+                <img src="/static/logo.png" alt=""
                      loading="eager" decoding="async" fetchpriority="high"
-                     class="max-h-28 md:max-h-36 w-auto h-auto object-contain drop-shadow-[4px_4px_0_rgba(0,0,0,1)] select-none pointer-events-none"
-                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <h1 class="hidden text-4xl md:text-5xl font-black text-[var(--retro-text)] tracking-widest uppercase text-center px-4">
-                    ALKREI.COM
-                </h1>
+                     onerror="this.style.display='none'"
+                     class="max-h-28 md:max-h-36 w-auto h-auto object-contain drop-shadow-[4px_4px_0_rgba(0,0,0,1)] select-none pointer-events-none">
             </div>
 
             <nav id="site-nav" class="bg-[var(--c-dark)] border-t border-[color:var(--c-dark)] flex w-full relative rounded-b-[0.33rem]">
-                <div class="flex-grow flex flex-col rounded-bl-[0.33rem] overflow-hidden">
-                    <div class="flex w-full">
-                        
-                            <a href="/ru/"
-                               style="--btn-color: #ff3333;"
-                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider ">
-                                Главная
-                            </a>
-                        
-                            <a href="/ru/wiki/"
-                               style="--btn-color: #0088ff;"
-                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider ">
-                                Вики
-                            </a>
-                        
-                            <a href="/ru/search/"
-                               style="--btn-color: #d35400;"
-                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider ">
-                                Поиск
-                            </a>
-                        
-                            <a href="/ru/arukurei/"
-                               style="--btn-color: #00aa33;"
-                               class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider ">
-                                Обо мне
-                            </a>
-                        
-                    </div>
-                    <div class="flex w-full h-[3px] leading-none">
-                        
-                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #ff3333;"></div>
-                        
-                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #0088ff;"></div>
-                        
-                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #d35400;"></div>
-                        
-                            <div class="flex-1 h-full nav-color-stripe" style="background-color: #00aa33;"></div>
-                        
-                    </div>
+                <div class="flex-grow flex rounded-bl-[0.33rem] overflow-hidden">
+                    
+                        <a href="/ru/"
+                           style="--btn-color: #ff3333; border-bottom-color: #ff3333;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Главная
+                        </a>
+                    
+                        <a href="/ru/wiki/"
+                           style="--btn-color: #0088ff; border-bottom-color: #0088ff;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Вики
+                        </a>
+                    
+                        <a href="/ru/search/"
+                           style="--btn-color: #d35400; border-bottom-color: #d35400;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Поиск
+                        </a>
+                    
+                        <a href="/ru/arukurei/"
+                           style="--btn-color: #00aa33; border-bottom-color: #00aa33;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Обо мне
+                        </a>
+                    
                 </div>
 
                 <div class="lang-container relative border-l border-[color:var(--c-dark)] bg-[var(--c-dark)] px-4 flex items-center cursor-pointer select-none hover:bg-[var(--c-darkest)] transition-all duration-150 self-stretch rounded-br-[0.33rem]">
@@ -184,34 +160,20 @@
                         
                             
                             
+                                <a href="/en/blog/Daicon_1.5_Release/"
+                                   style="--lang-hover: var(--lang-en);"
+                                   class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-hover)] hover:text-white transition-all rounded-t-[0.33rem]">
+                                    English
+                                </a>
                             
-
-                            
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                
-                            
-
+                        
                             
                             
-                            
-                                
-                                    
-                                    
-                                    
-                                
-                            
-
-                            
-                                <a href="/en/blog/Daicon_1.5_Release/" class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-en)] hover:text-white transition-all rounded-t-[0.33rem]">English</a>
-                            
-
-                            
-                                <a href="/ru/blog/Daicon_1.5_Release/" class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-ru)] hover:text-white transition-all rounded-b-[0.33rem]">Русский</a>
+                                <a href="/ru/blog/Daicon_1.5_Release/"
+                                   style="--lang-hover: var(--lang-ru);"
+                                   class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-hover)] hover:text-white transition-all rounded-b-[0.33rem]">
+                                    Русский
+                                </a>
                             
                         
                     </div>
@@ -259,7 +221,7 @@
 
             <div class="px-6 py-4 wiki-article ">
                 <div class="qz-video-embed">
-  <iframe src="https://www.youtube-nocookie.com/embed/hgjeo-eHpeQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/hgjeo-eHpeQ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
 </div>
 <p><a href="/ru/search?tag=daicon" class="qz-tag">#daicon</a> <a href="/ru/search?tag=gamedev" class="qz-tag">#gamedev</a><br />
 Daicon 1.5 Release!!!  </p>
