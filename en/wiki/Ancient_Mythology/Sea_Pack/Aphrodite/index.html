@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aphrodite - alkrei</title>
+
+    <link rel="preload" as="image" href="/static/background.png">
+    <link rel="preload" as="image" href="/static/banner_bg.png">
+    <link rel="preload" as="image" href="/static/logo.png" fetchpriority="high">
+
+    <link rel="stylesheet" href="/static/css/tailwind.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- Подключение вынесенных статических файлов с кэшированием браузера -->
+    <!-- Предварительное установление TLS/DNS соединения с бэкендом реакций -->
+    <link rel="preconnect" href="https://script.google.com" crossorigin>
+    <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script defer src="/static/js/main.js"></script>
+
+    <!-- Темная подложка html без белых вспышек + прозрачный body, чтобы не перекрывать body::before -->
+    <style>
+        html {
+            background-color: #17191c;
+        }
+        body {
+            background-color: transparent !important;
+        }
+    </style>
+
+    <style>
+        :root {
+            --c-border: #3a3b3f;
+            --c-surface: #24262a;
+            --c-dark: #202225;
+            --c-darkest: #17191c;
+
+            --page-bg-color: var(--c-darkest);
+            --header-bg: var(--c-dark);
+            --nav-bg: var(--c-darkest);
+            --qz-bg: var(--c-surface);
+            --qz-surface: var(--c-darkest);
+            --qz-surface-hover: var(--c-dark);
+            --qz-surface-alpha: rgba(32, 34, 37, 0.7);
+            --qz-border: var(--c-border);
+            --qz-text: #fbfbfb;
+            --qz-text-muted: #9a9ca6;
+            --qz-accent: #8a5cf5;
+            --qz-accent-hover: #b05cd6;
+            --qz-accent-soft: rgba(138, 92, 245, 0.18);
+            --comic-shadow: ;
+            --code-inline: #c7b0fd;
+            --lang-icon: #00aaff;
+            --lang-en: #ff3333;
+            --lang-ru: #0088ff;
+            --tag-text: #d2c1fc;
+            --link-broken: #ff6b6b;
+            --link-broken-alpha: rgba(255, 107, 107, 0.12);
+
+            --callout-nested-blue: #2c3b51;
+            --callout-nested-cyan: #2b3d49;
+            --callout-nested-green: #2c3f43;
+            --callout-nested-orange: #3e3b3b;
+            --callout-nested-red: #3e3245;
+            --callout-nested-purple: #36354f;
+            --callout-nested-gray: #343c49;
+
+            --h1-color: #FF306C;
+            --h2-color: #ff9502;
+            --h3-color: #FFD500;
+            --h4-color: #4BBF5E;
+            --h5-color: #4d95f7;
+            --h6-color: #b051de;
+
+            --retro-bg: #d6ebe9;
+            --retro-bg-alt: #f3f1e9;
+            --retro-bg-hover: #c6dfdd;
+            --retro-border: #17191c;
+            --retro-shadow: #17191c;
+            --retro-text: #17191c;
+            --retro-text-muted: #555243;
+            --retro-avatar-bg: #d5cba9;
+            --retro-btn: #e5dec9;
+            --retro-tag-type: #17191c;
+            --retro-tag-topic: #8e44ad;
+            --retro-tag-cat: #2ecc71;
+            --retro-tag-date: #d35400;
+            --retro-error: #c0392b;
+            --retro-error-alpha: rgba(192, 57, 43, 0.12);
+            --retro-border-alpha: rgba(23, 25, 28, 0.2);
+            --retro-text-muted-alpha: rgba(85, 82, 67, 0.7);
+
+            --page-bg: url('/static/background.png');
+            --page-banner: url('/static/banner_bg.png');
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-6">
+
+    
+    
+    
+    
+
+    <div class="w-full max-w-[760px] mx-auto px-4 mt-6">
+        <header class="retro-header">
+            <div class="retro-banner">
+                <img src="/static/logo.png" alt=""
+                     loading="eager" decoding="async" fetchpriority="high"
+                     onerror="this.style.display='none'"
+                     class="max-h-28 md:max-h-36 w-auto h-auto object-contain drop-shadow-[4px_4px_0_rgba(0,0,0,1)] select-none pointer-events-none">
+            </div>
+
+            <nav id="site-nav" class="bg-[var(--c-dark)] border-t border-[color:var(--c-dark)] flex w-full relative rounded-b-[0.33rem]">
+                <div class="flex-grow flex rounded-bl-[0.33rem] overflow-hidden">
+                    
+                        <a href="/en/"
+                           style="--btn-color: #ff3333; border-bottom-color: #ff3333;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Home
+                        </a>
+                    
+                        <a href="/en/wiki/"
+                           style="--btn-color: #0088ff; border-bottom-color: #0088ff;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] active">
+                            Wiki
+                        </a>
+                    
+                        <a href="/en/search/"
+                           style="--btn-color: #d35400; border-bottom-color: #d35400;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Search
+                        </a>
+                    
+                        <a href="/en/arukurei/"
+                           style="--btn-color: #00aa33; border-bottom-color: #00aa33;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            About
+                        </a>
+                    
+                </div>
+
+                <div class="lang-container relative border-l border-[color:var(--c-dark)] bg-[var(--c-dark)] px-4 flex items-center cursor-pointer select-none hover:bg-[var(--c-darkest)] transition-all duration-150 self-stretch rounded-br-[0.33rem]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-[var(--lang-icon)] transition-colors duration-150 pointer-events-none" viewBox="0 0 24 24">
+                        <path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/>
+                    </svg>
+                    <div class="lang-dropdown hidden absolute left-[calc(100%+8px)] top-[-1px] bg-[var(--nav-bg)] border-2 border-[color:var(--c-border)] rounded-[0.33rem] shadow-[0_8px_20px_rgba(0,0,0,0.45)] z-50 py-0 w-28 text-center">
+                        
+                            
+                            
+                                <a href="/en/wiki/Ancient_Mythology/Sea_Pack/Aphrodite/"
+                                   style="--lang-hover: var(--lang-en);"
+                                   class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-hover)] hover:text-white transition-all rounded-t-[0.33rem]">
+                                    English
+                                </a>
+                            
+                        
+                            
+                            
+                                <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F%20%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9C%D0%BE%D1%80%D1%81%D0%BA%D0%BE%D0%B9%20%D0%9F%D0%B0%D0%BA/%D0%90%D1%84%D1%80%D0%BE%D0%B4%D0%B8%D1%82%D0%B0/"
+                                   style="--lang-hover: var(--lang-ru);"
+                                   class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-hover)] hover:text-white transition-all rounded-b-[0.33rem]">
+                                    Русский
+                                </a>
+                            
+                        
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <main id="site-main" class="w-full max-w-[760px] mx-auto px-4 flex-grow flex flex-col space-y-6">
+        
+<div class="animate-retro-pop relative w-full mb-2">
+
+    <!-- ЛЕВАЯ КОЛОНКА (Если есть виджеты с position: left) -->
+    
+    <aside class="hidden xl:block absolute right-[100%] top-0 bottom-0 mr-4 w-60">
+        <div class="sticky top-6 flex flex-col gap-6 w-full max-h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar">
+            
+                
+                    <div class="qz-card qz-card-widget w-full">
+                        <div class="widget-title">
+                            Table of Contents
+                        </div>
+                        <div class="toc-container">
+                            <div class="toc">
+<ul>
+<li><a href="#the-two-births">The Two Births</a><ul>
+<li><a href="#1-archaic-version-foam-born-urania-hesiod">1. Archaic Version: Foam-Born Urania (Hesiod)</a></li>
+<li><a href="#2-homeric-version-daughter-of-zeus">2. Homeric Version: Daughter of Zeus</a><ul>
+<li><a href="#philosophical-dualism-aphrodite-urania-and-pandemos">Philosophical Dualism: Aphrodite Urania and Pandemos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#cythera-cyprus-and-schiza">Cythera, Cyprus, and Schiza</a><ul>
+<li><a href="#schiza">Schiza</a></li>
+</ul>
+</li>
+<li><a href="#marriage-to-hephaestus">Marriage to Hephaestus</a></li>
+<li><a href="#the-archaic-form-aphrodite-areia-the-armed">The Archaic Form: Aphrodite Areia (The Armed)</a><ul>
+<li><a href="#kestos-himas-the-magical-girdle">Kestos Himas: The Magical Girdle</a></li>
+<li><a href="#sacred-attributes">Sacred Attributes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+                        </div>
+                    </div>
+                
+            
+        </div>
+    </aside>
+    
+
+    <!-- ПРАВАЯ КОЛОНКА (Если есть виджеты с position: right) -->
+    
+    <aside class="hidden xl:block absolute left-[100%] top-0 bottom-0 ml-4 w-60">
+        <div class="sticky top-6 flex flex-col gap-6 w-full max-h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar">
+            
+                
+                    <div class="qz-card qz-card-widget w-full">
+                        <div class="widget-title">
+                            Properties
+                        </div>
+                        <div class="space-y-3">
+                            
+                            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                                    type
+                                </div>
+                                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                                    
+                                        
+                                        <a href="/en/search/?tag=character"
+                                           class="inline-block text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
+                                            character
+                                        </a>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                                    tags
+                                </div>
+                                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                                    
+                                        <div class="flex flex-wrap gap-1 items-center">
+                                            
+                                                
+                                                
+                                                
+                                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=%F0%9F%92%A1">#💡</a>
+                                                
+                                            
+                                                
+                                                
+                                                
+                                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=%E2%8C%9B">#⌛</a>
+                                                
+                                            
+                                                
+                                                
+                                                
+                                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=%F0%9F%8C%B3">#🌳</a>
+                                                
+                                            
+                                                
+                                                
+                                                
+                                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=characters/gods">#characters/gods</a>
+                                                
+                                            
+                                        </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                                    genesis
+                                </div>
+                                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                                    
+                                        <div class="flex flex-wrap gap-1 items-center">
+                                        
+                                            
+                                                <span class="qz-tag broken-link text-[11px] px-1.5 py-0.5" title="Страница не найдена">Olympians</span>
+                                            
+                                        
+                                        </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                                    ancestors
+                                </div>
+                                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                                    
+                                        <div class="flex flex-wrap gap-1 items-center">
+                                        
+                                            
+                                                <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/wiki/Ancient_Mythology/Protogenos/Uranus/">Uranus</a>
+                                            
+                                        
+                                            
+                                                <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/wiki/Ancient_Mythology/Sea_Pack/Thalassa/">Thalassa</a>
+                                            
+                                        
+                                            
+                                                <span class="qz-tag broken-link text-[11px] px-1.5 py-0.5" title="Страница не найдена">Zeus</span>
+                                            
+                                        
+                                            
+                                                <span class="qz-tag broken-link text-[11px] px-1.5 py-0.5" title="Страница не найдена">Dione</span>
+                                            
+                                        
+                                        </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                                    descendants
+                                </div>
+                                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                                    
+                                        <div class="flex flex-wrap gap-1 items-center">
+                                        
+                                            
+                                                <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/wiki/Ancient_Mythology/Protogenos/Eros/">Eros</a>
+                                            
+                                        
+                                        </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                
+            
+        </div>
+    </aside>
+    
+
+    <!-- ВЕРХНИЕ ИНКЛЮДЫ (ДО ВЫЗОВА BODY) -->
+    
+
+    <!-- ЦЕНТРАЛЬНАЯ КАРТОЧКА -->
+    
+    
+        <!-- СТАНДАРТНАЯ СТАТЬЯ / ВИКИ -->
+        <div class="qz-card qz-card-main w-full mb-6">
+
+            
+                
+<div class="qz-breadcrumbs-container space-y-1 mb-6">
+    
+    <nav class="qz-breadcrumbs mb-0">
+        
+            
+                <a href="/en/wiki/wiki/">wiki</a>
+            
+            <span class="qz-sep">&rsaquo;</span>
+        
+            
+                <a href="/en/wiki/Ancient_Mythology/">Ancient Mythology</a>
+            
+            <span class="qz-sep">&rsaquo;</span>
+        
+        <span class="qz-current">Aphrodite</span>
+    </nav>
+    
+</div>
+
+            
+
+            
+                <h1 class="qz-title">Aphrodite</h1>
+            
+
+            
+
+            
+                <div class="qz-metaline">
+                    14:03 | 27.09.2026
+                </div>
+            
+
+            
+
+            
+            <details class="xl:hidden qz-props mb-6">
+                <summary>
+                    <span>Table of Contents</span>
+                </summary>
+                <div class="p-4 bg-[var(--qz-surface)] text-[var(--qz-text)] text-sm toc-container border-t border-[var(--qz-border)]">
+                    <div class="toc">
+<ul>
+<li><a href="#the-two-births">The Two Births</a><ul>
+<li><a href="#1-archaic-version-foam-born-urania-hesiod">1. Archaic Version: Foam-Born Urania (Hesiod)</a></li>
+<li><a href="#2-homeric-version-daughter-of-zeus">2. Homeric Version: Daughter of Zeus</a><ul>
+<li><a href="#philosophical-dualism-aphrodite-urania-and-pandemos">Philosophical Dualism: Aphrodite Urania and Pandemos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#cythera-cyprus-and-schiza">Cythera, Cyprus, and Schiza</a><ul>
+<li><a href="#schiza">Schiza</a></li>
+</ul>
+</li>
+<li><a href="#marriage-to-hephaestus">Marriage to Hephaestus</a></li>
+<li><a href="#the-archaic-form-aphrodite-areia-the-armed">The Archaic Form: Aphrodite Areia (The Armed)</a><ul>
+<li><a href="#kestos-himas-the-magical-girdle">Kestos Himas: The Magical Girdle</a></li>
+<li><a href="#sacred-attributes">Sacred Attributes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+                </div>
+            </details>
+            
+
+            <article class="wiki-article img-grid">
+                <p>Aphrodite (<em>Greek Ἀφροδίτη, in Roman tradition Venus</em>) is the goddess of love, beauty, passion, fertility, and perpetual renewal, numbered among the Twelve Olympians. <br />
+Personifying erotic attraction, Aphrodite serves not merely as a patroness of marriage or physical beauty, but as a universal cosmic principle to which mortals, beasts, and immortal deities submit (with the exception of three virgin goddesses — Athena, Artemis, and Hestia).</p>
+<hr />
+<h2 id="the-two-births">The Two Births</h2>
+<p>In Greek religion, two distinct narratives regarding the origins of Aphrodite coexisted, reflecting changing theological eras:</p>
+<h3 id="1-archaic-version-foam-born-urania-hesiod">1. Archaic Version: Foam-Born Urania (Hesiod)</h3>
+<p>The earlier myth makes Aphrodite elder to Zeus and the majority of the Olympians. </p>
+<div class="qz-transclusion">
+<a href="/en/wiki/Ancient_Mythology/Chapters/Chapter_1_-_Cosmogony/#8e14e3" class="qz-transclusion-link" title="Открыть заметку"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+<p>The severed flesh of Uranus fell into the sea. Around it white foam formed, from which, near the shores of sacred <a href="/en/wiki/Ancient_Mythology/Sea_Pack/Cythera/" class="wiki-link">Cythera</a>, the goddess of love <a href="/en/wiki/Ancient_Mythology/Sea_Pack/Aphrodite/" class="wiki-link">Aphrodite</a> was born.</p>
+</div>
+
+<p>Folk etymology linked her name to the noun <em>ἀφρός (aphros)</em> — "sea foam". In this archaic form, Aphrodite has no mother: she is generated from celestial seed and the primeval marine waters of Thalassa.</p>
+<h3 id="2-homeric-version-daughter-of-zeus">2. Homeric Version: Daughter of Zeus</h3>
+<p>In the "Iliad", Homer discards the violent context of castration, assimilating the goddess into the patriarchal Olympian family. Here Aphrodite is the daughter of <strong>Zeus</strong> and the ancient moisture goddess <strong>Dione</strong> (whose name is the feminine grammatical form of Zeus — <em>Dios</em>).</p>
+<h4 id="philosophical-dualism-aphrodite-urania-and-pandemos">Philosophical Dualism: Aphrodite Urania and Pandemos</h4>
+<p>These two birth narratives formed the foundation for the philosophical division of the goddess into two aspects, articulated in Plato’s <span class="wiki-link broken-link" title="Page not found: &quot;Symposium&quot;">&quot;Symposium&quot;</span>:</p>
+<ul>
+<li><strong>Aphrodite Urania (<em>The Heavenly</em>):</strong> born motherless from the seed of Uranus. She presides over transcendent intellectual love, friendship, and the aspiration of the soul toward truth and virtue. This is love detached from base lust, oriented toward contemplation of the <span class="wiki-link broken-link" title="Page not found: Theory of Forms">Form of the Beautiful</span>.</li>
+<li><strong>Aphrodite Pandemos (<em>Common / All-People’s</em>):</strong> daughter of Zeus and Dione. The goddess of earthly, physical desire, governing biological propagation, sensory indulgence, and appetite.</li>
+</ul>
+<div class="qz-callout qz-callout-info" style="--callout-color: #4d95f7; --callout-bg: #28313f;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span> <span>Political Origins of the Cult of Pandemos</span></div>
+<div class="qz-callout-content">
+<p>In Athens, the cult of Aphrodite Pandemos was credited to Theseus. Initially, the epithet <em>Pandemos</em> ("Of All the People") bore no pejorative connotation: it signified <strong>civic unity</strong> — the goddess bound the disparate demes of Attica into a singular political body through mutual harmony.</p>
+</div>
+</div>
+
+<hr />
+<h2 id="cythera-cyprus-and-schiza">Cythera, Cyprus, and Schiza</h2>
+<p>In canonical tradition, her primary cradles were the islands of <strong>Cythera</strong> and <strong>Cyprus</strong> (yielding her sacred cult titles — <em>Cytherea</em> and <em>Cypris</em>). </p>
+<div class="qz-callout qz-callout-quote" style="--callout-color: #9e9e9e; --callout-bg: #303236;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg></span> <span>Homeric Hymn to Aphrodite</span></div>
+<div class="qz-callout-content">
+<p><em>I will sing of stately Aphrodite, gold-crowned and beautiful,</em><br />
+<em>Whose domain is the sea-washed stockades of <strong>sacred Cythera</strong></em><br />
+<em>And Cyprus; whither the moist breath of the west wind Zephyrus</em><br />
+<em>Carried her over the surging waves of the sounding sea</em><br />
+<em>In soft foam...</em><br />
+— <em>"Homeric Hymns", Hymn VI</em></p>
+</div>
+</div>
+
+<p>Herodotus and Pausanias identify the shrine on <strong>Cythera</strong> as the <em>oldest sanctuary of Aphrodite in Greece</em>, reflecting its role as a landfall for Phoenician seafarers.</p>
+<h4 id="schiza">Schiza</h4>
+<p>The island of <strong>Schiza</strong> (<em>Σχίζα</em>) lies off the southwestern coast of the Peloponnese (opposite Messenia, west of Cape Akritas and Cythera). Two local traditions are associated with it:</p>
+<ol>
+<li><strong>Etymology of Rupture:</strong> The island’s name derives from the Greek verb <em>σχίζω (schizo)</em> — "to split", "to cleave". Local lore asserted that the cast <a href="/en/wiki/Ancient_Mythology/Adamantine_Sickle/" class="wiki-link">adamantine sickle</a> struck here, or that the island's rock was cleaved by its stroke;</li>
+<li><strong>Local Epithet of Aphrodite:</strong> In Messenia, an archaic cult revered Aphrodite at coastal shrines along this chain as the protectress of navigators (<em>Aphrodite Euploia</em> — "Giver of Fair Voyages").</li>
+</ol>
+<hr />
+<h2 id="marriage-to-hephaestus">Marriage to Hephaestus</h2>
+<p>In mythic narrative, Aphrodite's position on Olympus is paradoxical: the fairest of goddesses is married to the misshapen smith-god <span class="wiki-link broken-link" title="Page not found: Hephaestus">Hephaestus</span>. </p>
+<p>This union is sterile and ironic: Hephaestus represents subterranean manual toil, while Aphrodite represents pleasure and leisure.</p>
+<div class="qz-callout qz-callout-note" style="--callout-color: #4d95f7; --callout-bg: #28313f;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></span> <span>The Net of Hephaestus</span></div>
+<div class="qz-callout-content">
+<p>Aphrodite takes the war-god <span class="wiki-link broken-link" title="Page not found: Ares">Ares</span> as her lover. </p>
+<p>Discovering the infidelity, Hephaestus forged an invisible, fine, unbreakable bronze net over the marriage bed. When Ares and Aphrodite lay together, the net fell, binding them in embrace. Hephaestus summoned the gods of Olympus to witness the shame; yet the sight provoked only "unquenchable laughter" among the immortals, while Poseidon gave surety for Ares's penalty.</p>
+</div>
+</div>
+
+<p>From the union of Love and War (Aphrodite and Ares) issued complex offspring:</p>
+<ul>
+<li><strong>Harmonia:</strong> goddess of concord and cosmic order;</li>
+<li><strong>Phobos and Deimos:</strong> twins personifying Fear and Dread;</li>
+<li><strong>Eros:</strong> in later classical tradition — the winged god of love, serving his mother's will.</li>
+</ul>
+<hr />
+<h2 id="the-archaic-form-aphrodite-areia-the-armed">The Archaic Form: Aphrodite Areia (The Armed)</h2>
+<p>Contrary to the classical image of a delicate goddess, archaic Greece maintained a cult of <strong>Aphrodite Areia (<em>The Warlike</em>)</strong>:</p>
+<div class="qz-callout qz-callout-important" style="--callout-color: #49aea4; --callout-bg: #273336;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span> <span>The Spartan Cult of the Sword-Bearing Goddess</span></div>
+<div class="qz-callout-content">
+<p>In Sparta, Corinth, and on Cythera stood wooden idols (<em>xoana</em>) showing Aphrodite in bronze armor, wearing a helmet, and gripping a spear. </p>
+<p>This figure derived from Phoenician Astarte and Babylonian Ishtar — goddesses uniting sexual fertility with warfare. Spartans prayed to Aphrodite prior to engagements, holding that martial victory and the subjugation of hearts were manifestations of an identical conquering force.</p>
+</div>
+</div>
+
+<h4 id="kestos-himas-the-magical-girdle">Kestos Himas: The Magical Girdle</h4>
+<p>Her signature talisman was the embroidered <strong>girdle (<em>Kestos himas</em>)</strong>, in which all seductions were woven: longing, allure, desire, and whispered endearments that steal the reason of the wise. <br />
+In Book XIV of the "Iliad", <span class="wiki-link broken-link" title="Page not found: Hera">Hera</span> borrows this girdle from Aphrodite to beguile Zeus on Mount <span class="wiki-link broken-link" title="Page not found: Ida">Ida</span>, diverting his attention from the Trojan battlefield.</p>
+<h4 id="sacred-attributes">Sacred Attributes</h4>
+<p>In sacred iconography, Aphrodite is attended by specific symbols:</p>
+<ul>
+<li><strong>Birds:</strong> pairs of white doves (marital affection), sparrows, and swans harnessed to her chariot;</li>
+<li><strong>Plants:</strong> <strong>Myrtle</strong> (the evergreen shrub whose branches she used to cover her modesty on emerging from the waves), the red rose (dyed by her blood when she was scratched by thorns rushing to dying Adonis), and the apple (fruit of temptation and nuptial pledge);</li>
+<li><strong>The Scallop Shell:</strong> her vehicle across the waters of Thalassa.</li>
+</ul>
+            </article>
+
+            
+            <div class="mt-12 pt-4 border-t border-[var(--qz-border)] flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="Ancient_Mythology/Sea_Pack/Aphrodite">
+                    <span class="qz-heart-icon text-sm">🤍</span>
+                    <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                </button>
+            </div>
+            
+
+            
+
+        </div>
+    
+    
+
+    <!-- ЛЕНТА БЛОГА -->
+    
+
+    <!-- НИЖНИЕ ИНКЛЮДЫ -->
+    
+
+</div>
+
+<style>
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--qz-border, #3a3b3f); border-radius: 4px; }
+    .custom-scrollbar:hover::-webkit-scrollbar-thumb { background: var(--qz-text-muted, #9a9ca6); }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tocLinks = document.querySelectorAll('.toc-container a');
+    if (tocLinks.length === 0) return;
+
+    const headers = Array.from(document.querySelectorAll('.wiki-article h1, .wiki-article h2, .wiki-article h3, .wiki-article h4, .wiki-article h5, .wiki-article h6'))
+                         .filter(h => h.id);
+
+    if (headers.length === 0) return;
+
+    let isClickScrolling = false;
+    let scrollTimeout = null;
+
+    const updateActiveToc = () => {
+        if (isClickScrolling) return;
+
+        let activeHeader = headers[0];
+
+        for (let i = 0; i < headers.length; i++) {
+            const rect = headers[i].getBoundingClientRect();
+            if (rect.top <= 120) {
+                activeHeader = headers[i];
+            } else {
+                break;
+            }
+        }
+
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+            activeHeader = headers[headers.length - 1];
+        }
+
+        tocLinks.forEach(link => link.classList.remove('active-toc'));
+
+        const activeLinks = document.querySelectorAll(`.toc-container a[href="#${activeHeader.id}"]`);
+        activeLinks.forEach(link => {
+            link.classList.add('active-toc');
+
+            const container = link.closest('.custom-scrollbar');
+            if (container) {
+                const linkTop = link.offsetTop;
+                const containerScroll = container.scrollTop;
+                const containerHeight = container.clientHeight;
+
+                if (linkTop < containerScroll || linkTop > containerScroll + containerHeight - 30) {
+                    container.scrollTo({ top: linkTop - containerHeight / 2, behavior: 'smooth' });
+                }
+            }
+        });
+    };
+
+    window.addEventListener('scroll', () => {
+        window.requestAnimationFrame(updateActiveToc);
+    }, { passive: true });
+
+    tocLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                const targetId = href.substring(1);
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    e.preventDefault();
+                    isClickScrolling = true;
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.replaceState(null, null, href);
+                }
+            }
+
+            tocLinks.forEach(l => l.classList.remove('active-toc'));
+            document.querySelectorAll(`.toc-container a[href="${link.getAttribute('href')}"]`).forEach(l => {
+                l.classList.add('active-toc');
+            });
+
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                isClickScrolling = false;
+            }, 800);
+        });
+    });
+
+    updateActiveToc();
+
+    if (window.location.hash) {
+        const rawHash = window.location.hash.substring(1);
+        let hashId = decodeURIComponent(rawHash);
+
+        if (hashId.startsWith('^')) {
+            hashId = hashId.substring(1);
+            const targetElement = document.getElementById(hashId) || document.querySelector(`[id="${CSS.escape(hashId)}"]`);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'auto', block: 'start' });
+            }
+        }
+    }
+});
+</script>
+
+    </main>
+
+    <div id="site-footer-container" class="w-full max-w-[760px] mx-auto px-4 mt-2 mb-0">
+        <footer class="retro-footer">
+            
+            <p class="text-[13px] font-semibold text-[var(--qz-text-muted)] tracking-wider">
+                © 2026 ALKREI
+            </p>
+        </footer>
+    </div>
+
+    <!-- Модальное окно просмотра изображений (Lightbox) -->
+    <div id="qz-lightbox" class="fixed inset-0 z-50 bg-black/90 hidden flex items-center justify-center p-4 cursor-zoom-out select-none transition-opacity duration-200 opacity-0">
+        <img id="qz-lightbox-img" src="" alt="Preview" class="max-w-full max-h-full object-contain rounded shadow-2xl transition-transform duration-200 scale-95 pointer-events-none">
+    </div>
+
+</body>
+</html>

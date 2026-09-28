@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tartarus - alkrei</title>
+
+    <link rel="preload" as="image" href="/static/background.png">
+    <link rel="preload" as="image" href="/static/banner_bg.png">
+    <link rel="preload" as="image" href="/static/logo.png" fetchpriority="high">
+
+    <link rel="stylesheet" href="/static/css/tailwind.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- Подключение вынесенных статических файлов с кэшированием браузера -->
+    <!-- Предварительное установление TLS/DNS соединения с бэкендом реакций -->
+    <link rel="preconnect" href="https://script.google.com" crossorigin>
+    <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script defer src="/static/js/main.js"></script>
+
+    <!-- Темная подложка html без белых вспышек + прозрачный body, чтобы не перекрывать body::before -->
+    <style>
+        html {
+            background-color: #17191c;
+        }
+        body {
+            background-color: transparent !important;
+        }
+    </style>
+
+    <style>
+        :root {
+            --c-border: #3a3b3f;
+            --c-surface: #24262a;
+            --c-dark: #202225;
+            --c-darkest: #17191c;
+
+            --page-bg-color: var(--c-darkest);
+            --header-bg: var(--c-dark);
+            --nav-bg: var(--c-darkest);
+            --qz-bg: var(--c-surface);
+            --qz-surface: var(--c-darkest);
+            --qz-surface-hover: var(--c-dark);
+            --qz-surface-alpha: rgba(32, 34, 37, 0.7);
+            --qz-border: var(--c-border);
+            --qz-text: #fbfbfb;
+            --qz-text-muted: #9a9ca6;
+            --qz-accent: #8a5cf5;
+            --qz-accent-hover: #b05cd6;
+            --qz-accent-soft: rgba(138, 92, 245, 0.18);
+            --comic-shadow: ;
+            --code-inline: #c7b0fd;
+            --lang-icon: #00aaff;
+            --lang-en: #ff3333;
+            --lang-ru: #0088ff;
+            --tag-text: #d2c1fc;
+            --link-broken: #ff6b6b;
+            --link-broken-alpha: rgba(255, 107, 107, 0.12);
+
+            --callout-nested-blue: #2c3b51;
+            --callout-nested-cyan: #2b3d49;
+            --callout-nested-green: #2c3f43;
+            --callout-nested-orange: #3e3b3b;
+            --callout-nested-red: #3e3245;
+            --callout-nested-purple: #36354f;
+            --callout-nested-gray: #343c49;
+
+            --h1-color: #FF306C;
+            --h2-color: #ff9502;
+            --h3-color: #FFD500;
+            --h4-color: #4BBF5E;
+            --h5-color: #4d95f7;
+            --h6-color: #b051de;
+
+            --retro-bg: #d6ebe9;
+            --retro-bg-alt: #f3f1e9;
+            --retro-bg-hover: #c6dfdd;
+            --retro-border: #17191c;
+            --retro-shadow: #17191c;
+            --retro-text: #17191c;
+            --retro-text-muted: #555243;
+            --retro-avatar-bg: #d5cba9;
+            --retro-btn: #e5dec9;
+            --retro-tag-type: #17191c;
+            --retro-tag-topic: #8e44ad;
+            --retro-tag-cat: #2ecc71;
+            --retro-tag-date: #d35400;
+            --retro-error: #c0392b;
+            --retro-error-alpha: rgba(192, 57, 43, 0.12);
+            --retro-border-alpha: rgba(23, 25, 28, 0.2);
+            --retro-text-muted-alpha: rgba(85, 82, 67, 0.7);
+
+            --page-bg: url('/static/background.png');
+            --page-banner: url('/static/banner_bg.png');
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-6">
+
+    
+    
+    
+    
+
+    <div class="w-full max-w-[760px] mx-auto px-4 mt-6">
+        <header class="retro-header">
+            <div class="retro-banner">
+                <img src="/static/logo.png" alt=""
+                     loading="eager" decoding="async" fetchpriority="high"
+                     onerror="this.style.display='none'"
+                     class="max-h-28 md:max-h-36 w-auto h-auto object-contain drop-shadow-[4px_4px_0_rgba(0,0,0,1)] select-none pointer-events-none">
+            </div>
+
+            <nav id="site-nav" class="bg-[var(--c-dark)] border-t border-[color:var(--c-dark)] flex w-full relative rounded-b-[0.33rem]">
+                <div class="flex-grow flex rounded-bl-[0.33rem] overflow-hidden">
+                    
+                        <a href="/en/"
+                           style="--btn-color: #ff3333; border-bottom-color: #ff3333;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Home
+                        </a>
+                    
+                        <a href="/en/wiki/"
+                           style="--btn-color: #0088ff; border-bottom-color: #0088ff;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] active">
+                            Wiki
+                        </a>
+                    
+                        <a href="/en/search/"
+                           style="--btn-color: #d35400; border-bottom-color: #d35400;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Search
+                        </a>
+                    
+                        <a href="/en/arukurei/"
+                           style="--btn-color: #00aa33; border-bottom-color: #00aa33;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            About
+                        </a>
+                    
+                </div>
+
+                <div class="lang-container relative border-l border-[color:var(--c-dark)] bg-[var(--c-dark)] px-4 flex items-center cursor-pointer select-none hover:bg-[var(--c-darkest)] transition-all duration-150 self-stretch rounded-br-[0.33rem]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-[var(--lang-icon)] transition-colors duration-150 pointer-events-none" viewBox="0 0 24 24">
+                        <path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/>
+                    </svg>
+                    <div class="lang-dropdown hidden absolute left-[calc(100%+8px)] top-[-1px] bg-[var(--nav-bg)] border-2 border-[color:var(--c-border)] rounded-[0.33rem] shadow-[0_8px_20px_rgba(0,0,0,0.45)] z-50 py-0 w-28 text-center">
+                        
+                            
+                            
+                                <a href="/en/wiki/Ancient_Mythology/Protogenos/Tartarus/"
+                                   style="--lang-hover: var(--lang-en);"
+                                   class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-hover)] hover:text-white transition-all rounded-t-[0.33rem]">
+                                    English
+                                </a>
+                            
+                        
+                            
+                            
+                                <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F%20%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D0%BE%D1%81/%D0%A2%D0%B0%D1%80%D1%82%D0%B0%D1%80/"
+                                   style="--lang-hover: var(--lang-ru);"
+                                   class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-hover)] hover:text-white transition-all rounded-b-[0.33rem]">
+                                    Русский
+                                </a>
+                            
+                        
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <main id="site-main" class="w-full max-w-[760px] mx-auto px-4 flex-grow flex flex-col space-y-6">
+        
+<div class="animate-retro-pop relative w-full mb-2">
+
+    <!-- ЛЕВАЯ КОЛОНКА (Если есть виджеты с position: left) -->
+    
+    <aside class="hidden xl:block absolute right-[100%] top-0 bottom-0 mr-4 w-60">
+        <div class="sticky top-6 flex flex-col gap-6 w-full max-h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar">
+            
+                
+                    <div class="qz-card qz-card-widget w-full">
+                        <div class="widget-title">
+                            Table of Contents
+                        </div>
+                        <div class="toc-container">
+                            <div class="toc">
+<ul>
+<li><a href="#the-vertical-axis-of-the-cosmos-and-the-physics-of-the-abyss">The Vertical Axis of the Cosmos and the Physics of the Abyss</a></li>
+<li><a href="#the-offspring-of-tartarus">The Offspring of Tartarus</a></li>
+<li><a href="#distinguishing-tartarus-from-hades">Distinguishing Tartarus from Hades</a></li>
+<li><a href="#campe-the-ancient-warden-of-the-abyss">Campe: The Ancient Warden of the Abyss</a></li>
+<li><a href="#the-five-great-inmates-of-tartarus">The Five Great Inmates of Tartarus</a></li>
+<li><a href="#tartarus-as-the-pulsing-heart-of-the-cosmos-plato-phaedo">Tartarus as the Pulsing Heart of the Cosmos (Plato, "Phaedo")</a></li>
+</ul>
+</div>
+
+                        </div>
+                    </div>
+                
+            
+        </div>
+    </aside>
+    
+
+    <!-- ПРАВАЯ КОЛОНКА (Если есть виджеты с position: right) -->
+    
+    <aside class="hidden xl:block absolute left-[100%] top-0 bottom-0 ml-4 w-60">
+        <div class="sticky top-6 flex flex-col gap-6 w-full max-h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar">
+            
+                
+                    <div class="qz-card qz-card-widget w-full">
+                        <div class="widget-title">
+                            Properties
+                        </div>
+                        <div class="space-y-3">
+                            
+                            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                                    type
+                                </div>
+                                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                                    
+                                        
+                                        <a href="/en/search/?tag=location"
+                                           class="inline-block text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
+                                            location
+                                        </a>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                                    tags
+                                </div>
+                                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                                    
+                                        <div class="flex flex-wrap gap-1 items-center">
+                                            
+                                                
+                                                
+                                                
+                                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=location">#location</a>
+                                                
+                                            
+                                                
+                                                
+                                                
+                                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=TODO">#TODO</a>
+                                                
+                                            
+                                                
+                                                
+                                                
+                                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=%E2%8C%9B">#⌛</a>
+                                                
+                                            
+                                                
+                                                
+                                                
+                                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=%F0%9F%8C%B3">#🌳</a>
+                                                
+                                            
+                                                
+                                                
+                                                
+                                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=characters/gods">#characters/gods</a>
+                                                
+                                            
+                                        </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                                    genesis
+                                </div>
+                                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                                    
+                                        <div class="flex flex-wrap gap-1 items-center">
+                                        
+                                            
+                                                <span class="qz-tag broken-link text-[11px] px-1.5 py-0.5" title="Страница не найдена">Protogenos</span>
+                                            
+                                        
+                                        </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                                    ancestors
+                                </div>
+                                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                                    
+                                        Autogenesis
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                                    descendants
+                                </div>
+                                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                                    
+                                        <div class="flex flex-wrap gap-1 items-center">
+                                        
+                                            
+                                                <span class="qz-tag broken-link text-[11px] px-1.5 py-0.5" title="Страница не найдена">Typhon</span>
+                                            
+                                        
+                                        </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                
+            
+        </div>
+    </aside>
+    
+
+    <!-- ВЕРХНИЕ ИНКЛЮДЫ (ДО ВЫЗОВА BODY) -->
+    
+
+    <!-- ЦЕНТРАЛЬНАЯ КАРТОЧКА -->
+    
+    
+        <!-- СТАНДАРТНАЯ СТАТЬЯ / ВИКИ -->
+        <div class="qz-card qz-card-main w-full mb-6">
+
+            
+                
+<div class="qz-breadcrumbs-container space-y-1 mb-6">
+    
+    <nav class="qz-breadcrumbs mb-0">
+        
+            
+                <a href="/en/wiki/wiki/">wiki</a>
+            
+            <span class="qz-sep">&rsaquo;</span>
+        
+            
+                <a href="/en/wiki/Ancient_Mythology/">Ancient Mythology</a>
+            
+            <span class="qz-sep">&rsaquo;</span>
+        
+            
+                <a href="/en/wiki/Ancient_Mythology/Chapters/Chapter_1_-_Cosmogony/">Chapter 1 - Cosmogony</a>
+            
+            <span class="qz-sep">&rsaquo;</span>
+        
+        <span class="qz-current">Tartarus</span>
+    </nav>
+    
+</div>
+
+            
+
+            
+                <h1 class="qz-title">Tartarus</h1>
+            
+
+            
+
+            
+                <div class="qz-metaline">
+                    09:21 | 08.08.2026
+                </div>
+            
+
+            
+
+            
+            <details class="xl:hidden qz-props mb-6">
+                <summary>
+                    <span>Table of Contents</span>
+                </summary>
+                <div class="p-4 bg-[var(--qz-surface)] text-[var(--qz-text)] text-sm toc-container border-t border-[var(--qz-border)]">
+                    <div class="toc">
+<ul>
+<li><a href="#the-vertical-axis-of-the-cosmos-and-the-physics-of-the-abyss">The Vertical Axis of the Cosmos and the Physics of the Abyss</a></li>
+<li><a href="#the-offspring-of-tartarus">The Offspring of Tartarus</a></li>
+<li><a href="#distinguishing-tartarus-from-hades">Distinguishing Tartarus from Hades</a></li>
+<li><a href="#campe-the-ancient-warden-of-the-abyss">Campe: The Ancient Warden of the Abyss</a></li>
+<li><a href="#the-five-great-inmates-of-tartarus">The Five Great Inmates of Tartarus</a></li>
+<li><a href="#tartarus-as-the-pulsing-heart-of-the-cosmos-plato-phaedo">Tartarus as the Pulsing Heart of the Cosmos (Plato, "Phaedo")</a></li>
+</ul>
+</div>
+
+                </div>
+            </details>
+            
+
+            <article class="wiki-article img-grid">
+                <p>Tartarus is the primordial personified void, unique in that it functions simultaneously as an anthropomorphic Protogenos god and as a foundational realm of the cosmos. </p>
+<p>It is not merely a "deep cavern," but a bottomless chasm that ruptured within the lowest depths of the Earth. Tartarus stands as the direct subterranean counterpart to the Sky, representing the lowest limit of the physical universe.</p>
+<hr />
+<h2 id="the-vertical-axis-of-the-cosmos-and-the-physics-of-the-abyss">The Vertical Axis of the Cosmos and the Physics of the Abyss</h2>
+<p>In the archaic cosmography of <a href="/en/wiki/Ancient_Mythology/Chapters/Hesiod/" class="wiki-link">Hesiod</a>, the universe exhibits strict spatial symmetry:<br />
+<strong><a href="/en/wiki/Ancient_Mythology/Protogenos/Uranus/" class="wiki-link">Sky</a> $\rightarrow$ <a href="/en/wiki/Ancient_Mythology/Protogenos/Gaia/" class="wiki-link">Earth</a> $\rightarrow$ <span class="wiki-link broken-link" title="Page not found: Hades">Hades</span> $\rightarrow$ Tartarus $\rightarrow$ <a href="/en/wiki/Ancient_Mythology/Protogenos/Chaos/" class="wiki-link">Chaos</a></strong></p>
+<p>The scale of this vertical dimension is framed by the famous metaphor of the "nine-day anvil":</p>
+<ul>
+<li>A bronze anvil dropped from Heaven falls for <strong>nine days and nine nights</strong>, reaching the Earth on the tenth;</li>
+<li>An anvil dropped from Earth falls toward the floor of Tartarus for <strong>the exact same duration</strong> — nine days and nine nights.</li>
+</ul>
+<div class="qz-callout qz-callout-info" style="--callout-color: #4d95f7; --callout-bg: #28313f;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span> <span>Architecture of the Cosmic Penitentiary</span></div>
+<div class="qz-callout-content">
+<p>Tartarus serves as the primary maximum-security isolation ward of creation. It is encircled by a triple belt of impenetrable Night and a bronze wall forged by Poseidon. Its solitary gates are guarded by the <a href="/en/wiki/Ancient_Mythology/Protogenos/Hecatoncheires/" class="wiki-link">Hecatoncheires</a> (Hundred-Handed Ones). Because elder gods are immortal and cannot be destroyed physically, Tartarus remains the sole mechanism for neutralizing deposed sovereign deities.</p>
+</div>
+</div>
+
+<hr />
+<h2 id="the-offspring-of-tartarus">The Offspring of Tartarus</h2>
+<p>Tartarus operates not merely as an abyss-prison. When Gaia is driven to fury by Zeus confining her Titan children within the depths, she unites with murky Tartarus to produce Typhon — the most dreadful monster and a defining figure of Greek mythology.</p>
+<p>Typhon's iconography is grotesque: a hundred dragon heads erupting with the roars of lions, the baying of hounds, and serpent hisses; flashing fire instead of eyes; colossal arms spanning from east to west. An entity so terrifying that the Olympian gods fled in panic to Egypt, disguising themselves in animal forms.</p>
+<blockquote>
+<p>The ultimate abyss yields ultimate terror. The chthonic form of Typhon exposes the inner nature of Tartarus: the depths of the earth bring forth horrors whose very essence traces directly back to primeval Chaos.</p>
+</blockquote>
+<div class="qz-callout qz-callout-important" style="--callout-color: #49aea4; --callout-bg: #273336;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span> <span>Typhon as the Archetype of the Monster</span></div>
+<div class="qz-callout-content">
+<p>A compelling conceptual paradigm: in subsequent ages, every manifestation of Chaos emerges as disorderly, grotesque, or deformed to varying degrees. <br />
+Typhon, however, stands as their absolute, unadulterated archetype.</p>
+</div>
+</div>
+
+<hr />
+<h2 id="distinguishing-tartarus-from-hades">Distinguishing Tartarus from Hades</h2>
+<p>In archaic thought, <strong>Hades</strong> and <strong>Tartarus</strong> designate fundamentally distinct strata of the underworld:</p>
+<ul>
+<li><strong>Hades</strong> is the common realm of the dead, where shades of mortal humans drift after dissolution. It is a space of mist, fading memories, and rest.</li>
+<li><strong>Tartarus</strong> is a cosmic dungeon situated immeasurably deeper than Hades. It was conceived not for ordinary dead souls, but for defeated immortal beings (Titans, Cyclopes) and paramount transgressors who defied the sacred cosmic laws of the gods (Sisyphus, Tantalus, Ixion).</li>
+</ul>
+<p>The conflation of these domains emerged much later in Roman poetry (<em>such as Virgil</em>), where Tartarus was reduced to designating the punitive "hellish" quarter of the underworld.</p>
+<hr />
+<h2 id="campe-the-ancient-warden-of-the-abyss">Campe: The Ancient Warden of the Abyss</h2>
+<p>Before Zeus stationed the Hundred-Handed Ones at the gates of Tartarus, the abyss was governed by a monstrous warden — the dragoness <strong>Campe</strong> (<em>Kampē</em>), appointed by Cronus to watch over the chained Cyclopes.</p>
+<p>Campe represented an appalling <a href="/en/wiki/Ancient_Mythology/Chthonism/" class="wiki-link">chthonic</a> hybrid: a woman's torso terminating in a scaly dragon body, a scorpion's tail, and a hundred viper heads writhing at her feet. To enlist the Cyclopes and Hundred-Handed Ones during the Titanomachy, Zeus descended into Tartarus, engaged Campe in mortal combat, and slew the first jailer in cosmic history.</p>
+<hr />
+<h2 id="the-five-great-inmates-of-tartarus">The Five Great Inmates of Tartarus</h2>
+<p>Within the deepest terraces of Tartarus, eternal sentences are served by mortals and demigods who committed boundary-shattering transgressions against cosmic law:</p>
+<ol>
+<li><strong>Sisyphus:</strong> for attempting to cheat Death itself (<span class="wiki-link broken-link" title="Page not found: Thanatos">Thanatos</span>) and fleeing the Underworld — condemned to roll a colossal boulder to a mountain summit, which slips from his grasp at the precipice.</li>
+<li><strong>Tantalus:</strong> for questioning the omniscience of the gods and attempting to feed them the flesh of his butchered son — stands chin-deep in water beneath boughs of ripe fruit, yet the water recedes when he stoops to drink, and branches lift away when he reaches to eat.</li>
+<li><strong>Ixion:</strong> for an attempt to seduce the goddess <span class="wiki-link broken-link" title="Page not found: Hera">Hera</span> — bound eternally to a spinning wheel of fire.</li>
+<li><strong>The Danaids:</strong> forty-nine sisters who murdered their husbands on their wedding night — tasked forever with filling a bottomless perforated vessel (<em>"The Danaid Basin"</em>).</li>
+<li><strong>Tityos:</strong> a giant who attempted to violate the Titaness Leto — stretched across the rock, where two vultures perpetually feast upon his regenerating liver.</li>
+</ol>
+<p><a href="/en/search?tag=TODO" class="qz-tag">#TODO</a> Expand with individual side-myths</p>
+<hr />
+<h2 id="tartarus-as-the-pulsing-heart-of-the-cosmos-plato-phaedo">Tartarus as the Pulsing Heart of the Cosmos (Plato, "Phaedo")</h2>
+<p>In the dialogue "Phaedo", Plato outlines a natural philosophical model of the Underworld. Here, Tartarus is not merely an inert dungeon, but a vast hollow shaft traversing the core of the Earth.</p>
+<p>Tartarus operates like a gigantic pulsating heart of the cosmos:</p>
+<ul>
+<li>All subterranean waters are cyclically drawn into the chasm of Tartarus and surged back out;</li>
+<li>From this subterranean oscillation issue the sacred underground rivers: the river of woe <strong>Acheron</strong>, the river of fire <strong>Phlegethon</strong>, and the frozen stream <strong>Cocytus</strong>;</li>
+<li>The subterranean waters swing up and down, sustaining the inner circulatory rhythm and respiration of the planet.</li>
+</ul>
+            </article>
+
+            
+            <div class="mt-12 pt-4 border-t border-[var(--qz-border)] flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="Ancient_Mythology/Protogenos/Tartarus">
+                    <span class="qz-heart-icon text-sm">🤍</span>
+                    <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
+                </button>
+            </div>
+            
+
+            
+
+        </div>
+    
+    
+
+    <!-- ЛЕНТА БЛОГА -->
+    
+
+    <!-- НИЖНИЕ ИНКЛЮДЫ -->
+    
+
+</div>
+
+<style>
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--qz-border, #3a3b3f); border-radius: 4px; }
+    .custom-scrollbar:hover::-webkit-scrollbar-thumb { background: var(--qz-text-muted, #9a9ca6); }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tocLinks = document.querySelectorAll('.toc-container a');
+    if (tocLinks.length === 0) return;
+
+    const headers = Array.from(document.querySelectorAll('.wiki-article h1, .wiki-article h2, .wiki-article h3, .wiki-article h4, .wiki-article h5, .wiki-article h6'))
+                         .filter(h => h.id);
+
+    if (headers.length === 0) return;
+
+    let isClickScrolling = false;
+    let scrollTimeout = null;
+
+    const updateActiveToc = () => {
+        if (isClickScrolling) return;
+
+        let activeHeader = headers[0];
+
+        for (let i = 0; i < headers.length; i++) {
+            const rect = headers[i].getBoundingClientRect();
+            if (rect.top <= 120) {
+                activeHeader = headers[i];
+            } else {
+                break;
+            }
+        }
+
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+            activeHeader = headers[headers.length - 1];
+        }
+
+        tocLinks.forEach(link => link.classList.remove('active-toc'));
+
+        const activeLinks = document.querySelectorAll(`.toc-container a[href="#${activeHeader.id}"]`);
+        activeLinks.forEach(link => {
+            link.classList.add('active-toc');
+
+            const container = link.closest('.custom-scrollbar');
+            if (container) {
+                const linkTop = link.offsetTop;
+                const containerScroll = container.scrollTop;
+                const containerHeight = container.clientHeight;
+
+                if (linkTop < containerScroll || linkTop > containerScroll + containerHeight - 30) {
+                    container.scrollTo({ top: linkTop - containerHeight / 2, behavior: 'smooth' });
+                }
+            }
+        });
+    };
+
+    window.addEventListener('scroll', () => {
+        window.requestAnimationFrame(updateActiveToc);
+    }, { passive: true });
+
+    tocLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                const targetId = href.substring(1);
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    e.preventDefault();
+                    isClickScrolling = true;
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.replaceState(null, null, href);
+                }
+            }
+
+            tocLinks.forEach(l => l.classList.remove('active-toc'));
+            document.querySelectorAll(`.toc-container a[href="${link.getAttribute('href')}"]`).forEach(l => {
+                l.classList.add('active-toc');
+            });
+
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                isClickScrolling = false;
+            }, 800);
+        });
+    });
+
+    updateActiveToc();
+
+    if (window.location.hash) {
+        const rawHash = window.location.hash.substring(1);
+        let hashId = decodeURIComponent(rawHash);
+
+        if (hashId.startsWith('^')) {
+            hashId = hashId.substring(1);
+            const targetElement = document.getElementById(hashId) || document.querySelector(`[id="${CSS.escape(hashId)}"]`);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'auto', block: 'start' });
+            }
+        }
+    }
+});
+</script>
+
+    </main>
+
+    <div id="site-footer-container" class="w-full max-w-[760px] mx-auto px-4 mt-2 mb-0">
+        <footer class="retro-footer">
+            
+            <p class="text-[13px] font-semibold text-[var(--qz-text-muted)] tracking-wider">
+                © 2026 ALKREI
+            </p>
+        </footer>
+    </div>
+
+    <!-- Модальное окно просмотра изображений (Lightbox) -->
+    <div id="qz-lightbox" class="fixed inset-0 z-50 bg-black/90 hidden flex items-center justify-center p-4 cursor-zoom-out select-none transition-opacity duration-200 opacity-0">
+        <img id="qz-lightbox-img" src="" alt="Preview" class="max-w-full max-h-full object-contain rounded shadow-2xl transition-transform duration-200 scale-95 pointer-events-none">
+    </div>
+
+</body>
+</html>
