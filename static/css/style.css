@@ -311,12 +311,12 @@ body, img {
     line-height: 1.3;
 }
 
-.qz-card .wiki-article h1 { color: var(--h1-color); font-size: 1.7em; font-weight: 700; margin-top: 1.5em; margin-bottom: 0.55em; }
-.qz-card .wiki-article h2 { color: var(--h2-color); font-size: 1.4em; font-weight: 700; margin-top: 1.4em; margin-bottom: 0.5em; }
-.qz-card .wiki-article h3 { color: var(--h3-color); font-size: 1.2em; font-weight: 600; margin-top: 1.3em; margin-bottom: 0.45em; }
-.qz-card .wiki-article h4 { color: var(--h4-color); font-size: 1.05em; font-weight: 600; margin-top: 1.2em; margin-bottom: 0.4em; }
-.qz-card .wiki-article h5 { color: var(--h5-color); font-size: 0.95em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-top: 1.1em; margin-bottom: 0.4em; }
-.qz-card .wiki-article h6 { color: var(--h6-color); font-size: 0.85em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 1.1em; margin-bottom: 0.4em; }
+.qz-card .wiki-article h1 { color: var(--h1-color); font-size: 1.7em; font-weight: 700; margin-top: 1.5em; margin-bottom: 0.8em; }
+.qz-card .wiki-article h2 { color: var(--h2-color); font-size: 1.4em; font-weight: 700; margin-top: 1.4em; margin-bottom: 0.75em; }
+.qz-card .wiki-article h3 { color: var(--h3-color); font-size: 1.2em; font-weight: 600; margin-top: 1.3em; margin-bottom: 0.65em; }
+.qz-card .wiki-article h4 { color: var(--h4-color); font-size: 1.05em; font-weight: 600; margin-top: 1.2em; margin-bottom: 0.6em; }
+.qz-card .wiki-article h5 { color: var(--h5-color); font-size: 0.95em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-top: 1.1em; margin-bottom: 0.5em; }
+.qz-card .wiki-article h6 { color: var(--h6-color); font-size: 0.85em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 1.1em; margin-bottom: 0.5em; }
 
 .qz-card .wiki-article p { margin-bottom: 1em; color: var(--qz-text); }
 .qz-card .wiki-article sup { vertical-align: super; font-size: 0.75em; line-height: 0; }
@@ -920,6 +920,26 @@ details.qz-callout[open] summary.qz-callout-title::after {
     .qz-carousel-btn.next { right: -15px; }
 }
 
+.qz-carousel-counter {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    color: var(--qz-text-muted);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 2px 7px;
+    border-radius: 6px;
+    pointer-events: none;
+    z-index: 10;
+    user-select: none;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+}
+
 .wiki-article table.dataview {
     border: none !important;
     background: transparent !important;
@@ -950,8 +970,22 @@ details.qz-callout[open] summary.qz-callout-title::after {
     gap: 4px;
     transition: border-color 0.15s ease;
     transform: none !important;
+    position: relative !important;
 }
 .wiki-article table.dataview tr:hover { border-color: var(--qz-accent) !important; transform: none !important; }
+
+.dataview-stretched-link {
+    color: inherit !important;
+    text-decoration: none !important;
+    font-weight: 700;
+}
+.dataview-stretched-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    cursor: pointer;
+}
 .wiki-article table.dataview td { border: none !important; padding: 0 !important; background: transparent !important; font-size: 0.95em !important; word-break: break-word !important; }
 .wiki-article table.dataview td.dataview-empty, .wiki-article table.dataview td:empty { display: none !important; }
 .wiki-article table.dataview td img.dataview-cover { width: 100% !important; height: 110px; object-fit: cover !important; border-radius: 4px; margin-bottom: 6px !important; display: block !important; }

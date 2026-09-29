@@ -155,12 +155,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const cards = Array.from(track.children);
         const btnPrev = carousel.querySelector('.qz-carousel-btn.prev');
         const btnNext = carousel.querySelector('.qz-carousel-btn.next');
+        const counter = carousel.querySelector('.qz-carousel-counter');
 
         if (cards.length < 2) {
             if (btnPrev) btnPrev.style.display = 'none';
             if (btnNext) btnNext.style.display = 'none';
+            if (counter) counter.style.display = 'none';
             return;
         }
+
+        const total = cards.length;
+        const updateCounter = () => {
+            if (!counter) return;
+            const currentIdx = track.children[0].getAttribute('data-index') || '1';
+            counter.textContent = `${currentIdx} / ${total}`;
+        };
 
         let intervalId;
         const delay = parseInt(carousel.getAttribute('data-interval') || '4500', 10);
@@ -181,6 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 track.appendChild(track.children[0]);
                 track.style.transform = 'translateX(0)';
                 isTransitioning = false;
+                updateCounter();
             }, 400);
         };
 
@@ -194,6 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
             track.style.transition = 'none';
             track.insertBefore(track.lastElementChild, track.children[0]);
             track.style.transform = `translateX(-${shift}px)`;
+            updateCounter();
 
             void track.offsetWidth;
 
