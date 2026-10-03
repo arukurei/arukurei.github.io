@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Предзагрузка страниц по наведению курсора (мгновенный клик штатным браузерным кэшем)
+    // Предзагрузка страниц по наведению курсора с защитой от дубликатов
+    const prefetchedUrls = new Set();
     document.addEventListener('mouseover', (e) => {
         const a = e.target.closest('a');
         if (a && a.origin === window.location.origin && !a.hash) {
             const href = a.getAttribute('href');
-            if (href && !href.startsWith('/media/') && !href.startsWith('/static/')) {
+            if (href && !href.startsWith('/media/') && !href.startsWith('/static/') && !prefetchedUrls.has(a.href)) {
+                prefetchedUrls.add(a.href);
                 const link = document.createElement('link');
                 link.rel = 'prefetch';
                 link.href = a.href;
@@ -252,119 +254,4 @@ document.addEventListener('DOMContentLoaded', () => {
             el.classList.add('has-overflow');
         }
     });
-
-    // === База данных лайков: Оптимистичный UI с кэшем чисел в localStorage ===
-    const LIKES_API_URL = 'https://script.google.com/macros/s/AKfycbwVnLnaCYgsKggrYUeTsysWY0aIsBh0zPGCoJekGKIXk6OjDmu8gC83hFLvUxTVmfxv/exec';
-    const MAX_LIKES_LIMIT = 99999;
-    const STORAGE_COUNTS_KEY = 'qz_likes_counts_cache';
-    const reactionButtons = Array.from(document.querySelectorAll('.qz-reaction-btn'));
-
-    if (reactionButtons.length > 0) {
-        let cachedCounts = {};
-        try {
-            cachedCounts = JSON.parse(localStorage.getItem(STORAGE_COUNTS_KEY) || '{}');
-        } catch (_) {}
-
-        const saveCountsCache = () => {
-            try {
-                localStorage.setItem(STORAGE_COUNTS_KEY, JSON.stringify(cachedCounts));
-            } catch (_) {}
-        };
-
-        const slugsToFetch = [];
-
-        reactionButtons.forEach((btn) => {
-            const slug = btn.getAttribute('data-post-id');
-            if (!slug) return;
-
-            slugsToFetch.push(slug);
-            const safeKey = slug.replace(/[^a-zA-Z0-9_-]/g, '_');
-            const storageLikedKey = `qz_liked_${safeKey}`;
-            const heartIcon = btn.querySelector('.qz-heart-icon');
-            const countLabel = btn.querySelector('.qz-reaction-count');
-
-            let isLiked = localStorage.getItem(storageLikedKey) === 'true';
-
-            // МГНОВЕННО (0 мс) подставляем число из кэша памяти, не дожидаясь ответа сервера
-            if (countLabel && typeof cachedCounts[slug] === 'number') {
-                countLabel.innerText = Math.min(MAX_LIKES_LIMIT, Math.max(0, cachedCounts[slug]));
-            }
-
-            const updateUI = () => {
-                if (isLiked) {
-                    btn.classList.add('liked');
-                    if (heartIcon) heartIcon.textContent = '❤️';
-                } else {
-                    btn.classList.remove('liked');
-                    if (heartIcon) heartIcon.textContent = '🤍';
-                }
-            };
-
-            updateUI();
-
-            btn.onclick = (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-
-                let currentCount = parseInt(countLabel ? countLabel.innerText : '0', 10);
-                if (isNaN(currentCount)) currentCount = 0;
-
-                const action = isLiked ? 'like_down' : 'like_up';
-                isLiked = !isLiked;
-
-                if (isLiked) {
-                    currentCount = Math.min(MAX_LIKES_LIMIT, currentCount + 1);
-                } else {
-                    currentCount = Math.max(0, currentCount - 1);
-                }
-
-                cachedCounts[slug] = currentCount;
-                saveCountsCache();
-                localStorage.setItem(storageLikedKey, isLiked ? 'true' : 'false');
-                if (countLabel) countLabel.innerText = currentCount;
-                updateUI();
-
-                fetch(`${LIKES_API_URL}?slug=${encodeURIComponent(slug)}&action=${action}`, { redirect: 'follow' })
-                    .then((r) => {
-                        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-                        return r.json();
-                    })
-                    .then((data) => {
-                        if (countLabel && typeof data.likes === 'number') {
-                            const verifiedLikes = Math.min(MAX_LIKES_LIMIT, Math.max(0, data.likes));
-                            cachedCounts[slug] = verifiedLikes;
-                            saveCountsCache();
-                            countLabel.innerText = verifiedLikes;
-                        }
-                    })
-                    .catch((err) => {
-                        console.warn('[Likes] Синхронизация не удалась (сеть, лимиты Google или блокировщик рекламы):', err);
-                    });
-            };
-        });
-
-        // Фоновый пакетный запрос: обновляет кэш, если кто-то другой поставил лайк
-        if (slugsToFetch.length > 0) {
-            fetch(`${LIKES_API_URL}?action=get&slugs=${encodeURIComponent(slugsToFetch.join('|'))}`, { redirect: 'follow' })
-                .then((r) => {
-                    if (!r.ok) throw new Error(`HTTP ${r.status}`);
-                    return r.json();
-                })
-                .then((batchData) => {
-                    reactionButtons.forEach((btn) => {
-                        const slug = btn.getAttribute('data-post-id');
-                        if (slug && typeof batchData[slug] === 'number') {
-                            const verified = Math.min(MAX_LIKES_LIMIT, Math.max(0, batchData[slug]));
-                            cachedCounts[slug] = verified;
-                            const countLabel = btn.querySelector('.qz-reaction-count');
-                            if (countLabel) countLabel.innerText = verified;
-                        }
-                    });
-                    saveCountsCache();
-                })
-                .catch((err) => {
-                    console.warn('[Likes] Пакетная загрузка не удалась (сеть или блокировщик рекламы):', err);
-                });
-        }
-    }
 });

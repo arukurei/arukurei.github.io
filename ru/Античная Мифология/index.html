@@ -22,11 +22,6 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 
-    <!-- Подключение вынесенных статических файлов с кэшированием браузера -->
-    <!-- Предварительное установление TLS/DNS соединения с бэкендом реакций -->
-    <link rel="preconnect" href="https://script.google.com" crossorigin>
-    <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
-
     <link rel="stylesheet" href="/static/css/style.css">
     <script defer src="/static/js/main.js"></script>
 
@@ -60,7 +55,7 @@
             --qz-accent: #8a5cf5;
             --qz-accent-hover: #b05cd6;
             --qz-accent-soft: rgba(138, 92, 245, 0.18);
-            --comic-shadow: ;
+            --comic-shadow: #17191c;
             --code-inline: #c7b0fd;
             --lang-icon: #00aaff;
             --lang-en: #ff3333;
@@ -108,11 +103,6 @@
     </style>
 </head>
 <body class="min-h-screen flex flex-col pb-6">
-
-    
-    
-    
-    
 
     <div class="w-full max-w-[760px] mx-auto px-4 mt-6">
         <header class="retro-header">
@@ -195,78 +185,68 @@
     <!-- ВЕРХНИЕ ИНКЛЮДЫ (ДО ВЫЗОВА BODY) -->
     
         
-        <div class="qz-card qz-card-main w-full mb-6">
-            
-                <h1 class="qz-title">Последние изменения</h1>
-            
-            
-            
-            
-            <article class="wiki-article cards cards-cover cards-1-2 cards-cols-3 img-grid">
-                <div class="qz-carousel" data-interval="4500">
+            <div class="qz-card qz-card-main w-full mb-6">
+    
+        <h1 class="qz-title">Последние изменения</h1>
+    
+    
+    
+    
+    <article class="wiki-article cards cards-cover cards-1-2 cards-cols-3 img-grid">
+        <div class="qz-carousel" data-interval="4500">
 <button class="qz-carousel-btn prev" aria-label="Previous">❮</button>
 <div class="qz-carousel-viewport">
 <div class="qz-carousel-track" style="gap:12px;">
 
-                    <div class="qz-deck-card" data-index="1" style="height:160px;">
-                        <div class="qz-deck-cover" style="flex:0 0 180px; width:180px;">
-                            <img src="/media/Chapter%201.png" class="qz-deck-img" alt="Глава 1 - Космогония">
-                        </div>
-                        <div class="qz-deck-content">
-                            <div class="qz-deck-title">
-                                <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%93%D0%BB%D0%B0%D0%B2%D1%8B/%D0%93%D0%BB%D0%B0%D0%B2%D0%B0_1_-_%D0%9A%D0%BE%D1%81%D0%BC%D0%BE%D0%B3%D0%BE%D0%BD%D0%B8%D1%8F/" class="wiki-link">Глава 1 - Космогония</a>
+                        <div class="qz-deck-card" data-index="1" style="height:160px;">
+                            <div class="qz-deck-cover" style="flex:0 0 180px; width:180px;"><img src="/media/Chapter%201.png" class="qz-deck-img" alt="Глава 1 - Космогония"></div>
+                            <div class="qz-deck-content">
+                                <div class="qz-deck-title">
+                                    <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%93%D0%BB%D0%B0%D0%B2%D1%8B/%D0%93%D0%BB%D0%B0%D0%B2%D0%B0_1_-_%D0%9A%D0%BE%D1%81%D0%BC%D0%BE%D0%B3%D0%BE%D0%BD%D0%B8%D1%8F/" class="wiki-link">Глава 1 - Космогония</a>
+                                </div>
+                                <div class="qz-deck-details"><div class="qz-deck-row">wiki_main</div><div class="qz-deck-row">28.09.2026</div></div>
                             </div>
-                            <div class="qz-deck-details"><div class="qz-deck-row">wiki_main</div><div class="qz-deck-row">28.09.2026</div></div>
                         </div>
-                    </div>
 
-                    <div class="qz-deck-card" data-index="2" style="height:160px;">
-                        <div class="qz-deck-cover" style="flex:0 0 180px; width:180px;">
-                            <div class="qz-deck-no-img">Нет фото</div>
-                        </div>
-                        <div class="qz-deck-content">
-                            <div class="qz-deck-title">
-                                <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%93%D0%BE%D1%80%D0%BD%D1%8B%D0%B9_%D0%9F%D0%B0%D0%BA/%D0%9E%D1%80%D0%BE%D1%81/" class="wiki-link">Орос</a>
-                            </div>
-                            <div class="qz-deck-details"><div class="qz-deck-row">character</div><div class="qz-deck-row">27.09.2026</div></div>
-                        </div>
-                    </div>
+                        <div class="qz-deck-card" data-index="2" style="height:160px;">
 
-                    <div class="qz-deck-card" data-index="3" style="height:160px;">
-                        <div class="qz-deck-cover" style="flex:0 0 180px; width:180px;">
-                            <div class="qz-deck-no-img">Нет фото</div>
-                        </div>
-                        <div class="qz-deck-content">
-                            <div class="qz-deck-title">
-                                <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D0%BE%D1%81/%D0%93%D0%B5%D0%BA%D0%B0%D1%82%D0%BE%D0%BD%D1%85%D0%B5%D0%B9%D1%80%D1%8B/" class="wiki-link">Гекатонхейры</a>
+                            <div class="qz-deck-content">
+                                <div class="qz-deck-title">
+                                    <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%93%D0%BE%D1%80%D0%BD%D1%8B%D0%B9_%D0%9F%D0%B0%D0%BA/%D0%9E%D1%80%D0%BE%D1%81/" class="wiki-link">Орос</a>
+                                </div>
+                                <div class="qz-deck-details"><div class="qz-deck-row">character</div><div class="qz-deck-row">27.09.2026</div></div>
                             </div>
-                            <div class="qz-deck-details"><div class="qz-deck-row">character</div><div class="qz-deck-row">27.09.2026</div></div>
                         </div>
-                    </div>
 
-                    <div class="qz-deck-card" data-index="4" style="height:160px;">
-                        <div class="qz-deck-cover" style="flex:0 0 180px; width:180px;">
-                            <div class="qz-deck-no-img">Нет фото</div>
-                        </div>
-                        <div class="qz-deck-content">
-                            <div class="qz-deck-title">
-                                <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D0%BE%D1%81/%D0%A4%D1%83%D1%80%D0%B8%D0%B8/" class="wiki-link">Фурии</a>
-                            </div>
-                            <div class="qz-deck-details"><div class="qz-deck-row">character</div><div class="qz-deck-row">27.09.2026</div></div>
-                        </div>
-                    </div>
+                        <div class="qz-deck-card" data-index="3" style="height:160px;">
 
-                    <div class="qz-deck-card" data-index="5" style="height:160px;">
-                        <div class="qz-deck-cover" style="flex:0 0 180px; width:180px;">
-                            <div class="qz-deck-no-img">Нет фото</div>
-                        </div>
-                        <div class="qz-deck-content">
-                            <div class="qz-deck-title">
-                                <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D0%BE%D1%81/%D0%90%D1%80%D1%85%D0%B0%D0%B8%D1%87%D0%BD%D1%8B%D0%B5_%D0%93%D0%B8%D0%B3%D0%B0%D0%BD%D1%82%D1%8B/" class="wiki-link">Архаичные Гиганты</a>
+                            <div class="qz-deck-content">
+                                <div class="qz-deck-title">
+                                    <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D0%BE%D1%81/%D0%93%D0%B5%D0%BA%D0%B0%D1%82%D0%BE%D0%BD%D1%85%D0%B5%D0%B9%D1%80%D1%8B/" class="wiki-link">Гекатонхейры</a>
+                                </div>
+                                <div class="qz-deck-details"><div class="qz-deck-row">character</div><div class="qz-deck-row">27.09.2026</div></div>
                             </div>
-                            <div class="qz-deck-details"><div class="qz-deck-row">character</div><div class="qz-deck-row">27.09.2026</div></div>
                         </div>
-                    </div>
+
+                        <div class="qz-deck-card" data-index="4" style="height:160px;">
+
+                            <div class="qz-deck-content">
+                                <div class="qz-deck-title">
+                                    <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D0%BE%D1%81/%D0%A4%D1%83%D1%80%D0%B8%D0%B8/" class="wiki-link">Фурии</a>
+                                </div>
+                                <div class="qz-deck-details"><div class="qz-deck-row">character</div><div class="qz-deck-row">27.09.2026</div></div>
+                            </div>
+                        </div>
+
+                        <div class="qz-deck-card" data-index="5" style="height:160px;">
+
+                            <div class="qz-deck-content">
+                                <div class="qz-deck-title">
+                                    <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D0%BE%D1%81/%D0%90%D1%80%D1%85%D0%B0%D0%B8%D1%87%D0%BD%D1%8B%D0%B5_%D0%93%D0%B8%D0%B3%D0%B0%D0%BD%D1%82%D1%8B/" class="wiki-link">Архаичные Гиганты</a>
+                                </div>
+                                <div class="qz-deck-details"><div class="qz-deck-row">character</div><div class="qz-deck-row">27.09.2026</div></div>
+                            </div>
+                        </div>
 </div></div>
 <button class="qz-carousel-btn next" aria-label="Next">❯</button>
 <div class="qz-carousel-counter">1 / 5</div>
@@ -285,8 +265,8 @@
 <td>18</td>
 </tr>
 </tbody></table>
-            </article>
-        </div>
+    </article>
+</div>
         
     
 
@@ -303,7 +283,7 @@
     <nav class="qz-breadcrumbs mb-0">
         
             
-                <a href="/ru/wiki/wiki/">wiki</a>
+                <a href="/ru/wiki/">wiki</a>
             
             <span class="qz-sep">&rsaquo;</span>
         
@@ -341,99 +321,80 @@
 <h2 id="персонажи">Персонажи</h2>
 <div class="qz-deck-container grid-deck" style="max-height:610px; grid-template-columns: repeat(4, minmax(0, 1fr)); gap:12px;">
 
-                    <div class="qz-deck-card portrait" data-index="1" style="height:190px;">
-                        <div class="qz-deck-cover">
-                            <div class="qz-deck-no-img">Нет фото</div>
-                        </div>
-                        <div class="qz-deck-content">
-                            <div class="qz-deck-title">
-                                <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%93%D0%BB%D0%B0%D0%B2%D1%8B/%D0%93%D0%B5%D1%81%D0%B8%D0%BE%D0%B4/" class="wiki-link">Гесиод</a>
+                        <div class="qz-deck-card portrait" data-index="1" style="height:190px;">
+
+                            <div class="qz-deck-content">
+                                <div class="qz-deck-title">
+                                    <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%93%D0%BB%D0%B0%D0%B2%D1%8B/%D0%93%D0%B5%D1%81%D0%B8%D0%BE%D0%B4/" class="wiki-link">Гесиод</a>
+                                </div>
+
                             </div>
-
                         </div>
-                    </div>
 
-                    <div class="qz-deck-card portrait" data-index="2" style="height:190px;">
-                        <div class="qz-deck-cover">
-                            <div class="qz-deck-no-img">Нет фото</div>
-                        </div>
-                        <div class="qz-deck-content">
-                            <div class="qz-deck-title">
-                                <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9C%D0%BE%D1%80%D1%81%D0%BA%D0%BE%D0%B9_%D0%9F%D0%B0%D0%BA/%D0%90%D1%84%D1%80%D0%BE%D0%B4%D0%B8%D1%82%D0%B0/" class="wiki-link">Афродита</a>
+                        <div class="qz-deck-card portrait" data-index="2" style="height:190px;">
+
+                            <div class="qz-deck-content">
+                                <div class="qz-deck-title">
+                                    <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9C%D0%BE%D1%80%D1%81%D0%BA%D0%BE%D0%B9_%D0%9F%D0%B0%D0%BA/%D0%90%D1%84%D1%80%D0%BE%D0%B4%D0%B8%D1%82%D0%B0/" class="wiki-link">Афродита</a>
+                                </div>
+
                             </div>
-
                         </div>
-                    </div>
 
-                    <div class="qz-deck-card portrait" data-index="3" style="height:190px;">
-                        <div class="qz-deck-cover">
-                            <div class="qz-deck-no-img">Нет фото</div>
-                        </div>
-                        <div class="qz-deck-content">
-                            <div class="qz-deck-title">
-                                <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9C%D0%BE%D1%80%D1%81%D0%BA%D0%BE%D0%B9_%D0%9F%D0%B0%D0%BA/%D0%A2%D0%B0%D0%BB%D0%B0%D1%81%D1%81%D0%B0/" class="wiki-link">Таласса</a>
+                        <div class="qz-deck-card portrait" data-index="3" style="height:190px;">
+
+                            <div class="qz-deck-content">
+                                <div class="qz-deck-title">
+                                    <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9C%D0%BE%D1%80%D1%81%D0%BA%D0%BE%D0%B9_%D0%9F%D0%B0%D0%BA/%D0%A2%D0%B0%D0%BB%D0%B0%D1%81%D1%81%D0%B0/" class="wiki-link">Таласса</a>
+                                </div>
+
                             </div>
-
                         </div>
-                    </div>
 
-                    <div class="qz-deck-card portrait" data-index="4" style="height:190px;">
-                        <div class="qz-deck-cover">
-                            <div class="qz-deck-no-img">Нет фото</div>
-                        </div>
-                        <div class="qz-deck-content">
-                            <div class="qz-deck-title">
-                                <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9D%D0%B8%D0%BC%D1%84%D1%8B/%D0%9D%D0%B8%D0%BC%D1%84%D1%8B/" class="wiki-link">Нимфы</a>
+                        <div class="qz-deck-card portrait" data-index="4" style="height:190px;">
+
+                            <div class="qz-deck-content">
+                                <div class="qz-deck-title">
+                                    <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9D%D0%B8%D0%BC%D1%84%D1%8B/%D0%9D%D0%B8%D0%BC%D1%84%D1%8B/" class="wiki-link">Нимфы</a>
+                                </div>
+
                             </div>
-
                         </div>
-                    </div>
 
-                    <div class="qz-deck-card portrait" data-index="5" style="height:190px;">
-                        <div class="qz-deck-cover">
-                            <div class="qz-deck-no-img">Нет фото</div>
-                        </div>
-                        <div class="qz-deck-content">
-                            <div class="qz-deck-title">
-                                <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D0%BE%D1%81/%D0%90%D1%80%D1%85%D0%B0%D0%B8%D1%87%D0%BD%D1%8B%D0%B5_%D0%93%D0%B8%D0%B3%D0%B0%D0%BD%D1%82%D1%8B/" class="wiki-link">Архаичные Гиганты</a>
+                        <div class="qz-deck-card portrait" data-index="5" style="height:190px;">
+
+                            <div class="qz-deck-content">
+                                <div class="qz-deck-title">
+                                    <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D0%BE%D1%81/%D0%90%D1%80%D1%85%D0%B0%D0%B8%D1%87%D0%BD%D1%8B%D0%B5_%D0%93%D0%B8%D0%B3%D0%B0%D0%BD%D1%82%D1%8B/" class="wiki-link">Архаичные Гиганты</a>
+                                </div>
+
                             </div>
-
                         </div>
-                    </div>
 
-                    <div class="qz-deck-card portrait" data-index="6" style="height:190px;">
-                        <div class="qz-deck-cover">
-                            <div class="qz-deck-no-img">Нет фото</div>
-                        </div>
-                        <div class="qz-deck-content">
-                            <div class="qz-deck-title">
-                                <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D0%BE%D1%81/%D0%94%D0%B0%D0%B9%D0%BC%D0%BE%D0%BD%D1%8B/" class="wiki-link">Даймоны</a>
+                        <div class="qz-deck-card portrait" data-index="6" style="height:190px;">
+
+                            <div class="qz-deck-content">
+                                <div class="qz-deck-title">
+                                    <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D0%BE%D1%81/%D0%94%D0%B0%D0%B9%D0%BC%D0%BE%D0%BD%D1%8B/" class="wiki-link">Даймоны</a>
+                                </div>
+
                             </div>
-
                         </div>
-                    </div>
 
-                    <div class="qz-deck-card portrait" data-index="7" style="height:190px;">
-                        <div class="qz-deck-cover">
-                            <div class="qz-deck-no-img">Нет фото</div>
-                        </div>
-                        <div class="qz-deck-content">
-                            <div class="qz-deck-title">
-                                <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D0%BE%D1%81/%D0%A4%D1%83%D1%80%D0%B8%D0%B8/" class="wiki-link">Фурии</a>
+                        <div class="qz-deck-card portrait" data-index="7" style="height:190px;">
+
+                            <div class="qz-deck-content">
+                                <div class="qz-deck-title">
+                                    <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F_%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D0%BE%D1%81/%D0%A4%D1%83%D1%80%D0%B8%D0%B8/" class="wiki-link">Фурии</a>
+                                </div>
+
                             </div>
-
                         </div>
-                    </div>
 </div>
             </article>
 
             
-            <div class="mt-12 pt-4 border-t border-[var(--qz-border)] flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="Античная Мифология">
-                    <span class="qz-heart-icon text-sm">🤍</span>
-                    <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                </button>
-            </div>
+
             
 
             

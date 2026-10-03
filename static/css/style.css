@@ -306,7 +306,7 @@ body, img {
 
 .qz-card .wiki-article h1, .qz-card .wiki-article h2, .qz-card .wiki-article h3,
 .qz-card .wiki-article h4, .qz-card .wiki-article h5, .qz-card .wiki-article h6,
-.qz-card .wiki-article [id], [id] {
+.qz-card .wiki-article [id] {
     scroll-margin-top: 80px;
     line-height: 1.3;
 }
@@ -672,7 +672,7 @@ details.qz-callout[open] summary.qz-callout-title::after {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding-bottom: 3px;
 }
-.qz-deck-row:empty, .qz-deck-row:contains('-') {
+.qz-deck-row:empty {
     display: none;
 }
 .qz-deck-empty {
@@ -683,29 +683,6 @@ details.qz-callout[open] summary.qz-callout-title::after {
     font-size: 0.85em;
     border-radius: 6px;
     margin: 16px 0;
-}
-
-.qz-reaction-btn {
-    background: transparent;
-    border: none;
-    padding: 0;
-    color: var(--qz-text-muted);
-    font-family: inherit;
-}
-.qz-reaction-btn.liked {
-    color: var(--h1-color) !important;
-    font-weight: 800;
-}
-.qz-reaction-btn.liked .qz-reaction-count {
-    color: var(--h1-color) !important;
-}
-.qz-reaction-btn.liked .qz-heart-icon {
-    animation: qz-heart-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-@keyframes qz-heart-pop {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.35); }
-    100% { transform: scale(1); }
 }
 
 .qz-feed-clamp {

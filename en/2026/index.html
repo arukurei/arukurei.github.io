@@ -22,11 +22,6 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 
-    <!-- Подключение вынесенных статических файлов с кэшированием браузера -->
-    <!-- Предварительное установление TLS/DNS соединения с бэкендом реакций -->
-    <link rel="preconnect" href="https://script.google.com" crossorigin>
-    <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
-
     <link rel="stylesheet" href="/static/css/style.css">
     <script defer src="/static/js/main.js"></script>
 
@@ -60,7 +55,7 @@
             --qz-accent: #8a5cf5;
             --qz-accent-hover: #b05cd6;
             --qz-accent-soft: rgba(138, 92, 245, 0.18);
-            --comic-shadow: ;
+            --comic-shadow: #17191c;
             --code-inline: #c7b0fd;
             --lang-icon: #00aaff;
             --lang-en: #ff3333;
@@ -108,11 +103,6 @@
     </style>
 </head>
 <body class="min-h-screen flex flex-col pb-6">
-
-    
-    
-    
-    
 
     <div class="w-full max-w-[760px] mx-auto px-4 mt-6">
         <header class="retro-header">
@@ -192,19 +182,19 @@
         <div class="sticky top-6 flex flex-col gap-6 w-full max-h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar">
             
                 
-                    <div class="space-y-4 w-full">
-                        
-                        <a href="/en/blog/Hello,_World!_Or_How_It_All_Began_%F0%9F%9A%80/" class="block w-full overflow-hidden bg-[var(--qz-bg)] border-2 border-[color:var(--c-border)] rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.2)] hover:border-[var(--qz-accent)] transition-all group">
-                            
-                                <img src="/media/%D0%94%D0%BE%D1%80%D0%BE%D0%BA%D0%B8.png" alt="Hello, World! Or How It All Began 🚀" class="w-full h-28 object-cover">
-                            
-                            <div class="p-3 text-[0.8rem] font-bold text-[var(--qz-text)] group-hover:text-[var(--qz-accent)] transition-colors line-clamp-2 leading-snug">
-                                Hello, World! Or How It All Began 🚀
-                            </div>
-                        </a>
-                        
-                    </div>
-                
+    <div class="space-y-4 w-full">
+        
+        <a href="/en/blog/Hello,_World!_Or_How_It_All_Began_%F0%9F%9A%80/" class="block w-full overflow-hidden bg-[var(--qz-bg)] border-2 border-[color:var(--c-border)] rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.2)] hover:border-[var(--qz-accent)] transition-all group">
+            
+                <img src="/media/%D0%94%D0%BE%D1%80%D0%BE%D0%BA%D0%B8.png" alt="Hello, World! Or How It All Began 🚀" class="w-full h-28 object-cover">
+            
+            <div class="p-3 text-[0.8rem] font-bold text-[var(--qz-text)] group-hover:text-[var(--qz-accent)] transition-colors line-clamp-2 leading-snug">
+                Hello, World! Or How It All Began 🚀
+            </div>
+        </a>
+        
+    </div>
+
             
         </div>
     </aside>
@@ -249,6 +239,24 @@ This site is a dragon's hoard, my digital base: here you'll find projects, my ar
 </div>
             </article>
 
+            
+
+            
+            <div class="xl:hidden mt-8 pt-6 border-t border-[var(--qz-border)]">
+                <h3 class="text-sm font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-3">
+                    Pinned
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    
+                    <a href="/en/blog/Hello,_World!_Or_How_It_All_Began_%F0%9F%9A%80/" class="flex items-center gap-3 p-2.5 rounded-xl border-2 border-[color:var(--c-border)] bg-[var(--qz-surface)] hover:border-[var(--qz-accent)] transition-all">
+                        
+                            <img src="/media/%D0%94%D0%BE%D1%80%D0%BE%D0%BA%D0%B8.png" alt="Hello, World! Or How It All Began 🚀" class="w-12 h-12 rounded-lg object-cover flex-shrink-0">
+                        
+                        <span class="text-xs font-bold text-[var(--qz-text)] line-clamp-2 leading-snug">Hello, World! Or How It All Began 🚀</span>
+                    </a>
+                    
+                </div>
+            </div>
             
 
             
@@ -305,12 +313,8 @@ Aerith sketches (the concepts turned out decent, I think)</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Aerith_Sketches">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>15:18</span>
                         </div>
@@ -366,12 +370,8 @@ What do you think?</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Earth_Tiles_WIP">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>15:16</span>
                         </div>
@@ -430,12 +430,8 @@ Just want to share the scale of this work!</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Code_Map">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>20:23</span>
                         </div>
@@ -488,12 +484,8 @@ The soldiers now have a slightly new design, and I finished the shooting animati
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/New_Soldier_Design_and_Shooting_Animation">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>09:33</span>
                         </div>
@@ -547,12 +539,8 @@ Inventory</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Aeritheya_Inventory">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>17:30</span>
                         </div>
@@ -609,12 +597,8 @@ The task was to draw your favorite pony. I didn't think too long and finished th
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Sunset_Shimmer">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>14:59</span>
                         </div>
@@ -673,12 +657,8 @@ Roman Interceptors (concept)</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Roman_Interceptors_(concept)">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>14:41</span>
                         </div>
@@ -744,12 +724,8 @@ I released a new plugin!</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Medusa_Plugin_Release">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>21:34</span>
                         </div>

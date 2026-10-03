@@ -22,11 +22,6 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 
-    <!-- Подключение вынесенных статических файлов с кэшированием браузера -->
-    <!-- Предварительное установление TLS/DNS соединения с бэкендом реакций -->
-    <link rel="preconnect" href="https://script.google.com" crossorigin>
-    <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
-
     <link rel="stylesheet" href="/static/css/style.css">
     <script defer src="/static/js/main.js"></script>
 
@@ -60,7 +55,7 @@
             --qz-accent: #8a5cf5;
             --qz-accent-hover: #b05cd6;
             --qz-accent-soft: rgba(138, 92, 245, 0.18);
-            --comic-shadow: ;
+            --comic-shadow: #17191c;
             --code-inline: #c7b0fd;
             --lang-icon: #00aaff;
             --lang-en: #ff3333;
@@ -108,11 +103,6 @@
     </style>
 </head>
 <body class="min-h-screen flex flex-col pb-6">
-
-    
-    
-    
-    
 
     <div class="w-full max-w-[760px] mx-auto px-4 mt-6">
         <header class="retro-header">
@@ -192,19 +182,19 @@
         <div class="sticky top-6 flex flex-col gap-6 w-full max-h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar">
             
                 
-                    <div class="space-y-4 w-full">
-                        
-                        <a href="/en/blog/Hello,_World!_Or_How_It_All_Began_%F0%9F%9A%80/" class="block w-full overflow-hidden bg-[var(--qz-bg)] border-2 border-[color:var(--c-border)] rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.2)] hover:border-[var(--qz-accent)] transition-all group">
-                            
-                                <img src="/media/%D0%94%D0%BE%D1%80%D0%BE%D0%BA%D0%B8.png" alt="Hello, World! Or How It All Began 🚀" class="w-full h-28 object-cover">
-                            
-                            <div class="p-3 text-[0.8rem] font-bold text-[var(--qz-text)] group-hover:text-[var(--qz-accent)] transition-colors line-clamp-2 leading-snug">
-                                Hello, World! Or How It All Began 🚀
-                            </div>
-                        </a>
-                        
-                    </div>
-                
+    <div class="space-y-4 w-full">
+        
+        <a href="/en/blog/Hello,_World!_Or_How_It_All_Began_%F0%9F%9A%80/" class="block w-full overflow-hidden bg-[var(--qz-bg)] border-2 border-[color:var(--c-border)] rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.2)] hover:border-[var(--qz-accent)] transition-all group">
+            
+                <img src="/media/%D0%94%D0%BE%D1%80%D0%BE%D0%BA%D0%B8.png" alt="Hello, World! Or How It All Began 🚀" class="w-full h-28 object-cover">
+            
+            <div class="p-3 text-[0.8rem] font-bold text-[var(--qz-text)] group-hover:text-[var(--qz-accent)] transition-colors line-clamp-2 leading-snug">
+                Hello, World! Or How It All Began 🚀
+            </div>
+        </a>
+        
+    </div>
+
             
         </div>
     </aside>
@@ -249,6 +239,24 @@ This site is a dragon's hoard, my digital base: here you'll find projects, my ar
 </div>
             </article>
 
+            
+
+            
+            <div class="xl:hidden mt-8 pt-6 border-t border-[var(--qz-border)]">
+                <h3 class="text-sm font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-3">
+                    Pinned
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    
+                    <a href="/en/blog/Hello,_World!_Or_How_It_All_Began_%F0%9F%9A%80/" class="flex items-center gap-3 p-2.5 rounded-xl border-2 border-[color:var(--c-border)] bg-[var(--qz-surface)] hover:border-[var(--qz-accent)] transition-all">
+                        
+                            <img src="/media/%D0%94%D0%BE%D1%80%D0%BE%D0%BA%D0%B8.png" alt="Hello, World! Or How It All Began 🚀" class="w-12 h-12 rounded-lg object-cover flex-shrink-0">
+                        
+                        <span class="text-xs font-bold text-[var(--qz-text)] line-clamp-2 leading-snug">Hello, World! Or How It All Began 🚀</span>
+                    </a>
+                    
+                </div>
+            </div>
             
 
             
@@ -303,12 +311,8 @@ Portraits of the little troublemakers</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Portraits_of_the_Little_Troublemakers">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>18:20</span>
                         </div>
@@ -363,12 +367,8 @@ Despite all that, I'll try to bring at least a little activity back here...</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Channel_Birthday_2025">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>23:59</span>
                         </div>
@@ -421,12 +421,8 @@ Neo Rome</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/NeoRome_Poster">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>14:56</span>
                         </div>
@@ -486,12 +482,8 @@ A Gorgon girl standing against the empire of Neo Rome.</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Animations_for_Aerith">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>19:19</span>
                         </div>
@@ -546,12 +538,8 @@ Daicon 1.5 Release!!!</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Daicon_1.5_Release">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>21:00</span>
                         </div>
@@ -606,12 +594,8 @@ Slowly working on Daicon 1.5 🛠</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Slowly_Making_Daicon_1.5">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>13:46</span>
                         </div>
@@ -674,12 +658,8 @@ Slowly working on Daicon 1.5 🛠</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Peter_Quill">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>08:52</span>
                         </div>
@@ -736,12 +716,8 @@ A bit of lore:</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/First_Lore_of_Aeritheya">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>19:56</span>
                         </div>
@@ -794,12 +770,8 @@ Battle with an Elf</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Battle_with_an_Elf">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>11:06</span>
                         </div>
@@ -852,12 +824,8 @@ Added new animations to the template</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Continuing_to_Make_Kuroshio_2">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>14:35</span>
                         </div>
@@ -910,12 +878,8 @@ The best way to build a world's lore is to start with light sketches and a map</
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Map_of_the_World_of_Aeritheya">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>15:26</span>
                         </div>
@@ -974,12 +938,8 @@ Today I'm releasing <strong>Kuroshio Template J!</strong></p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Kuroshio_Templates_Release">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>19:55</span>
                         </div>
@@ -1033,12 +993,8 @@ Still working on the template</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Continuing_to_Make_Kuroshio">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>18:25</span>
                         </div>
@@ -1092,12 +1048,8 @@ Enjoy the video, everyone.</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/My_Birthday_2025">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>06:57</span>
                         </div>
@@ -1149,12 +1101,8 @@ Enjoy the video, everyone.</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/New_Medusa_Design">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>08:05</span>
                         </div>
@@ -1207,12 +1155,8 @@ Yes, my lord!</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Yes,_my_lord">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>18:11</span>
                         </div>
@@ -1265,12 +1209,8 @@ A demo of rigid bodies and the "Daicon Projections" module</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Daicon_Rigid_Demo">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>17:13</span>
                         </div>
@@ -1325,12 +1265,8 @@ Meanwhile I keep watching the date of my last post drift further and further awa
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Tiles_WIP">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>20:55</span>
                         </div>
@@ -1380,12 +1316,8 @@ Horse</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Horse">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>09:00</span>
                         </div>
@@ -1437,12 +1369,8 @@ Animations built on simple shapes</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Kuroshio_A_Animations">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>17:40</span>
                         </div>
@@ -1502,12 +1430,8 @@ Left to right: Medusa, Minotaur, Cyclops, Gnome, and Prometheus</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Robot_March_2025">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>14:44</span>
                         </div>
@@ -1562,12 +1486,8 @@ Took part in a card event.</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Card_Event_Aspis">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>21:14</span>
                         </div>
@@ -1628,12 +1548,8 @@ Release! Daicon Version 1.0</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Daicon_Release_1.0">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>16:40</span>
                         </div>
@@ -1686,12 +1602,8 @@ It was way too reckless of me to think I'd make a trailer over the weekend X|</p
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Daicon_Release_0.5">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>00:05</span>
                         </div>
@@ -1745,12 +1657,8 @@ So, February 28th</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Hangar_Zero">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>20:38</span>
                         </div>
@@ -1804,12 +1712,8 @@ The technical side is completely done, which makes me incredibly happy!</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Daicon_Docs">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>21:45</span>
                         </div>
@@ -1863,12 +1767,8 @@ Mitsubishi Zero</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Mitsubishi_Zero">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>11:07</span>
                         </div>
@@ -1922,12 +1822,8 @@ Thinking of naming her Aspis.</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Aspis_Design">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>19:20</span>
                         </div>
@@ -1982,12 +1878,8 @@ The year just started and I've already managed to catch a cold.</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Kuroshio_Template_Publication">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>19:12</span>
                         </div>
@@ -2044,12 +1936,8 @@ First post of the year.</p>
                     </div>
 
                     
-                    <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                        <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Daicon_Beta">
-                            <span class="qz-heart-icon text-sm">🤍</span>
-                            <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                        </button>
-                        <div class="flex gap-3 items-center">
+                    <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                        <div class="flex gap-3 items-center ml-auto">
                             <span>1 min read</span>
                             <span>13:46</span>
                         </div>

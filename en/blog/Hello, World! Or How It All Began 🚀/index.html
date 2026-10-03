@@ -22,11 +22,6 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 
-    <!-- Подключение вынесенных статических файлов с кэшированием браузера -->
-    <!-- Предварительное установление TLS/DNS соединения с бэкендом реакций -->
-    <link rel="preconnect" href="https://script.google.com" crossorigin>
-    <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
-
     <link rel="stylesheet" href="/static/css/style.css">
     <script defer src="/static/js/main.js"></script>
 
@@ -60,7 +55,7 @@
             --qz-accent: #8a5cf5;
             --qz-accent-hover: #b05cd6;
             --qz-accent-soft: rgba(138, 92, 245, 0.18);
-            --comic-shadow: ;
+            --comic-shadow: #17191c;
             --code-inline: #c7b0fd;
             --lang-icon: #00aaff;
             --lang-en: #ff3333;
@@ -108,11 +103,6 @@
     </style>
 </head>
 <body class="min-h-screen flex flex-col pb-6">
-
-    
-    
-    
-    
 
     <div class="w-full max-w-[760px] mx-auto px-4 mt-6">
         <header class="retro-header">
@@ -192,12 +182,12 @@
         <div class="sticky top-6 flex flex-col gap-6 w-full max-h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar">
             
                 
-                    <div class="qz-card qz-card-widget w-full">
-                        <div class="widget-title">
-                            Table of Contents
-                        </div>
-                        <div class="toc-container">
-                            <div class="toc">
+    <div class="qz-card qz-card-widget w-full">
+        <div class="widget-title">
+            Table of Contents
+        </div>
+        <div class="toc-container">
+            <div class="toc">
 <ul>
 <li><a href="#what-is-this-blog-about">What is this blog about?</a></li>
 <li><a href="#navigation-and-projects">Navigation and projects</a></li>
@@ -205,9 +195,9 @@
 </ul>
 </div>
 
-                        </div>
-                    </div>
-                
+        </div>
+    </div>
+
             
         </div>
     </aside>
@@ -221,103 +211,103 @@
                 
             
                 
-                    <div class="qz-card qz-card-widget w-full">
-                        <div class="widget-title">
-                            Properties
-                        </div>
-                        <div class="space-y-3">
+    <div class="qz-card qz-card-widget w-full">
+        <div class="widget-title">
+            Properties
+        </div>
+        <div class="space-y-3">
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    type
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        
+                        <a href="/en/search/?tag=post"
+                           class="inline-block text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
+                            post
+                        </a>
+                    
+                </div>
+            </div>
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    tags
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        <div class="flex flex-wrap gap-1 items-center">
                             
-                            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
-                                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
-                                    type
-                                </div>
-                                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
-                                    
-                                        
-                                        <a href="/en/search/?tag=post"
-                                           class="inline-block text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
-                                            post
-                                        </a>
-                                    
-                                </div>
-                            </div>
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=reform">#reform</a>
+                                
                             
-                            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
-                                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
-                                    tags
-                                </div>
-                                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
-                                    
-                                        <div class="flex flex-wrap gap-1 items-center">
-                                            
-                                                
-                                                
-                                                
-                                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=news">#news</a>
-                                                
-                                            
-                                                
-                                                
-                                                
-                                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=pixel_art">#pixel_art</a>
-                                                
-                                            
-                                                
-                                                
-                                                
-                                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=aeritheya">#aeritheya</a>
-                                                
-                                            
-                                                
-                                                
-                                                
-                                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=art">#art</a>
-                                                
-                                            
-                                                
-                                                
-                                                
-                                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=kuroshio">#kuroshio</a>
-                                                
-                                            
-                                                
-                                                
-                                                
-                                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=old_post">#old_post</a>
-                                                
-                                            
-                                                
-                                                
-                                                
-                                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=daicon">#daicon</a>
-                                                
-                                            
-                                                
-                                                
-                                                
-                                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=index">#index</a>
-                                                
-                                            
-                                                
-                                                
-                                                
-                                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=reform">#reform</a>
-                                                
-                                            
-                                                
-                                                
-                                                
-                                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=gamedev">#gamedev</a>
-                                                
-                                            
-                                        </div>
-                                    
-                                </div>
-                            </div>
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=news">#news</a>
+                                
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=old_post">#old_post</a>
+                                
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=kuroshio">#kuroshio</a>
+                                
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=gamedev">#gamedev</a>
+                                
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=art">#art</a>
+                                
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=pixel_art">#pixel_art</a>
+                                
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=aeritheya">#aeritheya</a>
+                                
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=daicon">#daicon</a>
+                                
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=index">#index</a>
+                                
                             
                         </div>
-                    </div>
-                
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
             
         </div>
     </aside>
@@ -386,12 +376,8 @@
             </div>
 
             
-            <div class="px-6 pb-4 pt-2 flex justify-between items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
-                <button type="button" class="qz-reaction-btn flex items-center gap-1.5 transition-all cursor-pointer hover:text-white" data-post-id="blog/Hello, World! Or How It All Began 🚀">
-                    <span class="qz-heart-icon text-sm">🤍</span>
-                    <span class="qz-reaction-count text-xs font-bold text-[var(--qz-text-muted)]">0</span>
-                </button>
-                <div class="flex gap-3 items-center">
+            <div class="px-6 pb-4 pt-2 flex items-center text-[var(--qz-text-muted)] text-xs font-semibold select-none">
+                <div class="flex gap-3 items-center ml-auto">
                     <span>1 min read</span>
                     <span>22:26</span>
                 </div>
