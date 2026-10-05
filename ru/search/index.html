@@ -277,7 +277,7 @@
                    data-description=""
                    data-date="2026-09-27 14:00:00"
                    data-type="artifact"
-                   data-tags="🌳,оружие,⌛">
+                   data-tags="⌛,🌳,оружие">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -296,6 +296,13 @@
                             
                                 
                                     <button type="button"
+                                            data-tag-btn="⌛"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #⌛
+                                    </button>
+                                
+                                    <button type="button"
                                             data-tag-btn="🌳"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -307,13 +314,6 @@
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #оружие
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="⌛"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #⌛
                                     </button>
                                 
                             
@@ -335,7 +335,7 @@
                    data-description=""
                    data-date="2026-08-08 13:31:00"
                    data-type="concept"
-                   data-tags="⌛,концепт,🌿">
+                   data-tags="⌛,🌿,концепт">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -361,17 +361,17 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="концепт"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #концепт
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="🌿"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #🌿
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="концепт"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #концепт
                                     </button>
                                 
                             
@@ -393,7 +393,7 @@
                    data-description=""
                    data-date="2026-08-08 13:30:00"
                    data-type="concept"
-                   data-tags="🌳,концепт,💡,⌛,todo">
+                   data-tags="🌳,💡,todo,⌛,концепт">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -419,17 +419,17 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="концепт"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #концепт
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="💡"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #💡
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="todo"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #todo
                                     </button>
                                 
                                     <button type="button"
@@ -440,10 +440,10 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="todo"
+                                            data-tag-btn="концепт"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
-                                        #todo
+                                        #концепт
                                     </button>
                                 
                             
@@ -465,7 +465,7 @@
                    data-description=""
                    data-date="2026-08-07 19:25:00"
                    data-type="character"
-                   data-tags="🌳,todo,персонажи/автор">
+                   data-tags="🌳,персонажи/автор,todo">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -491,17 +491,17 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="todo"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #todo
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="персонажи/автор"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #персонажи/автор
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="todo"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #todo
                                     </button>
                                 
                             
@@ -567,7 +567,7 @@
                    data-description=""
                    data-date="2026-09-27 19:28:00"
                    data-type="character"
-                   data-tags="🌳,персонажи/боги,локация,⌛">
+                   data-tags="⌛,🌳,локация,персонажи/боги">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -586,17 +586,17 @@
                             
                                 
                                     <button type="button"
+                                            data-tag-btn="⌛"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #⌛
+                                    </button>
+                                
+                                    <button type="button"
                                             data-tag-btn="🌳"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #🌳
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="персонажи/боги"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #персонажи/боги
                                     </button>
                                 
                                     <button type="button"
@@ -607,10 +607,10 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="⌛"
+                                            data-tag-btn="персонажи/боги"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
-                                        #⌛
+                                        #персонажи/боги
                                     </button>
                                 
                             
@@ -697,7 +697,7 @@
                    data-description=""
                    data-date="2026-09-27 14:49:00"
                    data-type="location"
-                   data-tags="🌳,💡,локация/остров,⌛">
+                   data-tags="локация/остров,⌛,🌳,💡">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -716,20 +716,6 @@
                             
                                 
                                     <button type="button"
-                                            data-tag-btn="🌳"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #🌳
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="💡"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #💡
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="локация/остров"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -741,6 +727,20 @@
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #⌛
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="🌳"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #🌳
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="💡"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #💡
                                     </button>
                                 
                             
@@ -762,7 +762,7 @@
                    data-description=""
                    data-date="2026-08-08 23:13:00"
                    data-type="character"
-                   data-tags="персонажи/боги,⌛,стихии,локация,🌿">
+                   data-tags="персонажи/боги,🌿,локация,стихии,⌛">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -788,17 +788,10 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="⌛"
+                                            data-tag-btn="🌿"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
-                                        #⌛
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="стихии"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #стихии
+                                        #🌿
                                     </button>
                                 
                                     <button type="button"
@@ -809,10 +802,17 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="🌿"
+                                            data-tag-btn="стихии"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
-                                        #🌿
+                                        #стихии
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="⌛"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #⌛
                                     </button>
                                 
                             
@@ -834,7 +834,7 @@
                    data-description=""
                    data-date="2026-09-27 11:17:00"
                    data-type="character"
-                   data-tags="стихии,персонажи/боги,🌳">
+                   data-tags="стихии,🌳,персонажи/боги">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -860,17 +860,17 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="персонажи/боги"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #персонажи/боги
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="🌳"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #🌳
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="персонажи/боги"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #персонажи/боги
                                     </button>
                                 
                             
@@ -1015,7 +1015,7 @@
                    data-description=""
                    data-date="2026-09-27 15:12:00"
                    data-type="character"
-                   data-tags="🌳,💡,⌛,todo,персонажи">
+                   data-tags="персонажи,🌳,💡,todo,⌛">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -1034,6 +1034,13 @@
                             
                                 
                                     <button type="button"
+                                            data-tag-btn="персонажи"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #персонажи
+                                    </button>
+                                
+                                    <button type="button"
                                             data-tag-btn="🌳"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -1048,13 +1055,6 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="⌛"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #⌛
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="todo"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -1062,10 +1062,10 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="персонажи"
+                                            data-tag-btn="⌛"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
-                                        #персонажи
+                                        #⌛
                                     </button>
                                 
                             
@@ -1087,7 +1087,7 @@
                    data-description=""
                    data-date="2026-08-08 09:21:00"
                    data-type="character"
-                   data-tags="🌳,персонажи/боги,стихии">
+                   data-tags="стихии,🌳,персонажи/боги">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -1106,6 +1106,13 @@
                             
                                 
                                     <button type="button"
+                                            data-tag-btn="стихии"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #стихии
+                                    </button>
+                                
+                                    <button type="button"
                                             data-tag-btn="🌳"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -1117,13 +1124,6 @@
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #персонажи/боги
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="стихии"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #стихии
                                     </button>
                                 
                             
@@ -1145,7 +1145,7 @@
                    data-description=""
                    data-date="2026-09-26 11:20:00"
                    data-type="character"
-                   data-tags="todo,персонажи/сущности,🌿">
+                   data-tags="персонажи/сущности,🌿,todo">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -1164,13 +1164,6 @@
                             
                                 
                                     <button type="button"
-                                            data-tag-btn="todo"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #todo
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="персонажи/сущности"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -1182,6 +1175,13 @@
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #🌿
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="todo"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #todo
                                     </button>
                                 
                             
@@ -1203,7 +1203,7 @@
                    data-description=""
                    data-date="2026-09-27 14:01:00"
                    data-type="character"
-                   data-tags="🌳,💡,⌛,todo,персонажи">
+                   data-tags="персонажи,🌳,💡,todo,⌛">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -1222,6 +1222,13 @@
                             
                                 
                                     <button type="button"
+                                            data-tag-btn="персонажи"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #персонажи
+                                    </button>
+                                
+                                    <button type="button"
                                             data-tag-btn="🌳"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -1236,13 +1243,6 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="⌛"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #⌛
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="todo"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -1250,10 +1250,10 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="персонажи"
+                                            data-tag-btn="⌛"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
-                                        #персонажи
+                                        #⌛
                                     </button>
                                 
                             
@@ -1275,7 +1275,7 @@
                    data-description=""
                    data-date="2026-08-08 09:21:00"
                    data-type="location"
-                   data-tags="🌳,персонажи/боги,⌛,todo,локация">
+                   data-tags="🌳,персонажи/боги,локация,todo,⌛">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -1308,10 +1308,10 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="⌛"
+                                            data-tag-btn="локация"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
-                                        #⌛
+                                        #локация
                                     </button>
                                 
                                     <button type="button"
@@ -1322,10 +1322,10 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="локация"
+                                            data-tag-btn="⌛"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
-                                        #локация
+                                        #⌛
                                     </button>
                                 
                             
@@ -1347,7 +1347,7 @@
                    data-description=""
                    data-date="2026-10-05 15:31:00"
                    data-type="character"
-                   data-tags="🌳,персонажи/боги,стихии,⌛">
+                   data-tags="стихии,⌛,🌳,персонажи/боги">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -1366,20 +1366,6 @@
                             
                                 
                                     <button type="button"
-                                            data-tag-btn="🌳"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #🌳
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="персонажи/боги"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #персонажи/боги
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="стихии"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -1391,6 +1377,20 @@
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #⌛
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="🌳"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #🌳
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="персонажи/боги"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #персонажи/боги
                                     </button>
                                 
                             
@@ -1412,7 +1412,7 @@
                    data-description=""
                    data-date="2026-09-27 15:12:00"
                    data-type="character"
-                   data-tags="🌳,персонажи">
+                   data-tags="персонажи,🌳">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -1431,17 +1431,17 @@
                             
                                 
                                     <button type="button"
-                                            data-tag-btn="🌳"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #🌳
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="персонажи"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #персонажи
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="🌳"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #🌳
                                     </button>
                                 
                             
@@ -1463,7 +1463,7 @@
                    data-description=""
                    data-date="2026-08-07 19:25:00"
                    data-type="character"
-                   data-tags="🌳,концепт,💡,⌛,todo">
+                   data-tags="🌳,💡,todo,⌛,концепт">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -1489,17 +1489,17 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="концепт"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #концепт
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="💡"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #💡
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="todo"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #todo
                                     </button>
                                 
                                     <button type="button"
@@ -1510,10 +1510,10 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="todo"
+                                            data-tag-btn="концепт"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
-                                        #todo
+                                        #концепт
                                     </button>
                                 
                             
@@ -1535,7 +1535,7 @@
                    data-description=""
                    data-date="2026-08-08 13:31:00"
                    data-type="character"
-                   data-tags="🌳,персонажи/боги,⌛">
+                   data-tags="⌛,🌳,персонажи/боги">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -1554,6 +1554,13 @@
                             
                                 
                                     <button type="button"
+                                            data-tag-btn="⌛"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #⌛
+                                    </button>
+                                
+                                    <button type="button"
                                             data-tag-btn="🌳"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -1565,13 +1572,6 @@
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #персонажи/боги
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="⌛"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #⌛
                                     </button>
                                 
                             
@@ -1593,7 +1593,7 @@
                    data-description=""
                    data-date="2026-08-08 10:51:00"
                    data-type="character"
-                   data-tags="🌳,персонажи/боги,концепт,⌛,todo">
+                   data-tags="🌳,персонажи/боги,todo,⌛,концепт">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -1626,10 +1626,10 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="концепт"
+                                            data-tag-btn="todo"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
-                                        #концепт
+                                        #todo
                                     </button>
                                 
                                     <button type="button"
@@ -1640,10 +1640,10 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="todo"
+                                            data-tag-btn="концепт"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
-                                        #todo
+                                        #концепт
                                     </button>
                                 
                             
@@ -1665,7 +1665,7 @@
                    data-description=""
                    data-date="2026-08-08 13:31:00"
                    data-type="character"
-                   data-tags="🌳,персонажи/боги,концепт">
+                   data-tags="🌳,концепт,персонажи/боги">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -1691,17 +1691,17 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="персонажи/боги"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #персонажи/боги
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="концепт"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #концепт
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="персонажи/боги"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #персонажи/боги
                                     </button>
                                 
                             
@@ -1723,7 +1723,7 @@
                    data-description=""
                    data-date="2026-09-06 15:18:00"
                    data-type="post"
-                   data-tags="art,aeritheya">
+                   data-tags="aeritheya,art">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -1742,17 +1742,17 @@
                             
                                 
                                     <button type="button"
-                                            data-tag-btn="art"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #art
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="aeritheya"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #aeritheya
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="art"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #art
                                     </button>
                                 
                             
@@ -1774,7 +1774,7 @@
                    data-description=""
                    data-date="2026-08-19 17:30:00"
                    data-type="post"
-                   data-tags="old_post,gamedev,aeritheya">
+                   data-tags="aeritheya,gamedev,old_post">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -1793,10 +1793,10 @@
                             
                                 
                                     <button type="button"
-                                            data-tag-btn="old_post"
+                                            data-tag-btn="aeritheya"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
-                                        #old_post
+                                        #aeritheya
                                     </button>
                                 
                                     <button type="button"
@@ -1807,10 +1807,10 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="aeritheya"
+                                            data-tag-btn="old_post"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
-                                        #aeritheya
+                                        #old_post
                                     </button>
                                 
                             
@@ -1832,7 +1832,7 @@
                    data-description=""
                    data-date="2025-09-05 19:19:00"
                    data-type="post"
-                   data-tags="old_post,pixel_art,medusa,aeritheya">
+                   data-tags="aeritheya,medusa,old_post,pixel_art">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -1851,6 +1851,20 @@
                             
                                 
                                     <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #aeritheya
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="medusa"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #medusa
+                                    </button>
+                                
+                                    <button type="button"
                                             data-tag-btn="old_post"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -1862,20 +1876,6 @@
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="medusa"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #medusa
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="aeritheya"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #aeritheya
                                     </button>
                                 
                             
@@ -1897,7 +1897,7 @@
                    data-description=""
                    data-date="2025-01-31 19:20:00"
                    data-type="post"
-                   data-tags="old_post,pixel_art,medusa,aeritheya">
+                   data-tags="aeritheya,medusa,old_post,pixel_art">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -1916,6 +1916,20 @@
                             
                                 
                                     <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #aeritheya
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="medusa"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #medusa
+                                    </button>
+                                
+                                    <button type="button"
                                             data-tag-btn="old_post"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -1927,20 +1941,6 @@
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="medusa"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #medusa
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="aeritheya"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #aeritheya
                                     </button>
                                 
                             
@@ -2013,7 +2013,7 @@
                    data-description=""
                    data-date="2025-03-11 21:14:00"
                    data-type="post"
-                   data-tags="old_post,pixel_art,medusa,aeritheya">
+                   data-tags="aeritheya,medusa,old_post,pixel_art">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -2032,6 +2032,20 @@
                             
                                 
                                     <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #aeritheya
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="medusa"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #medusa
+                                    </button>
+                                
+                                    <button type="button"
                                             data-tag-btn="old_post"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -2043,20 +2057,6 @@
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="medusa"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #medusa
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="aeritheya"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #aeritheya
                                     </button>
                                 
                             
@@ -2078,7 +2078,7 @@
                    data-description=""
                    data-date="2025-12-01 23:59:00"
                    data-type="post"
-                   data-tags="old_post,pixel_art,aeritheya">
+                   data-tags="aeritheya,old_post,pixel_art">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -2097,6 +2097,13 @@
                             
                                 
                                     <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #aeritheya
+                                    </button>
+                                
+                                    <button type="button"
                                             data-tag-btn="old_post"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -2108,13 +2115,6 @@
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="aeritheya"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #aeritheya
                                     </button>
                                 
                             
@@ -2340,7 +2340,7 @@
                    data-description=""
                    data-date="2025-06-29 14:35:00"
                    data-type="post"
-                   data-tags="kuroshio,pixel_art,old_post">
+                   data-tags="kuroshio,old_post,pixel_art">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -2366,17 +2366,17 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="pixel_art"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #pixel_art
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="old_post"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #old_post
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #pixel_art
                                     </button>
                                 
                             
@@ -2398,7 +2398,7 @@
                    data-description=""
                    data-date="2025-06-03 18:25:00"
                    data-type="post"
-                   data-tags="old_post,kuroshio,pixel_art">
+                   data-tags="kuroshio,old_post,pixel_art">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -2417,17 +2417,17 @@
                             
                                 
                                     <button type="button"
-                                            data-tag-btn="old_post"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #old_post
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="kuroshio"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #kuroshio
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #old_post
                                     </button>
                                 
                                     <button type="button"
@@ -2514,7 +2514,7 @@
                    data-description=""
                    data-date="2024-12-12 23:45:00"
                    data-type="post"
-                   data-tags="old_post,gamedev,daicon">
+                   data-tags="gamedev,old_post,daicon">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -2533,17 +2533,17 @@
                             
                                 
                                     <button type="button"
-                                            data-tag-btn="old_post"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #old_post
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="gamedev"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #gamedev
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #old_post
                                     </button>
                                 
                                     <button type="button"
@@ -2572,7 +2572,7 @@
                    data-description=""
                    data-date="2025-01-12 13:46:00"
                    data-type="post"
-                   data-tags="old_post,gamedev,pixel_art,daicon">
+                   data-tags="pixel_art,gamedev,old_post,daicon">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -2591,10 +2591,10 @@
                             
                                 
                                     <button type="button"
-                                            data-tag-btn="old_post"
+                                            data-tag-btn="pixel_art"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
-                                        #old_post
+                                        #pixel_art
                                     </button>
                                 
                                     <button type="button"
@@ -2605,10 +2605,10 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="pixel_art"
+                                            data-tag-btn="old_post"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
-                                        #pixel_art
+                                        #old_post
                                     </button>
                                 
                                     <button type="button"
@@ -2950,7 +2950,7 @@
                    data-description=""
                    data-date="2024-12-18 18:40:00"
                    data-type="post"
-                   data-tags="old_post,pixel_art,medusa,aeritheya">
+                   data-tags="aeritheya,medusa,old_post,pixel_art">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -2969,6 +2969,20 @@
                             
                                 
                                     <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #aeritheya
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="medusa"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #medusa
+                                    </button>
+                                
+                                    <button type="button"
                                             data-tag-btn="old_post"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -2980,20 +2994,6 @@
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="medusa"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #medusa
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="aeritheya"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #aeritheya
                                     </button>
                                 
                             
@@ -3015,7 +3015,7 @@
                    data-description=""
                    data-date="2025-07-25 19:56:00"
                    data-type="post"
-                   data-tags="old_post,pixel_art,aeritheya">
+                   data-tags="aeritheya,old_post,pixel_art">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -3034,6 +3034,13 @@
                             
                                 
                                     <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #aeritheya
+                                    </button>
+                                
+                                    <button type="button"
                                             data-tag-btn="old_post"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -3045,13 +3052,6 @@
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="aeritheya"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #aeritheya
                                     </button>
                                 
                             
@@ -3175,7 +3175,7 @@
                    data-description=""
                    data-date="2025-04-05 17:40:00"
                    data-type="post"
-                   data-tags="old_post,kuroshio,pixel_art">
+                   data-tags="kuroshio,old_post,pixel_art">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -3194,17 +3194,17 @@
                             
                                 
                                     <button type="button"
-                                            data-tag-btn="old_post"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #old_post
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="kuroshio"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #kuroshio
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #old_post
                                     </button>
                                 
                                     <button type="button"
@@ -3233,7 +3233,7 @@
                    data-description=""
                    data-date="2025-01-28 19:12:00"
                    data-type="post"
-                   data-tags="kuroshio,pixel_art,old_post">
+                   data-tags="kuroshio,old_post,pixel_art">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -3259,17 +3259,17 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="pixel_art"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #pixel_art
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="old_post"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #old_post
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="pixel_art"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #pixel_art
                                     </button>
                                 
                             
@@ -3291,7 +3291,7 @@
                    data-description=""
                    data-date="2025-06-15 19:55:00"
                    data-type="post"
-                   data-tags="old_post,kuroshio,pixel_art">
+                   data-tags="kuroshio,old_post,pixel_art">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -3310,17 +3310,17 @@
                             
                                 
                                     <button type="button"
-                                            data-tag-btn="old_post"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #old_post
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="kuroshio"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #kuroshio
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #old_post
                                     </button>
                                 
                                     <button type="button"
@@ -3349,7 +3349,7 @@
                    data-description=""
                    data-date="2025-06-26 15:26:00"
                    data-type="post"
-                   data-tags="old_post,pixel_art,aeritheya">
+                   data-tags="aeritheya,old_post,pixel_art">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -3368,6 +3368,13 @@
                             
                                 
                                     <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #aeritheya
+                                    </button>
+                                
+                                    <button type="button"
                                             data-tag-btn="old_post"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -3379,13 +3386,6 @@
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="aeritheya"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #aeritheya
                                     </button>
                                 
                             
@@ -3407,7 +3407,7 @@
                    data-description=""
                    data-date="2026-03-14 21:34:00"
                    data-type="post"
-                   data-tags="old_post,gamedev">
+                   data-tags="gamedev,old_post">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -3426,17 +3426,17 @@
                             
                                 
                                     <button type="button"
-                                            data-tag-btn="old_post"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #old_post
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="gamedev"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #gamedev
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #old_post
                                     </button>
                                 
                             
@@ -3560,7 +3560,7 @@
                    data-description=""
                    data-date="2025-09-14 14:56:00"
                    data-type="post"
-                   data-tags="old_post,pixel_art,aeritheya">
+                   data-tags="aeritheya,old_post,pixel_art">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -3579,6 +3579,13 @@
                             
                                 
                                     <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #aeritheya
+                                    </button>
+                                
+                                    <button type="button"
                                             data-tag-btn="old_post"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -3590,13 +3597,6 @@
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="aeritheya"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #aeritheya
                                     </button>
                                 
                             
@@ -3618,7 +3618,7 @@
                    data-description=""
                    data-date="2025-05-31 08:05:00"
                    data-type="post"
-                   data-tags="old_post,pixel_art,medusa,aeritheya">
+                   data-tags="aeritheya,medusa,old_post,pixel_art">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -3637,6 +3637,20 @@
                             
                                 
                                     <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #aeritheya
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="medusa"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #medusa
+                                    </button>
+                                
+                                    <button type="button"
                                             data-tag-btn="old_post"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -3648,20 +3662,6 @@
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="medusa"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #medusa
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="aeritheya"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #aeritheya
                                     </button>
                                 
                             
@@ -3880,7 +3880,7 @@
                    data-description=""
                    data-date="2025-12-25 18:20:00"
                    data-type="post"
-                   data-tags="old_post,pixel_art,aeritheya">
+                   data-tags="aeritheya,old_post,pixel_art">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -3899,6 +3899,13 @@
                             
                                 
                                     <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #aeritheya
+                                    </button>
+                                
+                                    <button type="button"
                                             data-tag-btn="old_post"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -3910,13 +3917,6 @@
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #pixel_art
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="aeritheya"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #aeritheya
                                     </button>
                                 
                             
@@ -3989,7 +3989,7 @@
                    data-description=""
                    data-date="2026-03-21 14:41:00"
                    data-type="post"
-                   data-tags="art,old_post,aeritheya">
+                   data-tags="aeritheya,art,old_post">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -4008,6 +4008,13 @@
                             
                                 
                                     <button type="button"
+                                            data-tag-btn="aeritheya"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #aeritheya
+                                    </button>
+                                
+                                    <button type="button"
                                             data-tag-btn="art"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -4019,13 +4026,6 @@
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
                                         #old_post
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="aeritheya"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #aeritheya
                                     </button>
                                 
                             
@@ -4309,7 +4309,7 @@
                    data-description=""
                    data-date="2024-12-01 22:26:00"
                    data-type="post"
-                   data-tags="old_post,news,reform,gamedev,index,daicon,aeritheya,kuroshio,art,pixel_art">
+                   data-tags="reform,news,daicon,aeritheya,pixel_art,index,gamedev,art,kuroshio,old_post">
 
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2.5 gap-2 sm:gap-4">
                         <h3 class="text-xl font-bold tracking-tight text-[var(--h1-color)] group-hover:text-[var(--qz-accent)] transition-colors duration-150 transform-none">
@@ -4328,20 +4328,6 @@
                             
                                 
                                     <button type="button"
-                                            data-tag-btn="old_post"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #old_post
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="news"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #news
-                                    </button>
-                                
-                                    <button type="button"
                                             data-tag-btn="reform"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
@@ -4349,17 +4335,10 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="gamedev"
+                                            data-tag-btn="news"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
-                                        #gamedev
-                                    </button>
-                                
-                                    <button type="button"
-                                            data-tag-btn="index"
-                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
-                                            class="qz-tag select-none cursor-pointer">
-                                        #index
+                                        #news
                                     </button>
                                 
                                     <button type="button"
@@ -4377,10 +4356,24 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="kuroshio"
+                                            data-tag-btn="pixel_art"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
-                                        #kuroshio
+                                        #pixel_art
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="index"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #index
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="gamedev"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #gamedev
                                     </button>
                                 
                                     <button type="button"
@@ -4391,10 +4384,17 @@
                                     </button>
                                 
                                     <button type="button"
-                                            data-tag-btn="pixel_art"
+                                            data-tag-btn="kuroshio"
                                             onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
                                             class="qz-tag select-none cursor-pointer">
-                                        #pixel_art
+                                        #kuroshio
+                                    </button>
+                                
+                                    <button type="button"
+                                            data-tag-btn="old_post"
+                                            onclick="event.preventDefault(); event.stopPropagation(); window.addSearchTag(this.dataset.tagBtn);"
+                                            class="qz-tag select-none cursor-pointer">
+                                        #old_post
                                     </button>
                                 
                             
