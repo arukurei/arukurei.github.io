@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archaic Giants - alkrei</title>
+
+    <link rel="preload" as="image" href="/static/background.png">
+    <link rel="preload" as="image" href="/static/banner_bg.png">
+    <link rel="preload" as="image" href="/static/logo.png" fetchpriority="high">
+
+    <link rel="stylesheet" href="/static/css/tailwind.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script defer src="/static/js/main.js"></script>
+
+    <!-- Темная подложка html без белых вспышек + прозрачный body, чтобы не перекрывать body::before -->
+    <style>
+        html {
+            background-color: #17191c;
+        }
+        body {
+            background-color: transparent !important;
+        }
+    </style>
+
+    <style>
+        :root {
+            --c-border: #3a3b3f;
+            --c-surface: #24262a;
+            --c-dark: #202225;
+            --c-darkest: #17191c;
+
+            --page-bg-color: var(--c-darkest);
+            --header-bg: var(--c-dark);
+            --nav-bg: var(--c-darkest);
+            --qz-bg: var(--c-surface);
+            --qz-surface: var(--c-darkest);
+            --qz-surface-hover: var(--c-dark);
+            --qz-surface-alpha: rgba(32, 34, 37, 0.7);
+            --qz-border: var(--c-border);
+            --qz-text: #fbfbfb;
+            --qz-text-muted: #9a9ca6;
+            --qz-accent: #8a5cf5;
+            --qz-accent-hover: #b05cd6;
+            --qz-accent-soft: rgba(138, 92, 245, 0.18);
+            --comic-shadow: #17191c;
+            --code-inline: #c7b0fd;
+            --lang-icon: #00aaff;
+            --lang-en: #ff3333;
+            --lang-ru: #0088ff;
+            --tag-text: #d2c1fc;
+            --link-broken: #ff6b6b;
+            --link-broken-alpha: rgba(255, 107, 107, 0.12);
+
+            --callout-nested-blue: #2c3b51;
+            --callout-nested-cyan: #2b3d49;
+            --callout-nested-green: #2c3f43;
+            --callout-nested-orange: #3e3b3b;
+            --callout-nested-red: #3e3245;
+            --callout-nested-purple: #36354f;
+            --callout-nested-gray: #343c49;
+
+            --h1-color: #FF306C;
+            --h2-color: #ff9502;
+            --h3-color: #FFD500;
+            --h4-color: #4BBF5E;
+            --h5-color: #4d95f7;
+            --h6-color: #b051de;
+
+            --retro-bg: #d6ebe9;
+            --retro-bg-alt: #f3f1e9;
+            --retro-bg-hover: #c6dfdd;
+            --retro-border: #17191c;
+            --retro-shadow: #17191c;
+            --retro-text: #17191c;
+            --retro-text-muted: #555243;
+            --retro-avatar-bg: #d5cba9;
+            --retro-btn: #e5dec9;
+            --retro-tag-type: #17191c;
+            --retro-tag-topic: #8e44ad;
+            --retro-tag-cat: #2ecc71;
+            --retro-tag-date: #d35400;
+            --retro-error: #c0392b;
+            --retro-error-alpha: rgba(192, 57, 43, 0.12);
+            --retro-border-alpha: rgba(23, 25, 28, 0.2);
+            --retro-text-muted-alpha: rgba(85, 82, 67, 0.7);
+
+            --page-bg: url('/static/background.png');
+            --page-banner: url('/static/banner_bg.png');
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-6">
+
+    <div class="w-full max-w-[760px] mx-auto px-4 mt-6">
+        <header class="retro-header">
+            <div class="retro-banner">
+                <img src="/static/logo.png" alt=""
+                     loading="eager" decoding="async" fetchpriority="high"
+                     onerror="this.style.display='none'"
+                     class="max-h-28 md:max-h-36 w-auto h-auto object-contain drop-shadow-[4px_4px_0_rgba(0,0,0,1)] select-none pointer-events-none">
+            </div>
+
+            <nav id="site-nav" class="bg-[var(--c-dark)] border-t border-[color:var(--c-dark)] flex w-full relative rounded-b-[0.33rem]">
+                <div class="flex-grow flex rounded-bl-[0.33rem] overflow-hidden">
+                    
+                        <a href="/en/"
+                           style="--btn-color: #ff3333; border-bottom-color: #ff3333;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Home
+                        </a>
+                    
+                        <a href="/en/wiki/Classical_Mythology/"
+                           style="--btn-color: #0088ff; border-bottom-color: #0088ff;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Wiki
+                        </a>
+                    
+                        <a href="/en/search/"
+                           style="--btn-color: #d35400; border-bottom-color: #d35400;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Search
+                        </a>
+                    
+                        <a href="/en/arukurei/"
+                           style="--btn-color: #00aa33; border-bottom-color: #00aa33;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            About
+                        </a>
+                    
+                </div>
+
+                <div class="lang-container relative border-l border-[color:var(--c-dark)] bg-[var(--c-dark)] px-4 flex items-center cursor-pointer select-none hover:bg-[var(--c-darkest)] transition-all duration-150 self-stretch rounded-br-[0.33rem]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-[var(--lang-icon)] transition-colors duration-150 pointer-events-none" viewBox="0 0 24 24">
+                        <path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/>
+                    </svg>
+                    <div class="lang-dropdown hidden absolute left-[calc(100%+8px)] top-[-1px] bg-[var(--nav-bg)] border-2 border-[color:var(--c-border)] rounded-[0.33rem] shadow-[0_8px_20px_rgba(0,0,0,0.45)] z-50 py-0 w-28 text-center">
+                        
+                            
+                            
+                                <a href="/en/wiki/Classical_Mythology/Protogenos/Archaic_Giants/"
+                                   style="--lang-hover: var(--lang-en);"
+                                   class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-hover)] hover:text-white transition-all rounded-t-[0.33rem]">
+                                    English
+                                </a>
+                            
+                        
+                            
+                            
+                                <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F%20%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D0%BE%D1%81/%D0%90%D1%80%D1%85%D0%B0%D0%B8%D1%87%D0%BD%D1%8B%D0%B5%20%D0%93%D0%B8%D0%B3%D0%B0%D0%BD%D1%82%D1%8B/"
+                                   style="--lang-hover: var(--lang-ru);"
+                                   class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-hover)] hover:text-white transition-all rounded-b-[0.33rem]">
+                                    Русский
+                                </a>
+                            
+                        
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <main id="site-main" class="w-full max-w-[760px] mx-auto px-4 flex-grow flex flex-col space-y-6">
+        
+<div class="animate-retro-pop relative w-full mb-2">
+
+    <!-- ЛЕВАЯ КОЛОНКА (Если есть виджеты с position: left) -->
+    
+    <aside class="hidden xl:block absolute right-[100%] top-0 bottom-0 mr-4 w-60">
+        <div class="sticky top-6 flex flex-col gap-6 w-full max-h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar">
+            
+                
+    <div class="qz-card qz-card-widget w-full">
+        <div class="widget-title">
+            Table of Contents
+        </div>
+        <div class="toc-container">
+            <div class="toc">
+<ul>
+<li><a href="#evolution-of-form-from-hoplites-to-serpent-footed-monsters">Evolution of Form: From Hoplites to Serpent-Footed Monsters</a><ul>
+<li><a href="#the-archaic-canon-of-hesiod">The Archaic Canon of Hesiod:</a></li>
+<li><a href="#the-late-classical-and-hellenistic-canon-apollodorus-ovid">The Late Classical and Hellenistic Canon (Apollodorus, Ovid):</a></li>
+</ul>
+</li>
+<li><a href="#the-secret-of-vulnerability">The Secret of Vulnerability</a></li>
+<li><a href="#a-critical-distinction">A Critical Distinction</a></li>
+</ul>
+</div>
+
+        </div>
+    </div>
+
+            
+        </div>
+    </aside>
+    
+
+    <!-- ПРАВАЯ КОЛОНКА (Если есть виджеты с position: right) -->
+    
+    <aside class="hidden xl:block absolute left-[100%] top-0 bottom-0 ml-4 w-60">
+        <div class="sticky top-6 flex flex-col gap-6 w-full max-h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar">
+            
+                
+    <div class="qz-card qz-card-widget w-full">
+        <div class="widget-title">
+            Properties
+        </div>
+        <div class="space-y-3">
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    type
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        
+                        <a href="/en/search/?tag=character"
+                           class="inline-block text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
+                            character
+                        </a>
+                    
+                </div>
+            </div>
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    tags
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        <div class="flex flex-wrap gap-1 items-center">
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=%E2%8C%9B">#⌛</a>
+                                
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=TODO">#TODO</a>
+                                
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=characters">#characters</a>
+                                
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=%F0%9F%8C%BF">#🌿</a>
+                                
+                            
+                        </div>
+                    
+                </div>
+            </div>
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    genesis
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        Second Generation
+                    
+                </div>
+            </div>
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    spouses
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        <div class="flex flex-wrap gap-1 items-center">
+                        
+                            
+                                <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/wiki/Classical_Mythology/Protogenos/Gaia/">Gaia</a>
+                            
+                        
+                            
+                                <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/wiki/Classical_Mythology/Protogenos/Uranus/">Uranus</a>
+                            
+                        
+                        </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+            
+        </div>
+    </aside>
+    
+
+    <!-- ВЕРХНИЕ ИНКЛЮДЫ (ДО ВЫЗОВА BODY) -->
+    
+
+    <!-- ЦЕНТРАЛЬНАЯ КАРТОЧКА -->
+    
+    
+        <!-- СТАНДАРТНАЯ СТАТЬЯ / ВИКИ -->
+        <div class="qz-card qz-card-main w-full mb-6">
+
+            
+                
+<div class="qz-breadcrumbs-container space-y-1 mb-6">
+    
+    <nav class="qz-breadcrumbs mb-0">
+        
+            
+                <a href="/en/wiki/">wiki</a>
+            
+            <span class="qz-sep">&rsaquo;</span>
+        
+            
+                <a href="/en/wiki/Classical_Mythology/">Classical Mythology</a>
+            
+            <span class="qz-sep">&rsaquo;</span>
+        
+        <span class="qz-current">Archaic Giants</span>
+    </nav>
+    
+</div>
+
+            
+
+            
+                <h1 class="qz-title">Archaic Giants</h1>
+            
+
+            
+
+            
+                <div class="qz-metaline">
+                    14:59 | 27.09.2026
+                </div>
+            
+
+            
+
+            
+            <details class="xl:hidden qz-props mb-6">
+                <summary>
+                    <span>Table of Contents</span>
+                </summary>
+                <div class="p-4 bg-[var(--qz-surface)] text-[var(--qz-text)] text-sm toc-container border-t border-[var(--qz-border)]">
+                    <div class="toc">
+<ul>
+<li><a href="#evolution-of-form-from-hoplites-to-serpent-footed-monsters">Evolution of Form: From Hoplites to Serpent-Footed Monsters</a><ul>
+<li><a href="#the-archaic-canon-of-hesiod">The Archaic Canon of Hesiod:</a></li>
+<li><a href="#the-late-classical-and-hellenistic-canon-apollodorus-ovid">The Late Classical and Hellenistic Canon (Apollodorus, Ovid):</a></li>
+</ul>
+</li>
+<li><a href="#the-secret-of-vulnerability">The Secret of Vulnerability</a></li>
+<li><a href="#a-critical-distinction">A Critical Distinction</a></li>
+</ul>
+</div>
+
+                </div>
+            </details>
+            
+
+            <article class="wiki-article img-grid">
+                <p>The Archaic Giants (<em>Greek Γίγαντες, Gigantes — "Earth-Born"</em>) — a generation of savage behemoths brought forth by Gaia from the drops of raging blood spilled by castrated Uranus. Unlike the Titans, who are cosmic rulers and intelligible elements, the Giants are the physical embodiment of the blind wrath of the deep earth, crafted by Mother Earth as an absolute biological weapon.</p>
+<div class="qz-callout qz-callout-quote" style="--callout-color: #9e9e9e; --callout-bg: #303236;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg></span> <span>Hesiod on the Emergence of the Giants</span></div>
+<div class="qz-callout-content">
+<p><em>For all the bloody drops that gushed forth,</em><br />
+<em><strong>Earth (<em>Gaia</em>)</strong> received them; and as the seasons moved round,</em><br />
+<em>She bare the dread Erinyes and the <strong>great Giants</strong>,</em><br />
+<em>Gleaming in shining armor, with long spears in their hands.</em><br />
+— <em>Hesiod, Theogony</em></p>
+</div>
+</div>
+
+<hr />
+<h2 id="evolution-of-form-from-hoplites-to-serpent-footed-monsters">Evolution of Form: From Hoplites to Serpent-Footed Monsters</h2>
+<p>In ancient art and literature, the iconography of the Giants underwent a striking mutation — from noble warriors to nightmarish <strong>chthonic teratomorphs</strong>:</p>
+<h4 id="the-archaic-canon-of-hesiod">The Archaic Canon of Hesiod:</h4>
+<p>The Giants were not initially grotesque monsters. They were depicted as towering, magnificent, and indomitable warriors, clad in the heavy bronze panoply of hoplites, with gleaming helmets and long ash spears.</p>
+<h4 id="the-late-classical-and-hellenistic-canon-apollodorus-ovid">The Late Classical and Hellenistic Canon (Apollodorus, Ovid):</h4>
+<p>The Giants degenerate into feral, primeval monsters of colossal stature, with shaggy beards and matted hair. In place of legs, the scaly bodies of venomous serpents writhe beneath them (<em>drakontopodes</em>). They hurl blazing trunks of ancient oaks and entire seaside crags into the sky.</p>
+<div class="qz-callout qz-callout-note" style="--callout-color: #4d95f7; --callout-bg: #28313f;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></span> <span>The Political Myth of the Pergamon Altar</span></div>
+<div class="qz-callout-content">
+<p>The celebrated frieze of the <strong>Pergamon Altar</strong> (2nd century BCE) rendered the Gigantomachy as the ultimate metaphor of civilization: radiant, harmonious, rational Olympian gods mercilessly striking down the thrashing, muscular, snake-legged Giants. For the Hellenistic monarchs of Pergamon, this battle mirrored their own triumph over the hordes of barbarian Galatians — the victory of intellect, proportion, and the polis over primeval chaos.</p>
+</div>
+</div>
+
+<hr />
+<h2 id="the-secret-of-vulnerability">The Secret of Vulnerability</h2>
+<p>The Giants possessed divine lineage, yet lacked true immortality. Unlike the Titans, whom Zeus could only imprison in Tartarus, the Giants could be <strong>physically destroyed</strong>.</p>
+<p>Yet the fabric of the cosmos protected them through a twofold decree of fate:</p>
+<div class="qz-callout qz-callout-info" style="--callout-color: #4d95f7; --callout-bg: #28313f;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span> <span>The Prophecy of the Moirai on the Doom of the Giants</span></div>
+<div class="qz-callout-content">
+<p>The gods of Olympus could not slay the Giants through their own might alone. The law of the Moirai decreed:<br />
+<strong>A Giant can perish only if the strike of a god is joined by the strike of a mortal man.</strong></p>
+</div>
+</div>
+
+<p>Learning of this prophecy, Gaia sought to render her offspring entirely invulnerable: in secret woodland clearings of the earth, she cultivated a magical herb of immortality (<em>pharmakon</em>), capable of healing any wound inflicted by mortal weapons.</p>
+<p>Zeus then orchestrated the first cosmic preemptive strike in history: he forbade the dawn goddess Eos, the sun god Helios, and the moon goddess Selene to rise. Amid the pitch-black primordial darkness that fell upon the world, the Thunderer scoured the earth himself, located and harvested Gaia’s enchanted herb, and subsequently summoned through Athena the greatest of mortal heroes to the war — <strong><span class="wiki-link broken-link" title="Page not found: Heracles">Heracles</span></strong>.</p>
+<hr />
+<h2 id="a-critical-distinction">A Critical Distinction</h2>
+<p>Owing to their superficial similarities and epic scale, three distinct mythological rebellions are frequently conflated in popular consciousness:</p>
+<div class="qz-callout qz-callout-warning" style="--callout-color: #ff9502; --callout-bg: #3a3126;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span> <span>Distinguishing the Three Chthonic Uprisings</span></div>
+<div class="qz-callout-content">
+<ol>
+<li><strong><span class="wiki-link broken-link" title="Page not found: Titans">The Titanomachy</span>:</strong> A war between divine peers. The struggle of an elder generation of sovereign deities (Cronus and the Titans) against a new generation (Zeus and the Olympians). This was a battle for dominion over the cosmos, culminating in the imprisonment of the Titans in Tartarus.</li>
+<li><strong>The Gigantomachy:</strong> Earth's bid to overthrow the Olympians, resulting in the total annihilation of the Giants.</li>
+<li><strong>The Revolt of the Aloadae:</strong> A local uprising by two giant brothers (Otus and Ephialtes), who piled Mount Ossa upon Pelion to scale the heavens and abduct Artemis and Hera. They were slain by the arrows of Apollo while still youths.</li>
+</ol>
+</div>
+</div>
+
+<p><a href="/en/search?tag=TODO" class="qz-tag">#TODO</a> Gigantomachy!</p>
+            </article>
+
+            
+            <div class="xl:hidden mt-8">
+                <details class="qz-props" open>
+    <summary>
+        <span>Properties</span>
+        <span class="qz-props-count">4</span>
+    </summary>
+
+    
+    <div class="qz-prop-row">
+        <div class="qz-prop-key">type</div>
+        <div class="qz-prop-val">
+            
+                
+                <a href="/en/search/?tag=character"
+                   class="inline-block text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
+                    character
+                </a>
+            
+        </div>
+    </div>
+    
+    <div class="qz-prop-row">
+        <div class="qz-prop-key">tags</div>
+        <div class="qz-prop-val">
+            
+                <div style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center;">
+                    
+                        
+                        
+                        
+                            <a class="qz-tag" href="/en/search/?tag=%E2%8C%9B">#⌛</a>
+                        
+                    
+                        
+                        
+                        
+                            <a class="qz-tag" href="/en/search/?tag=TODO">#TODO</a>
+                        
+                    
+                        
+                        
+                        
+                            <a class="qz-tag" href="/en/search/?tag=characters">#characters</a>
+                        
+                    
+                        
+                        
+                        
+                            <a class="qz-tag" href="/en/search/?tag=%F0%9F%8C%BF">#🌿</a>
+                        
+                    
+                </div>
+            
+        </div>
+    </div>
+    
+    <div class="qz-prop-row">
+        <div class="qz-prop-key">genesis</div>
+        <div class="qz-prop-val">
+            
+                Second Generation
+            
+        </div>
+    </div>
+    
+    <div class="qz-prop-row">
+        <div class="qz-prop-key">spouses</div>
+        <div class="qz-prop-val">
+            
+                
+                    
+                        <a class="qz-tag" href="/en/wiki/Classical_Mythology/Protogenos/Gaia/">Gaia</a>
+                    
+                
+                    
+                        <a class="qz-tag" href="/en/wiki/Classical_Mythology/Protogenos/Uranus/">Uranus</a>
+                    
+                
+            
+        </div>
+    </div>
+    
+</details>
+            </div>
+            
+
+            
+
+            
+
+        </div>
+    
+    
+
+    <!-- ЛЕНТА БЛОГА -->
+    
+
+    <!-- НИЖНИЕ ИНКЛЮДЫ -->
+    
+
+</div>
+
+<style>
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--qz-border, #3a3b3f); border-radius: 4px; }
+    .custom-scrollbar:hover::-webkit-scrollbar-thumb { background: var(--qz-text-muted, #9a9ca6); }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tocLinks = document.querySelectorAll('.toc-container a');
+    if (tocLinks.length === 0) return;
+
+    const headers = Array.from(document.querySelectorAll('.wiki-article h1, .wiki-article h2, .wiki-article h3, .wiki-article h4, .wiki-article h5, .wiki-article h6'))
+                         .filter(h => h.id);
+
+    if (headers.length === 0) return;
+
+    let isClickScrolling = false;
+    let scrollTimeout = null;
+
+    const updateActiveToc = () => {
+        if (isClickScrolling) return;
+
+        let activeHeader = headers[0];
+
+        for (let i = 0; i < headers.length; i++) {
+            const rect = headers[i].getBoundingClientRect();
+            if (rect.top <= 120) {
+                activeHeader = headers[i];
+            } else {
+                break;
+            }
+        }
+
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+            activeHeader = headers[headers.length - 1];
+        }
+
+        tocLinks.forEach(link => link.classList.remove('active-toc'));
+
+        const activeLinks = document.querySelectorAll(`.toc-container a[href="#${activeHeader.id}"]`);
+        activeLinks.forEach(link => {
+            link.classList.add('active-toc');
+
+            const container = link.closest('.custom-scrollbar');
+            if (container) {
+                const linkTop = link.offsetTop;
+                const containerScroll = container.scrollTop;
+                const containerHeight = container.clientHeight;
+
+                if (linkTop < containerScroll || linkTop > containerScroll + containerHeight - 30) {
+                    container.scrollTo({ top: linkTop - containerHeight / 2, behavior: 'smooth' });
+                }
+            }
+        });
+    };
+
+    window.addEventListener('scroll', () => {
+        window.requestAnimationFrame(updateActiveToc);
+    }, { passive: true });
+
+    tocLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                const targetId = href.substring(1);
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    e.preventDefault();
+                    isClickScrolling = true;
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.replaceState(null, null, href);
+                }
+            }
+
+            tocLinks.forEach(l => l.classList.remove('active-toc'));
+            document.querySelectorAll(`.toc-container a[href="${link.getAttribute('href')}"]`).forEach(l => {
+                l.classList.add('active-toc');
+            });
+
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                isClickScrolling = false;
+            }, 800);
+        });
+    });
+
+    updateActiveToc();
+
+    if (window.location.hash) {
+        const rawHash = window.location.hash.substring(1);
+        let hashId = decodeURIComponent(rawHash);
+
+        if (hashId.startsWith('^')) {
+            hashId = hashId.substring(1);
+            const targetElement = document.getElementById(hashId) || document.querySelector(`[id="${CSS.escape(hashId)}"]`);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'auto', block: 'start' });
+            }
+        }
+    }
+});
+</script>
+
+    </main>
+
+    <div id="site-footer-container" class="w-full max-w-[760px] mx-auto px-4 mt-2 mb-0">
+        <footer class="retro-footer">
+            
+            <p class="text-[13px] font-semibold text-[var(--qz-text-muted)] tracking-wider">
+                © 2026 ALKREI
+            </p>
+        </footer>
+    </div>
+
+    <!-- Модальное окно просмотра изображений (Lightbox) -->
+    <div id="qz-lightbox" class="fixed inset-0 z-50 bg-black/90 hidden flex items-center justify-center p-4 cursor-zoom-out select-none transition-opacity duration-200 opacity-0">
+        <img id="qz-lightbox-img" src="" alt="Preview" class="max-w-full max-h-full object-contain rounded shadow-2xl transition-transform duration-200 scale-95 pointer-events-none">
+    </div>
+
+</body>
+</html>

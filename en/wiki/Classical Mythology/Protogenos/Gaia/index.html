@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaia - alkrei</title>
+
+    <link rel="preload" as="image" href="/static/background.png">
+    <link rel="preload" as="image" href="/static/banner_bg.png">
+    <link rel="preload" as="image" href="/static/logo.png" fetchpriority="high">
+
+    <link rel="stylesheet" href="/static/css/tailwind.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script defer src="/static/js/main.js"></script>
+
+    <!-- Темная подложка html без белых вспышек + прозрачный body, чтобы не перекрывать body::before -->
+    <style>
+        html {
+            background-color: #17191c;
+        }
+        body {
+            background-color: transparent !important;
+        }
+    </style>
+
+    <style>
+        :root {
+            --c-border: #3a3b3f;
+            --c-surface: #24262a;
+            --c-dark: #202225;
+            --c-darkest: #17191c;
+
+            --page-bg-color: var(--c-darkest);
+            --header-bg: var(--c-dark);
+            --nav-bg: var(--c-darkest);
+            --qz-bg: var(--c-surface);
+            --qz-surface: var(--c-darkest);
+            --qz-surface-hover: var(--c-dark);
+            --qz-surface-alpha: rgba(32, 34, 37, 0.7);
+            --qz-border: var(--c-border);
+            --qz-text: #fbfbfb;
+            --qz-text-muted: #9a9ca6;
+            --qz-accent: #8a5cf5;
+            --qz-accent-hover: #b05cd6;
+            --qz-accent-soft: rgba(138, 92, 245, 0.18);
+            --comic-shadow: #17191c;
+            --code-inline: #c7b0fd;
+            --lang-icon: #00aaff;
+            --lang-en: #ff3333;
+            --lang-ru: #0088ff;
+            --tag-text: #d2c1fc;
+            --link-broken: #ff6b6b;
+            --link-broken-alpha: rgba(255, 107, 107, 0.12);
+
+            --callout-nested-blue: #2c3b51;
+            --callout-nested-cyan: #2b3d49;
+            --callout-nested-green: #2c3f43;
+            --callout-nested-orange: #3e3b3b;
+            --callout-nested-red: #3e3245;
+            --callout-nested-purple: #36354f;
+            --callout-nested-gray: #343c49;
+
+            --h1-color: #FF306C;
+            --h2-color: #ff9502;
+            --h3-color: #FFD500;
+            --h4-color: #4BBF5E;
+            --h5-color: #4d95f7;
+            --h6-color: #b051de;
+
+            --retro-bg: #d6ebe9;
+            --retro-bg-alt: #f3f1e9;
+            --retro-bg-hover: #c6dfdd;
+            --retro-border: #17191c;
+            --retro-shadow: #17191c;
+            --retro-text: #17191c;
+            --retro-text-muted: #555243;
+            --retro-avatar-bg: #d5cba9;
+            --retro-btn: #e5dec9;
+            --retro-tag-type: #17191c;
+            --retro-tag-topic: #8e44ad;
+            --retro-tag-cat: #2ecc71;
+            --retro-tag-date: #d35400;
+            --retro-error: #c0392b;
+            --retro-error-alpha: rgba(192, 57, 43, 0.12);
+            --retro-border-alpha: rgba(23, 25, 28, 0.2);
+            --retro-text-muted-alpha: rgba(85, 82, 67, 0.7);
+
+            --page-bg: url('/static/background.png');
+            --page-banner: url('/static/banner_bg.png');
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-6">
+
+    <div class="w-full max-w-[760px] mx-auto px-4 mt-6">
+        <header class="retro-header">
+            <div class="retro-banner">
+                <img src="/static/logo.png" alt=""
+                     loading="eager" decoding="async" fetchpriority="high"
+                     onerror="this.style.display='none'"
+                     class="max-h-28 md:max-h-36 w-auto h-auto object-contain drop-shadow-[4px_4px_0_rgba(0,0,0,1)] select-none pointer-events-none">
+            </div>
+
+            <nav id="site-nav" class="bg-[var(--c-dark)] border-t border-[color:var(--c-dark)] flex w-full relative rounded-b-[0.33rem]">
+                <div class="flex-grow flex rounded-bl-[0.33rem] overflow-hidden">
+                    
+                        <a href="/en/"
+                           style="--btn-color: #ff3333; border-bottom-color: #ff3333;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Home
+                        </a>
+                    
+                        <a href="/en/wiki/Classical_Mythology/"
+                           style="--btn-color: #0088ff; border-bottom-color: #0088ff;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Wiki
+                        </a>
+                    
+                        <a href="/en/search/"
+                           style="--btn-color: #d35400; border-bottom-color: #d35400;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Search
+                        </a>
+                    
+                        <a href="/en/arukurei/"
+                           style="--btn-color: #00aa33; border-bottom-color: #00aa33;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            About
+                        </a>
+                    
+                </div>
+
+                <div class="lang-container relative border-l border-[color:var(--c-dark)] bg-[var(--c-dark)] px-4 flex items-center cursor-pointer select-none hover:bg-[var(--c-darkest)] transition-all duration-150 self-stretch rounded-br-[0.33rem]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-[var(--lang-icon)] transition-colors duration-150 pointer-events-none" viewBox="0 0 24 24">
+                        <path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/>
+                    </svg>
+                    <div class="lang-dropdown hidden absolute left-[calc(100%+8px)] top-[-1px] bg-[var(--nav-bg)] border-2 border-[color:var(--c-border)] rounded-[0.33rem] shadow-[0_8px_20px_rgba(0,0,0,0.45)] z-50 py-0 w-28 text-center">
+                        
+                            
+                            
+                                <a href="/en/wiki/Classical_Mythology/Protogenos/Gaia/"
+                                   style="--lang-hover: var(--lang-en);"
+                                   class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-hover)] hover:text-white transition-all rounded-t-[0.33rem]">
+                                    English
+                                </a>
+                            
+                        
+                            
+                            
+                                <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F%20%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D0%BE%D1%81/%D0%93%D0%B5%D1%8F/"
+                                   style="--lang-hover: var(--lang-ru);"
+                                   class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-hover)] hover:text-white transition-all rounded-b-[0.33rem]">
+                                    Русский
+                                </a>
+                            
+                        
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <main id="site-main" class="w-full max-w-[760px] mx-auto px-4 flex-grow flex flex-col space-y-6">
+        
+<div class="animate-retro-pop relative w-full mb-2">
+
+    <!-- ЛЕВАЯ КОЛОНКА (Если есть виджеты с position: left) -->
+    
+    <aside class="hidden xl:block absolute right-[100%] top-0 bottom-0 mr-4 w-60">
+        <div class="sticky top-6 flex flex-col gap-6 w-full max-h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar">
+            
+                
+    <div class="qz-card qz-card-widget w-full">
+        <div class="widget-title">
+            Table of Contents
+        </div>
+        <div class="toc-container">
+            <div class="toc">
+<ul>
+<li><a href="#the-earth-and-the-sacred-oath">The Earth and the Sacred Oath</a></li>
+<li><a href="#transformation-of-the-archetype-gaia-and-demeter">Transformation of the Archetype: Gaia and Demeter</a></li>
+<li><a href="#the-primordial-oracle-delphi-before-apollo">The Primordial Oracle: Delphi Before Apollo</a></li>
+</ul>
+</div>
+
+        </div>
+    </div>
+
+            
+        </div>
+    </aside>
+    
+
+    <!-- ПРАВАЯ КОЛОНКА (Если есть виджеты с position: right) -->
+    
+    <aside class="hidden xl:block absolute left-[100%] top-0 bottom-0 ml-4 w-60">
+        <div class="sticky top-6 flex flex-col gap-6 w-full max-h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar">
+            
+                
+    <div class="qz-card qz-card-widget w-full">
+        <div class="widget-title">
+            Properties
+        </div>
+        <div class="space-y-3">
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    type
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        
+                        <a href="/en/search/?tag=character"
+                           class="inline-block text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
+                            character
+                        </a>
+                    
+                </div>
+            </div>
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    tags
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        <div class="flex flex-wrap gap-1 items-center">
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=%F0%9F%8C%B3">#🌳</a>
+                                
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=elements">#elements</a>
+                                
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=characters/gods">#characters/gods</a>
+                                
+                            
+                        </div>
+                    
+                </div>
+            </div>
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    genesis
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        Protogenoi
+                    
+                </div>
+            </div>
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    spouses
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        <div class="flex flex-wrap gap-1 items-center">
+                        
+                            
+                                <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/wiki/Classical_Mythology/Protogenos/Uranus/">Uranus</a>
+                            
+                        
+                            
+                                <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/wiki/Classical_Mythology/Sea_Pack/Pontus/">Pontus</a>
+                            
+                        
+                        </div>
+                    
+                </div>
+            </div>
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    ancestors
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        Autogenesis
+                    
+                </div>
+            </div>
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    descendants
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        <div class="flex flex-wrap gap-1 items-center">
+                        
+                            
+                                <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/wiki/Classical_Mythology/Protogenos/Uranus/">Uranus</a>
+                            
+                        
+                            
+                                <span class="qz-tag broken-link text-[11px] px-1.5 py-0.5" title="Страница не найдена">Titans</span>
+                            
+                        
+                            
+                                <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/wiki/Classical_Mythology/Protogenos/First_Cyclopes/">First Cyclopes</a>
+                            
+                        
+                            
+                                <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/wiki/Classical_Mythology/Protogenos/Hecatoncheires/">Hecatoncheires</a>
+                            
+                        
+                            
+                                <span class="qz-tag broken-link text-[11px] px-1.5 py-0.5" title="Страница не найдена">Typhon</span>
+                            
+                        
+                            
+                                <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/wiki/Classical_Mythology/Sea_Pack/Pontus/">Pontus</a>
+                            
+                        
+                            
+                                <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/wiki/Classical_Mythology/Mountain_Pack/Oros/">Oros</a>
+                            
+                        
+                            
+                                <span class="qz-tag broken-link text-[11px] px-1.5 py-0.5" title="Страница не найдена">Antaeus</span>
+                            
+                        
+                            
+                                <span class="qz-tag broken-link text-[11px] px-1.5 py-0.5" title="Страница не найдена">Python</span>
+                            
+                        
+                            
+                                <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/wiki/Classical_Mythology/Sea_Pack/Thalassa/">Thalassa</a>
+                            
+                        
+                        </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+            
+        </div>
+    </aside>
+    
+
+    <!-- ВЕРХНИЕ ИНКЛЮДЫ (ДО ВЫЗОВА BODY) -->
+    
+
+    <!-- ЦЕНТРАЛЬНАЯ КАРТОЧКА -->
+    
+    
+        <!-- СТАНДАРТНАЯ СТАТЬЯ / ВИКИ -->
+        <div class="qz-card qz-card-main w-full mb-6">
+
+            
+                
+<div class="qz-breadcrumbs-container space-y-1 mb-6">
+    
+    <nav class="qz-breadcrumbs mb-0">
+        
+            
+                <a href="/en/wiki/">wiki</a>
+            
+            <span class="qz-sep">&rsaquo;</span>
+        
+            
+                <a href="/en/wiki/Classical_Mythology/">Classical Mythology</a>
+            
+            <span class="qz-sep">&rsaquo;</span>
+        
+            
+                <a href="/en/wiki/Classical_Mythology/Chapters/Chapter_1_-_Cosmogony/">Chapter 1 - Cosmogony</a>
+            
+            <span class="qz-sep">&rsaquo;</span>
+        
+        <span class="qz-current">Gaia</span>
+    </nav>
+    
+</div>
+
+            
+
+            
+                <h1 class="qz-title">Gaia</h1>
+            
+
+            
+
+            
+                <div class="qz-metaline">
+                    09:21 | 08.08.2026
+                </div>
+            
+
+            
+
+            
+            <details class="xl:hidden qz-props mb-6">
+                <summary>
+                    <span>Table of Contents</span>
+                </summary>
+                <div class="p-4 bg-[var(--qz-surface)] text-[var(--qz-text)] text-sm toc-container border-t border-[var(--qz-border)]">
+                    <div class="toc">
+<ul>
+<li><a href="#the-earth-and-the-sacred-oath">The Earth and the Sacred Oath</a></li>
+<li><a href="#transformation-of-the-archetype-gaia-and-demeter">Transformation of the Archetype: Gaia and Demeter</a></li>
+<li><a href="#the-primordial-oracle-delphi-before-apollo">The Primordial Oracle: Delphi Before Apollo</a></li>
+</ul>
+</div>
+
+                </div>
+            </details>
+            
+
+            <article class="wiki-article img-grid">
+                <p>Gaia (<em>in the Roman tradition Terra</em>) — the ensouled, living, sentient, and creating Earth, the primordial maternal foundation of the entire material universe. In cosmogony, she arises alongside <a href="/en/wiki/Classical_Mythology/Protogenos/Chaos/" class="wiki-link">Chaos</a>, standing as its autonomous polarity.</p>
+<p>She embodies the fundamental archetype of motherhood and fertility, yet simultaneously represents an untamed, chaotic force of nature that brings forth radiant deities and horrifying <a href="/en/wiki/Classical_Mythology/Chthonism/" class="wiki-link">chthonic</a> monsters alike.</p>
+<hr />
+<h2 id="the-earth-and-the-sacred-oath">The Earth and the Sacred Oath</h2>
+<p>Unlike the Olympian gods, who reside upon celestial Olympus, Gaia is identical with the physical world itself. She literally is that upon which beasts and mortals tread, and that unto which they return after death.</p>
+<p>Two pivotal mythological motifs stem from this reality:</p>
+<ul>
+<li><strong>The Oath by the Name of Gaia:</strong> the most ancient and dread oath in the classical world. To invoke Gaia and the Sovereign of <a href="/en/wiki/Classical_Mythology/Protogenos/Tartarus/" class="wiki-link">Tartarus</a> as witnesses was to jeopardize the very foundation of one’s existence: the Earth would literally refuse to bear the perjurer upon her surface.</li>
+<li><strong>The Myth of Antaeus:</strong> the giant Antaeus (son of Gaia) was invincible as long as he remained in contact with dry land. Touching the flesh of Mother Earth instantly renewed his vigor. Heracles succeeded in vanquishing him only by hoisting him into the air and strangling him above the ground.</li>
+</ul>
+<hr />
+<p>Gaia, in her role as a nurturing mother, inevitably becomes an engine of change — the embodiment of flowering, perpetual flux, and growth:</p>
+<ol>
+<li><strong>The Rebellion against Uranus:</strong> when Heaven forcibly confined their newborn offspring within the womb of Earth, halting the cycle of creation, Gaia fashioned the <a href="/en/wiki/Classical_Mythology/Adamantine_Sickle/" class="wiki-link">Adamantine Sickle</a> and orchestrated the conspiracy of Cronus.</li>
+<li><strong>The Rebellion against Cronus:</strong> when Cronus began swallowing his own progeny, repeating his father's transgression and freezing cosmic evolution, Gaia concealed the infant Zeus on Crete and aided him in liberating his siblings.</li>
+<li><strong>The Rebellion against Zeus:</strong> no sooner did Zeus assume sovereignty and cast the Titans into Tartarus than Gaia brought forth monstrous Typhon to dethrone the new master of Olympus.</li>
+</ol>
+<div class="qz-callout qz-callout-info" style="--callout-color: #4d95f7; --callout-bg: #28313f;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span> <span>The Law of Perpetual Creation</span></div>
+<div class="qz-callout-content">
+<p>Gaia acts not out of malice or deceit, but by the imperative of her very nature: <strong>her essence is the ceaseless generation of the new</strong>. Any cosmic sovereign who attempts to preserve his dominion by halting the unfolding of creation inevitably turns into her adversary. Gaia is the eternal opposition to all static tyranny.</p>
+</div>
+</div>
+
+<hr />
+<h2 id="transformation-of-the-archetype-gaia-and-demeter">Transformation of the Archetype: Gaia and Demeter</h2>
+<p>In the classical era, the functions of fertility shifted in part to the Olympian goddess <span class="wiki-link broken-link" title="Page not found: Demeter and Persephone">Demeter</span>. Yet between them lies a fundamental distinction in cosmic scope:</p>
+<ul>
+<li><strong>Demeter</strong> — patroness of cultivated agriculture, tilled furrows, cereal crops, and the cycle of seasons. She is the goddess of ordered measure and human civilization.</li>
+<li><strong>Gaia</strong> — primeval, elemental matter and the mother of all things. She brings forth not merely wheat, but jagged crags, poisonous flora, barren stones, and subterranean horrors. She is the archaic, untamable bedrock of existence.</li>
+</ul>
+<div class="qz-callout qz-callout-note" style="--callout-color: #4d95f7; --callout-bg: #28313f;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></span> <span>The "Gaia Hypothesis" in Modern Science</span></div>
+<div class="qz-callout-content">
+<p>In the 1970s, British environmentalist James Lovelock formulated a scientific framework titled the <strong>"Gaia hypothesis."</strong> According to this concept, the Earth, along with all its living organisms, functions as a unified, self-regulating superorganism that maintains the conditions necessary for life. This stands as a direct reimagining of the archaic myth through the lens of modern ecology.</p>
+</div>
+</div>
+
+<hr />
+<h2 id="the-primordial-oracle-delphi-before-apollo">The Primordial Oracle: Delphi Before Apollo</h2>
+<p>In the most archaic sacred tradition, the <span class="wiki-link broken-link" title="Page not found: Parnassus">Delphic Oracle</span> — the prophetic epicenter of the ancient Greek world — originally belonged not to Apollo, but to <strong>Gaia</strong>.</p>
+<p>The Earth stood as the first soothsayer in cosmic history:</p>
+<ul>
+<li>The vapors issuing forth from the rock fissures of Delphi were regarded as the breath of Gaia herself, plunging the priestesses into prophetic ecstasy;</li>
+<li>The sacred serpent Python (spawned by Gaia) stood guard over this chthonic sanctuary;</li>
+<li>Apollo later slew Python and seized the sanctuary, yet the fundamental connection between prophecy and the bowels of the Earth endured: even the Olympian oracle proclaimed divine will through a chasm in the flesh of Gaia.</li>
+</ul>
+            </article>
+
+            
+            <div class="xl:hidden mt-8">
+                <details class="qz-props" open>
+    <summary>
+        <span>Properties</span>
+        <span class="qz-props-count">6</span>
+    </summary>
+
+    
+    <div class="qz-prop-row">
+        <div class="qz-prop-key">type</div>
+        <div class="qz-prop-val">
+            
+                
+                <a href="/en/search/?tag=character"
+                   class="inline-block text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
+                    character
+                </a>
+            
+        </div>
+    </div>
+    
+    <div class="qz-prop-row">
+        <div class="qz-prop-key">tags</div>
+        <div class="qz-prop-val">
+            
+                <div style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center;">
+                    
+                        
+                        
+                        
+                            <a class="qz-tag" href="/en/search/?tag=%F0%9F%8C%B3">#🌳</a>
+                        
+                    
+                        
+                        
+                        
+                            <a class="qz-tag" href="/en/search/?tag=elements">#elements</a>
+                        
+                    
+                        
+                        
+                        
+                            <a class="qz-tag" href="/en/search/?tag=characters/gods">#characters/gods</a>
+                        
+                    
+                </div>
+            
+        </div>
+    </div>
+    
+    <div class="qz-prop-row">
+        <div class="qz-prop-key">genesis</div>
+        <div class="qz-prop-val">
+            
+                Protogenoi
+            
+        </div>
+    </div>
+    
+    <div class="qz-prop-row">
+        <div class="qz-prop-key">spouses</div>
+        <div class="qz-prop-val">
+            
+                
+                    
+                        <a class="qz-tag" href="/en/wiki/Classical_Mythology/Protogenos/Uranus/">Uranus</a>
+                    
+                
+                    
+                        <a class="qz-tag" href="/en/wiki/Classical_Mythology/Sea_Pack/Pontus/">Pontus</a>
+                    
+                
+            
+        </div>
+    </div>
+    
+    <div class="qz-prop-row">
+        <div class="qz-prop-key">ancestors</div>
+        <div class="qz-prop-val">
+            
+                Autogenesis
+            
+        </div>
+    </div>
+    
+    <div class="qz-prop-row">
+        <div class="qz-prop-key">descendants</div>
+        <div class="qz-prop-val">
+            
+                
+                    
+                        <a class="qz-tag" href="/en/wiki/Classical_Mythology/Protogenos/Uranus/">Uranus</a>
+                    
+                
+                    
+                        <span class="qz-tag broken-link" title="Страница не найдена">Titans</span>
+                    
+                
+                    
+                        <a class="qz-tag" href="/en/wiki/Classical_Mythology/Protogenos/First_Cyclopes/">First Cyclopes</a>
+                    
+                
+                    
+                        <a class="qz-tag" href="/en/wiki/Classical_Mythology/Protogenos/Hecatoncheires/">Hecatoncheires</a>
+                    
+                
+                    
+                        <span class="qz-tag broken-link" title="Страница не найдена">Typhon</span>
+                    
+                
+                    
+                        <a class="qz-tag" href="/en/wiki/Classical_Mythology/Sea_Pack/Pontus/">Pontus</a>
+                    
+                
+                    
+                        <a class="qz-tag" href="/en/wiki/Classical_Mythology/Mountain_Pack/Oros/">Oros</a>
+                    
+                
+                    
+                        <span class="qz-tag broken-link" title="Страница не найдена">Antaeus</span>
+                    
+                
+                    
+                        <span class="qz-tag broken-link" title="Страница не найдена">Python</span>
+                    
+                
+                    
+                        <a class="qz-tag" href="/en/wiki/Classical_Mythology/Sea_Pack/Thalassa/">Thalassa</a>
+                    
+                
+            
+        </div>
+    </div>
+    
+</details>
+            </div>
+            
+
+            
+
+            
+
+        </div>
+    
+    
+
+    <!-- ЛЕНТА БЛОГА -->
+    
+
+    <!-- НИЖНИЕ ИНКЛЮДЫ -->
+    
+
+</div>
+
+<style>
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--qz-border, #3a3b3f); border-radius: 4px; }
+    .custom-scrollbar:hover::-webkit-scrollbar-thumb { background: var(--qz-text-muted, #9a9ca6); }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tocLinks = document.querySelectorAll('.toc-container a');
+    if (tocLinks.length === 0) return;
+
+    const headers = Array.from(document.querySelectorAll('.wiki-article h1, .wiki-article h2, .wiki-article h3, .wiki-article h4, .wiki-article h5, .wiki-article h6'))
+                         .filter(h => h.id);
+
+    if (headers.length === 0) return;
+
+    let isClickScrolling = false;
+    let scrollTimeout = null;
+
+    const updateActiveToc = () => {
+        if (isClickScrolling) return;
+
+        let activeHeader = headers[0];
+
+        for (let i = 0; i < headers.length; i++) {
+            const rect = headers[i].getBoundingClientRect();
+            if (rect.top <= 120) {
+                activeHeader = headers[i];
+            } else {
+                break;
+            }
+        }
+
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+            activeHeader = headers[headers.length - 1];
+        }
+
+        tocLinks.forEach(link => link.classList.remove('active-toc'));
+
+        const activeLinks = document.querySelectorAll(`.toc-container a[href="#${activeHeader.id}"]`);
+        activeLinks.forEach(link => {
+            link.classList.add('active-toc');
+
+            const container = link.closest('.custom-scrollbar');
+            if (container) {
+                const linkTop = link.offsetTop;
+                const containerScroll = container.scrollTop;
+                const containerHeight = container.clientHeight;
+
+                if (linkTop < containerScroll || linkTop > containerScroll + containerHeight - 30) {
+                    container.scrollTo({ top: linkTop - containerHeight / 2, behavior: 'smooth' });
+                }
+            }
+        });
+    };
+
+    window.addEventListener('scroll', () => {
+        window.requestAnimationFrame(updateActiveToc);
+    }, { passive: true });
+
+    tocLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                const targetId = href.substring(1);
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    e.preventDefault();
+                    isClickScrolling = true;
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.replaceState(null, null, href);
+                }
+            }
+
+            tocLinks.forEach(l => l.classList.remove('active-toc'));
+            document.querySelectorAll(`.toc-container a[href="${link.getAttribute('href')}"]`).forEach(l => {
+                l.classList.add('active-toc');
+            });
+
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                isClickScrolling = false;
+            }, 800);
+        });
+    });
+
+    updateActiveToc();
+
+    if (window.location.hash) {
+        const rawHash = window.location.hash.substring(1);
+        let hashId = decodeURIComponent(rawHash);
+
+        if (hashId.startsWith('^')) {
+            hashId = hashId.substring(1);
+            const targetElement = document.getElementById(hashId) || document.querySelector(`[id="${CSS.escape(hashId)}"]`);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'auto', block: 'start' });
+            }
+        }
+    }
+});
+</script>
+
+    </main>
+
+    <div id="site-footer-container" class="w-full max-w-[760px] mx-auto px-4 mt-2 mb-0">
+        <footer class="retro-footer">
+            
+            <p class="text-[13px] font-semibold text-[var(--qz-text-muted)] tracking-wider">
+                © 2026 ALKREI
+            </p>
+        </footer>
+    </div>
+
+    <!-- Модальное окно просмотра изображений (Lightbox) -->
+    <div id="qz-lightbox" class="fixed inset-0 z-50 bg-black/90 hidden flex items-center justify-center p-4 cursor-zoom-out select-none transition-opacity duration-200 opacity-0">
+        <img id="qz-lightbox-img" src="" alt="Preview" class="max-w-full max-h-full object-contain rounded shadow-2xl transition-transform duration-200 scale-95 pointer-events-none">
+    </div>
+
+</body>
+</html>

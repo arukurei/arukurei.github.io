@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daimons - alkrei</title>
+
+    <link rel="preload" as="image" href="/static/background.png">
+    <link rel="preload" as="image" href="/static/banner_bg.png">
+    <link rel="preload" as="image" href="/static/logo.png" fetchpriority="high">
+
+    <link rel="stylesheet" href="/static/css/tailwind.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script defer src="/static/js/main.js"></script>
+
+    <!-- Темная подложка html без белых вспышек + прозрачный body, чтобы не перекрывать body::before -->
+    <style>
+        html {
+            background-color: #17191c;
+        }
+        body {
+            background-color: transparent !important;
+        }
+    </style>
+
+    <style>
+        :root {
+            --c-border: #3a3b3f;
+            --c-surface: #24262a;
+            --c-dark: #202225;
+            --c-darkest: #17191c;
+
+            --page-bg-color: var(--c-darkest);
+            --header-bg: var(--c-dark);
+            --nav-bg: var(--c-darkest);
+            --qz-bg: var(--c-surface);
+            --qz-surface: var(--c-darkest);
+            --qz-surface-hover: var(--c-dark);
+            --qz-surface-alpha: rgba(32, 34, 37, 0.7);
+            --qz-border: var(--c-border);
+            --qz-text: #fbfbfb;
+            --qz-text-muted: #9a9ca6;
+            --qz-accent: #8a5cf5;
+            --qz-accent-hover: #b05cd6;
+            --qz-accent-soft: rgba(138, 92, 245, 0.18);
+            --comic-shadow: #17191c;
+            --code-inline: #c7b0fd;
+            --lang-icon: #00aaff;
+            --lang-en: #ff3333;
+            --lang-ru: #0088ff;
+            --tag-text: #d2c1fc;
+            --link-broken: #ff6b6b;
+            --link-broken-alpha: rgba(255, 107, 107, 0.12);
+
+            --callout-nested-blue: #2c3b51;
+            --callout-nested-cyan: #2b3d49;
+            --callout-nested-green: #2c3f43;
+            --callout-nested-orange: #3e3b3b;
+            --callout-nested-red: #3e3245;
+            --callout-nested-purple: #36354f;
+            --callout-nested-gray: #343c49;
+
+            --h1-color: #FF306C;
+            --h2-color: #ff9502;
+            --h3-color: #FFD500;
+            --h4-color: #4BBF5E;
+            --h5-color: #4d95f7;
+            --h6-color: #b051de;
+
+            --retro-bg: #d6ebe9;
+            --retro-bg-alt: #f3f1e9;
+            --retro-bg-hover: #c6dfdd;
+            --retro-border: #17191c;
+            --retro-shadow: #17191c;
+            --retro-text: #17191c;
+            --retro-text-muted: #555243;
+            --retro-avatar-bg: #d5cba9;
+            --retro-btn: #e5dec9;
+            --retro-tag-type: #17191c;
+            --retro-tag-topic: #8e44ad;
+            --retro-tag-cat: #2ecc71;
+            --retro-tag-date: #d35400;
+            --retro-error: #c0392b;
+            --retro-error-alpha: rgba(192, 57, 43, 0.12);
+            --retro-border-alpha: rgba(23, 25, 28, 0.2);
+            --retro-text-muted-alpha: rgba(85, 82, 67, 0.7);
+
+            --page-bg: url('/static/background.png');
+            --page-banner: url('/static/banner_bg.png');
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-6">
+
+    <div class="w-full max-w-[760px] mx-auto px-4 mt-6">
+        <header class="retro-header">
+            <div class="retro-banner">
+                <img src="/static/logo.png" alt=""
+                     loading="eager" decoding="async" fetchpriority="high"
+                     onerror="this.style.display='none'"
+                     class="max-h-28 md:max-h-36 w-auto h-auto object-contain drop-shadow-[4px_4px_0_rgba(0,0,0,1)] select-none pointer-events-none">
+            </div>
+
+            <nav id="site-nav" class="bg-[var(--c-dark)] border-t border-[color:var(--c-dark)] flex w-full relative rounded-b-[0.33rem]">
+                <div class="flex-grow flex rounded-bl-[0.33rem] overflow-hidden">
+                    
+                        <a href="/en/"
+                           style="--btn-color: #ff3333; border-bottom-color: #ff3333;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Home
+                        </a>
+                    
+                        <a href="/en/wiki/Classical_Mythology/"
+                           style="--btn-color: #0088ff; border-bottom-color: #0088ff;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Wiki
+                        </a>
+                    
+                        <a href="/en/search/"
+                           style="--btn-color: #d35400; border-bottom-color: #d35400;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Search
+                        </a>
+                    
+                        <a href="/en/arukurei/"
+                           style="--btn-color: #00aa33; border-bottom-color: #00aa33;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            About
+                        </a>
+                    
+                </div>
+
+                <div class="lang-container relative border-l border-[color:var(--c-dark)] bg-[var(--c-dark)] px-4 flex items-center cursor-pointer select-none hover:bg-[var(--c-darkest)] transition-all duration-150 self-stretch rounded-br-[0.33rem]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-[var(--lang-icon)] transition-colors duration-150 pointer-events-none" viewBox="0 0 24 24">
+                        <path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/>
+                    </svg>
+                    <div class="lang-dropdown hidden absolute left-[calc(100%+8px)] top-[-1px] bg-[var(--nav-bg)] border-2 border-[color:var(--c-border)] rounded-[0.33rem] shadow-[0_8px_20px_rgba(0,0,0,0.45)] z-50 py-0 w-28 text-center">
+                        
+                            
+                            
+                                <a href="/en/wiki/Classical_Mythology/Protogenos/Daimons/"
+                                   style="--lang-hover: var(--lang-en);"
+                                   class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-hover)] hover:text-white transition-all rounded-t-[0.33rem]">
+                                    English
+                                </a>
+                            
+                        
+                            
+                            
+                                <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F%20%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D0%BE%D1%81/%D0%94%D0%B0%D0%B9%D0%BC%D0%BE%D0%BD%D1%8B/"
+                                   style="--lang-hover: var(--lang-ru);"
+                                   class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-hover)] hover:text-white transition-all rounded-b-[0.33rem]">
+                                    Русский
+                                </a>
+                            
+                        
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <main id="site-main" class="w-full max-w-[760px] mx-auto px-4 flex-grow flex flex-col space-y-6">
+        
+<div class="animate-retro-pop relative w-full mb-2">
+
+    <!-- ЛЕВАЯ КОЛОНКА (Если есть виджеты с position: left) -->
+    
+    <aside class="hidden xl:block absolute right-[100%] top-0 bottom-0 mr-4 w-60">
+        <div class="sticky top-6 flex flex-col gap-6 w-full max-h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar">
+            
+                
+    <div class="qz-card qz-card-widget w-full">
+        <div class="widget-title">
+            Table of Contents
+        </div>
+        <div class="toc-container">
+            <div class="toc">
+<ul>
+<li><a href="#origin-of-the-concept-from-allotter-of-fate-to-golden-guardians">Origin of the Concept: From Allotter of Fate to Golden Guardians</a></li>
+<li><a href="#philosophical-reinterpretation-plato-and-the-nature-of-mediation">Philosophical Reinterpretation: Plato and the Nature of Mediation</a><ul>
+<li><a href="#the-daimonion-of-socrates">The Daimonion of Socrates</a></li>
+<li><a href="#the-daimon-as-the-souls-lot-the-myth-of-er">The Daimon as the Soul's Lot (The Myth of Er)</a></li>
+</ul>
+</li>
+<li><a href="#classification-agathodaimons-kakodaimons-and-shadow-demons">Classification: Agathodaimons, Kakodaimons, and Shadow Demons</a><ul>
+<li><a href="#daimons-of-the-nocturnal-abyss">Daimons of the Nocturnal Abyss</a></li>
+</ul>
+</li>
+<li><a href="#the-mortality-of-daimons">The Mortality of Daimons</a></li>
+</ul>
+</div>
+
+        </div>
+    </div>
+
+            
+        </div>
+    </aside>
+    
+
+    <!-- ПРАВАЯ КОЛОНКА (Если есть виджеты с position: right) -->
+    
+    <aside class="hidden xl:block absolute left-[100%] top-0 bottom-0 ml-4 w-60">
+        <div class="sticky top-6 flex flex-col gap-6 w-full max-h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar">
+            
+                
+    <div class="qz-card qz-card-widget w-full">
+        <div class="widget-title">
+            Properties
+        </div>
+        <div class="space-y-3">
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    type
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        
+                        <a href="/en/search/?tag=character"
+                           class="inline-block text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
+                            character
+                        </a>
+                    
+                </div>
+            </div>
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    tags
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        <div class="flex flex-wrap gap-1 items-center">
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=TODO">#TODO</a>
+                                
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=%F0%9F%8C%BF">#🌿</a>
+                                
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=characters/entities">#characters/entities</a>
+                                
+                            
+                        </div>
+                    
+                </div>
+            </div>
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    genesis
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        Protogenoi
+                    
+                </div>
+            </div>
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    ancestors
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        <div class="flex flex-wrap gap-1 items-center">
+                        
+                            
+                                <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/wiki/Classical_Mythology/Protogenos/Erebus_and_Nyx/">Erebus and Nyx</a>
+                            
+                        
+                            
+                                <span class="qz-tag broken-link text-[11px] px-1.5 py-0.5" title="Страница не найдена">Eris</span>
+                            
+                        
+                            
+                                <span class="qz-tag broken-link text-[11px] px-1.5 py-0.5" title="Страница не найдена">Styx</span>
+                            
+                        
+                        </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+            
+        </div>
+    </aside>
+    
+
+    <!-- ВЕРХНИЕ ИНКЛЮДЫ (ДО ВЫЗОВА BODY) -->
+    
+
+    <!-- ЦЕНТРАЛЬНАЯ КАРТОЧКА -->
+    
+    
+        <!-- СТАНДАРТНАЯ СТАТЬЯ / ВИКИ -->
+        <div class="qz-card qz-card-main w-full mb-6">
+
+            
+                
+<div class="qz-breadcrumbs-container space-y-1 mb-6">
+    
+    <nav class="qz-breadcrumbs mb-0">
+        
+            
+                <a href="/en/wiki/">wiki</a>
+            
+            <span class="qz-sep">&rsaquo;</span>
+        
+            
+                <a href="/en/wiki/Classical_Mythology/">Classical Mythology</a>
+            
+            <span class="qz-sep">&rsaquo;</span>
+        
+        <span class="qz-current">Daimons</span>
+    </nav>
+    
+</div>
+
+            
+
+            
+                <h1 class="qz-title">Daimons</h1>
+            
+
+            
+
+            
+                <div class="qz-metaline">
+                    11:20 | 26.09.2026
+                </div>
+            
+
+            
+
+            
+            <details class="xl:hidden qz-props mb-6">
+                <summary>
+                    <span>Table of Contents</span>
+                </summary>
+                <div class="p-4 bg-[var(--qz-surface)] text-[var(--qz-text)] text-sm toc-container border-t border-[var(--qz-border)]">
+                    <div class="toc">
+<ul>
+<li><a href="#origin-of-the-concept-from-allotter-of-fate-to-golden-guardians">Origin of the Concept: From Allotter of Fate to Golden Guardians</a></li>
+<li><a href="#philosophical-reinterpretation-plato-and-the-nature-of-mediation">Philosophical Reinterpretation: Plato and the Nature of Mediation</a><ul>
+<li><a href="#the-daimonion-of-socrates">The Daimonion of Socrates</a></li>
+<li><a href="#the-daimon-as-the-souls-lot-the-myth-of-er">The Daimon as the Soul's Lot (The Myth of Er)</a></li>
+</ul>
+</li>
+<li><a href="#classification-agathodaimons-kakodaimons-and-shadow-demons">Classification: Agathodaimons, Kakodaimons, and Shadow Demons</a><ul>
+<li><a href="#daimons-of-the-nocturnal-abyss">Daimons of the Nocturnal Abyss</a></li>
+</ul>
+</li>
+<li><a href="#the-mortality-of-daimons">The Mortality of Daimons</a></li>
+</ul>
+</div>
+
+                </div>
+            </details>
+            
+
+            <article class="wiki-article img-grid">
+                <p>The Daimon (<em>Greek δαίμονες, δαίμων, daimon</em>) — invisible, incorporeal entities, intermediary spirits, and ambivalent messengers bridging the gulf between the transcendent gods of Olympus and mortal humankind.</p>
+<p>Occupying the liminal spaces of the classical cosmos, the daimon embodies any supernatural intervention: ascending with mortal prayers and sacrifices unto the gods, and conveying down to humans divine decrees, portentous dreams, and prophetic revelations.</p>
+<blockquote>
+<p>Latin <em>ambo</em> — "both" and <em>valentia</em> — "strength, power" — ambivalent, dual, harboring two opposing properties, sentiments, or relations.</p>
+<p>Latin <em>transcendens</em> — climbing over, stepping beyond (that which lies outside human experience, sensory perception, and the mundane world).</p>
+</blockquote>
+<div class="qz-dialog-box" style="--char-color: #ff306c;">
+  <div class="qz-dialog-avatar">
+    <img src="/media/avatar.png" alt="Аlkrei" class="qz-dialog-avatar-img">
+  </div>
+  <div class="qz-dialog-content">
+    <div class="qz-dialog-name"><a href="/en/arukurei/">Аlkrei</a></div>
+    <div class="qz-dialog-text">
+<p>Here, one can clearly trace the most ancient tradition across all cultures — anthropomorphism. In my opinion, this is an astonishingly profound concept and one of the most compelling artistic devices.</p>
+<p>In essence, every entity in the world is fundamentally a daimon, yet only the lower spirits are designated as such. Perhaps closest to them are the nymphs, yet they are singled out separately for some reason, which gives one pause for thought... In any case, the archetype is fundamental: a daimon is any existing egregore, idea, spirit, or concept.</p>
+</div>
+  </div>
+</div>
+
+<hr />
+<h2 id="origin-of-the-concept-from-allotter-of-fate-to-golden-guardians">Origin of the Concept: From Allotter of Fate to Golden Guardians</h2>
+<blockquote>
+<p>The word "daimon" traces back to a Proto-Indo-European root meaning "to divide," which yielded the Ancient Greek verb <em>δαίομαι (daiomai)</em> — "to apportion a share," "to distribute."</p>
+</blockquote>
+<p>In the most archaic conception, a daimon was not a personified entity, but an anonymous, blind force governing one's fortune in the world.</p>
+<div class="qz-callout qz-callout-info" style="--callout-color: #4d95f7; --callout-bg: #28313f;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span> <span>Distinction: God (*Theos*) and Daimon (*Daimon*) in Epic Poetry</span></div>
+<div class="qz-callout-content">
+<p>In the epic tradition of <span class="wiki-link broken-link" title="Page not found: Homer">Homer</span>, the boundary between the two concepts is fluid yet essential:</p>
+<p><strong>Theos (<em>Theos</em>):</strong> a god as a visible, anthropomorphic individuality possessing a distinct name, mythos, cult, and attributes (Zeus, Apollo, Poseidon);</p>
+<p><strong>Daimon (<em>Daimon</em>):</strong> an abrupt, anonymous, and inscrutable intervention. When a hero commits an uncharacteristic deed or encounters an unforeseen turn of fate, the epic remarks: <em>"some daimon entered into him."</em></p>
+</div>
+</div>
+
+<p>In <a href="/en/wiki/Classical_Mythology/Chapters/Hesiod/" class="wiki-link">Hesiod</a>'s poem <em>Works and Days</em>, the concept undergoes a momentous evolutionary leap: <br />
+    for the first time, daimons are not faceless forces, but the transfigured souls of departed humans:</p>
+<div class="qz-callout qz-callout-quote" style="--callout-color: #9e9e9e; --callout-bg: #303236;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg></span> <span>Hesiod on the Generation of the Golden Age</span></div>
+<div class="qz-callout-content">
+<p><em>Now when Earth had covered this race in its depths,</em><br />
+<em>By the will of great Zeus they became</em><br />
+<strong>Good spirits (<em>daimones esthloi</em>)</strong> <em>dwelling upon the earth, guardians of mortals,</em><br />
+<em>Who watch over judgments and perilous deeds,</em><br />
+<em>Robed in dense mist, roaming everywhere over the land...</em><br />
+— <em>Hesiod, Works and Days</em></p>
+</div>
+</div>
+
+<p>According to Hesiod, the righteous mortals of the Golden Age did not descend into shadowy <span class="wiki-link broken-link" title="Page not found: Hades">Hades</span> upon physical death; instead, they were elevated by Zeus to the station of earthly protectors (<em>epichthonioi</em>). <br />
+Veiled in dense mist, they wander through cities, safeguarding justice and confounding impiety.</p>
+<hr />
+<h2 id="philosophical-reinterpretation-plato-and-the-nature-of-mediation">Philosophical Reinterpretation: Plato and the Nature of Mediation</h2>
+<p>In the classical era, the nature of the daimon migrated from poetic mythology into rigorous ontology.</p>
+<p><span class="broken-link">[Embed unavailable: &quot;Symposium&quot;]</span></p>
+<h3 id="the-daimonion-of-socrates">The Daimonion of Socrates</h3>
+<p>Socrates himself bore witness throughout his entire life to the presence of a personal "daemonic sign" (<em>Daimonion sēmeion</em>).</p>
+<p>In the <em>Apology of Socrates</em>, the philosopher portrays it as a quiet inner voice:</p>
+<blockquote>
+<p>This sign I have had from my childhood. It is a kind of voice which, whenever it speaks, always turns me away from what I am about to do, but never incites me to anything.</p>
+</blockquote>
+<p>The daimonion of Socrates operated as a prohibition, arresting the philosopher before he could commit immoral or ill-advised deeds (<em>apophatically</em>).<br />
+Although the daimon remained silent during the Athenian trial — thereby signaling that what was unfolding was not an evil — Socrates's accusers twisted this mystical intuition and conscience during the proceedings, charging him with introducing new, unauthorized daemonic powers unacknowledged by the polis.</p>
+<h3 id="the-daimon-as-the-souls-lot-the-myth-of-er">The Daimon as the Soul's Lot (The Myth of Er)</h3>
+<p>In Book X of <em>The Republic</em>, Plato completely deconstructs the doctrine of blind fate:</p>
+<ul>
+<li>Souls approach the spindle of the goddess Ananke (Necessity) prior to each subsequent rebirth;</li>
+<li>The soul freely chooses its destined lot and mode of existence;</li>
+<li>To each soul is assigned as an attendant the specific <strong>guardian daimon</strong> whose destiny it has voluntarily embraced.</li>
+</ul>
+<blockquote>
+<p>Here resonates the famous classical aphorism of Heraclitus: <em>"A man's character is his daimon"</em> (<em>Ethos anthropoi daimon</em>).</p>
+</blockquote>
+<hr />
+<h2 id="classification-agathodaimons-kakodaimons-and-shadow-demons">Classification: Agathodaimons, Kakodaimons, and Shadow Demons</h2>
+<p>In Hellenistic thought (specifically within the Academy under Xenocrates — a disciple of Plato), daimonology crystallized into a rigorous hierarchical system. Xenocrates was the first to attribute human passions (<em>pathos</em>) to daimons, introducing a dualistic division:</p>
+<ul>
+<li>
+<p><strong>Agathodaimon (<em>Agathodaimon</em>):</strong> the benevolent spirit-protector of a polis, family, or individual. Revered in household cults as the guardian of hearth and harvest, often portrayed as a serpent bearing a cornucopia;</p>
+</li>
+<li>
+<p><strong>Kakodaimon (<em>Kakodaimon</em>):</strong> a malevolent entity sowing madness, pestilence, spiritual torpor, and driving mortals to commit offenses against cosmic measure (<em>hubris</em>).</p>
+</li>
+</ul>
+<div class="qz-callout qz-callout-note" style="--callout-color: #4d95f7; --callout-bg: #28313f;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></span> <span>Domestic Cult of the Agathodaimon</span></div>
+<div class="qz-callout-content">
+<p>The Hellenes performed an obligatory ritual libation in honor of the Good Daimon at the conclusion of every symposium: when the meal was finished, servants bore around unmixed, pure wine, a sip of which was drunk to toast the protector of the hearth.</p>
+</div>
+</div>
+
+<h3 id="daimons-of-the-nocturnal-abyss">Daimons of the Nocturnal Abyss</h3>
+<p>Within the genealogical tapestry of the cosmos, an entire host of primordial daimons was born at the dawn of creation from the union of cosmic Darkness and Void:</p>
+<div class="qz-transclusion">
+<a href="/en/wiki/Classical_Mythology/Protogenos/Erebus_and_Nyx/#23fc28" class="qz-transclusion-link" title="Открыть заметку"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+<p>Nyx also brings forth autonomously a vast multitude of entities (<a href="/en/wiki/Classical_Mythology/Protogenos/Daimons/" class="wiki-link">daimons</a>) — predominantly grim, underscoring her stature as the wellspring of all future tribulations and constraints of mortal existence:</p>
+</div>
+
+<p>These entities demand no temple construction from mortals. They operate as inexorable forces of terrestrial existence, impossible to appease or buy off through sacrifice.</p>
+<p><a href="/en/search?tag=TODO" class="qz-tag">#TODO</a> Daimons of Pandora</p>
+<hr />
+<h2 id="the-mortality-of-daimons">The Mortality of Daimons</h2>
+<p>Unlike the Olympian gods endowed with absolute immortality (<em>athanasia</em>), daimons consist of subtle, aerial matter and are <strong>"potentially mortal."</strong> Their lifespan is immeasurably long yet finite — they perish or depart when their sacred groves or oracles vanish, or when their internal vital pneuma is exhausted.</p>
+<p>Plutarch, the historian and high priest of Delphi (1st–2nd century CE), thoroughly analyzed this vulnerability in his treatise <em>On the Obsolescence of Oracles</em>. It is precisely through the death or departure of daimons that Plutarch explains why the most ancient prophetic sanctuaries fall silent: <br />
+    when a shrine's inspiring daimon abandons it, the priestesses lose their visionary gift.</p>
+<p>The culmination of this theme arrives in the celebrated account recorded by Plutarch concerning the helmsman Thamus:</p>
+<div class="qz-callout qz-callout-quote" style="--callout-color: #9e9e9e; --callout-bg: #303236;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg></span> <span>The News of Great Pan's Death</span></div>
+<div class="qz-callout-content">
+<p>While sailing past the island of Paxi during the reign of Emperor Tiberius, a ship was becalmed. Suddenly, a booming voice resounded from the shore, commanding the helmsman:<br />
+<em>«When thou art come over against Palodes, announce that</em><br />
+Great Pan is dead!»<br />
+When the vessel reached the designated spot and the helmsman shouted these words, a great lamentation and groaning of thousands of unseen beings arose from the shores.<br />
+— <em>Plutarch, On the Obsolescence of Oracles</em></p>
+</div>
+</div>
+
+<p>The woodland god <span class="wiki-link broken-link" title="Page not found: Pan">Pan</span> was the personification of all wild nature. The news of his demise signaled that living nature had been stripped of its soul: daimons, nymphs, and grove-spirits began to perish, the oracles fell silent, and ancient classical magic departed from the world forever, surrendering to a new era.</p>
+            </article>
+
+            
+            <div class="xl:hidden mt-8">
+                <details class="qz-props" open>
+    <summary>
+        <span>Properties</span>
+        <span class="qz-props-count">4</span>
+    </summary>
+
+    
+    <div class="qz-prop-row">
+        <div class="qz-prop-key">type</div>
+        <div class="qz-prop-val">
+            
+                
+                <a href="/en/search/?tag=character"
+                   class="inline-block text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
+                    character
+                </a>
+            
+        </div>
+    </div>
+    
+    <div class="qz-prop-row">
+        <div class="qz-prop-key">tags</div>
+        <div class="qz-prop-val">
+            
+                <div style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center;">
+                    
+                        
+                        
+                        
+                            <a class="qz-tag" href="/en/search/?tag=TODO">#TODO</a>
+                        
+                    
+                        
+                        
+                        
+                            <a class="qz-tag" href="/en/search/?tag=%F0%9F%8C%BF">#🌿</a>
+                        
+                    
+                        
+                        
+                        
+                            <a class="qz-tag" href="/en/search/?tag=characters/entities">#characters/entities</a>
+                        
+                    
+                </div>
+            
+        </div>
+    </div>
+    
+    <div class="qz-prop-row">
+        <div class="qz-prop-key">genesis</div>
+        <div class="qz-prop-val">
+            
+                Protogenoi
+            
+        </div>
+    </div>
+    
+    <div class="qz-prop-row">
+        <div class="qz-prop-key">ancestors</div>
+        <div class="qz-prop-val">
+            
+                
+                    
+                        <a class="qz-tag" href="/en/wiki/Classical_Mythology/Protogenos/Erebus_and_Nyx/">Erebus and Nyx</a>
+                    
+                
+                    
+                        <span class="qz-tag broken-link" title="Страница не найдена">Eris</span>
+                    
+                
+                    
+                        <span class="qz-tag broken-link" title="Страница не найдена">Styx</span>
+                    
+                
+            
+        </div>
+    </div>
+    
+</details>
+            </div>
+            
+
+            
+
+            
+
+        </div>
+    
+    
+
+    <!-- ЛЕНТА БЛОГА -->
+    
+
+    <!-- НИЖНИЕ ИНКЛЮДЫ -->
+    
+
+</div>
+
+<style>
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--qz-border, #3a3b3f); border-radius: 4px; }
+    .custom-scrollbar:hover::-webkit-scrollbar-thumb { background: var(--qz-text-muted, #9a9ca6); }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tocLinks = document.querySelectorAll('.toc-container a');
+    if (tocLinks.length === 0) return;
+
+    const headers = Array.from(document.querySelectorAll('.wiki-article h1, .wiki-article h2, .wiki-article h3, .wiki-article h4, .wiki-article h5, .wiki-article h6'))
+                         .filter(h => h.id);
+
+    if (headers.length === 0) return;
+
+    let isClickScrolling = false;
+    let scrollTimeout = null;
+
+    const updateActiveToc = () => {
+        if (isClickScrolling) return;
+
+        let activeHeader = headers[0];
+
+        for (let i = 0; i < headers.length; i++) {
+            const rect = headers[i].getBoundingClientRect();
+            if (rect.top <= 120) {
+                activeHeader = headers[i];
+            } else {
+                break;
+            }
+        }
+
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+            activeHeader = headers[headers.length - 1];
+        }
+
+        tocLinks.forEach(link => link.classList.remove('active-toc'));
+
+        const activeLinks = document.querySelectorAll(`.toc-container a[href="#${activeHeader.id}"]`);
+        activeLinks.forEach(link => {
+            link.classList.add('active-toc');
+
+            const container = link.closest('.custom-scrollbar');
+            if (container) {
+                const linkTop = link.offsetTop;
+                const containerScroll = container.scrollTop;
+                const containerHeight = container.clientHeight;
+
+                if (linkTop < containerScroll || linkTop > containerScroll + containerHeight - 30) {
+                    container.scrollTo({ top: linkTop - containerHeight / 2, behavior: 'smooth' });
+                }
+            }
+        });
+    };
+
+    window.addEventListener('scroll', () => {
+        window.requestAnimationFrame(updateActiveToc);
+    }, { passive: true });
+
+    tocLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                const targetId = href.substring(1);
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    e.preventDefault();
+                    isClickScrolling = true;
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.replaceState(null, null, href);
+                }
+            }
+
+            tocLinks.forEach(l => l.classList.remove('active-toc'));
+            document.querySelectorAll(`.toc-container a[href="${link.getAttribute('href')}"]`).forEach(l => {
+                l.classList.add('active-toc');
+            });
+
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                isClickScrolling = false;
+            }, 800);
+        });
+    });
+
+    updateActiveToc();
+
+    if (window.location.hash) {
+        const rawHash = window.location.hash.substring(1);
+        let hashId = decodeURIComponent(rawHash);
+
+        if (hashId.startsWith('^')) {
+            hashId = hashId.substring(1);
+            const targetElement = document.getElementById(hashId) || document.querySelector(`[id="${CSS.escape(hashId)}"]`);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'auto', block: 'start' });
+            }
+        }
+    }
+});
+</script>
+
+    </main>
+
+    <div id="site-footer-container" class="w-full max-w-[760px] mx-auto px-4 mt-2 mb-0">
+        <footer class="retro-footer">
+            
+            <p class="text-[13px] font-semibold text-[var(--qz-text-muted)] tracking-wider">
+                © 2026 ALKREI
+            </p>
+        </footer>
+    </div>
+
+    <!-- Модальное окно просмотра изображений (Lightbox) -->
+    <div id="qz-lightbox" class="fixed inset-0 z-50 bg-black/90 hidden flex items-center justify-center p-4 cursor-zoom-out select-none transition-opacity duration-200 opacity-0">
+        <img id="qz-lightbox-img" src="" alt="Preview" class="max-w-full max-h-full object-contain rounded shadow-2xl transition-transform duration-200 scale-95 pointer-events-none">
+    </div>
+
+</body>
+</html>

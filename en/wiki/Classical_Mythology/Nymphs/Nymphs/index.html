@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nymphs - alkrei</title>
+
+    <link rel="preload" as="image" href="/static/background.png">
+    <link rel="preload" as="image" href="/static/banner_bg.png">
+    <link rel="preload" as="image" href="/static/logo.png" fetchpriority="high">
+
+    <link rel="stylesheet" href="/static/css/tailwind.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script defer src="/static/js/main.js"></script>
+
+    <!-- Темная подложка html без белых вспышек + прозрачный body, чтобы не перекрывать body::before -->
+    <style>
+        html {
+            background-color: #17191c;
+        }
+        body {
+            background-color: transparent !important;
+        }
+    </style>
+
+    <style>
+        :root {
+            --c-border: #3a3b3f;
+            --c-surface: #24262a;
+            --c-dark: #202225;
+            --c-darkest: #17191c;
+
+            --page-bg-color: var(--c-darkest);
+            --header-bg: var(--c-dark);
+            --nav-bg: var(--c-darkest);
+            --qz-bg: var(--c-surface);
+            --qz-surface: var(--c-darkest);
+            --qz-surface-hover: var(--c-dark);
+            --qz-surface-alpha: rgba(32, 34, 37, 0.7);
+            --qz-border: var(--c-border);
+            --qz-text: #fbfbfb;
+            --qz-text-muted: #9a9ca6;
+            --qz-accent: #8a5cf5;
+            --qz-accent-hover: #b05cd6;
+            --qz-accent-soft: rgba(138, 92, 245, 0.18);
+            --comic-shadow: #17191c;
+            --code-inline: #c7b0fd;
+            --lang-icon: #00aaff;
+            --lang-en: #ff3333;
+            --lang-ru: #0088ff;
+            --tag-text: #d2c1fc;
+            --link-broken: #ff6b6b;
+            --link-broken-alpha: rgba(255, 107, 107, 0.12);
+
+            --callout-nested-blue: #2c3b51;
+            --callout-nested-cyan: #2b3d49;
+            --callout-nested-green: #2c3f43;
+            --callout-nested-orange: #3e3b3b;
+            --callout-nested-red: #3e3245;
+            --callout-nested-purple: #36354f;
+            --callout-nested-gray: #343c49;
+
+            --h1-color: #FF306C;
+            --h2-color: #ff9502;
+            --h3-color: #FFD500;
+            --h4-color: #4BBF5E;
+            --h5-color: #4d95f7;
+            --h6-color: #b051de;
+
+            --retro-bg: #d6ebe9;
+            --retro-bg-alt: #f3f1e9;
+            --retro-bg-hover: #c6dfdd;
+            --retro-border: #17191c;
+            --retro-shadow: #17191c;
+            --retro-text: #17191c;
+            --retro-text-muted: #555243;
+            --retro-avatar-bg: #d5cba9;
+            --retro-btn: #e5dec9;
+            --retro-tag-type: #17191c;
+            --retro-tag-topic: #8e44ad;
+            --retro-tag-cat: #2ecc71;
+            --retro-tag-date: #d35400;
+            --retro-error: #c0392b;
+            --retro-error-alpha: rgba(192, 57, 43, 0.12);
+            --retro-border-alpha: rgba(23, 25, 28, 0.2);
+            --retro-text-muted-alpha: rgba(85, 82, 67, 0.7);
+
+            --page-bg: url('/static/background.png');
+            --page-banner: url('/static/banner_bg.png');
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-6">
+
+    <div class="w-full max-w-[760px] mx-auto px-4 mt-6">
+        <header class="retro-header">
+            <div class="retro-banner">
+                <img src="/static/logo.png" alt=""
+                     loading="eager" decoding="async" fetchpriority="high"
+                     onerror="this.style.display='none'"
+                     class="max-h-28 md:max-h-36 w-auto h-auto object-contain drop-shadow-[4px_4px_0_rgba(0,0,0,1)] select-none pointer-events-none">
+            </div>
+
+            <nav id="site-nav" class="bg-[var(--c-dark)] border-t border-[color:var(--c-dark)] flex w-full relative rounded-b-[0.33rem]">
+                <div class="flex-grow flex rounded-bl-[0.33rem] overflow-hidden">
+                    
+                        <a href="/en/"
+                           style="--btn-color: #ff3333; border-bottom-color: #ff3333;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Home
+                        </a>
+                    
+                        <a href="/en/wiki/Classical_Mythology/"
+                           style="--btn-color: #0088ff; border-bottom-color: #0088ff;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Wiki
+                        </a>
+                    
+                        <a href="/en/search/"
+                           style="--btn-color: #d35400; border-bottom-color: #d35400;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            Search
+                        </a>
+                    
+                        <a href="/en/arukurei/"
+                           style="--btn-color: #00aa33; border-bottom-color: #00aa33;"
+                           class="retro-nav-link flex-1 text-center py-3 text-xs md:text-sm tracking-wider border-b-[3px] ">
+                            About
+                        </a>
+                    
+                </div>
+
+                <div class="lang-container relative border-l border-[color:var(--c-dark)] bg-[var(--c-dark)] px-4 flex items-center cursor-pointer select-none hover:bg-[var(--c-darkest)] transition-all duration-150 self-stretch rounded-br-[0.33rem]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-[var(--lang-icon)] transition-colors duration-150 pointer-events-none" viewBox="0 0 24 24">
+                        <path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/>
+                    </svg>
+                    <div class="lang-dropdown hidden absolute left-[calc(100%+8px)] top-[-1px] bg-[var(--nav-bg)] border-2 border-[color:var(--c-border)] rounded-[0.33rem] shadow-[0_8px_20px_rgba(0,0,0,0.45)] z-50 py-0 w-28 text-center">
+                        
+                            
+                            
+                                <a href="/en/wiki/Classical_Mythology/Nymphs/Nymphs/"
+                                   style="--lang-hover: var(--lang-en);"
+                                   class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-hover)] hover:text-white transition-all rounded-t-[0.33rem]">
+                                    English
+                                </a>
+                            
+                        
+                            
+                            
+                                <a href="/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F%20%D0%9C%D0%B8%D1%84%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%9D%D0%B8%D0%BC%D1%84%D1%8B/%D0%9D%D0%B8%D0%BC%D1%84%D1%8B/"
+                                   style="--lang-hover: var(--lang-ru);"
+                                   class="block py-2 text-xs font-bold text-slate-300 hover:bg-[var(--lang-hover)] hover:text-white transition-all rounded-b-[0.33rem]">
+                                    Русский
+                                </a>
+                            
+                        
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <main id="site-main" class="w-full max-w-[760px] mx-auto px-4 flex-grow flex flex-col space-y-6">
+        
+<div class="animate-retro-pop relative w-full mb-2">
+
+    <!-- ЛЕВАЯ КОЛОНКА (Если есть виджеты с position: left) -->
+    
+    <aside class="hidden xl:block absolute right-[100%] top-0 bottom-0 mr-4 w-60">
+        <div class="sticky top-6 flex flex-col gap-6 w-full max-h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar">
+            
+                
+    <div class="qz-card qz-card-widget w-full">
+        <div class="widget-title">
+            Table of Contents
+        </div>
+        <div class="toc-container">
+            <div class="toc">
+<ul>
+<li><a href="#the-nature-of-nymphs">The Nature of Nymphs</a></li>
+<li><a href="#classification-of-nymphs">Classification of Nymphs</a></li>
+<li><a href="#nymphs-and-the-olympian-gods">Nymphs and the Olympian Gods</a><ul>
+<li><a href="#1-sacred-retinue-and-service">1. Sacred Retinue and Service</a></li>
+<li><a href="#2-objects-of-divine-passion-and-the-source-of-metamorphoses">2. Objects of Divine Passion and the Source of Metamorphoses</a></li>
+<li><a href="#3-mothers-and-nurses-of-the-divine-race">3. Mothers and Nurses of the Divine Race</a></li>
+</ul>
+</li>
+<li><a href="#nymphs-and-mortals">Nymphs and Mortals</a><ul>
+<li><a href="#tragedies-of-love-hylas-and-daphnis">Tragedies of Love: Hylas and Daphnis</a></li>
+</ul>
+</li>
+<li><a href="#cult-caves-and-the-origins-of-nymphaea">Cult: Caves and the Origins of Nymphaea</a></li>
+</ul>
+</div>
+
+        </div>
+    </div>
+
+            
+        </div>
+    </aside>
+    
+
+    <!-- ПРАВАЯ КОЛОНКА (Если есть виджеты с position: right) -->
+    
+    <aside class="hidden xl:block absolute left-[100%] top-0 bottom-0 ml-4 w-60">
+        <div class="sticky top-6 flex flex-col gap-6 w-full max-h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar">
+            
+                
+    <div class="qz-card qz-card-widget w-full">
+        <div class="widget-title">
+            Properties
+        </div>
+        <div class="space-y-3">
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    type
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        
+                        <a href="/en/search/?tag=character"
+                           class="inline-block text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
+                            character
+                        </a>
+                    
+                </div>
+            </div>
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    tags
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        <div class="flex flex-wrap gap-1 items-center">
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=%E2%8C%9B">#⌛</a>
+                                
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=characters/entities">#characters/entities</a>
+                                
+                            
+                                
+                                
+                                
+                                    <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/search/?tag=%F0%9F%8C%BF">#🌿</a>
+                                
+                            
+                        </div>
+                    
+                </div>
+            </div>
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    genesis
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        Minor Deities
+                    
+                </div>
+            </div>
+            
+            <div class="border-b border-white/5 pb-2 last:border-b-0 last:pb-0">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--qz-text-muted)] mb-1">
+                    ancestors
+                </div>
+                <div class="text-[13px] font-semibold text-[var(--qz-text)]">
+                    
+                        <div class="flex flex-wrap gap-1 items-center">
+                        
+                            
+                                <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/wiki/Classical_Mythology/Protogenos/Gaia/">Gaia</a>
+                            
+                        
+                            
+                                <span class="qz-tag broken-link text-[11px] px-1.5 py-0.5" title="Страница не найдена">Oceanus</span>
+                            
+                        
+                            
+                                <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/wiki/Classical_Mythology/Protogenos/Uranus/">Uranus</a>
+                            
+                        
+                            
+                                <a class="qz-tag text-[11px] px-1.5 py-0.5" href="/en/wiki/Classical_Mythology/Mountain_Pack/Oros/">Oros</a>
+                            
+                        
+                            
+                                <span class="qz-tag broken-link text-[11px] px-1.5 py-0.5" title="Страница не найдена">Tethys</span>
+                            
+                        
+                            
+                                <span class="qz-tag broken-link text-[11px] px-1.5 py-0.5" title="Страница не найдена">Nereus</span>
+                            
+                        
+                            
+                                <span class="qz-tag broken-link text-[11px] px-1.5 py-0.5" title="Страница не найдена">Atlas</span>
+                            
+                        
+                            
+                                <span class="qz-tag broken-link text-[11px] px-1.5 py-0.5" title="Страница не найдена">Pleione</span>
+                            
+                        
+                        </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+            
+        </div>
+    </aside>
+    
+
+    <!-- ВЕРХНИЕ ИНКЛЮДЫ (ДО ВЫЗОВА BODY) -->
+    
+
+    <!-- ЦЕНТРАЛЬНАЯ КАРТОЧКА -->
+    
+    
+        <!-- СТАНДАРТНАЯ СТАТЬЯ / ВИКИ -->
+        <div class="qz-card qz-card-main w-full mb-6">
+
+            
+                
+<div class="qz-breadcrumbs-container space-y-1 mb-6">
+    
+    <nav class="qz-breadcrumbs mb-0">
+        
+            
+                <a href="/en/wiki/">wiki</a>
+            
+            <span class="qz-sep">&rsaquo;</span>
+        
+            
+                <a href="/en/wiki/Classical_Mythology/">Classical Mythology</a>
+            
+            <span class="qz-sep">&rsaquo;</span>
+        
+        <span class="qz-current">Nymphs</span>
+    </nav>
+    
+</div>
+
+            
+
+            
+                <h1 class="qz-title">Nymphs</h1>
+            
+
+            
+
+            
+                <div class="qz-metaline">
+                    23:03 | 25.09.2026
+                </div>
+            
+
+            
+
+            
+            <details class="xl:hidden qz-props mb-6">
+                <summary>
+                    <span>Table of Contents</span>
+                </summary>
+                <div class="p-4 bg-[var(--qz-surface)] text-[var(--qz-text)] text-sm toc-container border-t border-[var(--qz-border)]">
+                    <div class="toc">
+<ul>
+<li><a href="#the-nature-of-nymphs">The Nature of Nymphs</a></li>
+<li><a href="#classification-of-nymphs">Classification of Nymphs</a></li>
+<li><a href="#nymphs-and-the-olympian-gods">Nymphs and the Olympian Gods</a><ul>
+<li><a href="#1-sacred-retinue-and-service">1. Sacred Retinue and Service</a></li>
+<li><a href="#2-objects-of-divine-passion-and-the-source-of-metamorphoses">2. Objects of Divine Passion and the Source of Metamorphoses</a></li>
+<li><a href="#3-mothers-and-nurses-of-the-divine-race">3. Mothers and Nurses of the Divine Race</a></li>
+</ul>
+</li>
+<li><a href="#nymphs-and-mortals">Nymphs and Mortals</a><ul>
+<li><a href="#tragedies-of-love-hylas-and-daphnis">Tragedies of Love: Hylas and Daphnis</a></li>
+</ul>
+</li>
+<li><a href="#cult-caves-and-the-origins-of-nymphaea">Cult: Caves and the Origins of Nymphaea</a></li>
+</ul>
+</div>
+
+                </div>
+            </details>
+            
+
+            <article class="wiki-article img-grid">
+                <p>Nymphs (Greek νύμφαι, sing. νύμφη — "bride," "maiden of marriageable age," "bud") — neither goddesses nor mortals, but the living breath of nature itself, its ensouled flesh. Every ancient tree, river rapid, rocky crag, or secluded oak grove possesses its own nymph, just as a human being possesses a soul.</p>
+<p>This worldview rendered the classical cosmos fundamentally ensouled. Nature surrounding man knew no dead stillness: felling a sacred oak meant slaying a Hamadryad, while muddying a clear spring meant desecrating the living flesh of a Naiad.</p>
+<hr />
+<h2 id="the-nature-of-nymphs">The Nature of Nymphs</h2>
+<p>Unlike the Olympian gods, who possess absolute immortality (<em>athanasia</em>), nymphs are mortal — yet their lifespans immeasurably surpass that of humans. They endure precisely as long as their natural sanctuary exists: a Dryad withers alongside her tree, an Oread persists as long as the mountain ridge stands, and a Naiad perishes if the spring that nourishes her runs dry.</p>
+<div class="qz-callout qz-callout-quote" style="--callout-color: #9e9e9e; --callout-bg: #303236;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg></span> <span>Hesiod's Calculation of Nymph Longevity</span></div>
+<div class="qz-callout-content">
+<p>Nine generations of men liveth the chattering crow;<br />
+And a hart outliveth four crows;<br />
+A raven outliveth three harts; and the phoenix<br />
+Outliveth nine ravens; but ye, long-lived <strong>nymphs</strong>,<br />
+Daughters of aegis-bearing Zeus, outlive ten phoenixes!<br />
+— Hesiod, <em>Precepts of Chiron</em> (as preserved in Plutarch)</p>
+</div>
+</div>
+
+<p>According to this ancient zoological reckoning, a nymph's lifespan was roughly 300,000 years. Nymphs take no part in the Olympian council of the gods and do not shape the overarching destinies of the cosmos: their dominion is strictly <strong>local</strong> (<em>genius loci</em>), yet within the bounds of their domain, they are absolute mistresses.</p>
+<div class="qz-callout qz-callout-info" style="--callout-color: #4d95f7; --callout-bg: #28313f;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span> <span>The Semantics of the Bud</span></div>
+<div class="qz-callout-content">
+<p>The root <em>nymphe</em> directly points to the status of a maiden who has reached marriageable age, yet has not yet become the mother of a household under the authority of a husband. Nymphs embody the wild, free, untamed fertility of nature — not yet subjugated by the plow or patriarchal marriage.</p>
+</div>
+</div>
+
+<hr />
+<h2 id="classification-of-nymphs">Classification of Nymphs</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Element</th>
+<th style="text-align: left;">Type of Nymph</th>
+<th style="text-align: left;">Domain and Natural Bond</th>
+<th style="text-align: left;">Notable Representatives and Attributes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Water</strong> <em>(Hydriades)</em></td>
+<td style="text-align: left;"><strong>Oceanids</strong></td>
+<td style="text-align: left;">Nymphs of all the fresh and salt waters of the world. The most ancient of aquatic nymphs, older than the Olympian gods.</td>
+<td style="text-align: left;"><span class="wiki-link broken-link" title="Page not found: Styx">Styx</span><br><span class="wiki-link broken-link" title="Page not found: Clymene">Clymene</span><br><span class="wiki-link broken-link" title="Page not found: Metis">Metis</span><br>3,000 daughters of Oceanus and Tethys</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>Nereids</strong></td>
+<td style="text-align: left;">Nymphs of the sea and coastal depths</td>
+<td style="text-align: left;"><span class="wiki-link broken-link" title="Page not found: Thetis">Thetis</span> (<em>mother of Achilles</em>)<br><span class="wiki-link broken-link" title="Page not found: Amphitrite">Amphitrite</span> (<em>consort of Poseidon</em>)<br><span class="wiki-link broken-link" title="Page not found: Galatea">Galatea</span> (<em>beloved of the Cyclops Polyphemus</em>)<br>50 daughters of Nereus</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>Naiads</strong></td>
+<td style="text-align: left;">Nymphs of fresh water: rivers, lakes, springs, and brooks.</td>
+<td style="text-align: left;"><span class="wiki-link broken-link" title="Page not found: Arethusa">Arethusa</span><br><span class="wiki-link broken-link" title="Page not found: Castalia">Castalia</span><br><span class="wiki-link broken-link" title="Page not found: Daphne">Daphne</span> (<em>nymph transformed into a laurel tree to flee Apollo</em>)<br><em>Unlike Oceanids, they are bound to a specific body of water and dry up with it.</em><br><span class="wiki-link broken-link" title="Page not found: Syrinx">Syrinx</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Earth</strong> <em>(Epigeai)</em></td>
+<td style="text-align: left;"><strong>Dryads</strong></td>
+<td style="text-align: left;">Forests and trees in general</td>
+<td style="text-align: left;">Embodiments of woodland life; capable of moving to another tree if one withers</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>Hamadryads</strong></td>
+<td style="text-align: left;">A specific, individual tree</td>
+<td style="text-align: left;">Born and die with their tree's trunk; the most mortal class of nymphs</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>Meliae</strong></td>
+<td style="text-align: left;">Ash trees</td>
+<td style="text-align: left;">Born from the blood of Uranus; their wood was used to fashion the first spears</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>Oreads</strong></td>
+<td style="text-align: left;">Mountains, rocks, and ravines</td>
+<td style="text-align: left;">Live as long as the mountain ridge stands; companions of Artemis: <br><span class="wiki-link broken-link" title="Page not found: Callisto">Callisto</span> (<em>companion of Artemis, transformed into a bear</em>)<br><span class="wiki-link broken-link" title="Page not found: Echo">Echo</span><br><span class="wiki-link broken-link" title="Page not found: Adrasteia">Adrasteia</span> (<em>nymph entrusted with nursing the infant Zeus in the wild caves of Crete</em>)<br><span class="wiki-link broken-link" title="Page not found: Cybele">Cybele</span> (<em>Phrygian mountain goddess, eventually identified by Greek authors with a mountain nymph, and later with Gaia herself</em>)<br><span class="wiki-link broken-link" title="Page not found: Pleiades">Pleiades</span> (<em>seven mountain nymph sisters</em>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>Alseids / Napaeae</strong></td>
+<td style="text-align: left;">Groves, dells, and glades</td>
+<td style="text-align: left;">Guardians of shady valleys and sacred woodland altars</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="wiki-link broken-link" title="Page not found: Hesperides">Hesperides</span></td>
+<td style="text-align: left;">Nymphs of the sunset and the evening edge of the earth; keepers of the Golden Garden in the far west</td>
+<td style="text-align: left;">Guard the golden apples and the dragon Ladon; key figures in Heracles's 11th labor</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Air</strong></td>
+<td style="text-align: left;"><strong>Aurae</strong></td>
+<td style="text-align: left;">Light breezes, morning air</td>
+<td style="text-align: left;">Daughters of the wind or water; personification — <span class="wiki-link broken-link" title="Page not found: Aura">Aura</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>Nephelae</strong></td>
+<td style="text-align: left;">Clouds and rain-clouds</td>
+<td style="text-align: left;">Nymphs of celestial moisture; cloud nymph — <span class="wiki-link broken-link" title="Page not found: Nephele">Nephele</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Underworld</strong></td>
+<td style="text-align: left;"><strong>Lampads</strong></td>
+<td style="text-align: left;">Hades, the realm of the dead</td>
+<td style="text-align: left;">Companions of <span class="wiki-link broken-link" title="Page not found: Hecate">Hecate</span>; bearers of funerary and chthonic torchlight</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="nymphs-and-the-olympian-gods">Nymphs and the Olympian Gods</h2>
+<p>Within the divine hierarchy, nymphs occupy a subordinate yet ritually indispensable role. To the great deities, they appear in three distinct capacities:</p>
+<h3 id="1-sacred-retinue-and-service">1. Sacred Retinue and Service</h3>
+<p>Nymphs form the retinue of the gods of wild, untamed nature:</p>
+<ul>
+<li><strong>Companions of <span class="wiki-link broken-link" title="Page not found: Artemis">Artemis</span>:</strong> chaste huntress-maidens who share the freedom of the forests with the goddess. Absolute ritual purity is demanded of them. Breaches of the vow of chastity are mercilessly punished: when the Oread <span class="wiki-link broken-link" title="Page not found: Callisto">Callisto</span> was seduced by Zeus, the wrathful Artemis banished her from her retinue, and Hera transformed her into a bear.</li>
+<li><strong>The Thiasus of <span class="wiki-link broken-link" title="Page not found: Dionysus">Dionysus</span>:</strong> the Nysaean naiads nursed the infant Dionysus in the caves of Mount Nysa, sheltering him from Hera. Later, they formed the core of his ecstatic procession as Bacchanals and Maenads, embodying the intoxicating, fruitful frenzy of nature.</li>
+</ul>
+<h3 id="2-objects-of-divine-passion-and-the-source-of-metamorphoses">2. Objects of Divine Passion and the Source of Metamorphoses</h3>
+<p>For the mighty Olympians (Zeus, Apollo, Poseidon) and wild deities like <span class="wiki-link broken-link" title="Page not found: Pan">Pan</span>, nymphs were coveted prizes. Yet for the nymph herself, the attention of a god nearly always heralded disaster:</p>
+<ul>
+<li>The bid to escape divine violation spawned the classical mythological motif of <strong>metamorphosis</strong> — a retreat into the plant world. Fleeing Apollo, <span class="wiki-link broken-link" title="Page not found: Daphne">Daphne</span> pleads with her father for deliverance and transforms into the sacred laurel; escaping the lust of Pan, the nymph <span class="wiki-link broken-link" title="Page not found: Syrinx">Syrinx</span> becomes a marsh reed, from which the god crafts his pan flute.</li>
+<li>A liaison with Zeus inevitably incurred the devastating wrath of jealous <span class="wiki-link broken-link" title="Page not found: Hera">Hera</span>.</li>
+</ul>
+<h3 id="3-mothers-and-nurses-of-the-divine-race">3. Mothers and Nurses of the Divine Race</h3>
+<p>As pure manifestations of terrestrial fertility, nymphs frequently became the mothers of new deities and legendary heroes. The Oread <span class="wiki-link broken-link" title="Page not found: Maia">Maia</span> gave the world the cunning herald <strong>Hermes</strong>, while the sea nymph <span class="wiki-link broken-link" title="Page not found: Thetis">Thetis</span> bore <strong>Achilles</strong> — the supreme hero of the Trojan War.</p>
+<hr />
+<h2 id="nymphs-and-mortals">Nymphs and Mortals</h2>
+<p>Encountering a solitary nymph in a forest or near a spring was a perilous event for a mortal. Not because the nymph was inherently hostile, but because she belonged to an entirely different order of being, and her attention altered a human forever.</p>
+<div class="qz-callout qz-callout-example" style="--callout-color: #b051de; --callout-bg: #322a3c;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h.01"/><path d="M3 18h.01"/><path d="M3 6h.01"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M8 6h13"/></svg></span> <span>Nympholepsy</span></div>
+<div class="qz-callout-content">
+<p>A mortal who inadvertently glimpsed a naked nymph bathing in a spring or fell under the spell of her gaze was seized by a sacred, ecstatic madness — <strong>nympholepsy</strong> ("caught by nymphs"). Such a person lost all interest in civic life, abandoned family, and wandered endlessly among crags and thickets. Nympholepsy stripped away ordinary sanity, but granted in return the gift of poetic ecstasy and prophetic vision.</p>
+</div>
+</div>
+
+<hr />
+<h3 id="tragedies-of-love-hylas-and-daphnis">Tragedies of Love: Hylas and Daphnis</h3>
+<p>A nymph's love for a mortal was as destructive as her wrath:</p>
+<ul>
+<li><strong>Hylas:</strong> the youthful squire and beloved of Heracles went to fetch water from the woodland spring of Pegae during the voyage of the Argonauts. Entranced by his beauty, the Naiads dragged the boy into the depths of the spring, where he remained forever.</li>
+<li><strong>Daphnis:</strong> the handsome Sicilian shepherd and inventor of pastoral poetry (bucolics) swore an oath of eternal fidelity to the Naiad Nomia. Seduced by wine and a king's daughter, Daphnis broke his vow, whereupon the nymph blinded him, sealing his early demise.</li>
+</ul>
+<div class="qz-callout qz-callout-info" style="--callout-color: #4d95f7; --callout-bg: #28313f;" open>
+<div class="qz-callout-title"><span class="qz-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span> <span>Retribution for a Destroyed Tree</span></div>
+<div class="qz-callout-content">
+<p>In defense of their sanctuaries, Hamadryads could enact terrifying vengeance. King Erysichthon, who insolently felled a sacred centuries-old oak harboring the beloved nymph of the goddess of harvest, was cursed with an unquenchable, ravenous hunger: having consumed all his wealth, he finally devoured himself.</p>
+</div>
+</div>
+
+<hr />
+<h2 id="cult-caves-and-the-origins-of-nymphaea">Cult: Caves and the Origins of Nymphaea</h2>
+<p>In civic Greece, grand marble temples were rarely erected for nymphs. Their sanctuaries were natural grottos, karst caverns with spring water seeping along the walls, and sacred fountains:</p>
+<ul>
+<li>Large beasts were never slaughtered in sacrifice to nymphs: they were offered honey cakes, honey, sheep’s cheese, milk, olive oil, and wreaths of wild flowers;</li>
+<li>Later, the Greeks and Romans began adorning natural grottos with colonnades and fountains. Thus arose the architectural form of the sanctuary — the <strong>nymphaeum</strong>, which gave rise to the monumental fountains of Hellenistic cities and the park grottos of the Renaissance.</li>
+</ul>
+            </article>
+
+            
+            <div class="xl:hidden mt-8">
+                <details class="qz-props" open>
+    <summary>
+        <span>Properties</span>
+        <span class="qz-props-count">4</span>
+    </summary>
+
+    
+    <div class="qz-prop-row">
+        <div class="qz-prop-key">type</div>
+        <div class="qz-prop-val">
+            
+                
+                <a href="/en/search/?tag=character"
+                   class="inline-block text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[var(--qz-surface)] text-[var(--qz-text-muted)] hover:text-[var(--qz-text)] hover:border-[var(--qz-accent)] border border-[var(--qz-border)] select-none transition-colors">
+                    character
+                </a>
+            
+        </div>
+    </div>
+    
+    <div class="qz-prop-row">
+        <div class="qz-prop-key">tags</div>
+        <div class="qz-prop-val">
+            
+                <div style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center;">
+                    
+                        
+                        
+                        
+                            <a class="qz-tag" href="/en/search/?tag=%E2%8C%9B">#⌛</a>
+                        
+                    
+                        
+                        
+                        
+                            <a class="qz-tag" href="/en/search/?tag=characters/entities">#characters/entities</a>
+                        
+                    
+                        
+                        
+                        
+                            <a class="qz-tag" href="/en/search/?tag=%F0%9F%8C%BF">#🌿</a>
+                        
+                    
+                </div>
+            
+        </div>
+    </div>
+    
+    <div class="qz-prop-row">
+        <div class="qz-prop-key">genesis</div>
+        <div class="qz-prop-val">
+            
+                Minor Deities
+            
+        </div>
+    </div>
+    
+    <div class="qz-prop-row">
+        <div class="qz-prop-key">ancestors</div>
+        <div class="qz-prop-val">
+            
+                
+                    
+                        <a class="qz-tag" href="/en/wiki/Classical_Mythology/Protogenos/Gaia/">Gaia</a>
+                    
+                
+                    
+                        <span class="qz-tag broken-link" title="Страница не найдена">Oceanus</span>
+                    
+                
+                    
+                        <a class="qz-tag" href="/en/wiki/Classical_Mythology/Protogenos/Uranus/">Uranus</a>
+                    
+                
+                    
+                        <a class="qz-tag" href="/en/wiki/Classical_Mythology/Mountain_Pack/Oros/">Oros</a>
+                    
+                
+                    
+                        <span class="qz-tag broken-link" title="Страница не найдена">Tethys</span>
+                    
+                
+                    
+                        <span class="qz-tag broken-link" title="Страница не найдена">Nereus</span>
+                    
+                
+                    
+                        <span class="qz-tag broken-link" title="Страница не найдена">Atlas</span>
+                    
+                
+                    
+                        <span class="qz-tag broken-link" title="Страница не найдена">Pleione</span>
+                    
+                
+            
+        </div>
+    </div>
+    
+</details>
+            </div>
+            
+
+            
+
+            
+
+        </div>
+    
+    
+
+    <!-- ЛЕНТА БЛОГА -->
+    
+
+    <!-- НИЖНИЕ ИНКЛЮДЫ -->
+    
+
+</div>
+
+<style>
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--qz-border, #3a3b3f); border-radius: 4px; }
+    .custom-scrollbar:hover::-webkit-scrollbar-thumb { background: var(--qz-text-muted, #9a9ca6); }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tocLinks = document.querySelectorAll('.toc-container a');
+    if (tocLinks.length === 0) return;
+
+    const headers = Array.from(document.querySelectorAll('.wiki-article h1, .wiki-article h2, .wiki-article h3, .wiki-article h4, .wiki-article h5, .wiki-article h6'))
+                         .filter(h => h.id);
+
+    if (headers.length === 0) return;
+
+    let isClickScrolling = false;
+    let scrollTimeout = null;
+
+    const updateActiveToc = () => {
+        if (isClickScrolling) return;
+
+        let activeHeader = headers[0];
+
+        for (let i = 0; i < headers.length; i++) {
+            const rect = headers[i].getBoundingClientRect();
+            if (rect.top <= 120) {
+                activeHeader = headers[i];
+            } else {
+                break;
+            }
+        }
+
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+            activeHeader = headers[headers.length - 1];
+        }
+
+        tocLinks.forEach(link => link.classList.remove('active-toc'));
+
+        const activeLinks = document.querySelectorAll(`.toc-container a[href="#${activeHeader.id}"]`);
+        activeLinks.forEach(link => {
+            link.classList.add('active-toc');
+
+            const container = link.closest('.custom-scrollbar');
+            if (container) {
+                const linkTop = link.offsetTop;
+                const containerScroll = container.scrollTop;
+                const containerHeight = container.clientHeight;
+
+                if (linkTop < containerScroll || linkTop > containerScroll + containerHeight - 30) {
+                    container.scrollTo({ top: linkTop - containerHeight / 2, behavior: 'smooth' });
+                }
+            }
+        });
+    };
+
+    window.addEventListener('scroll', () => {
+        window.requestAnimationFrame(updateActiveToc);
+    }, { passive: true });
+
+    tocLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                const targetId = href.substring(1);
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    e.preventDefault();
+                    isClickScrolling = true;
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.replaceState(null, null, href);
+                }
+            }
+
+            tocLinks.forEach(l => l.classList.remove('active-toc'));
+            document.querySelectorAll(`.toc-container a[href="${link.getAttribute('href')}"]`).forEach(l => {
+                l.classList.add('active-toc');
+            });
+
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                isClickScrolling = false;
+            }, 800);
+        });
+    });
+
+    updateActiveToc();
+
+    if (window.location.hash) {
+        const rawHash = window.location.hash.substring(1);
+        let hashId = decodeURIComponent(rawHash);
+
+        if (hashId.startsWith('^')) {
+            hashId = hashId.substring(1);
+            const targetElement = document.getElementById(hashId) || document.querySelector(`[id="${CSS.escape(hashId)}"]`);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'auto', block: 'start' });
+            }
+        }
+    }
+});
+</script>
+
+    </main>
+
+    <div id="site-footer-container" class="w-full max-w-[760px] mx-auto px-4 mt-2 mb-0">
+        <footer class="retro-footer">
+            
+            <p class="text-[13px] font-semibold text-[var(--qz-text-muted)] tracking-wider">
+                © 2026 ALKREI
+            </p>
+        </footer>
+    </div>
+
+    <!-- Модальное окно просмотра изображений (Lightbox) -->
+    <div id="qz-lightbox" class="fixed inset-0 z-50 bg-black/90 hidden flex items-center justify-center p-4 cursor-zoom-out select-none transition-opacity duration-200 opacity-0">
+        <img id="qz-lightbox-img" src="" alt="Preview" class="max-w-full max-h-full object-contain rounded shadow-2xl transition-transform duration-200 scale-95 pointer-events-none">
+    </div>
+
+</body>
+</html>
